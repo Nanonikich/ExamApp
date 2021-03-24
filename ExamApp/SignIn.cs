@@ -15,19 +15,22 @@ namespace ExamApp
         private void butSignIn_Click(object sender, EventArgs e)
         {
             var db = new DB();
-            var adapter = new SqlDataAdapter(@"SELECT * FROM Customer WHERE cust_usname = '" + textBoxUsname.Text + "' AND cust_passw = '" + textBoxPassw.Text + "'", db.getConnection());
             var dtbl = new DataTable();
-            adapter.Fill(dtbl);
-            if (dtbl.Rows.Count == 1)
+            new SqlDataAdapter(@"SELECT * FROM Customer WHERE cust_usname = '" + textBoxUsname.Text + "' AND cust_passw = '" + textBoxPassw.Text + "'", db.getConnection()).Fill(dtbl);
+            switch (dtbl.Rows.Count)
             {
-                Hide();
-                var mainW = new MainWindow();
-                mainW.Show();
+                case 1:
+                    {
+                        Hide();
+                        var mainW = new MainWindow();
+                        mainW.Show();
+                        break;
+                    }
+
+                default:
+                    MessageBox.Show("Check your username and password");
+                    break;
             }
-            else
-            {
-                MessageBox.Show("Check your username and password");
-            }  
         }
 
         private void butSignUp_Click(object sender, EventArgs e)

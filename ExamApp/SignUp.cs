@@ -30,9 +30,9 @@ namespace ExamApp
             string[] array = new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " };
             try
             {
-                for (int i = 0; i < array.Length; i++)
+                foreach (string v in array)
                 {
-                    if (textBoxSurn.Text.Contains(array[i]) || textBoxName.Text.Contains(array[i]) || textBoxPatr.Text.Contains(array[i]) || textBoxPhone.Text.Contains(array[i]) || textBoxCity.Text.Contains(array[i]) || textBoxUsname.Text.Contains(array[i]) || textBoxPassw.Text.Contains(array[i]) ||
+                    if (textBoxSurn.Text.Contains(v) || textBoxName.Text.Contains(v) || textBoxPatr.Text.Contains(v) || textBoxPhone.Text.Contains(v) || textBoxCity.Text.Contains(v) || textBoxUsname.Text.Contains(v) || textBoxPassw.Text.Contains(v) ||
                     (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text)))
                     {
                         MessageBox.Show("Check the fields");
