@@ -13,39 +13,24 @@ namespace ExamApp
 {
     public partial class MainWindow : Form
     {
-        List<MyUserControl> products;
         public MainWindow()
         {
             InitializeComponent();
-            LoadProduct();
         }
 
-        private void LoadProduct()
+        private void ButAdd_Click(object sender, EventArgs e)
         {
-            var db = new DB();
-            
-            var dtbl = new DataTable();
-            SqlCommand cmd3 = new SqlCommand(@"SELECT prod_name,  prod_vendcode, prod_type,  prod_price FROM Product ", db.getConnection());
-            int count = 0; //
-            int z = 0; //
-            SqlCommand query = new SqlCommand(@"SELECT COUNT(*) FROM Product", db.getConnection()); //
-            db.getConnection().Open();
-            count = (int)query.ExecuteScalar(); //
+            Hide();
+            var adPr = new AddProd();
+            adPr.buttEdit.Enabled = false;
+            adPr.Show();
+        }
 
-            List<MyUserControl> products = new List<MyUserControl>()
-            {
-                new MyUserControl()
-                {
-                    Name = cmd3.ExecuteScalar().ToString(),
-                    Artikul = cmd3.ExecuteScalar().ToString(),
-                    Nalichie = cmd3.ExecuteScalar().ToString(),
-                    Price = cmd3.ExecuteScalar().ToString(),
-                }
-            };
-            foreach (MyUserControl item in products)
-            {
-                flowLayout.Controls.Add(item);
-            }
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "databaseDataSet.Products". При необходимости она может быть перемещена или удалена.
+            this.productsTableAdapter.Fill(this.databaseDataSet.Products);
+
         }
     }
 }
