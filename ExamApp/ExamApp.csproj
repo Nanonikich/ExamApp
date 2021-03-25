@@ -62,49 +62,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddProd.cs">
+    <Compile Include="Forms\AddProd.cs">
       <SubType>Form</SubType>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="AddProd.Designer.cs">
+    <Compile Include="Forms\AddProd.Designer.cs">
       <DependentUpon>AddProd.cs</DependentUpon>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="DatabaseDataSet.Designer.cs">
+    <Compile Include="Data\DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+      <CustomToolNamespace>Data</CustomToolNamespace>
     </Compile>
-    <Compile Include="DB.cs" />
-    <Compile Include="SignIn.cs">
+    <Compile Include="Data\DB.cs">
+      <CustomToolNamespace>Data</CustomToolNamespace>
+    </Compile>
+    <Compile Include="Forms\SignIn.cs">
       <SubType>Form</SubType>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="SignIn.Designer.cs">
+    <Compile Include="Forms\SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="SignUp.cs">
+    <Compile Include="Forms\SignUp.cs">
       <SubType>Form</SubType>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="SignUp.Designer.cs">
+    <Compile Include="Forms\SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Forms\MainWindow.cs">
       <SubType>Form</SubType>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Program.cs">
+      <CustomToolNamespace>ExamApp</CustomToolNamespace>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddProd.resx">
+    <EmbeddedResource Include="Forms\AddProd.resx">
       <DependentUpon>AddProd.cs</DependentUpon>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignIn.resx">
+    <EmbeddedResource Include="Forms\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignUp.resx">
+    <EmbeddedResource Include="Forms\SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,16 +133,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DatabaseDataSet.xsc">
+    <None Include="Data\DatabaseDataSet.xsc">
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+      <CustomToolNamespace>Data</CustomToolNamespace>
     </None>
-    <None Include="DatabaseDataSet.xsd">
+    <None Include="Data\DatabaseDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DatabaseDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CustomToolNamespace>Data</CustomToolNamespace>
     </None>
-    <None Include="DatabaseDataSet.xss">
+    <None Include="Data\DatabaseDataSet.xss">
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+      <CustomToolNamespace>Data</CustomToolNamespace>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,7 +158,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CustomToolNamespace>ExamApp</CustomToolNamespace>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -153,15 +175,21 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database.mdf">
+    <Content Include="Data\Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>Data</CustomToolNamespace>
     </Content>
-    <Content Include="Database_log.ldf">
+    <Content Include="Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>Data</CustomToolNamespace>
     </Content>
-    <None Include="img\2.jpg" />
-    <None Include="img\1.jpg" />
+    <None Include="img\2.jpg">
+      <CustomToolNamespace>ExamApp</CustomToolNamespace>
+    </None>
+    <None Include="img\1.jpg">
+      <CustomToolNamespace>ExamApp</CustomToolNamespace>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

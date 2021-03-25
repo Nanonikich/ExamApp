@@ -153,7 +153,7 @@ namespace ExamApp
             this.butnReg.TabIndex = 9;
             this.butnReg.Text = "Register";
             this.butnReg.UseVisualStyleBackColor = false;
-            this.butnReg.Click += new System.EventHandler(this.butnReg_Click);
+            this.butnReg.Click += new System.EventHandler(this.ButnReg_Click);
             // 
             // butnEdit
             // 
@@ -178,7 +178,7 @@ namespace ExamApp
             this.butnBack.TabIndex = 11;
             this.butnBack.Text = "Back";
             this.butnBack.UseVisualStyleBackColor = false;
-            this.butnBack.Click += new System.EventHandler(this.butnBack_Click);
+            this.butnBack.Click += new System.EventHandler(this.ButnBack_Click);
             // 
             // textBoxSurn
             // 

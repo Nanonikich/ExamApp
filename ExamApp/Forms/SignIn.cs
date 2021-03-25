@@ -12,18 +12,16 @@ namespace ExamApp
             InitializeComponent();
         }
 
-        private void butSignIn_Click(object sender, EventArgs e)
+        private void ButSignIn_Click(object sender, EventArgs e)
         {
-            var db = new DB();
             var dtbl = new DataTable();
-            new SqlDataAdapter(@"SELECT * FROM Customer WHERE cust_usname = '" + textBoxUsname.Text + "' AND cust_passw = '" + textBoxPassw.Text + "'", db.getConnection()).Fill(dtbl);
+            new SqlDataAdapter(@"SELECT * FROM Customer WHERE cust_usname = '" + textBoxUsname.Text + "' AND cust_passw = '" + textBoxPassw.Text + "'", new DB().GetConnection()).Fill(dtbl);
             switch (dtbl.Rows.Count)
             {
                 case 1:
                     {
                         Hide();
-                        var mainW = new MainWindow();
-                        mainW.Show();
+                        new MainWindow().Show();
                         break;
                     }
 
@@ -33,12 +31,11 @@ namespace ExamApp
             }
         }
 
-        private void butSignUp_Click(object sender, EventArgs e)
+        private void ButSignUp_Click(object sender, EventArgs e)
         {
             Hide();
             var signUp = new SignUp();
             signUp.butnEdit.Enabled = false;
-            //signUp.butnEdit.Visible = false;
             signUp.Show();
         }
 

@@ -9,19 +9,19 @@ namespace ExamApp
 {
     class DB
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\Desktop\ExamApp\Database.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\Desktop\ExamApp\Data\Database.mdf;Integrated Security=True");
         
-        public void openConnection()
+        public void OpenConnection()
         {
             if (con.State == System.Data.ConnectionState.Closed) con.Open();
         }
 
-        public void closeConnection()
+        public void CloseConnection()
         {
             if (con.State == System.Data.ConnectionState.Open) con.Close();
         }
 
-        public SqlConnection getConnection()
+        public SqlConnection GetConnection()
         {
             return con;
         }

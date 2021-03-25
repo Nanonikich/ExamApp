@@ -199,6 +199,7 @@ namespace ExamApp
             this.buttEdit.TabIndex = 14;
             this.buttEdit.Text = "Edit";
             this.buttEdit.UseVisualStyleBackColor = false;
+            this.buttEdit.Click += new System.EventHandler(this.ButtEdit_Click);
             // 
             // buttBack
             // 
@@ -288,17 +289,17 @@ namespace ExamApp
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxVC;
-        private System.Windows.Forms.TextBox textBoxNam;
-        private System.Windows.Forms.TextBox textBoxDesc;
-        private System.Windows.Forms.TextBox textBoxPr;
-        private System.Windows.Forms.TextBox textBoxCat;
-        private System.Windows.Forms.TextBox textBoxType;
-        private System.Windows.Forms.Button buttAddPr;
         private System.Windows.Forms.Button buttBack;
         private System.Windows.Forms.Button buttonPict;
-        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.Button buttEdit;
+        public System.Windows.Forms.Button buttAddPr;
+        public System.Windows.Forms.TextBox textBoxVC;
+        public System.Windows.Forms.TextBox textBoxNam;
+        public System.Windows.Forms.TextBox textBoxDesc;
+        public System.Windows.Forms.TextBox textBoxPr;
+        public System.Windows.Forms.TextBox textBoxCat;
+        public System.Windows.Forms.TextBox textBoxType;
+        public System.Windows.Forms.PictureBox pictureBox;
     }
 }

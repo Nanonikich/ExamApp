@@ -49,7 +49,7 @@ namespace ExamApp
             this.butSignIn.TabIndex = 0;
             this.butSignIn.Text = "SignIn";
             this.butSignIn.UseVisualStyleBackColor = false;
-            this.butSignIn.Click += new System.EventHandler(this.butSignIn_Click);
+            this.butSignIn.Click += new System.EventHandler(this.ButSignIn_Click);
             // 
             // butSignUp
             // 
@@ -62,7 +62,7 @@ namespace ExamApp
             this.butSignUp.TabIndex = 1;
             this.butSignUp.Text = "SignUp";
             this.butSignUp.UseVisualStyleBackColor = false;
-            this.butSignUp.Click += new System.EventHandler(this.butSignUp_Click);
+            this.butSignUp.Click += new System.EventHandler(this.ButSignUp_Click);
             // 
             // label1
             // 

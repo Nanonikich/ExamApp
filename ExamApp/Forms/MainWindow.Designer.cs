@@ -1,4 +1,6 @@
 ﻿
+using Data;
+
 namespace ExamApp
 {
     partial class MainWindow
@@ -50,8 +52,9 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet = new ExamApp.DatabaseDataSet();
-            this.productsTableAdapter = new ExamApp.DatabaseDataSetTableAdapters.ProductsTableAdapter();
+            this.databaseDataSet = new Data.DatabaseDataSet();
+            this.productsTableAdapter = new Data.DatabaseDataSetTableAdapters.ProductsTableAdapter();
+            this.butDel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
@@ -76,6 +79,7 @@ namespace ExamApp
             this.butEdit.TabIndex = 2;
             this.butEdit.Text = "Edit";
             this.butEdit.UseVisualStyleBackColor = true;
+            this.butEdit.Click += new System.EventHandler(this.ButEdit_Click);
             // 
             // button3
             // 
@@ -117,6 +121,7 @@ namespace ExamApp
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.butDel);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.butAdd);
             this.panel1.Controls.Add(this.butEdit);
@@ -254,6 +259,16 @@ namespace ExamApp
             // 
             this.productsTableAdapter.ClearBeforeFill = true;
             // 
+            // butDel
+            // 
+            this.butDel.Location = new System.Drawing.Point(165, 11);
+            this.butDel.Name = "butDel";
+            this.butDel.Size = new System.Drawing.Size(75, 23);
+            this.butDel.TabIndex = 8;
+            this.butDel.Text = "Delete";
+            this.butDel.UseVisualStyleBackColor = true;
+            this.butDel.Click += new System.EventHandler(this.ButDel_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,9 +310,9 @@ namespace ExamApp
         private System.Windows.Forms.DataGridViewTextBoxColumn prodpriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodcategoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodtypeDataGridViewTextBoxColumn;
-        private DatabaseDataSet databaseDataSet;
+        private Data.DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource productsBindingSource;
-        private DatabaseDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
+        private Data.DatabaseDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
@@ -308,5 +323,6 @@ namespace ExamApp
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         public System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button butDel;
     }
 }

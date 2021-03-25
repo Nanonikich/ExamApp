@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace ExamApp {
+namespace Data {
     
     
     /// <summary>
@@ -806,7 +806,7 @@ namespace ExamApp {
         }
     }
 }
-namespace ExamApp.DatabaseDataSetTableAdapters {
+namespace Data.DatabaseDataSetTableAdapters {
     
     
     /// <summary>
