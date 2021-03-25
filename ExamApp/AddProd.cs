@@ -69,10 +69,14 @@ namespace ExamApp
                 cmd.Parameters.AddWithValue("@Categ", textBoxCat.Text);
                 cmd.Parameters.AddWithValue("@Type", textBoxType.Text);
                 cmd.ExecuteNonQuery();
-                db.getConnection().Close();
                 MessageBox.Show("Product saved");
+                SqlCommand updateDatagridViewCmd = new SqlCommand("SELECT * FROM Products", db.getConnection());
+                var dtbl = new DataTable();
+                dtbl.Load(updateDatagridViewCmd.ExecuteReader());
+                MainWindow mw = new MainWindow();
+                mw.dataGridView.DataSource = dtbl;
+                
                 Close();
-                var mw = new MainWindow();
                 mw.ShowDialog();
             }
             catch

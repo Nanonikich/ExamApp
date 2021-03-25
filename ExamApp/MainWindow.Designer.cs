@@ -40,9 +40,6 @@ namespace ExamApp
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.databaseDataSet = new ExamApp.DatabaseDataSet();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productsTableAdapter = new ExamApp.DatabaseDataSetTableAdapters.ProductsTableAdapter();
             this.prodidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -52,10 +49,13 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new ExamApp.DatabaseDataSet();
+            this.productsTableAdapter = new ExamApp.DatabaseDataSetTableAdapters.ProductsTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // butAdd
@@ -172,20 +172,6 @@ namespace ExamApp
             this.dataGridView.Size = new System.Drawing.Size(753, 365);
             this.dataGridView.TabIndex = 11;
             // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataMember = "Products";
-            this.productsBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // productsTableAdapter
-            // 
-            this.productsTableAdapter.ClearBeforeFill = true;
-            // 
             // prodidDataGridViewTextBoxColumn
             // 
             this.prodidDataGridViewTextBoxColumn.DataPropertyName = "prod_id";
@@ -199,6 +185,7 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn1.DataPropertyName = "prod_vendcode";
             this.dataGridViewTextBoxColumn1.HeaderText = "prod_vendcode";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewImageColumn1
             // 
@@ -206,6 +193,7 @@ namespace ExamApp
             this.dataGridViewImageColumn1.HeaderText = "prod_image";
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
             this.dataGridViewImageColumn1.Width = 300;
             // 
             // dataGridViewTextBoxColumn2
@@ -213,6 +201,7 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn2.DataPropertyName = "prod_imgUrl";
             this.dataGridViewTextBoxColumn2.HeaderText = "prod_imgUrl";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Visible = false;
             // 
             // dataGridViewTextBoxColumn3
@@ -220,12 +209,14 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn3.DataPropertyName = "prod_name";
             this.dataGridViewTextBoxColumn3.HeaderText = "prod_name";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "prod_descr";
             this.dataGridViewTextBoxColumn4.HeaderText = "prod_descr";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Visible = false;
             // 
             // dataGridViewTextBoxColumn5
@@ -233,18 +224,35 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn5.DataPropertyName = "prod_price";
             this.dataGridViewTextBoxColumn5.HeaderText = "prod_price";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "prod_category";
             this.dataGridViewTextBoxColumn6.HeaderText = "prod_category";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "prod_type";
             this.dataGridViewTextBoxColumn7.HeaderText = "prod_type";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataMember = "Products";
+            this.productsBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productsTableAdapter
+            // 
+            this.productsTableAdapter.ClearBeforeFill = true;
             // 
             // MainWindow
             // 
@@ -262,8 +270,8 @@ namespace ExamApp
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -287,7 +295,6 @@ namespace ExamApp
         private System.Windows.Forms.DataGridViewTextBoxColumn prodpriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodcategoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodtypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView;
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource productsBindingSource;
         private DatabaseDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
@@ -300,5 +307,6 @@ namespace ExamApp
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        public System.Windows.Forms.DataGridView dataGridView;
     }
 }
