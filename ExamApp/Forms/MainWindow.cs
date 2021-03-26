@@ -90,7 +90,7 @@ namespace ExamApp
                 db.OpenConnection();
                 dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
                 db.GetConnection().Close();
-                
+
                 dataGridView.DataSource = dtbl;
             }
             else
