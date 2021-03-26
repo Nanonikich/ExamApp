@@ -36,9 +36,12 @@ namespace ExamApp
             this.butEdit = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox = new System.Windows.Forms.ComboBox();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new Data.DatabaseDataSet();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.butDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -50,15 +53,11 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet = new Data.DatabaseDataSet();
             this.productsTableAdapter = new Data.DatabaseDataSetTableAdapters.ProductsTableAdapter();
-            this.butDel = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // butAdd
@@ -100,12 +99,28 @@ namespace ExamApp
             this.label1.TabIndex = 4;
             this.label1.Text = "Sort";
             // 
-            // comboBox1
+            // comboBox
             // 
-            this.comboBox1.Location = new System.Drawing.Point(634, 11);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
+            this.comboBox.Items.AddRange(new object[] {
+            "All",
+            "String",
+            "Keyboards",
+            "Duh"});
+            this.comboBox.Location = new System.Drawing.Point(634, 11);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(121, 21);
+            this.comboBox.TabIndex = 7;
+            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataMember = "Products";
+            this.productsBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button4
             // 
@@ -125,7 +140,7 @@ namespace ExamApp
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.butAdd);
             this.panel1.Controls.Add(this.butEdit);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.comboBox);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -133,6 +148,16 @@ namespace ExamApp
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 43);
             this.panel1.TabIndex = 8;
+            // 
+            // butDel
+            // 
+            this.butDel.Location = new System.Drawing.Point(165, 11);
+            this.butDel.Name = "butDel";
+            this.butDel.Size = new System.Drawing.Size(75, 23);
+            this.butDel.TabIndex = 8;
+            this.butDel.Text = "Delete";
+            this.butDel.UseVisualStyleBackColor = true;
+            this.butDel.Click += new System.EventHandler(this.ButDel_Click);
             // 
             // panel2
             // 
@@ -166,8 +191,7 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
+            this.dataGridViewTextBoxColumn6});
             this.dataGridView.DataSource = this.productsBindingSource;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(47, 43);
@@ -238,36 +262,9 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "prod_type";
-            this.dataGridViewTextBoxColumn7.HeaderText = "prod_type";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataMember = "Products";
-            this.productsBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // productsTableAdapter
             // 
             this.productsTableAdapter.ClearBeforeFill = true;
-            // 
-            // butDel
-            // 
-            this.butDel.Location = new System.Drawing.Point(165, 11);
-            this.butDel.Name = "butDel";
-            this.butDel.Size = new System.Drawing.Size(75, 23);
-            this.butDel.TabIndex = 8;
-            this.butDel.Text = "Delete";
-            this.butDel.UseVisualStyleBackColor = true;
-            this.butDel.Click += new System.EventHandler(this.ButDel_Click);
             // 
             // MainWindow
             // 
@@ -282,11 +279,11 @@ namespace ExamApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -296,7 +293,7 @@ namespace ExamApp
         private System.Windows.Forms.Button butEdit;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -310,7 +307,9 @@ namespace ExamApp
         private System.Windows.Forms.DataGridViewTextBoxColumn prodpriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodcategoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodtypeDataGridViewTextBoxColumn;
-        private Data.DatabaseDataSet databaseDataSet;
+        public System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button butDel;
+        private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource productsBindingSource;
         private Data.DatabaseDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodidDataGridViewTextBoxColumn;
@@ -321,8 +320,5 @@ namespace ExamApp
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        public System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Button butDel;
     }
 }

@@ -35,13 +35,11 @@ namespace ExamApp
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.textBoxVC = new System.Windows.Forms.TextBox();
             this.textBoxNam = new System.Windows.Forms.TextBox();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
             this.textBoxPr = new System.Windows.Forms.TextBox();
             this.textBoxCat = new System.Windows.Forms.TextBox();
-            this.textBoxType = new System.Windows.Forms.TextBox();
             this.buttAddPr = new System.Windows.Forms.Button();
             this.buttEdit = new System.Windows.Forms.Button();
             this.buttBack = new System.Windows.Forms.Button();
@@ -95,7 +93,7 @@ namespace ExamApp
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(1, 244);
+            this.label5.Location = new System.Drawing.Point(1, 202);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 19);
             this.label5.TabIndex = 4;
@@ -110,16 +108,6 @@ namespace ExamApp
             this.label6.Size = new System.Drawing.Size(65, 19);
             this.label6.TabIndex = 5;
             this.label6.Text = "Category";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(1, 206);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 19);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Type";
             // 
             // textBoxVC
             // 
@@ -166,23 +154,14 @@ namespace ExamApp
             this.textBoxCat.Size = new System.Drawing.Size(187, 31);
             this.textBoxCat.TabIndex = 11;
             // 
-            // textBoxType
-            // 
-            this.textBoxType.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxType.Location = new System.Drawing.Point(94, 202);
-            this.textBoxType.Multiline = true;
-            this.textBoxType.Name = "textBoxType";
-            this.textBoxType.Size = new System.Drawing.Size(187, 31);
-            this.textBoxType.TabIndex = 12;
-            // 
             // buttAddPr
             // 
             this.buttAddPr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttAddPr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttAddPr.ForeColor = System.Drawing.Color.White;
-            this.buttAddPr.Location = new System.Drawing.Point(5, 342);
+            this.buttAddPr.Location = new System.Drawing.Point(67, 302);
             this.buttAddPr.Name = "buttAddPr";
-            this.buttAddPr.Size = new System.Drawing.Size(138, 34);
+            this.buttAddPr.Size = new System.Drawing.Size(159, 34);
             this.buttAddPr.TabIndex = 13;
             this.buttAddPr.Text = "Add";
             this.buttAddPr.UseVisualStyleBackColor = false;
@@ -193,9 +172,9 @@ namespace ExamApp
             this.buttEdit.BackColor = System.Drawing.Color.Green;
             this.buttEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttEdit.ForeColor = System.Drawing.Color.White;
-            this.buttEdit.Location = new System.Drawing.Point(149, 342);
+            this.buttEdit.Location = new System.Drawing.Point(67, 342);
             this.buttEdit.Name = "buttEdit";
-            this.buttEdit.Size = new System.Drawing.Size(147, 34);
+            this.buttEdit.Size = new System.Drawing.Size(159, 34);
             this.buttEdit.TabIndex = 14;
             this.buttEdit.Text = "Edit";
             this.buttEdit.UseVisualStyleBackColor = false;
@@ -219,7 +198,7 @@ namespace ExamApp
             this.buttonPict.BackColor = System.Drawing.Color.Fuchsia;
             this.buttonPict.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPict.ForeColor = System.Drawing.Color.White;
-            this.buttonPict.Location = new System.Drawing.Point(47, 244);
+            this.buttonPict.Location = new System.Drawing.Point(47, 202);
             this.buttonPict.Name = "buttonPict";
             this.buttonPict.Size = new System.Drawing.Size(41, 34);
             this.buttonPict.TabIndex = 17;
@@ -231,7 +210,7 @@ namespace ExamApp
             // 
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(94, 244);
+            this.pictureBox.Location = new System.Drawing.Point(94, 202);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(187, 92);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -241,7 +220,7 @@ namespace ExamApp
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(-1, 263);
+            this.label8.Location = new System.Drawing.Point(-1, 221);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 13);
             this.label8.TabIndex = 19;
@@ -259,13 +238,11 @@ namespace ExamApp
             this.Controls.Add(this.buttBack);
             this.Controls.Add(this.buttEdit);
             this.Controls.Add(this.buttAddPr);
-            this.Controls.Add(this.textBoxType);
             this.Controls.Add(this.textBoxCat);
             this.Controls.Add(this.textBoxPr);
             this.Controls.Add(this.textBoxDesc);
             this.Controls.Add(this.textBoxNam);
             this.Controls.Add(this.textBoxVC);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -288,7 +265,6 @@ namespace ExamApp
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttBack;
         private System.Windows.Forms.Button buttonPict;
         private System.Windows.Forms.Label label8;
@@ -299,7 +275,6 @@ namespace ExamApp
         public System.Windows.Forms.TextBox textBoxDesc;
         public System.Windows.Forms.TextBox textBoxPr;
         public System.Windows.Forms.TextBox textBoxCat;
-        public System.Windows.Forms.TextBox textBoxType;
         public System.Windows.Forms.PictureBox pictureBox;
     }
 }

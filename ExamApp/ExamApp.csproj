@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
@@ -62,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+      <CustomToolNamespace>Data</CustomToolNamespace>
+    </Compile>
     <Compile Include="Forms\AddProd.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>Forms</CustomToolNamespace>
@@ -69,12 +76,6 @@
     <Compile Include="Forms\AddProd.Designer.cs">
       <DependentUpon>AddProd.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
-    </Compile>
-    <Compile Include="Data\DatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
-      <CustomToolNamespace>Data</CustomToolNamespace>
     </Compile>
     <Compile Include="Data\DB.cs">
       <CustomToolNamespace>Data</CustomToolNamespace>

@@ -295,8 +295,6 @@ namespace Data {
             
             private global::System.Data.DataColumn columnprod_category;
             
-            private global::System.Data.DataColumn columnprod_type;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ProductsDataTable() {
@@ -396,14 +394,6 @@ namespace Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn prod_typeColumn {
-                get {
-                    return this.columnprod_type;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -439,7 +429,7 @@ namespace Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProductsRow AddProductsRow(int prod_vendcode, byte[] prod_image, string prod_imgUrl, string prod_name, string prod_descr, decimal prod_price, int prod_category, int prod_type) {
+            public ProductsRow AddProductsRow(int prod_vendcode, byte[] prod_image, string prod_imgUrl, string prod_name, string prod_descr, decimal prod_price, string prod_category) {
                 ProductsRow rowProductsRow = ((ProductsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -449,8 +439,7 @@ namespace Data {
                         prod_name,
                         prod_descr,
                         prod_price,
-                        prod_category,
-                        prod_type};
+                        prod_category};
                 rowProductsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProductsRow);
                 return rowProductsRow;
@@ -488,7 +477,6 @@ namespace Data {
                 this.columnprod_descr = base.Columns["prod_descr"];
                 this.columnprod_price = base.Columns["prod_price"];
                 this.columnprod_category = base.Columns["prod_category"];
-                this.columnprod_type = base.Columns["prod_type"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -508,10 +496,8 @@ namespace Data {
                 base.Columns.Add(this.columnprod_descr);
                 this.columnprod_price = new global::System.Data.DataColumn("prod_price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprod_price);
-                this.columnprod_category = new global::System.Data.DataColumn("prod_category", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnprod_category = new global::System.Data.DataColumn("prod_category", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprod_category);
-                this.columnprod_type = new global::System.Data.DataColumn("prod_type", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnprod_type);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnprod_id}, true));
                 this.columnprod_id.AutoIncrement = true;
@@ -530,7 +516,7 @@ namespace Data {
                 this.columnprod_descr.MaxLength = 2147483647;
                 this.columnprod_price.AllowDBNull = false;
                 this.columnprod_category.AllowDBNull = false;
-                this.columnprod_type.AllowDBNull = false;
+                this.columnprod_category.MaxLength = 25;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -750,23 +736,12 @@ namespace Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int prod_category {
+            public string prod_category {
                 get {
-                    return ((int)(this[this.tableProducts.prod_categoryColumn]));
+                    return ((string)(this[this.tableProducts.prod_categoryColumn]));
                 }
                 set {
                     this[this.tableProducts.prod_categoryColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int prod_type {
-                get {
-                    return ((int)(this[this.tableProducts.prod_typeColumn]));
-                }
-                set {
-                    this[this.tableProducts.prod_typeColumn] = value;
                 }
             }
         }
@@ -938,22 +913,23 @@ namespace Data.DatabaseDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("prod_descr", "prod_descr");
             tableMapping.ColumnMappings.Add("prod_price", "prod_price");
             tableMapping.ColumnMappings.Add("prod_category", "prod_category");
-            tableMapping.ColumnMappings.Add("prod_type", "prod_type");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Products] WHERE (([prod_id] = @Original_prod_id) AND ([prod_vendcode] = @Original_prod_vendcode) AND ([prod_name] = @Original_prod_name) AND ([prod_price] = @Original_prod_price) AND ([prod_category] = @Original_prod_category) AND ([prod_type] = @Original_prod_type))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Products] WHERE (([prod_id] = @Original_prod_id) AND ([prod_ve" +
+                "ndcode] = @Original_prod_vendcode) AND ([prod_name] = @Original_prod_name) AND (" +
+                "[prod_price] = @Original_prod_price) AND ([prod_category] = @Original_prod_categ" +
+                "ory))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_vendcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_vendcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "prod_price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_category", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_category", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_category", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_category", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Products] ([prod_vendcode], [prod_image], [prod_imgUrl], [prod_name], [prod_descr], [prod_price], [prod_category], [prod_type]) VALUES (@prod_vendcode, @prod_image, @prod_imgUrl, @prod_name, @prod_descr, @prod_price, @prod_category, @prod_type);
-SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_category, prod_type FROM Products WHERE (prod_id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Products] ([prod_vendcode], [prod_image], [prod_imgUrl], [prod_name], [prod_descr], [prod_price], [prod_category]) VALUES (@prod_vendcode, @prod_image, @prod_imgUrl, @prod_name, @prod_descr, @prod_price, @prod_category);
+SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_category FROM Products WHERE (prod_id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_vendcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_vendcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_image", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -961,12 +937,11 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_descr", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_descr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "prod_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_category", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_category", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_category", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_category", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Products] SET [prod_vendcode] = @prod_vendcode, [prod_image] = @prod_image, [prod_imgUrl] = @prod_imgUrl, [prod_name] = @prod_name, [prod_descr] = @prod_descr, [prod_price] = @prod_price, [prod_category] = @prod_category, [prod_type] = @prod_type WHERE (([prod_id] = @Original_prod_id) AND ([prod_vendcode] = @Original_prod_vendcode) AND ([prod_name] = @Original_prod_name) AND ([prod_price] = @Original_prod_price) AND ([prod_category] = @Original_prod_category) AND ([prod_type] = @Original_prod_type));
-SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_category, prod_type FROM Products WHERE (prod_id = @prod_id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Products] SET [prod_vendcode] = @prod_vendcode, [prod_image] = @prod_image, [prod_imgUrl] = @prod_imgUrl, [prod_name] = @prod_name, [prod_descr] = @prod_descr, [prod_price] = @prod_price, [prod_category] = @prod_category WHERE (([prod_id] = @Original_prod_id) AND ([prod_vendcode] = @Original_prod_vendcode) AND ([prod_name] = @Original_prod_name) AND ([prod_price] = @Original_prod_price) AND ([prod_category] = @Original_prod_category));
+SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_category FROM Products WHERE (prod_id = @prod_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_vendcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_vendcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_image", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -974,14 +949,12 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_descr", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_descr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "prod_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_category", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_category", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_category", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_category", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_vendcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_vendcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "prod_price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_category", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_category", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prod_category", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_category", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "prod_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -999,7 +972,7 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, pr" +
-                "od_price, prod_category, prod_type FROM dbo.Products";
+                "od_price, prod_category FROM dbo.Products";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1060,7 +1033,7 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_prod_id, int Original_prod_vendcode, string Original_prod_name, decimal Original_prod_price, int Original_prod_category, int Original_prod_type) {
+        public virtual int Delete(int Original_prod_id, int Original_prod_vendcode, string Original_prod_name, decimal Original_prod_price, string Original_prod_category) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_prod_id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_prod_vendcode));
             if ((Original_prod_name == null)) {
@@ -1070,8 +1043,12 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_prod_name));
             }
             this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_prod_price));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_prod_category));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_prod_type));
+            if ((Original_prod_category == null)) {
+                throw new global::System.ArgumentNullException("Original_prod_category");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_prod_category));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1092,7 +1069,7 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int prod_vendcode, byte[] prod_image, string prod_imgUrl, string prod_name, string prod_descr, decimal prod_price, int prod_category, int prod_type) {
+        public virtual int Insert(int prod_vendcode, byte[] prod_image, string prod_imgUrl, string prod_name, string prod_descr, decimal prod_price, string prod_category) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(prod_vendcode));
             if ((prod_image == null)) {
                 throw new global::System.ArgumentNullException("prod_image");
@@ -1119,8 +1096,12 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(prod_descr));
             }
             this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(prod_price));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(prod_category));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(prod_type));
+            if ((prod_category == null)) {
+                throw new global::System.ArgumentNullException("prod_category");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(prod_category));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1141,7 +1122,7 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int prod_vendcode, byte[] prod_image, string prod_imgUrl, string prod_name, string prod_descr, decimal prod_price, int prod_category, int prod_type, int Original_prod_id, int Original_prod_vendcode, string Original_prod_name, decimal Original_prod_price, int Original_prod_category, int Original_prod_type, int prod_id) {
+        public virtual int Update(int prod_vendcode, byte[] prod_image, string prod_imgUrl, string prod_name, string prod_descr, decimal prod_price, string prod_category, int Original_prod_id, int Original_prod_vendcode, string Original_prod_name, decimal Original_prod_price, string Original_prod_category, int prod_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(prod_vendcode));
             if ((prod_image == null)) {
                 throw new global::System.ArgumentNullException("prod_image");
@@ -1168,20 +1149,28 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(prod_descr));
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(prod_price));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(prod_category));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(prod_type));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_prod_id));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_prod_vendcode));
+            if ((prod_category == null)) {
+                throw new global::System.ArgumentNullException("prod_category");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(prod_category));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_prod_id));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_prod_vendcode));
             if ((Original_prod_name == null)) {
                 throw new global::System.ArgumentNullException("Original_prod_name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_prod_name));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_prod_name));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_prod_price));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_prod_category));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_prod_type));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(prod_id));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(Original_prod_price));
+            if ((Original_prod_category == null)) {
+                throw new global::System.ArgumentNullException("Original_prod_category");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_prod_category));
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(prod_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1202,8 +1191,8 @@ SELECT prod_id, prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, p
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int prod_vendcode, byte[] prod_image, string prod_imgUrl, string prod_name, string prod_descr, decimal prod_price, int prod_category, int prod_type, int Original_prod_id, int Original_prod_vendcode, string Original_prod_name, decimal Original_prod_price, int Original_prod_category, int Original_prod_type) {
-            return this.Update(prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_category, prod_type, Original_prod_id, Original_prod_vendcode, Original_prod_name, Original_prod_price, Original_prod_category, Original_prod_type, Original_prod_id);
+        public virtual int Update(int prod_vendcode, byte[] prod_image, string prod_imgUrl, string prod_name, string prod_descr, decimal prod_price, string prod_category, int Original_prod_id, int Original_prod_vendcode, string Original_prod_name, decimal Original_prod_price, string Original_prod_category) {
+            return this.Update(prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_category, Original_prod_id, Original_prod_vendcode, Original_prod_name, Original_prod_price, Original_prod_category, Original_prod_id);
         }
     }
     

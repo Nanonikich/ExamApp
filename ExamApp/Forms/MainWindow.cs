@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -29,7 +31,7 @@ namespace ExamApp
 
         private void ButEdit_Click(object sender, EventArgs e)
         {
-            if (dataGridView.Rows.Count > 1 && dataGridView.Rows != null)
+            if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
             {
                 ReadingValues();
                 Hide();
@@ -49,7 +51,6 @@ namespace ExamApp
             edPr.textBoxDesc.Text = dataGridView.CurrentRow.Cells[5].Value.ToString();
             edPr.textBoxPr.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
             edPr.textBoxCat.Text = dataGridView.CurrentRow.Cells[7].Value.ToString();
-            edPr.textBoxType.Text = dataGridView.CurrentRow.Cells[8].Value.ToString();
 
             edPr.buttAddPr.Enabled = false;
             edPr.Show();
@@ -74,6 +75,27 @@ namespace ExamApp
                 default:
                     MessageBox.Show("Not deleted");
                     break;
+            }
+        }
+
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var binding1 = new BindingSource();
+            binding1.DataSource = databaseDataSet.Products;
+            dataGridView.DataSource = binding1;
+            if (comboBox.Text == "All")
+            {
+                var db = new DB();
+                var dtbl = new DataTable();
+                db.OpenConnection();
+                dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
+                db.GetConnection().Close();
+                
+                dataGridView.DataSource = dtbl;
+            }
+            else
+            {
+                binding1.Filter = "prod_category = '" + comboBox.Text + "'";
             }
         }
     }
