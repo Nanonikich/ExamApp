@@ -9,7 +9,14 @@ namespace ExamApp
 {
     class DB
     {
+
+        /// <summary>
+        /// Твой Никита
+        /// </summary>
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\Desktop\ExamApp\Data\Database.mdf;Integrated Security=True");
+
+        /// Мой 
+        /// SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\sharp\ExamApp\ExamApp\Data\Database.mdf;Integrated Security=True");
         
         public void OpenConnection()
         {

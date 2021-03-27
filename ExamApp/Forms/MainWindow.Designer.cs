@@ -32,18 +32,17 @@ namespace ExamApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.butAdd = new System.Windows.Forms.Button();
-            this.butEdit = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox = new System.Windows.Forms.ComboBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseDataSet = new Data.DatabaseDataSet();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.butDel = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ButAdd = new System.Windows.Forms.ToolStripButton();
+            this.butEdit = new System.Windows.Forms.ToolStripButton();
+            this.ButDel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.comboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.prodidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,60 +56,9 @@ namespace ExamApp
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // butAdd
-            // 
-            this.butAdd.Location = new System.Drawing.Point(3, 11);
-            this.butAdd.Name = "butAdd";
-            this.butAdd.Size = new System.Drawing.Size(75, 23);
-            this.butAdd.TabIndex = 1;
-            this.butAdd.Text = "Add";
-            this.butAdd.UseVisualStyleBackColor = true;
-            this.butAdd.Click += new System.EventHandler(this.ButAdd_Click);
-            // 
-            // butEdit
-            // 
-            this.butEdit.Location = new System.Drawing.Point(84, 11);
-            this.butEdit.Name = "butEdit";
-            this.butEdit.Size = new System.Drawing.Size(75, 23);
-            this.butEdit.TabIndex = 2;
-            this.butEdit.Text = "Edit";
-            this.butEdit.UseVisualStyleBackColor = true;
-            this.butEdit.Click += new System.EventHandler(this.ButEdit_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(515, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(596, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Sort";
-            // 
-            // comboBox
-            // 
-            this.comboBox.Items.AddRange(new object[] {
-            "All",
-            "String",
-            "Keyboards",
-            "Duh"});
-            this.comboBox.Location = new System.Drawing.Point(634, 11);
-            this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(121, 21);
-            this.comboBox.TabIndex = 7;
-            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // productsBindingSource
             // 
@@ -122,66 +70,107 @@ namespace ExamApp
             this.databaseDataSet.DataSetName = "DatabaseDataSet";
             this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::ExamApp.Properties.Resources._2;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Location = new System.Drawing.Point(759, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(36, 33);
-            this.button4.TabIndex = 6;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.butDel);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.butAdd);
-            this.panel1.Controls.Add(this.butEdit);
-            this.panel1.Controls.Add(this.comboBox);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 43);
+            this.panel1.Size = new System.Drawing.Size(1482, 61);
             this.panel1.TabIndex = 8;
             // 
-            // butDel
+            // toolStrip1
             // 
-            this.butDel.Location = new System.Drawing.Point(165, 11);
-            this.butDel.Name = "butDel";
-            this.butDel.Size = new System.Drawing.Size(75, 23);
-            this.butDel.TabIndex = 8;
-            this.butDel.Text = "Delete";
-            this.butDel.UseVisualStyleBackColor = true;
-            this.butDel.Click += new System.EventHandler(this.ButDel_Click);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(35, 35);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ButAdd,
+            this.butEdit,
+            this.ButDel,
+            this.toolStripButton1,
+            this.comboBox,
+            this.toolStripLabel1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1480, 48);
+            this.toolStrip1.TabIndex = 9;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // panel2
+            // ButAdd
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 408);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 42);
-            this.panel2.TabIndex = 9;
+            this.ButAdd.AutoSize = false;
+            this.ButAdd.Image = ((System.Drawing.Image)(resources.GetObject("ButAdd.Image")));
+            this.ButAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButAdd.Name = "ButAdd";
+            this.ButAdd.Size = new System.Drawing.Size(143, 45);
+            this.ButAdd.Text = "Add";
+            this.ButAdd.Click += new System.EventHandler(this.ButAdd_Click);
             // 
-            // panel3
+            // butEdit
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 43);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(47, 365);
-            this.panel3.TabIndex = 10;
+            this.butEdit.AutoSize = false;
+            this.butEdit.AutoToolTip = false;
+            this.butEdit.Image = ((System.Drawing.Image)(resources.GetObject("butEdit.Image")));
+            this.butEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.butEdit.Name = "butEdit";
+            this.butEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.butEdit.Size = new System.Drawing.Size(143, 45);
+            this.butEdit.Text = "Edit";
+            this.butEdit.Click += new System.EventHandler(this.butEdit_Click);
+            // 
+            // ButDel
+            // 
+            this.ButDel.AutoSize = false;
+            this.ButDel.Image = ((System.Drawing.Image)(resources.GetObject("ButDel.Image")));
+            this.ButDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButDel.Name = "ButDel";
+            this.ButDel.Size = new System.Drawing.Size(143, 45);
+            this.ButDel.Text = "Del";
+            this.ButDel.Click += new System.EventHandler(this.ButDel_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.AutoSize = false;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(45, 45);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // comboBox
+            // 
+            this.comboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.comboBox.Items.AddRange(new object[] {
+            "All",
+            "String",
+            "Keyboards",
+            "Duh"});
+            this.comboBox.Margin = new System.Windows.Forms.Padding(1, 0, 15, 0);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(188, 48);
+            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(36, 45);
+            this.toolStripLabel1.Text = "Sort";
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AutoGenerateColumns = false;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodidDataGridViewTextBoxColumn,
@@ -194,33 +183,43 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn6});
             this.dataGridView.DataSource = this.productsBindingSource;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView.Location = new System.Drawing.Point(47, 43);
+            this.dataGridView.GridColor = System.Drawing.Color.Black;
+            this.dataGridView.Location = new System.Drawing.Point(0, 61);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 100;
-            this.dataGridView.Size = new System.Drawing.Size(753, 365);
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(1482, 1093);
+            this.dataGridView.StandardTab = true;
             this.dataGridView.TabIndex = 11;
             // 
             // prodidDataGridViewTextBoxColumn
             // 
             this.prodidDataGridViewTextBoxColumn.DataPropertyName = "prod_id";
             this.prodidDataGridViewTextBoxColumn.HeaderText = "prod_id";
+            this.prodidDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.prodidDataGridViewTextBoxColumn.Name = "prodidDataGridViewTextBoxColumn";
             this.prodidDataGridViewTextBoxColumn.ReadOnly = true;
             this.prodidDataGridViewTextBoxColumn.Visible = false;
+            this.prodidDataGridViewTextBoxColumn.Width = 125;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "prod_vendcode";
             this.dataGridViewTextBoxColumn1.HeaderText = "prod_vendcode";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 300;
             // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.DataPropertyName = "prod_image";
             this.dataGridViewImageColumn1.HeaderText = "prod_image";
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ReadOnly = true;
             this.dataGridViewImageColumn1.Width = 300;
@@ -229,38 +228,48 @@ namespace ExamApp
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "prod_imgUrl";
             this.dataGridViewTextBoxColumn2.HeaderText = "prod_imgUrl";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewTextBoxColumn2.Width = 500;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "prod_name";
             this.dataGridViewTextBoxColumn3.HeaderText = "prod_name";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 400;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "prod_descr";
             this.dataGridViewTextBoxColumn4.HeaderText = "prod_descr";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Visible = false;
+            this.dataGridViewTextBoxColumn4.Width = 125;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "prod_price";
             this.dataGridViewTextBoxColumn5.HeaderText = "prod_price";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "prod_category";
             this.dataGridViewTextBoxColumn6.HeaderText = "prod_category";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 125;
             // 
             // productsTableAdapter
             // 
@@ -268,36 +277,30 @@ namespace ExamApp
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1482, 1154);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button butAdd;
-        private System.Windows.Forms.Button butEdit;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodvendcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn prodimageDataGridViewImageColumn;
@@ -308,10 +311,16 @@ namespace ExamApp
         private System.Windows.Forms.DataGridViewTextBoxColumn prodcategoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodtypeDataGridViewTextBoxColumn;
         public System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Button butDel;
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource productsBindingSource;
         private Data.DatabaseDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton butEdit;
+        private System.Windows.Forms.ToolStripButton ButAdd;
+        private System.Windows.Forms.ToolStripButton ButDel;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripComboBox comboBox;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;

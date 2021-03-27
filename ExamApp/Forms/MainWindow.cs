@@ -10,41 +10,39 @@ namespace ExamApp
 {
     public partial class MainWindow : Form
     {
-        public MainWindow()
+
+        SignIn _SignIn;
+        public MainWindow(SignIn sn)
         {
+            _SignIn = sn;
             InitializeComponent();
         }
 
-        private void ButAdd_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Функция обновляет данные таблицы (БЕЗ АДАПТОРА НИКИТА!!! ГОВОРИЛ ЖЕ УДАЛИ ЕГО)
+        /// </summary>
+        public void UpdateTable()
         {
-            Hide();
-            var adPr = new AddProd("0");
-            adPr.buttEdit.Enabled = false;
-            adPr.Show();
+            var db = new DB();
+            var dtbl = new DataTable();
+            db.OpenConnection();
+            dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
+            db.GetConnection().Close();
+
+            dataGridView.DataSource = dtbl;
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "databaseDataSet.Products". При необходимости она может быть перемещена или удалена.
-            this.productsTableAdapter.Fill(this.databaseDataSet.Products);
+            UpdateTable();
         }
 
-        private void ButEdit_Click(object sender, EventArgs e)
-        {
-            if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
-            {
-                ReadingValues();
-                Hide();
-            }
-            else 
-            { 
-                MessageBox.Show("Error"); 
-            }
-        }
 
         private void ReadingValues()
         {
-            var edPr = new AddProd(dataGridView.CurrentRow.Cells[0].Value.ToString());
+            var edPr = new AddProd(dataGridView.CurrentRow.Cells[0].Value.ToString(), this);
+
             edPr.textBoxVC.Text = dataGridView.CurrentRow.Cells[1].Value.ToString();
             edPr.pictureBox.Image = Image.FromStream(new MemoryStream((byte[])dataGridView.CurrentRow.Cells[2].Value‌​));
             edPr.textBoxNam.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
@@ -56,18 +54,45 @@ namespace ExamApp
             edPr.Show();
         }
 
+
+
+        private void butEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
+            {
+                ReadingValues();
+                this.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void ButAdd_Click(object sender, EventArgs e)
+        {
+            /// Заблокировал окно
+            this.Enabled = false;
+
+            /// Создаю окно Добавления
+            var adPr = new AddProd(this);
+            adPr.buttEdit.Enabled = false;
+            adPr.Show();
+        }
+
         private void ButDel_Click(object sender, EventArgs e)
         {
+
             switch (MessageBox.Show("Do you want delete?", "Open", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 case DialogResult.Yes:
                     {
                         var db = new DB();
-                        var v = new SqlCommand(@"DELETE FROM Products WHERE prod_id = '" + dataGridView.SelectedRows[0].Cells[0].Value.ToString() + "'", db.GetConnection());
+                        var v = new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value.ToString()}'", db.GetConnection());
                         db.OpenConnection();
                         v.ExecuteNonQuery();
                         db.CloseConnection();
-                        dataGridView.Rows.RemoveAt(dataGridView.SelectedRows[0].Index);
+                        UpdateTable();
                         MessageBox.Show("Success");
                         break;
                     }
@@ -78,24 +103,30 @@ namespace ExamApp
             }
         }
 
-        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
-            var binding1 = new BindingSource();
-            binding1.DataSource = databaseDataSet.Products;
-            dataGridView.DataSource = binding1;
+            _SignIn.Show();
+        }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var db = new DB();
+            var dtbl = new DataTable();
+            db.OpenConnection();
+
             if (comboBox.Text == "All")
             {
-                var db = new DB();
-                var dtbl = new DataTable();
-                db.OpenConnection();
-                dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
+                dtbl.Load(new SqlCommand("SELECT * FROM Products ", db.GetConnection()).ExecuteReader());
                 db.GetConnection().Close();
 
                 dataGridView.DataSource = dtbl;
             }
             else
             {
-                binding1.Filter = "prod_category = '" + comboBox.Text + "'";
+                dtbl.Load(new SqlCommand($"SELECT * FROM Products WHERE prod_category = N'{comboBox.Text}'", db.GetConnection()).ExecuteReader());
+                db.GetConnection().Close();
+
+                dataGridView.DataSource = dtbl;
             }
         }
     }

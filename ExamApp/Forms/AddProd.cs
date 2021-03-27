@@ -9,13 +9,33 @@ namespace ExamApp
 {
     public partial class AddProd : Form
     {
+
+        /// <summary>
+        /// Переменная с главным меню
+        /// </summary>
+        MainWindow MainWin;
+
+
         private string i;
         private string imageUrl = null;
 
 
-        public AddProd(string id)
+        /// <summary>
+        /// Конструктор для Редактирования товара
+        /// </summary>
+        public AddProd(string id, MainWindow mw)
         {
             i = id;
+            MainWin = mw;
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Конструктор для добавляения товара
+        /// </summary>
+        public AddProd(MainWindow mw)
+        {
+            MainWin = mw; // Тут я передаю контроль над главным меню окуну добавления
             InitializeComponent();
         }
 
@@ -59,9 +79,11 @@ namespace ExamApp
                 EditData(arr, db);
                 MessageBox.Show("Product saved");
 
-                MainWindow mw = UpdDGW(db);
+
+                /// Открываю доступ к окну
+                MainWin.Enabled = true;
+                MainWin.UpdateTable();
                 Close();
-                mw.Show();
             }
             catch
             {
@@ -84,9 +106,10 @@ namespace ExamApp
 
         private void ButtBack_Click(object sender, EventArgs e)
         {
+
+            /// открываю доступ главного окна
+            MainWin.Enabled = true;
             Close();
-            var mw = new MainWindow();
-            mw.Show();
         }
 
         private void ButtEdit_Click(object sender, EventArgs e)
@@ -106,10 +129,10 @@ namespace ExamApp
                         MessageBox.Show("Data not updated");
                         break;
                 }
-                Close();
 
-                MainWindow mw = UpdDGW(db);
-                mw.Show();
+
+                UpdDGW(db);
+                Close();
             }
             catch
             {
@@ -117,14 +140,26 @@ namespace ExamApp
             }
         }
 
-        private static MainWindow UpdDGW(DB db)
+
+        /// <summary>
+        /// Обновление данных в таблице Главного меню
+        /// </summary>
+        /// <param name="db"></param>
+        private void UpdDGW(DB db)
         {
-            var mw = new MainWindow();
             var dtbl = new DataTable();
             dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
             db.GetConnection().Close();
-            mw.dataGridView.DataSource = dtbl;
-            return mw;
+            MainWin.dataGridView.DataSource = dtbl;
         }
+
+
+        /// <summary>
+        /// При закрытии Окна активировать главное меню
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddProd_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
+
     }
 }
