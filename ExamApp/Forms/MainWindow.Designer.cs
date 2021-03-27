@@ -79,7 +79,7 @@ namespace ExamApp
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1482, 61);
+            this.panel1.Size = new System.Drawing.Size(1856, 76);
             this.panel1.TabIndex = 8;
             // 
             // toolStrip1
@@ -96,7 +96,7 @@ namespace ExamApp
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1480, 48);
+            this.toolStrip1.Size = new System.Drawing.Size(1854, 48);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -147,6 +147,7 @@ namespace ExamApp
             // comboBox
             // 
             this.comboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.comboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.comboBox.Items.AddRange(new object[] {
             "All",
             "String",
@@ -184,14 +185,14 @@ namespace ExamApp
             this.dataGridView.DataSource = this.productsBindingSource;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.GridColor = System.Drawing.Color.Black;
-            this.dataGridView.Location = new System.Drawing.Point(0, 61);
+            this.dataGridView.Location = new System.Drawing.Point(0, 95);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 100;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1482, 1093);
+            this.dataGridView.Size = new System.Drawing.Size(1856, 858);
             this.dataGridView.StandardTab = true;
             this.dataGridView.TabIndex = 11;
             // 
@@ -279,13 +280,14 @@ namespace ExamApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 1154);
+            this.ClientSize = new System.Drawing.Size(1485, 762);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
