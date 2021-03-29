@@ -53,9 +53,10 @@ namespace ExamApp
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(1, 58);
+            this.label1.Location = new System.Drawing.Point(1, 71);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 19);
+            this.label1.Size = new System.Drawing.Size(56, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
@@ -63,9 +64,10 @@ namespace ExamApp
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(1, 16);
+            this.label2.Location = new System.Drawing.Point(1, 20);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 19);
+            this.label2.Size = new System.Drawing.Size(108, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "VendorCode";
             // 
@@ -73,9 +75,10 @@ namespace ExamApp
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(1, 95);
+            this.label3.Location = new System.Drawing.Point(1, 117);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 19);
+            this.label3.Size = new System.Drawing.Size(103, 22);
             this.label3.TabIndex = 2;
             this.label3.Text = "Description";
             // 
@@ -83,9 +86,10 @@ namespace ExamApp
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(1, 132);
+            this.label4.Location = new System.Drawing.Point(1, 162);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 19);
+            this.label4.Size = new System.Drawing.Size(52, 22);
             this.label4.TabIndex = 3;
             this.label4.Text = "Price";
             // 
@@ -93,9 +97,10 @@ namespace ExamApp
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(1, 202);
+            this.label5.Location = new System.Drawing.Point(1, 249);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 19);
+            this.label5.Size = new System.Drawing.Size(57, 22);
             this.label5.TabIndex = 4;
             this.label5.Text = "Image";
             // 
@@ -103,55 +108,61 @@ namespace ExamApp
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(1, 169);
+            this.label6.Location = new System.Drawing.Point(1, 208);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 19);
+            this.label6.Size = new System.Drawing.Size(81, 22);
             this.label6.TabIndex = 5;
             this.label6.Text = "Category";
             // 
             // textBoxVC
             // 
             this.textBoxVC.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxVC.Location = new System.Drawing.Point(94, 12);
+            this.textBoxVC.Location = new System.Drawing.Point(125, 15);
+            this.textBoxVC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVC.Multiline = true;
             this.textBoxVC.Name = "textBoxVC";
-            this.textBoxVC.Size = new System.Drawing.Size(187, 36);
+            this.textBoxVC.Size = new System.Drawing.Size(248, 43);
             this.textBoxVC.TabIndex = 7;
             // 
             // textBoxNam
             // 
             this.textBoxNam.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxNam.Location = new System.Drawing.Point(94, 54);
+            this.textBoxNam.Location = new System.Drawing.Point(125, 66);
+            this.textBoxNam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNam.Multiline = true;
             this.textBoxNam.Name = "textBoxNam";
-            this.textBoxNam.Size = new System.Drawing.Size(187, 31);
+            this.textBoxNam.Size = new System.Drawing.Size(248, 37);
             this.textBoxNam.TabIndex = 8;
             // 
             // textBoxDesc
             // 
             this.textBoxDesc.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxDesc.Location = new System.Drawing.Point(94, 91);
+            this.textBoxDesc.Location = new System.Drawing.Point(125, 112);
+            this.textBoxDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDesc.Multiline = true;
             this.textBoxDesc.Name = "textBoxDesc";
-            this.textBoxDesc.Size = new System.Drawing.Size(187, 31);
+            this.textBoxDesc.Size = new System.Drawing.Size(248, 37);
             this.textBoxDesc.TabIndex = 9;
             // 
             // textBoxPr
             // 
             this.textBoxPr.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPr.Location = new System.Drawing.Point(94, 128);
+            this.textBoxPr.Location = new System.Drawing.Point(125, 158);
+            this.textBoxPr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPr.Multiline = true;
             this.textBoxPr.Name = "textBoxPr";
-            this.textBoxPr.Size = new System.Drawing.Size(187, 31);
+            this.textBoxPr.Size = new System.Drawing.Size(248, 37);
             this.textBoxPr.TabIndex = 10;
             // 
             // textBoxCat
             // 
             this.textBoxCat.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxCat.Location = new System.Drawing.Point(94, 165);
+            this.textBoxCat.Location = new System.Drawing.Point(125, 203);
+            this.textBoxCat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxCat.Multiline = true;
             this.textBoxCat.Name = "textBoxCat";
-            this.textBoxCat.Size = new System.Drawing.Size(187, 31);
+            this.textBoxCat.Size = new System.Drawing.Size(248, 37);
             this.textBoxCat.TabIndex = 11;
             // 
             // buttAddPr
@@ -159,9 +170,10 @@ namespace ExamApp
             this.buttAddPr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttAddPr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttAddPr.ForeColor = System.Drawing.Color.White;
-            this.buttAddPr.Location = new System.Drawing.Point(67, 302);
+            this.buttAddPr.Location = new System.Drawing.Point(89, 372);
+            this.buttAddPr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttAddPr.Name = "buttAddPr";
-            this.buttAddPr.Size = new System.Drawing.Size(159, 34);
+            this.buttAddPr.Size = new System.Drawing.Size(212, 42);
             this.buttAddPr.TabIndex = 13;
             this.buttAddPr.Text = "Add";
             this.buttAddPr.UseVisualStyleBackColor = false;
@@ -172,9 +184,10 @@ namespace ExamApp
             this.buttEdit.BackColor = System.Drawing.Color.Green;
             this.buttEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttEdit.ForeColor = System.Drawing.Color.White;
-            this.buttEdit.Location = new System.Drawing.Point(67, 342);
+            this.buttEdit.Location = new System.Drawing.Point(89, 421);
+            this.buttEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttEdit.Name = "buttEdit";
-            this.buttEdit.Size = new System.Drawing.Size(159, 34);
+            this.buttEdit.Size = new System.Drawing.Size(212, 42);
             this.buttEdit.TabIndex = 14;
             this.buttEdit.Text = "Edit";
             this.buttEdit.UseVisualStyleBackColor = false;
@@ -185,9 +198,10 @@ namespace ExamApp
             this.buttBack.BackColor = System.Drawing.Color.Red;
             this.buttBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttBack.ForeColor = System.Drawing.Color.White;
-            this.buttBack.Location = new System.Drawing.Point(67, 382);
+            this.buttBack.Location = new System.Drawing.Point(89, 470);
+            this.buttBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttBack.Name = "buttBack";
-            this.buttBack.Size = new System.Drawing.Size(159, 34);
+            this.buttBack.Size = new System.Drawing.Size(212, 42);
             this.buttBack.TabIndex = 16;
             this.buttBack.Text = "Back";
             this.buttBack.UseVisualStyleBackColor = false;
@@ -198,9 +212,10 @@ namespace ExamApp
             this.buttonPict.BackColor = System.Drawing.Color.Fuchsia;
             this.buttonPict.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPict.ForeColor = System.Drawing.Color.White;
-            this.buttonPict.Location = new System.Drawing.Point(47, 202);
+            this.buttonPict.Location = new System.Drawing.Point(63, 249);
+            this.buttonPict.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonPict.Name = "buttonPict";
-            this.buttonPict.Size = new System.Drawing.Size(41, 34);
+            this.buttonPict.Size = new System.Drawing.Size(55, 42);
             this.buttonPict.TabIndex = 17;
             this.buttonPict.Text = "In";
             this.buttonPict.UseVisualStyleBackColor = false;
@@ -210,9 +225,10 @@ namespace ExamApp
             // 
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(94, 202);
+            this.pictureBox.Location = new System.Drawing.Point(125, 249);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(187, 92);
+            this.pictureBox.Size = new System.Drawing.Size(249, 113);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 18;
             this.pictureBox.TabStop = false;
@@ -220,18 +236,19 @@ namespace ExamApp
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(-1, 221);
+            this.label8.Location = new System.Drawing.Point(-1, 272);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 13);
+            this.label8.Size = new System.Drawing.Size(62, 17);
             this.label8.TabIndex = 19;
             this.label8.Text = "200x200";
             // 
             // AddProd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(302, 425);
+            this.ClientSize = new System.Drawing.Size(403, 523);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.buttonPict);
@@ -249,8 +266,10 @@ namespace ExamApp
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddProd";
             this.Text = "AddProd";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddProd_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

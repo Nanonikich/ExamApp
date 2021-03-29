@@ -7,6 +7,8 @@ namespace ExamApp
 {
     public partial class SignIn : Form
     {
+
+
         public SignIn()
         {
             InitializeComponent();
@@ -15,13 +17,19 @@ namespace ExamApp
         private void ButSignIn_Click(object sender, EventArgs e)
         {
             var dtbl = new DataTable();
+
             new SqlDataAdapter(@"SELECT * FROM Customer WHERE cust_usname = '" + textBoxUsname.Text + "' AND cust_passw = '" + textBoxPassw.Text + "'", new DB().GetConnection()).Fill(dtbl);
+            
+            
             switch (dtbl.Rows.Count)
             {
                 case 1:
                     {
                         Hide();
-                        new MainWindow().Show();
+
+                        /// Передаю управления окна авторизации Главному окну
+                        new MainWindow(this).Show();
+
                         break;
                     }
 
