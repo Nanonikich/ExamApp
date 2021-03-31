@@ -138,6 +138,7 @@ namespace ExamApp.Forms
             this.butShop.TabIndex = 2;
             this.butShop.Text = "Buy";
             this.butShop.UseVisualStyleBackColor = false;
+            this.butShop.Click += new System.EventHandler(this.ButShop_Click);
             // 
             // butBack
             // 

@@ -12,12 +12,15 @@ namespace ExamApp
     {
 
         SignIn _SignIn;
-        public MainWindow(SignIn sn)
+        DataRow _User;
+        public MainWindow(SignIn sn, DataRow us)
         {
             _SignIn = sn;
+            _User = us;
             InitializeComponent();
         }
 
+        public DataRow User { get => _User; }
 
         /// <summary>
         /// Функция обновляет данные таблицы (БЕЗ АДАПТОРА НИКИТА!!! ГОВОРИЛ ЖЕ УДАЛИ ЕГО)
@@ -37,7 +40,6 @@ namespace ExamApp
         {
             UpdateTable();
         }
-
 
         private void ReadingValues()
         {
@@ -142,19 +144,24 @@ namespace ExamApp
 
         private void DataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.Enabled = false;
-            var dw = new DescripWindow(this);
+            
+
             
             if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
             {
-                dw.labelArt.Text = dataGridView.CurrentRow.Cells[1].Value.ToString();
-                dw.pictBoxDescr.Image = Image.FromStream(new MemoryStream((byte[])dataGridView.CurrentRow.Cells[2].Value‌​));
-                dw.labelName.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
-                dw.labDescr.Text = dataGridView.CurrentRow.Cells[5].Value.ToString();
-                dw.labelPrice.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
-
+                this.Enabled = false;
+                var data = dataGridView.CurrentRow;
+                var dw = new DescripWindow(this, data);
                 dw.Show();
             }
+
+        }
+
+        private void ToolStripButton1_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            var bw = new Basket(this);
+            bw.Show();
         }
     }
 }
