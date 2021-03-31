@@ -1,5 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using ExamApp.Forms;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -12,12 +12,15 @@ namespace ExamApp
     {
 
         SignIn _SignIn;
-        public MainWindow(SignIn sn)
+        DataRow _User;
+        public MainWindow(SignIn sn, DataRow us)
         {
             _SignIn = sn;
+            _User = us;
             InitializeComponent();
         }
 
+        public DataRow User { get => _User; }
 
         /// <summary>
         /// Функция обновляет данные таблицы (БЕЗ АДАПТОРА НИКИТА!!! ГОВОРИЛ ЖЕ УДАЛИ ЕГО)
@@ -38,7 +41,6 @@ namespace ExamApp
             UpdateTable();
         }
 
-
         private void ReadingValues()
         {
             var edPr = new AddProd(dataGridView.CurrentRow.Cells[0].Value.ToString(), this);
@@ -56,7 +58,7 @@ namespace ExamApp
 
 
 
-        private void butEdit_Click(object sender, EventArgs e)
+        private void ButEdit_Click(object sender, EventArgs e)
         {
             if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
             {
@@ -108,7 +110,17 @@ namespace ExamApp
             _SignIn.Show();
         }
 
-        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            var bs = new BindingSource
+            {
+                DataSource = dataGridView.DataSource,
+                Filter = "prod_name like '%" + txtSearch.Text + "%'"
+            };
+            dataGridView.DataSource = bs;
+        }
+
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var db = new DB();
             var dtbl = new DataTable();
@@ -128,6 +140,28 @@ namespace ExamApp
 
                 dataGridView.DataSource = dtbl;
             }
+        }
+
+        private void DataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+            
+            if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
+            {
+                this.Enabled = false;
+                var data = dataGridView.CurrentRow;
+                var dw = new DescripWindow(this, data);
+                dw.Show();
+            }
+
+        }
+
+        private void ToolStripButton1_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            var bw = new Basket(this);
+            bw.Show();
         }
     }
 }

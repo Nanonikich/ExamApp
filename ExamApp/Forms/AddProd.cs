@@ -35,7 +35,7 @@ namespace ExamApp
         /// </summary>
         public AddProd(MainWindow mw)
         {
-            MainWin = mw; // Тут я передаю контроль над главным меню окуну добавления
+            MainWin = mw; // Тут я передаю контроль над главным меню окну добавления
             InitializeComponent();
         }
 
@@ -80,7 +80,6 @@ namespace ExamApp
                 MessageBox.Show("Product saved");
 
 
-                /// Открываю доступ к окну
                 MainWin.Enabled = true;
                 MainWin.UpdateTable();
                 Close();
@@ -117,7 +116,7 @@ namespace ExamApp
             try
             {
                 var db = new DB();
-                var command = new SqlCommand(@"UPDATE Products SET prod_vendcode = '" + textBoxVC.Text + "', prod_image = @Photo, prod_name ='" + textBoxNam.Text + "', prod_descr ='" + textBoxDesc.Text + "', prod_price ='" + textBoxPr.Text + "', prod_category ='" + textBoxCat.Text + "' WHERE prod_id = '" + i + "'", db.GetConnection());
+                var command = new SqlCommand($@"UPDATE Products SET prod_vendcode = N'{textBoxVC.Text}', prod_image = @Photo, prod_name = N'{textBoxNam.Text}', prod_descr =  N'{textBoxDesc.Text}', prod_price = '{textBoxPr.Text}', prod_category = N'{textBoxCat.Text}' WHERE prod_id = '" + i + "'", db.GetConnection());
                 db.GetConnection().Open();
                 command.Parameters.AddWithValue("@Photo", (byte[])new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[])));
                 switch (command.ExecuteNonQuery())
