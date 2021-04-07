@@ -43,7 +43,7 @@ namespace ExamApp.Forms
 
             var db = new DB();
 
-            var cmd = new SqlCommand($"INSERT INTO Basket VALUES('{_DataThing.Cells[2].Value}', '{_DataThing.Cells[4].Value}', {1}, {_DataThing.Cells[6].Value}, {MainWin.User[0]})", db.GetConnection());
+            var cmd = new SqlCommand($"INSERT INTO Basket VALUES('{_DataThing.Cells[2].Value‌​}', '{_DataThing.Cells[4].Value}', {1}, {_DataThing.Cells[6].Value}, {MainWin.User[0]})", db.GetConnection());
             db.OpenConnection();
             cmd.ExecuteNonQuery();
             db.CloseConnection();

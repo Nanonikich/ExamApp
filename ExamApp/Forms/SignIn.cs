@@ -18,7 +18,7 @@ namespace ExamApp
         {
             var dtbl = new DataTable();
 
-            new SqlDataAdapter(@"SELECT * FROM Customers WHERE cust_usname = '" + textBoxUsname.Text + "' AND cust_passw = '" + textBoxPassw.Text + "'", new DB().GetConnection()).Fill(dtbl);
+            new SqlDataAdapter(@"SELECT * FROM Users WHERE user_usname = '" + textBoxUsname.Text + "' AND user_passw = '" + textBoxPassw.Text + "'", new DB().GetConnection()).Fill(dtbl);
 
 
             switch (dtbl.Rows.Count)

@@ -80,6 +80,7 @@ namespace ExamApp
                 MessageBox.Show("Product saved");
 
 
+                /// Открываю доступ к окну
                 MainWin.Enabled = true;
                 MainWin.UpdateTable();
                 Close();
