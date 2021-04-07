@@ -32,7 +32,7 @@ namespace ExamApp
                 }
 
                 var db = new DB();
-                var adapter = new SqlDataAdapter(@"INSERT INTO Customers(cust_sur, cust_name, cust_patr, cust_email, cust_phone, cust_city, cust_address, cust_usname, cust_passw) VALUES('" + textBoxSurn.Text + "', '" + textBoxName.Text + "', '" + textBoxPatr.Text + "', '" + textBoxEmail.Text + "', '" + textBoxPhone.Text + "', '" + textBoxCity.Text + "', '" + textBoxAddr.Text + "', '" + textBoxUsname.Text + "', '" + textBoxPassw.Text + "')", db.GetConnection());
+                var adapter = new SqlDataAdapter(@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES('" + textBoxSurn.Text + "', '" + textBoxName.Text + "', '" + textBoxPatr.Text + "', '" + textBoxEmail.Text + "', '" + textBoxPhone.Text + "', '" + textBoxCity.Text + "', '" + textBoxAddr.Text + "', '" + textBoxUsname.Text + "', '" + textBoxPassw.Text + "')", db.GetConnection());
                 var dtbl = new DataTable();
                 adapter.Fill(dtbl);
 
