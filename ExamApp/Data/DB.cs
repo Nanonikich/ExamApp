@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace ExamApp
 {
     class DB
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\Desktop\repos\ExamApp\ExamApp\Data\Database.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\Desktop\ExamApp\ExamApp\Data\Database.mdf;Integrated Security=True");
 
-        /// Мой 
+        /// Пк в 5.112
+        /// Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Desktop\ExamApp\ExamApp\Data\Database.mdf;Integrated Security=True
+
+        /// Даниил 
         ///SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\sharp\ExamApp\ExamApp\Data\Database.mdf;Integrated Security=True");
 
         public void OpenConnection()
@@ -24,9 +22,6 @@ namespace ExamApp
             if (con.State == System.Data.ConnectionState.Open) con.Close();
         }
 
-        public SqlConnection GetConnection()
-        {
-            return con;
-        }
+        public SqlConnection GetConnection() => con;
     }
 }

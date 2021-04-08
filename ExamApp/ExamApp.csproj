@@ -118,6 +118,7 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
+    <Compile Include="Models\BasketModel.cs" />
     <Compile Include="Program.cs">
       <CustomToolNamespace>ExamApp</CustomToolNamespace>
     </Compile>

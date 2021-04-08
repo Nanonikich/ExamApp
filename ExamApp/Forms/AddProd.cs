@@ -63,6 +63,7 @@ namespace ExamApp
         private void ButtAddPr_Click(object sender, EventArgs e)
         {
             var converter = new ImageConverter();
+
             var arr = (byte[])converter.ConvertTo(pictureBox.Image, typeof(byte[]));
             
             if (string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(arr.ToString()) || string.IsNullOrEmpty(imageUrl) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCat.Text))

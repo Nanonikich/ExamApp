@@ -45,6 +45,9 @@ namespace ExamApp
         {
             var edPr = new AddProd(dataGridView.CurrentRow.Cells[0].Value.ToString(), this);
 
+            var i = (byte[])dataGridView.CurrentRow.Cells[2].Value‌​;
+
+
             edPr.textBoxVC.Text = dataGridView.CurrentRow.Cells[1].Value.ToString();
             edPr.pictureBox.Image = Image.FromStream(new MemoryStream((byte[])dataGridView.CurrentRow.Cells[2].Value‌​));
             edPr.textBoxNam.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
