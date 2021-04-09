@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace ExamApp.Forms
 {
@@ -32,13 +26,7 @@ namespace ExamApp.Forms
 
         private void Basket_Load(object sender, EventArgs e)
         {
-
-            var dtbl = new DataTable();
-
-
             db.OpenConnection();
-
-
             string sqlQuery = "SELECT bask_id, Products.prod_image, bask_name, bask_count_prod, bask_price, Users.user_id FROM Basket\n" +
                 "join Products \n" +
                 "on Products.prod_name = bask_name\n" +
@@ -57,7 +45,6 @@ namespace ExamApp.Forms
                                    asquery[4].ToString(),
                                    asquery[5].ToString());
             }
-
             db.CloseConnection();
 
             TotalAmout();
@@ -66,17 +53,17 @@ namespace ExamApp.Forms
         public void TotalAmout()
         {
             Double result = 0;
-            foreach (DataGridViewRow row in dgvBasket.Rows)
+            foreach (var row in from DataGridViewRow row in dgvBasket.Rows
+                                where row.Cells[4].Value != null
+                                select row)
             {
-                if (row.Cells[4].Value != null)
-                {
-                    result += Convert.ToDouble(row.Cells[4].Value);
-                }
+                result += Convert.ToDouble(row.Cells[4].Value);
             }
-            labelTotal.Text = "Total: " + result.ToString();
+
+            labelTotal.Text = $"Total: {result.ToString()}";
         }
         
-
+        /////////////////////////
         private void DgvBasket_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvBasket.Rows[e.RowIndex];
@@ -84,11 +71,17 @@ namespace ExamApp.Forms
             {
                 var db = new DB();
                 db.OpenConnection();
+                var dtbl = new DataTable();
                 new SqlCommand($"DELETE FROM Basket WHERE bask_id = N'{dgvBasket.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
-                db.CloseConnection();
                 
+                dgvBasket.DataSource = dtbl;
+
+                db.CloseConnection();
+
+
                 MessageBox.Show("Success");
             }
         }
+        /////////////////////////
     }
 }
