@@ -60,9 +60,11 @@ namespace ExamApp.Forms
 
             db.CloseConnection();
 
+            TotalAmout();
+        }
 
-            // итоговая сумма
-
+        public void TotalAmout()
+        {
             Double result = 0;
             foreach (DataGridViewRow row in dgvBasket.Rows)
             {
@@ -77,22 +79,15 @@ namespace ExamApp.Forms
 
         private void DgvBasket_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (MessageBox.Show("Do you want delete?", "Open", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            DataGridViewRow row = dgvBasket.Rows[e.RowIndex];
+            if (e.ColumnIndex == 6)
             {
-                case DialogResult.Yes:
-                {
-                    var db = new DB();
-                    var v = new SqlCommand($"DELETE FROM Basket WHERE bask_id = N'{dgvBasket.SelectedRows[0].Cells[0].Value.ToString()}'", db.GetConnection());
-                    db.OpenConnection();
-                    v.ExecuteNonQuery();
-                    db.CloseConnection();
-                    MessageBox.Show("Success");
-                    break;
-                }
-
-                default:
-                    MessageBox.Show("Not deleted");
-                    break;
+                var db = new DB();
+                db.OpenConnection();
+                new SqlCommand($"DELETE FROM Basket WHERE bask_id = N'{dgvBasket.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
+                db.CloseConnection();
+                
+                MessageBox.Show("Success");
             }
         }
     }
