@@ -147,9 +147,6 @@ namespace ExamApp
 
         private void DataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-
-            
             if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
             {
                 this.Enabled = false;
@@ -157,7 +154,6 @@ namespace ExamApp
                 var dw = new DescripWindow(this, data);
                 dw.Show();
             }
-
         }
 
         private void ToolStripButton1_Click(object sender, EventArgs e)

@@ -4,7 +4,7 @@ namespace ExamApp
 {
     class DB
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\Desktop\hgcf\ExamApp\ExamApp\Data\Database.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\Desktop\repository\ExamApp\Data\Database.mdf;Integrated Security=True");
 
         /// Пк в 5.112
         /// Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Desktop\ExamApp\ExamApp\Data\Database.mdf;Integrated Security=True

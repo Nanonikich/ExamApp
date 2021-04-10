@@ -30,9 +30,6 @@ namespace ExamApp.Forms
         private void InitializeComponent()
         {
             this.dgvBasket = new System.Windows.Forms.DataGridView();
-            this.butBack = new System.Windows.Forms.Button();
-            this.butApply = new System.Windows.Forms.Button();
-            this.labelTotal = new System.Windows.Forms.Label();
             this.bask_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bask_img = new System.Windows.Forms.DataGridViewImageColumn();
             this.bask_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +37,9 @@ namespace ExamApp.Forms
             this.bask_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bask_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del_prod_basket = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.butBack = new System.Windows.Forms.Button();
+            this.butApply = new System.Windows.Forms.Button();
+            this.labelTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,38 +69,6 @@ namespace ExamApp.Forms
             this.dgvBasket.StandardTab = true;
             this.dgvBasket.TabIndex = 11;
             this.dgvBasket.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBasket_CellContentClick);
-            // 
-            // butBack
-            // 
-            this.butBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.butBack.ForeColor = System.Drawing.Color.White;
-            this.butBack.Location = new System.Drawing.Point(410, 391);
-            this.butBack.Name = "butBack";
-            this.butBack.Size = new System.Drawing.Size(121, 47);
-            this.butBack.TabIndex = 1;
-            this.butBack.Text = "Back";
-            this.butBack.UseVisualStyleBackColor = false;
-            this.butBack.Click += new System.EventHandler(this.ButBack_Click);
-            // 
-            // butApply
-            // 
-            this.butApply.BackColor = System.Drawing.Color.Green;
-            this.butApply.ForeColor = System.Drawing.Color.White;
-            this.butApply.Location = new System.Drawing.Point(257, 391);
-            this.butApply.Name = "butApply";
-            this.butApply.Size = new System.Drawing.Size(121, 47);
-            this.butApply.TabIndex = 12;
-            this.butApply.Text = "Apply";
-            this.butApply.UseVisualStyleBackColor = false;
-            // 
-            // labelTotal
-            // 
-            this.labelTotal.AutoSize = true;
-            this.labelTotal.Location = new System.Drawing.Point(674, 217);
-            this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(34, 13);
-            this.labelTotal.TabIndex = 14;
-            this.labelTotal.Text = "Total:";
             // 
             // bask_id
             // 
@@ -148,6 +116,38 @@ namespace ExamApp.Forms
             this.del_prod_basket.Text = "DELETE";
             this.del_prod_basket.UseColumnTextForButtonValue = true;
             // 
+            // butBack
+            // 
+            this.butBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.butBack.ForeColor = System.Drawing.Color.White;
+            this.butBack.Location = new System.Drawing.Point(410, 391);
+            this.butBack.Name = "butBack";
+            this.butBack.Size = new System.Drawing.Size(121, 47);
+            this.butBack.TabIndex = 1;
+            this.butBack.Text = "Back";
+            this.butBack.UseVisualStyleBackColor = false;
+            this.butBack.Click += new System.EventHandler(this.ButBack_Click);
+            // 
+            // butApply
+            // 
+            this.butApply.BackColor = System.Drawing.Color.Green;
+            this.butApply.ForeColor = System.Drawing.Color.White;
+            this.butApply.Location = new System.Drawing.Point(257, 391);
+            this.butApply.Name = "butApply";
+            this.butApply.Size = new System.Drawing.Size(121, 47);
+            this.butApply.TabIndex = 12;
+            this.butApply.Text = "Apply";
+            this.butApply.UseVisualStyleBackColor = false;
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Location = new System.Drawing.Point(674, 217);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(34, 13);
+            this.labelTotal.TabIndex = 14;
+            this.labelTotal.Text = "Total:";
+            // 
             // Basket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,6 +159,7 @@ namespace ExamApp.Forms
             this.Controls.Add(this.dgvBasket);
             this.Name = "Basket";
             this.Text = "Basket";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Basket_FormClosed);
             this.Load += new System.EventHandler(this.Basket_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).EndInit();
             this.ResumeLayout(false);

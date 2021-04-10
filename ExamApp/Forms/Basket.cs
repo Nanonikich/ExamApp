@@ -10,6 +10,7 @@ namespace ExamApp.Forms
     {
         MainWindow MainWin;
         DB db = new DB();
+        DataTable dtbl;
 
         public Basket(MainWindow mw)
         {
@@ -28,10 +29,10 @@ namespace ExamApp.Forms
         {
             db.OpenConnection();
             string sqlQuery = "SELECT bask_id, Products.prod_image, bask_name, bask_count_prod, bask_price, Users.user_id FROM Basket\n" +
-                "join Products \n" +
-                "on Products.prod_name = bask_name\n" +
-                "join Users\n" +
-                "on Users.user_id = bask_custom";
+                "JOIN Products \n" +
+                "ON Products.prod_name = bask_name\n" +
+                "JOIN Users\n" +
+                "ON Users.user_id = bask_custom";
 
             var asquery = new SqlCommand(sqlQuery, db.GetConnection()).ExecuteReader();
 
@@ -59,29 +60,30 @@ namespace ExamApp.Forms
             {
                 result += Convert.ToDouble(row.Cells[4].Value);
             }
-
-            labelTotal.Text = $"Total: {result.ToString()}";
+            labelTotal.Text = $"Total: {result}";
         }
         
-        /////////////////////////
+        /// Организовать обновление \\\
         private void DgvBasket_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvBasket.Rows[e.RowIndex];
             if (e.ColumnIndex == 6)
             {
-                var db = new DB();
                 db.OpenConnection();
-                var dtbl = new DataTable();
                 new SqlCommand($"DELETE FROM Basket WHERE bask_id = N'{dgvBasket.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
                 
-                dgvBasket.DataSource = dtbl;
-
+                //dgvBasket.DataSource = dtbl;
+                var b = new Basket(MainWin);
+                b.Show();
+                Close();
+                
                 db.CloseConnection();
-
 
                 MessageBox.Show("Success");
             }
         }
-        /////////////////////////
+        //////////////
+        
+        private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
     }
 }
