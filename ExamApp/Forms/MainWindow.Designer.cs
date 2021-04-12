@@ -1,7 +1,4 @@
-﻿
-using Data;
-
-namespace ExamApp
+﻿namespace ExamApp
 {
     partial class MainWindow
     {
@@ -34,7 +31,6 @@ namespace ExamApp
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet = new Data.DatabaseDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ButAdd = new System.Windows.Forms.ToolStripButton();
@@ -46,7 +42,6 @@ namespace ExamApp
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.productsTableAdapter = new Data.DatabaseDataSetTableAdapters.ProductsTableAdapter();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -61,7 +56,6 @@ namespace ExamApp
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -70,12 +64,6 @@ namespace ExamApp
             // productsBindingSource
             // 
             this.productsBindingSource.DataMember = "Products";
-            this.productsBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel1
             // 
@@ -223,10 +211,7 @@ namespace ExamApp
             this.dataGridView.StandardTab = true;
             this.dataGridView.TabIndex = 11;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentDoubleClick);
-            // 
-            // productsTableAdapter
-            // 
-            this.productsTableAdapter.ClearBeforeFill = true;
+
             // 
             // BottomToolStripPanel
             // 
@@ -346,7 +331,6 @@ namespace ExamApp
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -359,9 +343,7 @@ namespace ExamApp
         #endregion
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.DataGridView dataGridView;
-        private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource productsBindingSource;
-        private Data.DatabaseDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton butEdit;
         private System.Windows.Forms.ToolStripButton ButAdd;

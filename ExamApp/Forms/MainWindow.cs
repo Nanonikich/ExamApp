@@ -22,9 +22,7 @@ namespace ExamApp
 
         public DataRow User { get => _User; }
 
-        /// <summary>
-        /// Функция обновляет данные таблицы (БЕЗ АДАПТОРА НИКИТА!!! ГОВОРИЛ ЖЕ УДАЛИ ЕГО)
-        /// </summary>
+
         public void UpdateTable()
         {
             var db = new DB();
@@ -46,7 +44,6 @@ namespace ExamApp
             var edPr = new AddProd(dataGridView.CurrentRow.Cells[0].Value.ToString(), this);
 
             var i = (byte[])dataGridView.CurrentRow.Cells[2].Value‌​;
-
 
             edPr.textBoxVC.Text = dataGridView.CurrentRow.Cells[1].Value.ToString();
             edPr.pictureBox.Image = Image.FromStream(new MemoryStream((byte[])dataGridView.CurrentRow.Cells[2].Value‌​));
@@ -76,10 +73,8 @@ namespace ExamApp
 
         private void ButAdd_Click(object sender, EventArgs e)
         {
-            /// Заблокировал окно
             this.Enabled = false;
 
-            /// Создаю окно Добавления
             var adPr = new AddProd(this);
             adPr.buttEdit.Enabled = false;
             adPr.Show();
@@ -87,13 +82,12 @@ namespace ExamApp
 
         private void ButDel_Click(object sender, EventArgs e)
         {
-
             switch (MessageBox.Show("Do you want delete?", "Open", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 case DialogResult.Yes:
                     {
                         var db = new DB();
-                        var v = new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value.ToString()}'", db.GetConnection());
+                        var v = new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value}'", db.GetConnection());
                         db.OpenConnection();
                         v.ExecuteNonQuery();
                         db.CloseConnection();

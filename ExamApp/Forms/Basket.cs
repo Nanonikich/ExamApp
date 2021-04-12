@@ -10,7 +10,6 @@ namespace ExamApp.Forms
     {
         MainWindow MainWin;
         DB db = new DB();
-        DataTable dtbl;
 
         public Basket(MainWindow mw)
         {
@@ -28,14 +27,12 @@ namespace ExamApp.Forms
         private void Basket_Load(object sender, EventArgs e)
         {
             db.OpenConnection();
-            string sqlQuery = "SELECT bask_id, Products.prod_image, bask_name, bask_count_prod, bask_price, Users.user_id FROM Basket\n" +
-                "JOIN Products \n" +
-                "ON Products.prod_name = bask_name\n" +
-                "JOIN Users\n" +
-                "ON Users.user_id = bask_custom";
 
-            var asquery = new SqlCommand(sqlQuery, db.GetConnection()).ExecuteReader();
-
+            var asquery = new SqlCommand("SELECT bask_id, Products.prod_image, bask_name, bask_count_prod, bask_price, Users.user_id FROM Basket\n" +
+                                "JOIN Products \n" +
+                                "ON Products.prod_name = bask_name\n" +
+                                "JOIN Users\n" +
+                                "ON Users.user_id = bask_custom", db.GetConnection()).ExecuteReader();
 
             while (asquery.Read())
             {
@@ -63,27 +60,63 @@ namespace ExamApp.Forms
             labelTotal.Text = $"Total: {result}";
         }
         
-        /// Организовать обновление \\\
         private void DgvBasket_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dgvBasket.Rows[e.RowIndex];
             if (e.ColumnIndex == 6)
             {
                 db.OpenConnection();
                 new SqlCommand($"DELETE FROM Basket WHERE bask_id = N'{dgvBasket.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
-                
-                //dgvBasket.DataSource = dtbl;
-                var b = new Basket(MainWin);
-                b.Show();
+
+                /// Организовать обновление после удаления \\\
+                new Basket(MainWin).Show();
                 Close();
-                
                 db.CloseConnection();
 
                 MessageBox.Show("Success");
             }
         }
-        //////////////
         
         private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
+
+        /// Обновление количества
+        private void DgvBasket_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (e.ColumnIndex == 3)
+            //{
+            //    SqlCommand cmd = db.GetConnection().CreateCommand();
+            //    cmd.CommandType = CommandType.Text;
+            //    db.OpenConnection();
+            //    cmd.CommandText = $"UPDATE Basket SET bask_count_prod = N'{0}' WHERE bask_id = N'{172}'";
+            //    cmd.ExecuteNonQuery();
+            //    db.CloseConnection();
+            //}
+        }
+
+        private void EdProf_Click(object sender, EventArgs e)
+        {
+            Enabled = false;
+            ReadVal();
+        }
+
+        private void ReadVal()
+        {
+            db.OpenConnection();
+            var asquery = new SqlCommand($"Select * FROM Users WHERE user_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader();
+            var edProf = new SignUp(MainWin.User[0].ToString());
+            while (asquery.Read())
+            {
+                edProf.textBoxSurn.Text = asquery.GetString(1);
+                edProf.textBoxName.Text = asquery.GetString(2);
+                edProf.textBoxPatr.Text = asquery.GetString(3);
+                edProf.textBoxEmail.Text = asquery.GetString(4);
+                edProf.textBoxPhone.Text = asquery.GetString(5);
+                edProf.textBoxCity.Text = asquery.GetString(6);
+                edProf.textBoxAddr.Text = asquery.GetString(7);
+                edProf.textBoxUsname.Text = asquery.GetString(8);
+                edProf.textBoxPassw.Text = asquery.GetString(9);
+            }
+            edProf.butnReg.Enabled = false;
+            edProf.Show();
+        }
     }
 }

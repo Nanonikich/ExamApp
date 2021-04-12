@@ -9,20 +9,12 @@ namespace ExamApp
 {
     public partial class AddProd : Form
     {
-
-        /// <summary>
-        /// Переменная с главным меню
-        /// </summary>
         MainWindow MainWin;
-
 
         private string i;
         private string imageUrl = null;
 
 
-        /// <summary>
-        /// Конструктор для Редактирования товара
-        /// </summary>
         public AddProd(string id, MainWindow mw)
         {
             i = id;
@@ -30,12 +22,9 @@ namespace ExamApp
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Конструктор для добавляения товара
-        /// </summary>
         public AddProd(MainWindow mw)
         {
-            MainWin = mw; // Тут я передаю контроль над главным меню окну добавления
+            MainWin = mw;
             InitializeComponent();
         }
 
@@ -63,7 +52,6 @@ namespace ExamApp
         private void ButtAddPr_Click(object sender, EventArgs e)
         {
             var converter = new ImageConverter();
-
             var arr = (byte[])converter.ConvertTo(pictureBox.Image, typeof(byte[]));
             
             if (string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(arr.ToString()) || string.IsNullOrEmpty(imageUrl) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCat.Text))
@@ -80,8 +68,6 @@ namespace ExamApp
                 EditData(arr, db);
                 MessageBox.Show("Product saved");
 
-
-                /// Открываю доступ к окну
                 MainWin.Enabled = true;
                 MainWin.UpdateTable();
                 Close();
@@ -107,8 +93,6 @@ namespace ExamApp
 
         private void ButtBack_Click(object sender, EventArgs e)
         {
-
-            /// открываю доступ главного окна
             MainWin.Enabled = true;
             Close();
         }
@@ -141,11 +125,6 @@ namespace ExamApp
             }
         }
 
-
-        /// <summary>
-        /// Обновление данных в таблице Главного меню
-        /// </summary>
-        /// <param name="db"></param>
         private void UpdDGW(DB db)
         {
             var dtbl = new DataTable();
@@ -154,13 +133,6 @@ namespace ExamApp
             MainWin.dataGridView.DataSource = dtbl;
         }
 
-
-        /// <summary>
-        /// При закрытии Окна активировать главное меню
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void AddProd_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
-
     }
 }

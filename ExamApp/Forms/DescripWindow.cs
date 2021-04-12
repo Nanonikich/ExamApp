@@ -9,8 +9,9 @@ namespace ExamApp.Forms
 {
     public partial class DescripWindow : Form
     {
-        MainWindow MainWin;
-        DataGridViewRow _DataThing;
+        readonly MainWindow MainWin;
+        readonly DataGridViewRow _DataThing;
+        readonly DB db = new DB();
         public byte[] img;
 
 
@@ -39,21 +40,16 @@ namespace ExamApp.Forms
             labelPrice.Text = _DataThing.Cells[6].Value.ToString();
         }
 
-        private void DescripWindow_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
-
-
         private void ButShop_Click(object sender, EventArgs e)
         {
-
-            var db = new DB();
-
-            var cmd = new SqlCommand($"INSERT INTO Basket VALUES('{_DataThing.Cells[4].Value}', {1}, {_DataThing.Cells[6].Value}, {MainWin.User[0]})", db.GetConnection());
             db.OpenConnection();
-            cmd.ExecuteNonQuery();
+            new SqlCommand($"INSERT INTO Basket VALUES('{_DataThing.Cells[4].Value}', {1}, {_DataThing.Cells[6].Value}, {MainWin.User[0]})", db.GetConnection()).ExecuteNonQuery();
             db.CloseConnection();
 
             MainWin.Enabled = true;
             Close();
         }
+
+        private void DescripWindow_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
     }
 }

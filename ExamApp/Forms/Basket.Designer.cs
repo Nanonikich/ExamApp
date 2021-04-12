@@ -40,6 +40,7 @@ namespace ExamApp.Forms
             this.butBack = new System.Windows.Forms.Button();
             this.butApply = new System.Windows.Forms.Button();
             this.labelTotal = new System.Windows.Forms.Label();
+            this.EdProf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,11 +149,22 @@ namespace ExamApp.Forms
             this.labelTotal.TabIndex = 14;
             this.labelTotal.Text = "Total:";
             // 
+            // EdProf
+            // 
+            this.EdProf.Location = new System.Drawing.Point(12, 228);
+            this.EdProf.Name = "EdProf";
+            this.EdProf.Size = new System.Drawing.Size(75, 23);
+            this.EdProf.TabIndex = 15;
+            this.EdProf.Text = "Edit Profile";
+            this.EdProf.UseVisualStyleBackColor = true;
+            this.EdProf.Click += new System.EventHandler(this.EdProf_Click);
+            // 
             // Basket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.EdProf);
             this.Controls.Add(this.labelTotal);
             this.Controls.Add(this.butApply);
             this.Controls.Add(this.butBack);
@@ -180,5 +192,6 @@ namespace ExamApp.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn bask_price;
         private System.Windows.Forms.DataGridViewTextBoxColumn bask_customer;
         private System.Windows.Forms.DataGridViewButtonColumn del_prod_basket;
+        private System.Windows.Forms.Button EdProf;
     }
 }
