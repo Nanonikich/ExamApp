@@ -8,8 +8,10 @@ namespace ExamApp
 {
     public partial class SignUp : Form
     {
-        public SignUp()
+        private string z;
+        public SignUp(string id)
         {
+            z = id;
             InitializeComponent();
         }
 
@@ -44,6 +46,33 @@ namespace ExamApp
             catch
             {
                 MessageBox.Show("This username is already in the system");
+            }
+        }
+  
+        private void ButnEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var db = new DB();
+                var command = new SqlCommand($@"UPDATE Users SET user_sur = N'{textBoxSurn.Text}', user_name = N'{textBoxName.Text}', user_patr = N'{textBoxPatr.Text}', user_email =  N'{textBoxEmail.Text}', user_phone = '{textBoxPhone.Text}', user_city = N'{textBoxCity.Text}', user_address = N'{textBoxAddr.Text}', user_usname = N'{textBoxUsname.Text}', user_passw = N'{textBoxPassw.Text}' WHERE user_id = '" + z + "'", db.GetConnection());
+                db.GetConnection().Open();
+                switch (command.ExecuteNonQuery())
+                {
+                    case 1:
+                        MessageBox.Show("Data Updated");
+                        break;
+                    default:
+                        MessageBox.Show("Data not updated");
+                        break;
+                }
+                Close();
+                var signIn = new SignIn();
+                signIn.butSignUp.Enabled = false;
+                signIn.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Fuck");
             }
         }
     }

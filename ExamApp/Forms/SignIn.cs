@@ -35,7 +35,7 @@ namespace ExamApp
         private void ButSignUp_Click(object sender, EventArgs e)
         {
             Hide();
-            var signUp = new SignUp();
+            var signUp = new SignUp("0");
             signUp.butnEdit.Enabled = false;
             signUp.Show();
         }
