@@ -151,12 +151,14 @@ namespace ExamApp.Forms
             // 
             // EdProf
             // 
-            this.EdProf.Location = new System.Drawing.Point(12, 228);
+            this.EdProf.BackColor = System.Drawing.Color.Blue;
+            this.EdProf.ForeColor = System.Drawing.Color.White;
+            this.EdProf.Location = new System.Drawing.Point(43, 275);
             this.EdProf.Name = "EdProf";
-            this.EdProf.Size = new System.Drawing.Size(75, 23);
+            this.EdProf.Size = new System.Drawing.Size(92, 42);
             this.EdProf.TabIndex = 15;
             this.EdProf.Text = "Edit Profile";
-            this.EdProf.UseVisualStyleBackColor = true;
+            this.EdProf.UseVisualStyleBackColor = false;
             this.EdProf.Click += new System.EventHandler(this.EdProf_Click);
             // 
             // Basket
