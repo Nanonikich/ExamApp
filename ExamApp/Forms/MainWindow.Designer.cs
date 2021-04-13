@@ -145,12 +145,7 @@
             // 
             this.comboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.comboBox.Items.AddRange(new object[] {
-            "All",
-            "String",
-            "Keyboards",
-            "Duh",
-            "Digital piano"});
+            this.comboBox.Items.AddRange(new object[] {});
             this.comboBox.Margin = new System.Windows.Forms.Padding(1, 0, 15, 0);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(142, 48);

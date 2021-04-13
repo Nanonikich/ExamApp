@@ -32,11 +32,22 @@ namespace ExamApp
             db.GetConnection().Close();
 
             dataGridView.DataSource = dtbl;
+
+            //comboBox.Items.Clear();
+            comboBox.Items.Add("All");
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (!comboBox.Items.Contains(row.Cells[7].Value.ToString()))
+                {
+                    comboBox.Items.Add(row.Cells[7].Value.ToString());
+                }
+            }
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
             UpdateTable();
+            
         }
 
         private void ReadingValues()
@@ -121,19 +132,22 @@ namespace ExamApp
         {
             var db = new DB();
             var dtbl = new DataTable();
+            
             db.OpenConnection();
+
+
 
             if (comboBox.Text == "All")
             {
                 dtbl.Load(new SqlCommand("SELECT * FROM Products ", db.GetConnection()).ExecuteReader());
-                db.GetConnection().Close();
+                db.CloseConnection();
 
                 dataGridView.DataSource = dtbl;
             }
             else
             {
                 dtbl.Load(new SqlCommand($"SELECT * FROM Products WHERE prod_category = N'{comboBox.Text}'", db.GetConnection()).ExecuteReader());
-                db.GetConnection().Close();
+                db.CloseConnection();
 
                 dataGridView.DataSource = dtbl;
             }
