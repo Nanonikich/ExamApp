@@ -80,7 +80,7 @@ namespace ExamApp
 
         private void EditData(byte[] arr, DB db)
         {
-            var cmd = new SqlCommand("INSERT INTO Products (prod_vendcode, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_category) VALUES (@Vend, @Photo, @PhotoUrl, @Product, @Descr, @Price, @Categ)", db.GetConnection());
+            var cmd = new SqlCommand("INSERT INTO Products (prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_category) VALUES (@Vend, @Photo, @PhotoUrl, @Product, @Descr, @Price, @Categ)", db.GetConnection());
             cmd.Parameters.AddWithValue("@Vend", textBoxVC.Text);
             cmd.Parameters.AddWithValue("@Photo", arr);
             cmd.Parameters.AddWithValue("@PhotoUrl", imageUrl);
@@ -102,7 +102,7 @@ namespace ExamApp
             try
             {
                 var db = new DB();
-                var command = new SqlCommand($@"UPDATE Products SET prod_vendcode = N'{textBoxVC.Text}', prod_image = @Photo, prod_name = N'{textBoxNam.Text}', prod_descr =  N'{textBoxDesc.Text}', prod_price = '{textBoxPr.Text}', prod_category = N'{textBoxCat.Text}' WHERE prod_id = '" + i + "'", db.GetConnection());
+                var command = new SqlCommand($@"UPDATE Products SET prod_id = N'{textBoxVC.Text}', prod_image = @Photo, prod_name = N'{textBoxNam.Text}', prod_descr =  N'{textBoxDesc.Text}', prod_price = '{textBoxPr.Text}', prod_category = N'{textBoxCat.Text}' WHERE prod_id = '" + i + "'", db.GetConnection());
                 db.GetConnection().Open();
                 command.Parameters.AddWithValue("@Photo", (byte[])new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[])));
                 switch (command.ExecuteNonQuery())

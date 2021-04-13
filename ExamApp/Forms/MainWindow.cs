@@ -37,9 +37,9 @@ namespace ExamApp
             comboBox.Items.Add("All");
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                if (!comboBox.Items.Contains(row.Cells[7].Value.ToString()))
+                if (!comboBox.Items.Contains(row.Cells[6].Value.ToString()))
                 {
-                    comboBox.Items.Add(row.Cells[7].Value.ToString());
+                    comboBox.Items.Add(row.Cells[6].Value.ToString());
                 }
             }
         }
@@ -54,14 +54,14 @@ namespace ExamApp
         {
             var edPr = new AddProd(dataGridView.CurrentRow.Cells[0].Value.ToString(), this);
 
-            var i = (byte[])dataGridView.CurrentRow.Cells[2].Value‌​;
+            var i = (byte[])dataGridView.CurrentRow.Cells[1].Value‌​;
 
-            edPr.textBoxVC.Text = dataGridView.CurrentRow.Cells[1].Value.ToString();
-            edPr.pictureBox.Image = Image.FromStream(new MemoryStream((byte[])dataGridView.CurrentRow.Cells[2].Value‌​));
-            edPr.textBoxNam.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
-            edPr.textBoxDesc.Text = dataGridView.CurrentRow.Cells[5].Value.ToString();
-            edPr.textBoxPr.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
-            edPr.textBoxCat.Text = dataGridView.CurrentRow.Cells[7].Value.ToString();
+            edPr.textBoxVC.Text = dataGridView.CurrentRow.Cells[0].Value.ToString();
+            edPr.pictureBox.Image = Image.FromStream(new MemoryStream((byte[])dataGridView.CurrentRow.Cells[1].Value‌​));
+            edPr.textBoxNam.Text = dataGridView.CurrentRow.Cells[3].Value.ToString();
+            edPr.textBoxDesc.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
+            edPr.textBoxPr.Text = dataGridView.CurrentRow.Cells[5].Value.ToString();
+            edPr.textBoxCat.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
 
             edPr.buttAddPr.Enabled = false;
             edPr.Show();
