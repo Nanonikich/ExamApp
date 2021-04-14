@@ -34,6 +34,7 @@ namespace ExamApp
             dataGridView.DataSource = dtbl;
 
             //comboBox.Items.Clear();
+            comboBox.Items.Clear();
             comboBox.Items.Add("All");
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
@@ -98,9 +99,8 @@ namespace ExamApp
                 case DialogResult.Yes:
                     {
                         var db = new DB();
-                        var v = new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value}'", db.GetConnection());
                         db.OpenConnection();
-                        v.ExecuteNonQuery();
+                        new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
                         db.CloseConnection();
                         UpdateTable();
                         MessageBox.Show("Success");
@@ -134,7 +134,6 @@ namespace ExamApp
             var dtbl = new DataTable();
             
             db.OpenConnection();
-
 
 
             if (comboBox.Text == "All")

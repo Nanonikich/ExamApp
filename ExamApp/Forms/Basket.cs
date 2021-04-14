@@ -56,7 +56,7 @@ namespace ExamApp.Forms
                                 where row.Cells[4].Value != null
                                 select row)
             {
-                result += Convert.ToDouble(row.Cells[4].Value);
+                result += (Convert.ToDouble(row.Cells[4].Value)* Convert.ToDouble(row.Cells[3].Value));
             }
             labelTotal.Text = $"Total: {result}";
         }
