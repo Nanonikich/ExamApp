@@ -33,7 +33,17 @@ namespace ExamApp
 
             dataGridView.DataSource = dtbl;
 
-            //comboBox.Items.Clear();
+            if (User[10].ToString() == "False")
+            {
+                ButAdd.Visible = false;
+                butEdit.Visible = false;
+                ButDel.Visible = false;
+            }
+            else
+            {
+                toolStripButton1.Enabled = false;  
+            }
+
             comboBox.Items.Clear();
             comboBox.Items.Add("All");
             foreach (DataGridViewRow row in dataGridView.Rows)

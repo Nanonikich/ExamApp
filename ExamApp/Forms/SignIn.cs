@@ -21,6 +21,7 @@ namespace ExamApp
             {
                 case 1:
                     {
+                        butSignUp.Enabled = false;
                         Hide();
                         new MainWindow(this, dtbl.Rows[0]).Show();
                         break;

@@ -33,6 +33,11 @@ namespace ExamApp.Forms
 
         private void ShowDataThing()
         {
+            if (MainWin.User[10].ToString() == "True")
+            {
+                butShop.Enabled = false;
+            }
+
             labelArt.Text = _DataThing.Cells[0].Value.ToString();
             pictBoxDescr.Image = Image.FromStream(new MemoryStream((byte[])_DataThing.Cells[1].Value‌​));
             labelName.Text = _DataThing.Cells[3].Value.ToString();
