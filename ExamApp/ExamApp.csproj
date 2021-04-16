@@ -80,16 +80,14 @@
     <Compile Include="Data\DB.cs">
       <CustomToolNamespace>Data</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\Basket.cs">
+    <Compile Include="Forms\Cart.cs">
       <SubType>Form</SubType>
-      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\Basket.Designer.cs">
-      <DependentUpon>Basket.cs</DependentUpon>
+    <Compile Include="Forms\Cart.Designer.cs">
+      <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DescripWindow.cs">
       <SubType>Form</SubType>
-      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
     <Compile Include="Forms\DescripWindow.Designer.cs">
       <DependentUpon>DescripWindow.cs</DependentUpon>
@@ -126,8 +124,8 @@
       <DependentUpon>AddProd.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Basket.resx">
-      <DependentUpon>Basket.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Cart.resx">
+      <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DescripWindow.resx">
       <DependentUpon>DescripWindow.cs</DependentUpon>

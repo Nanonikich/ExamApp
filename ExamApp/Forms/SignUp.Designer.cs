@@ -166,6 +166,7 @@ namespace ExamApp
             this.butnEdit.TabIndex = 10;
             this.butnEdit.Text = "Edit";
             this.butnEdit.UseVisualStyleBackColor = false;
+            this.butnEdit.Click += new System.EventHandler(this.ButnEdit_Click);
             // 
             // butnBack
             // 
@@ -290,6 +291,7 @@ namespace ExamApp
             this.Controls.Add(this.label1);
             this.Name = "SignUp";
             this.Text = "SignUp";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SignUp_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,17 +308,17 @@ namespace ExamApp
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button butnReg;
-        private System.Windows.Forms.Button butnBack;
-        private System.Windows.Forms.TextBox textBoxSurn;
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxPatr;
-        private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textBoxPhone;
-        private System.Windows.Forms.TextBox textBoxCity;
-        private System.Windows.Forms.TextBox textBoxAddr;
-        private System.Windows.Forms.TextBox textBoxUsname;
-        private System.Windows.Forms.TextBox textBoxPassw;
         public System.Windows.Forms.Button butnEdit;
+        public System.Windows.Forms.Button butnReg;
+        public System.Windows.Forms.Button butnBack;
+        public System.Windows.Forms.TextBox textBoxSurn;
+        public System.Windows.Forms.TextBox textBoxName;
+        public System.Windows.Forms.TextBox textBoxPatr;
+        public System.Windows.Forms.TextBox textBoxEmail;
+        public System.Windows.Forms.TextBox textBoxPhone;
+        public System.Windows.Forms.TextBox textBoxCity;
+        public System.Windows.Forms.TextBox textBoxAddr;
+        public System.Windows.Forms.TextBox textBoxUsname;
+        public System.Windows.Forms.TextBox textBoxPassw;
     }
 }

@@ -31,11 +31,11 @@ namespace ExamApp.Forms
         {
             this.labelName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labDescr = new System.Windows.Forms.Label();
             this.labelPrice = new System.Windows.Forms.Label();
             this.labPr = new System.Windows.Forms.Label();
             this.labelArt = new System.Windows.Forms.Label();
             this.lab = new System.Windows.Forms.Label();
-            this.labDescr = new System.Windows.Forms.Label();
             this.pictBoxDescr = new System.Windows.Forms.PictureBox();
             this.butShop = new System.Windows.Forms.Button();
             this.butBack = new System.Windows.Forms.Button();
@@ -53,20 +53,28 @@ namespace ExamApp.Forms
             this.labelName.Size = new System.Drawing.Size(77, 22);
             this.labelName.TabIndex = 0;
             this.labelName.Text = "label4";
-            this.labelName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labDescr);
             this.panel1.Controls.Add(this.labelPrice);
             this.panel1.Controls.Add(this.labPr);
             this.panel1.Controls.Add(this.labelArt);
             this.panel1.Controls.Add(this.lab);
-            this.panel1.Controls.Add(this.labDescr);
             this.panel1.Controls.Add(this.pictBoxDescr);
-            this.panel1.Location = new System.Drawing.Point(1, 55);
+            this.panel1.Location = new System.Drawing.Point(0, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 326);
+            this.panel1.Size = new System.Drawing.Size(800, 321);
             this.panel1.TabIndex = 1;
+            // 
+            // labDescr
+            // 
+            this.labDescr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labDescr.Location = new System.Drawing.Point(305, 32);
+            this.labDescr.Name = "labDescr";
+            this.labDescr.Size = new System.Drawing.Size(482, 249);
+            this.labDescr.TabIndex = 5;
+            this.labDescr.Text = "label5";
             // 
             // labelPrice
             // 
@@ -75,7 +83,7 @@ namespace ExamApp.Forms
             this.labelPrice.Location = new System.Drawing.Point(354, 292);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(45, 19);
-            this.labelPrice.TabIndex = 5;
+            this.labelPrice.TabIndex = 4;
             this.labelPrice.Text = "label6";
             // 
             // labPr
@@ -85,7 +93,7 @@ namespace ExamApp.Forms
             this.labPr.Location = new System.Drawing.Point(305, 292);
             this.labPr.Name = "labPr";
             this.labPr.Size = new System.Drawing.Size(43, 19);
-            this.labPr.TabIndex = 4;
+            this.labPr.TabIndex = 3;
             this.labPr.Text = "Price:";
             // 
             // labelArt
@@ -95,7 +103,7 @@ namespace ExamApp.Forms
             this.labelArt.Location = new System.Drawing.Point(122, 10);
             this.labelArt.Name = "labelArt";
             this.labelArt.Size = new System.Drawing.Size(45, 19);
-            this.labelArt.TabIndex = 3;
+            this.labelArt.TabIndex = 2;
             this.labelArt.Text = "label2";
             // 
             // lab
@@ -105,25 +113,14 @@ namespace ExamApp.Forms
             this.lab.Location = new System.Drawing.Point(22, 10);
             this.lab.Name = "lab";
             this.lab.Size = new System.Drawing.Size(94, 19);
-            this.lab.TabIndex = 2;
+            this.lab.TabIndex = 1;
             this.lab.Text = "Vendor Code:";
-            // 
-            // labDescr
-            // 
-            this.labDescr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labDescr.Location = new System.Drawing.Point(305, 32);
-            this.labDescr.Name = "labDescr";
-            this.labDescr.Size = new System.Drawing.Size(482, 249);
-            this.labDescr.TabIndex = 1;
-            this.labDescr.Text = "label5";
             // 
             // pictBoxDescr
             // 
-            this.pictBoxDescr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictBoxDescr.Location = new System.Drawing.Point(26, 32);
             this.pictBoxDescr.Name = "pictBoxDescr";
             this.pictBoxDescr.Size = new System.Drawing.Size(256, 249);
-            this.pictBoxDescr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictBoxDescr.TabIndex = 0;
             this.pictBoxDescr.TabStop = false;
             // 
@@ -174,15 +171,16 @@ namespace ExamApp.Forms
         }
 
         #endregion
+
+        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictBoxDescr;
+        private System.Windows.Forms.Label lab;
+        private System.Windows.Forms.Label labelArt;
+        private System.Windows.Forms.Label labPr;
+        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.Label labDescr;
         private System.Windows.Forms.Button butShop;
         private System.Windows.Forms.Button butBack;
-        public System.Windows.Forms.Label labelName;
-        public System.Windows.Forms.PictureBox pictBoxDescr;
-        public System.Windows.Forms.Label labDescr;
-        private System.Windows.Forms.Label lab;
-        public System.Windows.Forms.Label labelArt;
-        public System.Windows.Forms.Label labelPrice;
-        public System.Windows.Forms.Label labPr;
     }
 }

@@ -38,28 +38,22 @@ namespace ExamApp
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ButAdd = new System.Windows.Forms.ToolStripButton();
-            this.butEdit = new System.Windows.Forms.ToolStripButton();
+            this.ButEdit = new System.Windows.Forms.ToolStripButton();
             this.ButDel = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.ButCart = new System.Windows.Forms.ToolStripButton();
             this.comboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.productsTableAdapter = new Data.DatabaseDataSetTableAdapters.ProductsTableAdapter();
             this.prodidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productsTableAdapter = new Data.DatabaseDataSetTableAdapters.ProductsTableAdapter();
-            this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
-            this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
-            this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
-            this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
-            this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.panel1.SuspendLayout();
@@ -93,9 +87,9 @@ namespace ExamApp
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(35, 35);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ButAdd,
-            this.butEdit,
+            this.ButEdit,
             this.ButDel,
-            this.toolStripButton1,
+            this.ButCart,
             this.comboBox,
             this.toolStripLabel1,
             this.txtSearch,
@@ -111,6 +105,7 @@ namespace ExamApp
             // ButAdd
             // 
             this.ButAdd.AutoSize = false;
+            this.ButAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButAdd.Image = ((System.Drawing.Image)(resources.GetObject("ButAdd.Image")));
             this.ButAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButAdd.Name = "ButAdd";
@@ -118,21 +113,23 @@ namespace ExamApp
             this.ButAdd.Text = "Add";
             this.ButAdd.Click += new System.EventHandler(this.ButAdd_Click);
             // 
-            // butEdit
+            // ButEdit
             // 
-            this.butEdit.AutoSize = false;
-            this.butEdit.AutoToolTip = false;
-            this.butEdit.Image = ((System.Drawing.Image)(resources.GetObject("butEdit.Image")));
-            this.butEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.butEdit.Name = "butEdit";
-            this.butEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.butEdit.Size = new System.Drawing.Size(143, 45);
-            this.butEdit.Text = "Edit";
-            this.butEdit.Click += new System.EventHandler(this.ButEdit_Click);
+            this.ButEdit.AutoSize = false;
+            this.ButEdit.AutoToolTip = false;
+            this.ButEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButEdit.Image = ((System.Drawing.Image)(resources.GetObject("ButEdit.Image")));
+            this.ButEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButEdit.Name = "ButEdit";
+            this.ButEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ButEdit.Size = new System.Drawing.Size(143, 45);
+            this.ButEdit.Text = "Edit";
+            this.ButEdit.Click += new System.EventHandler(this.ButEdit_Click);
             // 
             // ButDel
             // 
             this.ButDel.AutoSize = false;
+            this.ButDel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButDel.Image = ((System.Drawing.Image)(resources.GetObject("ButDel.Image")));
             this.ButDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButDel.Name = "ButDel";
@@ -140,30 +137,30 @@ namespace ExamApp
             this.ButDel.Text = "Del";
             this.ButDel.Click += new System.EventHandler(this.ButDel_Click);
             // 
-            // toolStripButton1
+            // ButCart
             // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(45, 45);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
+            this.ButCart.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ButCart.AutoSize = false;
+            this.ButCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButCart.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButCart.Image = ((System.Drawing.Image)(resources.GetObject("ButCart.Image")));
+            this.ButCart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButCart.Name = "ButCart";
+            this.ButCart.Size = new System.Drawing.Size(45, 45);
+            this.ButCart.ToolTipText = "Cart";
+            this.ButCart.Click += new System.EventHandler(this.ToolStripButCart_Click);
             // 
             // comboBox
             // 
             this.comboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.comboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox.Items.AddRange(new object[] {
             "All",
             "String",
             "Keyboards",
-            "Duh",
-            "Digital piano"});
-            this.comboBox.Margin = new System.Windows.Forms.Padding(1, 0, 15, 0);
+            "Duh"});
+            this.comboBox.Margin = new System.Windows.Forms.Padding(1, 0, 6, 0);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(142, 48);
             this.comboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -171,25 +168,29 @@ namespace ExamApp
             // toolStripLabel1
             // 
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.toolStripLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(4, 1, 1, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(28, 45);
+            this.toolStripLabel1.Size = new System.Drawing.Size(35, 45);
             this.toolStripLabel1.Text = "Sort";
             // 
             // txtSearch
             // 
             this.txtSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.txtSearch.AutoSize = false;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(150, 48);
+            this.txtSearch.Size = new System.Drawing.Size(142, 26);
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripLabel2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(42, 45);
+            this.toolStripLabel2.Size = new System.Drawing.Size(51, 45);
             this.toolStripLabel2.Text = "Search";
             // 
             // dataGridView
@@ -202,7 +203,6 @@ namespace ExamApp
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prodidDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewImageColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -224,27 +224,22 @@ namespace ExamApp
             this.dataGridView.TabIndex = 11;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentDoubleClick);
             // 
+            // productsTableAdapter
+            // 
+            this.productsTableAdapter.ClearBeforeFill = true;
+            // 
             // prodidDataGridViewTextBoxColumn
             // 
             this.prodidDataGridViewTextBoxColumn.DataPropertyName = "prod_id";
-            this.prodidDataGridViewTextBoxColumn.HeaderText = "prod_id";
+            this.prodidDataGridViewTextBoxColumn.HeaderText = "Vendor Code";
             this.prodidDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.prodidDataGridViewTextBoxColumn.Name = "prodidDataGridViewTextBoxColumn";
             this.prodidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.prodidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "prod_vendcode";
-            this.dataGridViewTextBoxColumn1.HeaderText = "prod_vendcode";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.DataPropertyName = "prod_image";
-            this.dataGridViewImageColumn1.HeaderText = "prod_image";
+            this.dataGridViewImageColumn1.HeaderText = "Image";
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
@@ -262,7 +257,7 @@ namespace ExamApp
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "prod_name";
-            this.dataGridViewTextBoxColumn3.HeaderText = "prod_name";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Name";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -270,7 +265,7 @@ namespace ExamApp
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "prod_descr";
-            this.dataGridViewTextBoxColumn4.HeaderText = "prod_descr";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Description";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -279,7 +274,7 @@ namespace ExamApp
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "prod_price";
-            this.dataGridViewTextBoxColumn5.HeaderText = "prod_price";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Price";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -287,50 +282,10 @@ namespace ExamApp
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "prod_category";
-            this.dataGridViewTextBoxColumn6.HeaderText = "prod_category";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Category";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // productsTableAdapter
-            // 
-            this.productsTableAdapter.ClearBeforeFill = true;
-            // 
-            // BottomToolStripPanel
-            // 
-            this.BottomToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            this.BottomToolStripPanel.Name = "BottomToolStripPanel";
-            this.BottomToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.BottomToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.BottomToolStripPanel.Size = new System.Drawing.Size(0, 0);
-            // 
-            // TopToolStripPanel
-            // 
-            this.TopToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            this.TopToolStripPanel.Name = "TopToolStripPanel";
-            this.TopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.TopToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.TopToolStripPanel.Size = new System.Drawing.Size(0, 0);
-            // 
-            // RightToolStripPanel
-            // 
-            this.RightToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            this.RightToolStripPanel.Name = "RightToolStripPanel";
-            this.RightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.RightToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.RightToolStripPanel.Size = new System.Drawing.Size(0, 0);
-            // 
-            // LeftToolStripPanel
-            // 
-            this.LeftToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            this.LeftToolStripPanel.Name = "LeftToolStripPanel";
-            this.LeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.LeftToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.LeftToolStripPanel.Size = new System.Drawing.Size(0, 0);
-            // 
-            // ContentPanel
-            // 
-            this.ContentPanel.Size = new System.Drawing.Size(75, 41);
             // 
             // MainWindow
             // 
@@ -341,7 +296,7 @@ namespace ExamApp
             this.Controls.Add(this.panel1);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainWindow";
+            this.Text = "MUse";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
@@ -372,26 +327,20 @@ namespace ExamApp
         private System.Windows.Forms.BindingSource productsBindingSource;
         private Data.DatabaseDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton butEdit;
+        private System.Windows.Forms.ToolStripButton ButEdit;
         private System.Windows.Forms.ToolStripButton ButAdd;
         private System.Windows.Forms.ToolStripButton ButDel;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton ButCart;
         private System.Windows.Forms.ToolStripComboBox comboBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripTextBox txtSearch;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripTextBox txtSearch;
-        private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;
-        private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
-        private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
-        private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
-        private System.Windows.Forms.ToolStripContentPanel ContentPanel;
     }
 }

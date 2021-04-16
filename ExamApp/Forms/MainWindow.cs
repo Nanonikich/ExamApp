@@ -22,18 +22,38 @@ namespace ExamApp
 
         public DataRow User { get => _User; }
 
-        /// <summary>
-        /// Функция обновляет данные таблицы (БЕЗ АДАПТОРА НИКИТА!!! ГОВОРИЛ ЖЕ УДАЛИ ЕГО)
-        /// </summary>
         public void UpdateTable()
         {
             var db = new DB();
             var dtbl = new DataTable();
             db.OpenConnection();
             dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
-            db.GetConnection().Close();
+            db.CloseConnection();
 
             dataGridView.DataSource = dtbl;
+
+            // разделение на пользователей
+            //if (User[10].ToString() == "False")
+            //{
+            //    ButAdd.Visible = false;
+            //    ButEdit.Visible = false;
+            //    ButDel.Visible = false;
+            //}
+            //else
+            //{
+            //    ButCart.Enabled = false;
+            //}
+
+            // подбор значение в комбо-бокс
+            comboBox.Items.Clear();
+            comboBox.Items.Add("All");
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (!comboBox.Items.Contains(row.Cells[6].Value.ToString()))
+                {
+                    comboBox.Items.Add(row.Cells[6].Value.ToString());
+                }
+            }
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -41,16 +61,19 @@ namespace ExamApp
             UpdateTable();
         }
 
+
         private void ReadingValues()
         {
             var edPr = new AddProd(dataGridView.CurrentRow.Cells[0].Value.ToString(), this);
 
-            edPr.textBoxVC.Text = dataGridView.CurrentRow.Cells[1].Value.ToString();
-            edPr.pictureBox.Image = Image.FromStream(new MemoryStream((byte[])dataGridView.CurrentRow.Cells[2].Value‌​));
-            edPr.textBoxNam.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
-            edPr.textBoxDesc.Text = dataGridView.CurrentRow.Cells[5].Value.ToString();
-            edPr.textBoxPr.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
-            edPr.textBoxCat.Text = dataGridView.CurrentRow.Cells[7].Value.ToString();
+            var i = (byte[])dataGridView.CurrentRow.Cells[1].Value‌​;
+
+            edPr.textBoxVC.Text = dataGridView.CurrentRow.Cells[0].Value.ToString();
+            edPr.pictureBox.Image = Image.FromStream(new MemoryStream((byte[])dataGridView.CurrentRow.Cells[1].Value‌​));
+            edPr.textBoxNam.Text = dataGridView.CurrentRow.Cells[3].Value.ToString();
+            edPr.textBoxDesc.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
+            edPr.textBoxPr.Text = dataGridView.CurrentRow.Cells[5].Value.ToString();
+            edPr.textBoxCat.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
 
             edPr.buttAddPr.Enabled = false;
             edPr.Show();
@@ -73,10 +96,8 @@ namespace ExamApp
 
         private void ButAdd_Click(object sender, EventArgs e)
         {
-            /// Заблокировал окно
             this.Enabled = false;
 
-            /// Создаю окно Добавления
             var adPr = new AddProd(this);
             adPr.buttEdit.Enabled = false;
             adPr.Show();
@@ -90,9 +111,8 @@ namespace ExamApp
                 case DialogResult.Yes:
                     {
                         var db = new DB();
-                        var v = new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value.ToString()}'", db.GetConnection());
                         db.OpenConnection();
-                        v.ExecuteNonQuery();
+                        new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
                         db.CloseConnection();
                         UpdateTable();
                         MessageBox.Show("Success");
@@ -124,19 +144,21 @@ namespace ExamApp
         {
             var db = new DB();
             var dtbl = new DataTable();
+
             db.OpenConnection();
+
 
             if (comboBox.Text == "All")
             {
                 dtbl.Load(new SqlCommand("SELECT * FROM Products ", db.GetConnection()).ExecuteReader());
-                db.GetConnection().Close();
+                db.CloseConnection();
 
                 dataGridView.DataSource = dtbl;
             }
             else
             {
                 dtbl.Load(new SqlCommand($"SELECT * FROM Products WHERE prod_category = N'{comboBox.Text}'", db.GetConnection()).ExecuteReader());
-                db.GetConnection().Close();
+                db.CloseConnection();
 
                 dataGridView.DataSource = dtbl;
             }
@@ -144,9 +166,6 @@ namespace ExamApp
 
         private void DataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-
-            
             if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
             {
                 this.Enabled = false;
@@ -154,13 +173,12 @@ namespace ExamApp
                 var dw = new DescripWindow(this, data);
                 dw.Show();
             }
-
         }
 
-        private void ToolStripButton1_Click(object sender, EventArgs e)
+        private void ToolStripButCart_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            var bw = new Basket(this);
+            var bw = new Cart(_SignIn, this);
             bw.Show();
         }
     }
