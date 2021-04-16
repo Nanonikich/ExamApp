@@ -8,11 +8,13 @@ namespace ExamApp.Forms
 {
     public partial class Basket : Form
     {
+        SignIn _SignIn;
         MainWindow MainWin;
         DB db = new DB();
 
-        public Basket(MainWindow mw)
+        public Basket(SignIn sn, MainWindow mw)
         {
+            _SignIn = sn;
             MainWin = mw;
             InitializeComponent();
         }
@@ -69,7 +71,7 @@ namespace ExamApp.Forms
                 new SqlCommand($"DELETE FROM Basket WHERE bask_id = N'{dgvBasket.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
 
                 /// Организовать обновление после удаления \\\
-                new Basket(MainWin).Show();
+                new Basket(_SignIn, MainWin).Show();
                 Close();
                 db.CloseConnection();
 
@@ -101,7 +103,7 @@ namespace ExamApp.Forms
         {
             db.OpenConnection();
             var asquery = new SqlCommand($"Select * FROM Users WHERE user_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader();
-            var edProf = new SignUp(MainWin.User[0].ToString());
+            var edProf = new SignUp(_SignIn, MainWin.User[0].ToString());
             while (asquery.Read())
             {
                 edProf.textBoxSurn.Text = asquery.GetString(1);
@@ -114,6 +116,8 @@ namespace ExamApp.Forms
                 edProf.textBoxUsname.Text = asquery.GetString(8);
                 edProf.textBoxPassw.Text = asquery.GetString(9);
             }
+            Close();
+            MainWin.Close();
             edProf.butnReg.Enabled = false;
             edProf.Show();
         }

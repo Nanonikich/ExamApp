@@ -176,7 +176,7 @@ namespace ExamApp
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            var bw = new Basket(this);
+            var bw = new Basket(_SignIn, this);
             bw.Show();
         }
     }

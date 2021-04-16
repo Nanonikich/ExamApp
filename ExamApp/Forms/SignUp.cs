@@ -8,17 +8,13 @@ namespace ExamApp
 {
     public partial class SignUp : Form
     {
+        SignIn _SignIn;
         private string z;
-        public SignUp(string id)
+        public SignUp(SignIn sn, string id)
         {
+            _SignIn = sn;
             z = id;
             InitializeComponent();
-        }
-
-        private void ButnBack_Click(object sender, EventArgs e)
-        {
-            Close();
-            new SignIn().Show();
         }
 
         private void ButnReg_Click(object sender, EventArgs e)
@@ -66,14 +62,20 @@ namespace ExamApp
                         break;
                 }
                 Close();
-                var signIn = new SignIn();
-                signIn.butSignUp.Enabled = false;
-                signIn.Show();
+                
+                _SignIn.butSignUp.Enabled = false;
+                _SignIn.Show();
             }
             catch
             {
                 MessageBox.Show("Fuck");
             }
+        }
+
+        private void ButnBack_Click(object sender, EventArgs e)
+        {
+            Close();
+            _SignIn.Show();
         }
     }
 }
