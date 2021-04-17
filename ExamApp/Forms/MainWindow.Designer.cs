@@ -54,6 +54,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -77,6 +78,8 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.AutoSize = false;
+            this.toolStrip1.BackColor = System.Drawing.Color.Navy;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(35, 35);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ButAdd,
@@ -91,13 +94,14 @@
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1026, 48);
+            this.toolStrip1.Size = new System.Drawing.Size(1026, 57);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // ButAdd
             // 
             this.ButAdd.AutoSize = false;
+            this.ButAdd.ForeColor = System.Drawing.Color.White;
             this.ButAdd.Image = ((System.Drawing.Image)(resources.GetObject("ButAdd.Image")));
             this.ButAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButAdd.Name = "ButAdd";
@@ -109,6 +113,7 @@
             // 
             this.butEdit.AutoSize = false;
             this.butEdit.AutoToolTip = false;
+            this.butEdit.ForeColor = System.Drawing.Color.White;
             this.butEdit.Image = ((System.Drawing.Image)(resources.GetObject("butEdit.Image")));
             this.butEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.butEdit.Name = "butEdit";
@@ -120,11 +125,12 @@
             // ButDel
             // 
             this.ButDel.AutoSize = false;
+            this.ButDel.ForeColor = System.Drawing.Color.White;
             this.ButDel.Image = ((System.Drawing.Image)(resources.GetObject("ButDel.Image")));
             this.ButDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButDel.Name = "ButDel";
             this.ButDel.Size = new System.Drawing.Size(143, 45);
-            this.ButDel.Text = "Del";
+            this.ButDel.Text = "Delete";
             this.ButDel.Click += new System.EventHandler(this.ButDel_Click);
             // 
             // toolStripButton1
@@ -144,34 +150,34 @@
             // 
             this.comboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.comboBox.Items.AddRange(new object[] {});
-            this.comboBox.Margin = new System.Windows.Forms.Padding(1, 0, 15, 0);
+            this.comboBox.Margin = new System.Windows.Forms.Padding(1, 0, 5, 0);
             this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(142, 48);
+            this.comboBox.Size = new System.Drawing.Size(142, 57);
             this.comboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.toolStripLabel1.ForeColor = System.Drawing.Color.White;
+            this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(28, 45);
+            this.toolStripLabel1.Size = new System.Drawing.Size(28, 54);
             this.toolStripLabel1.Text = "Sort";
             // 
             // txtSearch
             // 
             this.txtSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(150, 48);
+            this.txtSearch.Size = new System.Drawing.Size(150, 57);
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel2.ForeColor = System.Drawing.Color.White;
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(42, 45);
+            this.toolStripLabel2.Size = new System.Drawing.Size(42, 54);
             this.toolStripLabel2.Text = "Search";
             // 
             // dataGridView
@@ -189,7 +195,8 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
             this.dataGridView.DataSource = this.productsBindingSource;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.GridColor = System.Drawing.Color.Black;
@@ -204,7 +211,6 @@
             this.dataGridView.StandardTab = true;
             this.dataGridView.TabIndex = 11;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentDoubleClick);
-
             // 
             // BottomToolStripPanel
             // 
@@ -296,11 +302,19 @@
             // 
             // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "prod_category";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "prod_count";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Total amount";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "prod_category";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // MainWindow
             // 
@@ -317,7 +331,6 @@
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -350,5 +363,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }

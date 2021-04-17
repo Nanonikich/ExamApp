@@ -47,12 +47,20 @@ namespace ExamApp.Forms
 
         private void ButShop_Click(object sender, EventArgs e)
         {
-            db.OpenConnection();
-            new SqlCommand($"INSERT INTO Basket VALUES('{_DataThing.Cells[3].Value}', {1}, {_DataThing.Cells[5].Value}, {MainWin.User[0]})", db.GetConnection()).ExecuteNonQuery();
-            db.CloseConnection();
-
-            MainWin.Enabled = true;
-            Close();
+            if (Convert.ToInt32(_DataThing.Cells[6].Value) < 1)
+            {
+                MessageBox.Show("Not available");
+            }
+            else
+            {
+                db.OpenConnection();
+                new SqlCommand($"INSERT INTO Basket VALUES('{_DataThing.Cells[3].Value}', {1}, {_DataThing.Cells[5].Value}, {MainWin.User[0]})", db.GetConnection()).ExecuteNonQuery();
+                new SqlCommand($"UPDATE Products SET prod_count = N'{Convert.ToInt32(_DataThing.Cells[6].Value) - 1}' WHERE prod_id = N'{MainWin.dataGridView.CurrentRow.Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
+                db.CloseConnection();
+                MainWin.UpdateTable();
+                MainWin.Enabled = true;
+                Close();
+            }
         }
 
         private void DescripWindow_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;

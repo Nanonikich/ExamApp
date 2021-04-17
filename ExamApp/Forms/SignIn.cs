@@ -37,7 +37,7 @@ namespace ExamApp
         {
             Hide();
             var signUp = new SignUp(this, "0");
-            signUp.butnEdit.Enabled = false;
+            signUp.butnEdit.Visible = false;
             signUp.Show();
         }
 

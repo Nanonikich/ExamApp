@@ -69,7 +69,10 @@ namespace ExamApp.Forms
             {
                 db.OpenConnection();
                 new SqlCommand($"DELETE FROM Basket WHERE bask_id = N'{dgvBasket.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
-
+                /// Количество удалённого товара прибавляется к кол-ву продукта в гл.окне
+                //var d = Convert.ToInt32(MainWin.dataGridView.CurrentRow.Cells[6].Value) + Convert.ToInt32(dgvBasket.SelectedRows[0].Cells[0].Value);
+                //new SqlCommand($"UPDATE Products SET prod_count = N'{d}' WHERE prod_name = N'{dgvBasket.CurrentRow.Cells[1].Value}'", db.GetConnection()).ExecuteNonQuery();
+                
                 /// Организовать обновление после удаления \\\
                 new Basket(_SignIn, MainWin).Show();
                 Close();
@@ -118,7 +121,7 @@ namespace ExamApp.Forms
             }
             Close();
             MainWin.Close();
-            edProf.butnReg.Enabled = false;
+            edProf.butnReg.Visible = false;
             edProf.Show();
         }
 

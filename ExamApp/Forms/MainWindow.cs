@@ -48,9 +48,9 @@ namespace ExamApp
             comboBox.Items.Add("All");
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                if (!comboBox.Items.Contains(row.Cells[6].Value.ToString()))
+                if (!comboBox.Items.Contains(row.Cells[7].Value.ToString()))
                 {
-                    comboBox.Items.Add(row.Cells[6].Value.ToString());
+                    comboBox.Items.Add(row.Cells[7].Value.ToString());
                 }
             }
         }
@@ -72,9 +72,10 @@ namespace ExamApp
             edPr.textBoxNam.Text = dataGridView.CurrentRow.Cells[3].Value.ToString();
             edPr.textBoxDesc.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
             edPr.textBoxPr.Text = dataGridView.CurrentRow.Cells[5].Value.ToString();
-            edPr.textBoxCat.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
+            edPr.textBoxCount.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
+            edPr.textBoxCat.Text = dataGridView.CurrentRow.Cells[7].Value.ToString();
 
-            edPr.buttAddPr.Enabled = false;
+            edPr.buttAddPr.Visible = false;
             edPr.Show();
         }
 
@@ -98,7 +99,7 @@ namespace ExamApp
             this.Enabled = false;
 
             var adPr = new AddProd(this);
-            adPr.buttEdit.Enabled = false;
+            adPr.buttEdit.Visible = false;
             adPr.Show();
         }
 
