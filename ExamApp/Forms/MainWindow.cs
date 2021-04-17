@@ -36,12 +36,12 @@ namespace ExamApp
             if (User[10].ToString() == "False")
             {
                 ButAdd.Visible = false;
-                butEdit.Visible = false;
+                ButEdit.Visible = false;
                 ButDel.Visible = false;
             }
             else
             {
-                toolStripButton1.Enabled = false;  
+                ButCart.Enabled = false;  
             }
 
             comboBox.Items.Clear();
@@ -174,11 +174,11 @@ namespace ExamApp
             }
         }
 
-        private void ToolStripButton1_Click(object sender, EventArgs e)
+        private void ButCart_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            var bw = new Basket(_SignIn, this);
-            bw.Show();
+            var cw = new Cart(_SignIn, this);
+            cw.Show();
         }
     }
 }

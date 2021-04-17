@@ -124,7 +124,6 @@ C:\Users\Acer\Desktop\repository\ExamApp\bin\Debug\ExamApp.exe
 C:\Users\Acer\Desktop\repository\ExamApp\bin\Debug\ExamApp.pdb
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.csprojAssemblyReference.cache
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.AddProd.resources
-C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.Forms.Basket.resources
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.Forms.DescripWindow.resources
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.MainWindow.resources
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.SignIn.resources
@@ -134,3 +133,4 @@ C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.csproj.GenerateResour
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.csproj.CoreCompileInputs.cache
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.exe
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.pdb
+C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.Forms.Cart.resources

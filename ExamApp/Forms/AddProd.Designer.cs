@@ -164,10 +164,10 @@ namespace ExamApp
             // 
             // buttAddPr
             // 
-            this.buttAddPr.BackColor = System.Drawing.Color.Black;
+            this.buttAddPr.BackColor = System.Drawing.Color.Purple;
             this.buttAddPr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttAddPr.ForeColor = System.Drawing.Color.White;
-            this.buttAddPr.Location = new System.Drawing.Point(54, 338);
+            this.buttAddPr.Location = new System.Drawing.Point(54, 342);
             this.buttAddPr.Name = "buttAddPr";
             this.buttAddPr.Size = new System.Drawing.Size(196, 34);
             this.buttAddPr.TabIndex = 14;
@@ -177,7 +177,7 @@ namespace ExamApp
             // 
             // buttEdit
             // 
-            this.buttEdit.BackColor = System.Drawing.Color.Black;
+            this.buttEdit.BackColor = System.Drawing.Color.Purple;
             this.buttEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttEdit.ForeColor = System.Drawing.Color.White;
             this.buttEdit.Location = new System.Drawing.Point(54, 342);
@@ -190,7 +190,7 @@ namespace ExamApp
             // 
             // buttBack
             // 
-            this.buttBack.BackColor = System.Drawing.Color.Black;
+            this.buttBack.BackColor = System.Drawing.Color.Purple;
             this.buttBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttBack.ForeColor = System.Drawing.Color.White;
             this.buttBack.Location = new System.Drawing.Point(54, 382);
@@ -203,7 +203,7 @@ namespace ExamApp
             // 
             // buttonPict
             // 
-            this.buttonPict.BackColor = System.Drawing.Color.Indigo;
+            this.buttonPict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonPict.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPict.ForeColor = System.Drawing.Color.White;
             this.buttonPict.Location = new System.Drawing.Point(47, 275);
@@ -216,7 +216,7 @@ namespace ExamApp
             // 
             // pictureBox
             // 
-            this.pictureBox.BackColor = System.Drawing.Color.Navy;
+            this.pictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Location = new System.Drawing.Point(94, 240);
@@ -260,7 +260,7 @@ namespace ExamApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(302, 425);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxCount);

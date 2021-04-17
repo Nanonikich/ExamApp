@@ -34,9 +34,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ButAdd = new System.Windows.Forms.ToolStripButton();
-            this.butEdit = new System.Windows.Forms.ToolStripButton();
+            this.ButEdit = new System.Windows.Forms.ToolStripButton();
             this.ButDel = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.ButCart = new System.Windows.Forms.ToolStripButton();
             this.comboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
@@ -80,12 +80,13 @@
             // 
             this.toolStrip1.AutoSize = false;
             this.toolStrip1.BackColor = System.Drawing.Color.Navy;
+            this.toolStrip1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(35, 35);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ButAdd,
-            this.butEdit,
+            this.ButEdit,
             this.ButDel,
-            this.toolStripButton1,
+            this.ButCart,
             this.comboBox,
             this.toolStripLabel1,
             this.txtSearch,
@@ -109,18 +110,18 @@
             this.ButAdd.Text = "Add";
             this.ButAdd.Click += new System.EventHandler(this.ButAdd_Click);
             // 
-            // butEdit
+            // ButEdit
             // 
-            this.butEdit.AutoSize = false;
-            this.butEdit.AutoToolTip = false;
-            this.butEdit.ForeColor = System.Drawing.Color.White;
-            this.butEdit.Image = ((System.Drawing.Image)(resources.GetObject("butEdit.Image")));
-            this.butEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.butEdit.Name = "butEdit";
-            this.butEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.butEdit.Size = new System.Drawing.Size(143, 45);
-            this.butEdit.Text = "Edit";
-            this.butEdit.Click += new System.EventHandler(this.ButEdit_Click);
+            this.ButEdit.AutoSize = false;
+            this.ButEdit.AutoToolTip = false;
+            this.ButEdit.ForeColor = System.Drawing.Color.White;
+            this.ButEdit.Image = ((System.Drawing.Image)(resources.GetObject("ButEdit.Image")));
+            this.ButEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButEdit.Name = "ButEdit";
+            this.ButEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ButEdit.Size = new System.Drawing.Size(143, 45);
+            this.ButEdit.Text = "Edit";
+            this.ButEdit.Click += new System.EventHandler(this.ButEdit_Click);
             // 
             // ButDel
             // 
@@ -133,18 +134,18 @@
             this.ButDel.Text = "Delete";
             this.ButDel.Click += new System.EventHandler(this.ButDel_Click);
             // 
-            // toolStripButton1
+            // ButCart
             // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(45, 45);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
+            this.ButCart.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ButCart.AutoSize = false;
+            this.ButCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButCart.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButCart.Image = ((System.Drawing.Image)(resources.GetObject("ButCart.Image")));
+            this.ButCart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButCart.Name = "ButCart";
+            this.ButCart.Size = new System.Drawing.Size(45, 45);
+            this.ButCart.ToolTipText = "Cart";
+            this.ButCart.Click += new System.EventHandler(this.ButCart_Click);
             // 
             // comboBox
             // 
@@ -161,7 +162,7 @@
             this.toolStripLabel1.ForeColor = System.Drawing.Color.White;
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(28, 54);
+            this.toolStripLabel1.Size = new System.Drawing.Size(35, 54);
             this.toolStripLabel1.Text = "Sort";
             // 
             // txtSearch
@@ -177,7 +178,7 @@
             this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel2.ForeColor = System.Drawing.Color.White;
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(42, 54);
+            this.toolStripLabel2.Size = new System.Drawing.Size(51, 54);
             this.toolStripLabel2.Text = "Search";
             // 
             // dataGridView
@@ -343,10 +344,10 @@
         public System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource productsBindingSource;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton butEdit;
+        private System.Windows.Forms.ToolStripButton ButEdit;
         private System.Windows.Forms.ToolStripButton ButAdd;
         private System.Windows.Forms.ToolStripButton ButDel;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton ButCart;
         private System.Windows.Forms.ToolStripComboBox comboBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;

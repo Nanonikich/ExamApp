@@ -153,7 +153,7 @@ namespace ExamApp
             // 
             // butnReg
             // 
-            this.butnReg.BackColor = System.Drawing.Color.Black;
+            this.butnReg.BackColor = System.Drawing.Color.Purple;
             this.butnReg.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnReg.ForeColor = System.Drawing.Color.White;
             this.butnReg.Location = new System.Drawing.Point(56, 342);
@@ -166,7 +166,7 @@ namespace ExamApp
             // 
             // butnEdit
             // 
-            this.butnEdit.BackColor = System.Drawing.Color.Black;
+            this.butnEdit.BackColor = System.Drawing.Color.Purple;
             this.butnEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnEdit.ForeColor = System.Drawing.Color.White;
             this.butnEdit.Location = new System.Drawing.Point(56, 342);
@@ -179,7 +179,7 @@ namespace ExamApp
             // 
             // butnBack
             // 
-            this.butnBack.BackColor = System.Drawing.Color.Black;
+            this.butnBack.BackColor = System.Drawing.Color.Purple;
             this.butnBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnBack.ForeColor = System.Drawing.Color.White;
             this.butnBack.Location = new System.Drawing.Point(56, 392);
@@ -275,7 +275,7 @@ namespace ExamApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(299, 450);
             this.Controls.Add(this.textBoxPassw);
             this.Controls.Add(this.textBoxUsname);
