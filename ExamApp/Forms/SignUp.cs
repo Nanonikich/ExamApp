@@ -8,12 +8,12 @@ namespace ExamApp
 {
     public partial class SignUp : Form
     {
-        private string z;
         SignIn _SignIn;
-        public SignUp(string id, SignIn si)
+        private string z;
+        public SignUp(SignIn sn, string id)
         {
+            _SignIn = sn;
             z = id;
-            _SignIn = si;
             InitializeComponent();
         }
 
@@ -21,7 +21,7 @@ namespace ExamApp
         {
             try
             {
-                foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
+                foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v => 
                                        textBoxSurn.Text.Contains(v) || textBoxName.Text.Contains(v) || textBoxPatr.Text.Contains(v) || textBoxPhone.Text.Contains(v) || textBoxCity.Text.Contains(v) || textBoxUsname.Text.Contains(v) || textBoxPassw.Text.Contains(v) ||
                                        string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text)).Select(v => new { }))
                 {
@@ -44,7 +44,7 @@ namespace ExamApp
                 MessageBox.Show("This username is already in the system");
             }
         }
-
+  
         private void ButnEdit_Click(object sender, EventArgs e)
         {
             try
@@ -62,9 +62,9 @@ namespace ExamApp
                         break;
                 }
                 Close();
-                var signIn = new SignIn();
-                signIn.butSignUp.Enabled = false;
-                signIn.Show();
+                
+                _SignIn.butSignUp.Enabled = false;
+                _SignIn.Show();
             }
             catch
             {
@@ -75,12 +75,6 @@ namespace ExamApp
         private void ButnBack_Click(object sender, EventArgs e)
         {
             Close();
-            _SignIn.Enabled = true;
-        }
-
-        private void SignUp_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _SignIn.Enabled = true;
             _SignIn.Show();
         }
     }

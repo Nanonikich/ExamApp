@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace ExamApp.Forms
 {
@@ -19,25 +19,48 @@ namespace ExamApp.Forms
             InitializeComponent();
         }
 
-        private void Cart_Load(object sender, EventArgs e)
+        private void ButBack_Click(object sender, EventArgs e)
+        {
+            MainWin.Enabled = true;
+            MainWin.UpdateTable();
+            Close();
+        }
+
+        private void Basket_Load(object sender, EventArgs e)
         {
             db.OpenConnection();
 
             var asquery = new SqlCommand("SELECT cart_id, Products.prod_image, cart_name, cart_count_prod, cart_price, Users.user_id FROM Cart\n" +
                                 "JOIN Products ON Products.prod_name = cart_name\n" +
                                 "JOIN Users ON Users.user_id = cart_custom " +
-                                $"WHERE cart_custom = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader();
+                                $"WHERE cart_custom = N'{MainWin.User[0]}'", db.GetConnection());
 
 
-            while (asquery.Read())
-            {
-                dgvCart.Rows.Add(asquery[0],
-                                   asquery[1],
-                                   asquery[2].ToString(),
-                                   asquery[3].ToString(),
-                                   asquery[4].ToString(),
-                                   asquery[5].ToString());
-            }
+            SqlDataAdapter sdr = new SqlDataAdapter(asquery);
+            DataTable dt = new DataTable();
+            sdr.Fill(dt);
+            dgvCart.DataSource = dt;
+            dgvCart.Columns[0].HeaderText = "ID";
+            dgvCart.Columns[1].HeaderText = "Image";
+            dgvCart.Columns[2].HeaderText = "Name";
+            dgvCart.Columns[3].HeaderText = "Count";
+            dgvCart.Columns[4].HeaderText = "Price";
+            dgvCart.Columns[5].Visible = false;
+
+
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.HeaderText = "Delete";
+            btn.Name = "button";
+            btn.Text = "DELETE";
+            btn.UseColumnTextForButtonValue = true;
+            dgvCart.Columns.Add(btn);
+
+
+
+            dgvCart.Columns[0].ReadOnly = true;
+            dgvCart.Columns[1].ReadOnly = true;
+            dgvCart.Columns[2].ReadOnly = true;
+            dgvCart.Columns[4].ReadOnly = true;
 
             db.CloseConnection();
 
@@ -61,29 +84,37 @@ namespace ExamApp.Forms
             if (e.ColumnIndex == 6)
             {
                 db.OpenConnection();
-                new SqlCommand($"DELETE FROM Cart WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
+                new SqlCommand($"DELETE FROM Cart WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery() ;
+                // сделать обновление
 
-                /// Организовать обновление после удаления \\\
-                new Cart(_SignIn, MainWin).Show();
-                Close();
+
+                /// Количество удалённого товара прибавляется к кол-ву продукта в гл.окне
+                //var d = Convert.ToInt32(MainWin.dataGridView.CurrentRow.Cells[6].Value) + Convert.ToInt32(dgvCart.SelectedRows[0].Cells[0].Value);
+                //new SqlCommand($"UPDATE Products SET prod_count = N'{d}' WHERE prod_name = N'{dgvCart.CurrentRow.Cells[1].Value}'", db.GetConnection()).ExecuteNonQuery();
+                //MainWin.UpdateTable();
                 db.CloseConnection();
 
                 MessageBox.Show("Success");
             }
         }
 
-        /// Обновление количества
         private void DgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.ColumnIndex == 3)
-            //{
-            //    SqlCommand cmd = db.GetConnection().CreateCommand();
-            //    cmd.CommandType = CommandType.Text;
-            //    db.OpenConnection();
-            //    cmd.CommandText = $"UPDATE Basket SET bask_count_prod = N'{0}' WHERE bask_id = N'{172}'";
-            //    cmd.ExecuteNonQuery();
-            //    db.CloseConnection();
-            //}
+
+            if (e.ColumnIndex == 3 && dgvCart.RowCount > 0)
+            {
+                SqlCommand cmd = db.GetConnection().CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                db.OpenConnection();
+                cmd.CommandText = $"UPDATE Cart SET cart_count_prod = N'{dgvCart.CurrentRow.Cells[3].Value}' WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'";
+                cmd.ExecuteNonQuery();
+
+
+                new SqlCommand($"UPDATE Products SET prod_count = N'{Convert.ToInt32(MainWin.dataGridView.CurrentRow.Cells[6].Value) - Convert.ToInt32(dgvCart.CurrentRow.Cells[3].Value)}' WHERE prod_name = N'{dgvCart.SelectedRows[0].Cells[2].Value}'", db.GetConnection()).ExecuteNonQuery();
+                MainWin.UpdateTable();
+
+                db.CloseConnection();
+            }
         }
 
         private void EdProf_Click(object sender, EventArgs e)
@@ -92,19 +123,11 @@ namespace ExamApp.Forms
             ReadVal();
         }
 
-        private void ButBack_Click(object sender, EventArgs e)
-        {
-            MainWin.Enabled = true;
-            MainWin.UpdateTable();
-            Close();
-        }
-
-
         private void ReadVal()
         {
             db.OpenConnection();
             var asquery = new SqlCommand($"Select * FROM Users WHERE user_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader();
-            var edProf = new SignUp(MainWin.User[0].ToString(), _SignIn);
+            var edProf = new SignUp(_SignIn, MainWin.User[0].ToString());
             while (asquery.Read())
             {
                 edProf.textBoxSurn.Text = asquery.GetString(1);
@@ -117,12 +140,12 @@ namespace ExamApp.Forms
                 edProf.textBoxUsname.Text = asquery.GetString(8);
                 edProf.textBoxPassw.Text = asquery.GetString(9);
             }
-            edProf.butnReg.Enabled = false;
             Close();
             MainWin.Close();
+            edProf.butnReg.Visible = false;
             edProf.Show();
         }
-
-        private void Cart_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
+        /// Обновление количества
+        private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
     }
 }

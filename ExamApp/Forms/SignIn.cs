@@ -7,7 +7,6 @@ namespace ExamApp
 {
     public partial class SignIn : Form
     {
-
         public SignIn()
         {
             InitializeComponent();
@@ -37,8 +36,8 @@ namespace ExamApp
         private void ButSignUp_Click(object sender, EventArgs e)
         {
             Hide();
-            var signUp = new SignUp("0", this);
-            signUp.butnEdit.Enabled = false;
+            var signUp = new SignUp(this, "0");
+            signUp.butnEdit.Visible = false;
             signUp.Show();
         }
 

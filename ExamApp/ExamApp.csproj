@@ -63,12 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\DatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
-      <CustomToolNamespace>Data</CustomToolNamespace>
-    </Compile>
     <Compile Include="Forms\AddProd.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>Forms</CustomToolNamespace>
@@ -82,12 +76,14 @@
     </Compile>
     <Compile Include="Forms\Cart.cs">
       <SubType>Form</SubType>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
     <Compile Include="Forms\Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DescripWindow.cs">
       <SubType>Form</SubType>
+      <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
     <Compile Include="Forms\DescripWindow.Designer.cs">
       <DependentUpon>DescripWindow.cs</DependentUpon>
@@ -116,6 +112,7 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Program.cs">
       <CustomToolNamespace>ExamApp</CustomToolNamespace>
     </Compile>
@@ -152,20 +149,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Data\DatabaseDataSet.xsc">
-      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
-      <CustomToolNamespace>Data</CustomToolNamespace>
-    </None>
-    <None Include="Data\DatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-      <CustomToolNamespace>Data</CustomToolNamespace>
-    </None>
-    <None Include="Data\DatabaseDataSet.xss">
-      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
-      <CustomToolNamespace>Data</CustomToolNamespace>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
