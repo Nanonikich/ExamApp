@@ -23,6 +23,20 @@ namespace ExamApp
         public DataRow User { get => _User; }
 
 
+        public int GetCountFromCartByName(string name)
+        {
+            var db = new DB();
+            db.OpenConnection();
+            var reader = new SqlCommand("SELECT SUM(cart_count_prod) FROM Cart\n" +
+                                        $"Where cart_name = N'{name}'", db.GetConnection()).ExecuteReader();
+            int sum = 0;
+
+            while (reader.Read())
+                sum = reader.GetInt32(0);
+
+            return sum;
+        }
+
         public void UpdateTable()
         {
             var db = new DB();
@@ -30,6 +44,21 @@ namespace ExamApp
             db.OpenConnection();
             dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
             db.GetConnection().Close();
+
+
+            #region Работа с Таблицей продуктов
+
+            for (int row = 0; row < dtbl.Rows.Count; row++)
+            {
+                var currentRow = dtbl.Rows[row];
+                var nameProduct = (string)currentRow[3];
+                currentRow[6] = (int)currentRow[6] - GetCountFromCartByName(nameProduct);
+
+            }
+            
+
+            #endregion
+
 
             dataGridView.DataSource = dtbl;
 
@@ -177,6 +206,9 @@ namespace ExamApp
 
         #region Кол-во товара
 
+
+
+        
 
         #endregion
 
