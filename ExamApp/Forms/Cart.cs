@@ -11,11 +11,22 @@ namespace ExamApp.Forms
         SignIn _SignIn;
         MainWindow MainWin;
         DB db = new DB();
+        private DataTable _TableWithAllCartsProducts;
+
+        public DataTable TableWithAllCartsProducts
+        {
+            get => _TableWithAllCartsProducts;
+            set
+            {
+                _TableWithAllCartsProducts = value;
+            }
+        }
 
         public Cart(SignIn sn, MainWindow mw)
         {
             _SignIn = sn;
             MainWin = mw;
+            TableWithAllCartsProducts = new DataTable();
             InitializeComponent();
         }
 
@@ -26,27 +37,42 @@ namespace ExamApp.Forms
             Close();
         }
 
-        private void Basket_Load(object sender, EventArgs e)
+
+        private void LoadNewDataFormCart()
         {
             db.OpenConnection();
 
             var asquery = new SqlCommand("SELECT cart_id, Products.prod_image, cart_name, cart_count_prod, cart_price, Users.user_id FROM Cart\n" +
                                 "JOIN Products ON Products.prod_name = cart_name\n" +
                                 "JOIN Users ON Users.user_id = cart_custom " +
-                                $"WHERE cart_custom = N'{MainWin.User[0]}'", db.GetConnection());
+                                $"WHERE cart_custom = N'{MainWin.User[0]}'",
+                                db.GetConnection())
+                .ExecuteReader();
 
 
-            SqlDataAdapter sdr = new SqlDataAdapter(asquery);
-            DataTable dt = new DataTable();
-            sdr.Fill(dt);
-            dgvCart.DataSource = dt;
+            TableWithAllCartsProducts.Clear();
+            TableWithAllCartsProducts.Load(asquery);
+
+            dgvCart.DataSource = TableWithAllCartsProducts;
+
+            db.CloseConnection();
+
+        }
+
+        private void Basket_Load(object sender, EventArgs e)
+        {
+            
+            LoadNewDataFormCart();
+
+
+            #region Колонки
             dgvCart.Columns[0].HeaderText = "ID";
             dgvCart.Columns[1].HeaderText = "Image";
             dgvCart.Columns[2].HeaderText = "Name";
             dgvCart.Columns[3].HeaderText = "Count";
             dgvCart.Columns[4].HeaderText = "Price";
             dgvCart.Columns[5].Visible = false;
-
+            #endregion
 
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             btn.HeaderText = "Delete";
@@ -62,7 +88,7 @@ namespace ExamApp.Forms
             dgvCart.Columns[2].ReadOnly = true;
             dgvCart.Columns[4].ReadOnly = true;
 
-            db.CloseConnection();
+            
 
             TotalAmout();
         }
@@ -81,10 +107,21 @@ namespace ExamApp.Forms
 
         private void DgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            var selectRow = dgvCart.CurrentRow;
+
+
             if (e.ColumnIndex == 6)
             {
+
                 db.OpenConnection();
-                new SqlCommand($"DELETE FROM Cart WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery() ;
+
+                var row = dgvCart.Rows[e.RowIndex].Cells[0].Value;
+
+                string queryString = $"DELETE FROM Cart WHERE cart_id = {row}";
+
+                new SqlCommand(queryString, db.GetConnection()).ExecuteNonQuery();
+                db.CloseConnection();
                 // сделать обновление
 
 
@@ -92,7 +129,10 @@ namespace ExamApp.Forms
                 //var d = Convert.ToInt32(MainWin.dataGridView.CurrentRow.Cells[6].Value) + Convert.ToInt32(dgvCart.SelectedRows[0].Cells[0].Value);
                 //new SqlCommand($"UPDATE Products SET prod_count = N'{d}' WHERE prod_name = N'{dgvCart.CurrentRow.Cells[1].Value}'", db.GetConnection()).ExecuteNonQuery();
                 //MainWin.UpdateTable();
-                db.CloseConnection();
+
+                LoadNewDataFormCart();
+
+                
 
                 MessageBox.Show("Success");
             }

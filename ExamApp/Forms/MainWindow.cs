@@ -174,6 +174,12 @@ namespace ExamApp
             }
         }
 
+
+        #region Кол-во товара
+
+
+        #endregion
+
         private void ButCart_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
