@@ -33,7 +33,6 @@ namespace ExamApp.Forms
         private void ButBack_Click(object sender, EventArgs e)
         {
             MainWin.Enabled = true;
-            MainWin.UpdateTable();
             Close();
         }
 
@@ -122,16 +121,11 @@ namespace ExamApp.Forms
 
                 new SqlCommand(queryString, db.GetConnection()).ExecuteNonQuery();
                 db.CloseConnection();
-                // сделать обновление
-
-
-                /// Количество удалённого товара прибавляется к кол-ву продукта в гл.окне
-                //var d = Convert.ToInt32(MainWin.dataGridView.CurrentRow.Cells[6].Value) + Convert.ToInt32(dgvCart.SelectedRows[0].Cells[0].Value);
-                //new SqlCommand($"UPDATE Products SET prod_count = N'{d}' WHERE prod_name = N'{dgvCart.CurrentRow.Cells[1].Value}'", db.GetConnection()).ExecuteNonQuery();
-                //MainWin.UpdateTable();
+                
 
                 LoadNewDataFormCart();
 
+                MainWin.UpdateTable();
                 
 
                 MessageBox.Show("Success");
@@ -148,10 +142,6 @@ namespace ExamApp.Forms
                 db.OpenConnection();
                 cmd.CommandText = $"UPDATE Cart SET cart_count_prod = N'{dgvCart.CurrentRow.Cells[3].Value}' WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'";
                 cmd.ExecuteNonQuery();
-
-
-                new SqlCommand($"UPDATE Products SET prod_count = N'{Convert.ToInt32(MainWin.dataGridView.CurrentRow.Cells[6].Value) - Convert.ToInt32(dgvCart.CurrentRow.Cells[3].Value)}' WHERE prod_name = N'{dgvCart.SelectedRows[0].Cells[2].Value}'", db.GetConnection()).ExecuteNonQuery();
-                MainWin.UpdateTable();
 
                 db.CloseConnection();
             }
