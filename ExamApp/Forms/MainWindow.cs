@@ -218,5 +218,13 @@ namespace ExamApp
             var cw = new Cart(_SignIn, this);
             cw.Show();
         }
+
+        private void ButHistOrd_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+
+            var histOrd = new HistoryOrders(this);
+            histOrd.Show();
+        }
     }
 }

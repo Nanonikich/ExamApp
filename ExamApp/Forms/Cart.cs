@@ -36,22 +36,20 @@ namespace ExamApp.Forms
             Close();
         }
 
-
         private void LoadNewDataFormCart()
         {
             db.OpenConnection();
 
-            var asquery = new SqlCommand("SELECT cart_id, Products.prod_image, cart_name, cart_count_prod, cart_price, Users.user_id FROM Cart\n" +
-                                "JOIN Products ON Products.prod_name = cart_name\n" +
+            var asquery = new SqlCommand("SELECT cart_id, cart_prod_id, Products.prod_image, cart_name, cart_count_prod, cart_price, Users.user_id FROM Cart\n" +
+                                "JOIN Products ON Products.prod_id = cart_prod_id\n" +
                                 "JOIN Users ON Users.user_id = cart_custom " +
                                 $"WHERE cart_custom = N'{MainWin.User[0]}'",
                                 db.GetConnection())
                 .ExecuteReader();
-
-
+            
             TableWithAllCartsProducts.Clear();
             TableWithAllCartsProducts.Load(asquery);
-
+            TotalAmout();
             dgvCart.DataSource = TableWithAllCartsProducts;
 
             db.CloseConnection();
@@ -66,11 +64,12 @@ namespace ExamApp.Forms
 
             #region Колонки
             dgvCart.Columns[0].HeaderText = "ID";
-            dgvCart.Columns[1].HeaderText = "Image";
-            dgvCart.Columns[2].HeaderText = "Name";
-            dgvCart.Columns[3].HeaderText = "Count";
-            dgvCart.Columns[4].HeaderText = "Price";
-            dgvCart.Columns[5].Visible = false;
+            dgvCart.Columns[1].HeaderText = "Vendor code";
+            dgvCart.Columns[2].HeaderText = "Image";
+            dgvCart.Columns[3].HeaderText = "Name";
+            dgvCart.Columns[4].HeaderText = "Count";
+            dgvCart.Columns[5].HeaderText = "Price";
+            dgvCart.Columns[6].Visible = false;
             #endregion
 
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -85,32 +84,36 @@ namespace ExamApp.Forms
             dgvCart.Columns[0].ReadOnly = true;
             dgvCart.Columns[1].ReadOnly = true;
             dgvCart.Columns[2].ReadOnly = true;
-            dgvCart.Columns[4].ReadOnly = true;
+            dgvCart.Columns[3].ReadOnly = true;
+            dgvCart.Columns[5].ReadOnly = true;
 
             
 
             TotalAmout();
         }
 
+
+        // Общая цена за выбранные товары
         public void TotalAmout()
         {
             Double result = 0;
             foreach (var row in from DataGridViewRow row in dgvCart.Rows
-                                where row.Cells[4].Value != null
+                                where row.Cells[5].Value != null
                                 select row)
             {
-                result += (Convert.ToDouble(row.Cells[4].Value) * Convert.ToDouble(row.Cells[3].Value));
+                result += (Convert.ToDouble(row.Cells[5].Value) * Convert.ToDouble(row.Cells[4].Value));
             }
             labelTotal.Text = $"Total: {result}";
         }
 
+        // Удаление товара из корзины по кнопке
         private void DgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
             var selectRow = dgvCart.CurrentRow;
 
 
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 7)
             {
 
                 db.OpenConnection();
@@ -120,8 +123,8 @@ namespace ExamApp.Forms
                 string queryString = $"DELETE FROM Cart WHERE cart_id = {row}";
 
                 new SqlCommand(queryString, db.GetConnection()).ExecuteNonQuery();
+
                 db.CloseConnection();
-                
 
                 LoadNewDataFormCart();
 
@@ -132,17 +135,14 @@ namespace ExamApp.Forms
             }
         }
 
+        // Изменение количества в корзине
         private void DgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (e.ColumnIndex == 3 && dgvCart.RowCount > 0)
+            if (e.ColumnIndex == 4)
             {
-                SqlCommand cmd = db.GetConnection().CreateCommand();
-                cmd.CommandType = CommandType.Text;
                 db.OpenConnection();
-                cmd.CommandText = $"UPDATE Cart SET cart_count_prod = N'{dgvCart.CurrentRow.Cells[3].Value}' WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'";
-                cmd.ExecuteNonQuery();
-
+                new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{dgvCart.CurrentRow.Cells[4].Value}' WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
+                TotalAmout();
                 db.CloseConnection();
             }
         }
@@ -175,7 +175,18 @@ namespace ExamApp.Forms
             edProf.butnReg.Visible = false;
             edProf.Show();
         }
-        /// Обновление количества
+
+
         private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
+
+
+        private void ButApply_Click(object sender, EventArgs e)
+        {
+            if (dgvCart.RowCount > 0 || dgvCart.Columns[6] == MainWin.User[0])
+                //db.OpenConnection();
+                //new SqlCommand($"INSERT INTO Orders VALUES(cart_custom, cart_id, cart_count_prod, {0}, cart_price, '{2020 - 12 - 02}', {2020 - 12 - 29}) WHERE cart_custom == {MainWin.User[0]}", db.GetConnection()).ExecuteNonQuery();
+                //db.CloseConnection();
+            MessageBox.Show("Your order is accepted");
+        }
     }
 }
