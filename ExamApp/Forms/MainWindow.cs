@@ -77,7 +77,16 @@ namespace ExamApp
             {
                 ButCart.Enabled = false;  
             }
+        }
 
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            UpdateTable();
+            ComboBoxUpd();
+        }
+
+        private void ComboBoxUpd()
+        {
             comboBox.Items.Clear();
             comboBox.Items.Add("All");
             foreach (DataGridViewRow row in dataGridView.Rows)
@@ -87,12 +96,6 @@ namespace ExamApp
                     comboBox.Items.Add(row.Cells[7].Value.ToString());
                 }
             }
-        }
-
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            UpdateTable();
-            
         }
 
         private void ReadingValues()
