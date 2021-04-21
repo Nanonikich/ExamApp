@@ -138,12 +138,15 @@ namespace ExamApp.Forms
         // Изменение количества в корзине
         private void DgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 4 && dgvCart.RowCount > 0)
             {
                 db.OpenConnection();
                 new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{dgvCart.CurrentRow.Cells[4].Value}' WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
                 TotalAmout();
                 db.CloseConnection();
+
+                LoadNewDataFormCart();
+                MainWin.UpdateTable();
             }
         }
 

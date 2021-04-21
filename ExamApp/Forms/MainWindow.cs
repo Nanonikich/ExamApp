@@ -25,16 +25,21 @@ namespace ExamApp
 
         public int GetCountFromCartByName(string name)
         {
-            var db = new DB();
-            db.OpenConnection();
-            var reader = new SqlCommand("SELECT SUM(cart_count_prod) FROM Cart\n" +
-                                        $"Where cart_name = N'{name}'", db.GetConnection()).ExecuteReader();
-            int sum = 0;
+            var cart = new Cart(_SignIn, this);
+            try
+            {
+                var db = new DB();
+                db.OpenConnection();
+                var reader = new SqlCommand("SELECT SUM(cart_count_prod) FROM Cart\n" +
+                                            $"Where cart_name = N'{name}'", db.GetConnection()).ExecuteReader();
+                int sum = 0;
+                while (reader.Read())
+                    sum = reader.GetInt32(0);
+                return sum;
+            }
+            catch {return 0;}
+                
 
-            while (reader.Read())
-                sum = reader.GetInt32(0);
-
-            return sum;
         }
 
         public void UpdateTable()
