@@ -47,7 +47,7 @@ namespace ExamApp
             this.butSignIn.Location = new System.Drawing.Point(695, 306);
             this.butSignIn.Name = "butSignIn";
             this.butSignIn.Size = new System.Drawing.Size(158, 49);
-            this.butSignIn.TabIndex = 0;
+            this.butSignIn.TabIndex = 3;
             this.butSignIn.Text = "SignIn";
             this.butSignIn.UseVisualStyleBackColor = false;
             this.butSignIn.Click += new System.EventHandler(this.ButSignIn_Click);
@@ -60,7 +60,7 @@ namespace ExamApp
             this.butSignUp.Location = new System.Drawing.Point(695, 361);
             this.butSignUp.Name = "butSignUp";
             this.butSignUp.Size = new System.Drawing.Size(158, 49);
-            this.butSignUp.TabIndex = 1;
+            this.butSignUp.TabIndex = 4;
             this.butSignUp.Text = "SignUp";
             this.butSignUp.UseVisualStyleBackColor = false;
             this.butSignUp.Click += new System.EventHandler(this.ButSignUp_Click);
@@ -117,7 +117,7 @@ namespace ExamApp
             this.textBoxPassw.Multiline = true;
             this.textBoxPassw.Name = "textBoxPassw";
             this.textBoxPassw.Size = new System.Drawing.Size(188, 30);
-            this.textBoxPassw.TabIndex = 0;
+            this.textBoxPassw.TabIndex = 2;
             // 
             // SignIn
             // 

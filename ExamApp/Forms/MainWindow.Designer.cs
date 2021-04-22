@@ -41,6 +41,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.ButHistOrd = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -90,7 +91,8 @@
             this.comboBox,
             this.toolStripLabel1,
             this.txtSearch,
-            this.toolStripLabel2});
+            this.toolStripLabel2,
+            this.ButHistOrd});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.toolStrip1.Name = "toolStrip1";
@@ -180,6 +182,19 @@
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(51, 54);
             this.toolStripLabel2.Text = "Search";
+            // 
+            // ButHistOrd
+            // 
+            this.ButHistOrd.AutoSize = false;
+            this.ButHistOrd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButHistOrd.ForeColor = System.Drawing.Color.White;
+            this.ButHistOrd.Image = ((System.Drawing.Image)(resources.GetObject("ButHistOrd.Image")));
+            this.ButHistOrd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButHistOrd.Name = "ButHistOrd";
+            this.ButHistOrd.Size = new System.Drawing.Size(85, 54);
+            this.ButHistOrd.Text = "Orders";
+            this.ButHistOrd.ToolTipText = "Orders";
+            this.ButHistOrd.Click += new System.EventHandler(this.ButHistOrd_Click);
             // 
             // dataGridView
             // 
@@ -347,6 +362,7 @@
         private System.Windows.Forms.ToolStripButton ButEdit;
         private System.Windows.Forms.ToolStripButton ButAdd;
         private System.Windows.Forms.ToolStripButton ButDel;
+        private System.Windows.Forms.ToolStripButton ButHistOrd;
         private System.Windows.Forms.ToolStripButton ButCart;
         private System.Windows.Forms.ToolStripComboBox comboBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;

@@ -30,13 +30,6 @@ namespace ExamApp.Forms
         private void InitializeComponent()
         {
             this.dgvCart = new System.Windows.Forms.DataGridView();
-            this.bask_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bask_img = new System.Windows.Forms.DataGridViewImageColumn();
-            this.bask_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bask_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bask_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bask_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del_prod_basket = new System.Windows.Forms.DataGridViewButtonColumn();
             this.butBack = new System.Windows.Forms.Button();
             this.butApply = new System.Windows.Forms.Button();
             this.labelTotal = new System.Windows.Forms.Label();
@@ -58,72 +51,18 @@ namespace ExamApp.Forms
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.BackgroundColor = System.Drawing.Color.White;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.bask_id,
-            this.bask_img,
-            this.bask_name,
-            this.bask_count,
-            this.bask_price,
-            this.bask_customer,
-            this.del_prod_basket});
             this.dgvCart.GridColor = System.Drawing.Color.Black;
-            this.dgvCart.Location = new System.Drawing.Point(0, 42);
+            this.dgvCart.Location = new System.Drawing.Point(0, 39);
             this.dgvCart.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 100;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(800, 203);
+            this.dgvCart.Size = new System.Drawing.Size(819, 288);
             this.dgvCart.StandardTab = true;
             this.dgvCart.TabIndex = 11;
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCart_CellContentClick);
             this.dgvCart.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCart_CellValueChanged);
-            // 
-            // bask_id
-            // 
-            this.bask_id.HeaderText = "Id";
-            this.bask_id.Name = "bask_id";
-            this.bask_id.Visible = false;
-            // 
-            // bask_img
-            // 
-            this.bask_img.HeaderText = "Image";
-            this.bask_img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.bask_img.Name = "bask_img";
-            this.bask_img.ReadOnly = true;
-            // 
-            // bask_name
-            // 
-            this.bask_name.HeaderText = "Name";
-            this.bask_name.Name = "bask_name";
-            this.bask_name.ReadOnly = true;
-            // 
-            // bask_count
-            // 
-            this.bask_count.HeaderText = "Count";
-            this.bask_count.Name = "bask_count";
-            // 
-            // bask_price
-            // 
-            this.bask_price.HeaderText = "Price";
-            this.bask_price.Name = "bask_price";
-            this.bask_price.ReadOnly = true;
-            // 
-            // bask_customer
-            // 
-            this.bask_customer.HeaderText = "Buyer ID";
-            this.bask_customer.Name = "bask_customer";
-            this.bask_customer.ReadOnly = true;
-            this.bask_customer.Visible = false;
-            // 
-            // del_prod_basket
-            // 
-            this.del_prod_basket.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.del_prod_basket.HeaderText = "Delete";
-            this.del_prod_basket.Name = "del_prod_basket";
-            this.del_prod_basket.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del_prod_basket.Text = "DELETE";
-            this.del_prod_basket.UseColumnTextForButtonValue = true;
             // 
             // butBack
             // 
@@ -149,12 +88,13 @@ namespace ExamApp.Forms
             this.butApply.TabIndex = 12;
             this.butApply.Text = "Apply";
             this.butApply.UseVisualStyleBackColor = false;
+            this.butApply.Click += new System.EventHandler(this.ButApply_Click);
             // 
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTotal.Location = new System.Drawing.Point(432, 255);
+            this.labelTotal.Location = new System.Drawing.Point(414, 327);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(59, 23);
             this.labelTotal.TabIndex = 14;
@@ -176,11 +116,12 @@ namespace ExamApp.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Navy;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 45);
+            this.panel1.Size = new System.Drawing.Size(819, 45);
             this.panel1.TabIndex = 16;
             // 
             // label1
@@ -200,9 +141,9 @@ namespace ExamApp.Forms
             this.panel2.Controls.Add(this.butApply);
             this.panel2.Controls.Add(this.butBack);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 391);
+            this.panel2.Location = new System.Drawing.Point(0, 470);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 59);
+            this.panel2.Size = new System.Drawing.Size(819, 59);
             this.panel2.TabIndex = 17;
             // 
             // panel3
@@ -210,21 +151,21 @@ namespace ExamApp.Forms
             this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.EdProf);
-            this.panel3.Location = new System.Drawing.Point(0, 244);
+            this.panel3.Location = new System.Drawing.Point(0, 327);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(408, 159);
+            this.panel3.Size = new System.Drawing.Size(408, 158);
             this.panel3.TabIndex = 18;
             // 
             // Cart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(819, 529);
             this.Controls.Add(this.labelTotal);
-            this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.dgvCart);
             this.Name = "Cart";
             this.Text = "Basket";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Basket_FormClosed);
@@ -245,13 +186,6 @@ namespace ExamApp.Forms
         private System.Windows.Forms.Button butBack;
         private System.Windows.Forms.Button butApply;
         private System.Windows.Forms.Label labelTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bask_id;
-        private System.Windows.Forms.DataGridViewImageColumn bask_img;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bask_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bask_count;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bask_price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bask_customer;
-        private System.Windows.Forms.DataGridViewButtonColumn del_prod_basket;
         private System.Windows.Forms.Button EdProf;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
