@@ -45,7 +45,7 @@ namespace ExamApp.Forms
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 46);
+            this.panel1.Size = new System.Drawing.Size(809, 46);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -53,7 +53,7 @@ namespace ExamApp.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(289, 9);
+            this.label1.Location = new System.Drawing.Point(321, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(220, 31);
             this.label1.TabIndex = 0;
@@ -63,11 +63,12 @@ namespace ExamApp.Forms
             // 
             this.dgvOrders.AllowUserToAddRows = false;
             this.dgvOrders.AllowUserToDeleteRows = false;
+            this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Location = new System.Drawing.Point(0, 43);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.ReadOnly = true;
-            this.dgvOrders.Size = new System.Drawing.Size(800, 330);
+            this.dgvOrders.Size = new System.Drawing.Size(809, 330);
             this.dgvOrders.TabIndex = 1;
             // 
             // ButBack
@@ -75,7 +76,7 @@ namespace ExamApp.Forms
             this.ButBack.BackColor = System.Drawing.Color.Purple;
             this.ButBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButBack.ForeColor = System.Drawing.Color.White;
-            this.ButBack.Location = new System.Drawing.Point(352, 398);
+            this.ButBack.Location = new System.Drawing.Point(393, 398);
             this.ButBack.Name = "ButBack";
             this.ButBack.Size = new System.Drawing.Size(100, 40);
             this.ButBack.TabIndex = 2;
@@ -87,12 +88,13 @@ namespace ExamApp.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(809, 450);
             this.Controls.Add(this.ButBack);
-            this.Controls.Add(this.dgvOrders);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dgvOrders);
             this.Name = "HistoryOrders";
             this.Text = "HistoryOrders";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HistoryOrders_FormClosed);
             this.Load += new System.EventHandler(this.HistoryOrders_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

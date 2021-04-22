@@ -67,16 +67,19 @@ namespace ExamApp
 
             dataGridView.DataSource = dtbl;
 
+            #region Разделение на пользователей
             if (User[10].ToString() == "False")
             {
                 ButAdd.Visible = false;
                 ButEdit.Visible = false;
                 ButDel.Visible = false;
+                ButHistOrd.Visible = false;
             }
             else
             {
                 ButCart.Enabled = false;  
             }
+            #endregion
         }
 
         private void MainWindow_Load(object sender, EventArgs e)

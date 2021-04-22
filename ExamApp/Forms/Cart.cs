@@ -40,20 +40,21 @@ namespace ExamApp.Forms
         {
             db.OpenConnection();
 
-            var asquery = new SqlCommand("SELECT cart_id, cart_prod_id, Products.prod_image, cart_name, cart_count_prod, cart_price, Users.user_id FROM Cart\n" +
+            TableWithAllCartsProducts.Clear();
+            TableWithAllCartsProducts.Load(new SqlCommand("SELECT cart_id, cart_prod_id, Products.prod_image, cart_name, cart_count_prod, cart_price, Users.user_id FROM Cart\n" +
                                 "JOIN Products ON Products.prod_id = cart_prod_id\n" +
                                 "JOIN Users ON Users.user_id = cart_custom " +
                                 $"WHERE cart_custom = N'{MainWin.User[0]}'",
                                 db.GetConnection())
-                .ExecuteReader();
-            
-            TableWithAllCartsProducts.Clear();
-            TableWithAllCartsProducts.Load(asquery);
+                .ExecuteReader());
+
             TotalAmout();
+
             dgvCart.DataSource = TableWithAllCartsProducts;
 
             db.CloseConnection();
 
+            StretchToImage();
         }
 
         private void Basket_Load(object sender, EventArgs e)
@@ -79,19 +80,28 @@ namespace ExamApp.Forms
             btn.UseColumnTextForButtonValue = true;
             dgvCart.Columns.Add(btn);
 
-
-
+            #region Доступ к чтению
             dgvCart.Columns[0].ReadOnly = true;
             dgvCart.Columns[1].ReadOnly = true;
             dgvCart.Columns[2].ReadOnly = true;
             dgvCart.Columns[3].ReadOnly = true;
             dgvCart.Columns[5].ReadOnly = true;
-
-            
+            #endregion
 
             TotalAmout();
         }
 
+        // Отображения изображения в ячейке в Stretch
+        public void StretchToImage()
+        {
+            foreach (var dc in from DataGridViewRow dr in dgvCart.Rows
+                               from DataGridViewCell dc in dr.Cells
+                               where dc.GetType() == typeof(DataGridViewImageCell)
+                               select dc)
+            {
+                ((DataGridViewImageCell)dc).ImageLayout = DataGridViewImageCellLayout.Stretch;
+            }
+        }
 
         // Общая цена за выбранные товары
         public void TotalAmout()
@@ -117,6 +127,7 @@ namespace ExamApp.Forms
             {
 
                 db.OpenConnection();
+
 
                 var row = dgvCart.Rows[e.RowIndex].Cells[0].Value;
 
@@ -179,17 +190,27 @@ namespace ExamApp.Forms
             edProf.Show();
         }
 
-
-        private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
-
-
         private void ButApply_Click(object sender, EventArgs e)
         {
             if (dgvCart.RowCount > 0 || dgvCart.Columns[6] == MainWin.User[0])
-                //db.OpenConnection();
-                //new SqlCommand($"INSERT INTO Orders VALUES(cart_custom, cart_id, cart_count_prod, {0}, cart_price, '{2020 - 12 - 02}', {2020 - 12 - 29}) WHERE cart_custom == {MainWin.User[0]}", db.GetConnection()).ExecuteNonQuery();
-                //db.CloseConnection();
-            MessageBox.Show("Your order is accepted");
+            {
+                db.OpenConnection();
+                new SqlCommand($"INSERT INTO Orders(ord_cust_id, ord_prod_id, ord_prod_count, ord_worker_id, ord_price, ord_start_date, ord_over_date) SELECT cart_custom, cart_prod_id, cart_count_prod, Users.user_id, cart_price, '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}', '{DateTime.Today.AddDays(18).ToString("yyyy-MM-dd")}' FROM Cart\n" +
+                    $"JOIN Users ON Users.user_status = 'True' \n" +
+                    $"WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
+                new SqlCommand($"DELETE Cart WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
+
+                LoadNewDataFormCart();
+
+                db.CloseConnection();
+                MessageBox.Show("Your order is accepted");
+            }
+            else
+            {
+                MessageBox.Show("Empty cart");
+            }
         }
+
+        private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
     }
 }
