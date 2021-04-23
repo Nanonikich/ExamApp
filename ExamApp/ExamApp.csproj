@@ -118,7 +118,6 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Program.cs">
       <CustomToolNamespace>ExamApp</CustomToolNamespace>
     </Compile>
@@ -195,13 +194,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>Data</CustomToolNamespace>
     </Content>
-    <None Include="img\2.jpg">
-      <CustomToolNamespace>ExamApp</CustomToolNamespace>
-    </None>
-    <None Include="img\1.jpg">
-      <CustomToolNamespace>ExamApp</CustomToolNamespace>
-    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="img\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

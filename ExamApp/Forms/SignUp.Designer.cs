@@ -301,6 +301,7 @@ namespace ExamApp
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "SignUp";
             this.Text = "SignUp";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SignUp_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
