@@ -135,3 +135,4 @@ C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.exe
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.pdb
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.Forms.Cart.resources
 C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.Forms.HistoryOrders.resources
+C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.Forms.UsersWin.resources

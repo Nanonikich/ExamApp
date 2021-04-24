@@ -82,6 +82,7 @@ namespace ExamApp
                     ButEdit.Visible = false;
                     ButDel.Visible = false;
                     ButHistOrd.Visible = false;
+                    ButUsers.Visible = false;
                 }
                 else
                 {
@@ -218,6 +219,15 @@ namespace ExamApp
             }
             #endregion
 
+            #region Кнопка Пользователи
+            private void ButUsers_Click(object sender, EventArgs e)
+            {
+                Enabled = false;
+                var uswin = new UsersWin(this);
+                uswin.Show();
+            }
+            #endregion
+
             #region Кол-во товара
 
 
@@ -228,11 +238,11 @@ namespace ExamApp
 
             #region Окно История товара
             private void ButHistOrd_Click(object sender, EventArgs e)
-            {
-                Enabled = false;
-                new HistoryOrders(this).Show();
-            }
-            #endregion
+                {
+                    Enabled = false;
+                    new HistoryOrders(this).Show();
+                }
+                #endregion
 
             #region Корзина
             private void ButCart_Click(object sender, EventArgs e)
@@ -245,7 +255,8 @@ namespace ExamApp
             #region Закрытие окна
             private void MainWindow_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Show();
         #endregion
-        
+
         #endregion
+
     }
 }

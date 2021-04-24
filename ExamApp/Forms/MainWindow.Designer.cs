@@ -42,6 +42,7 @@
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.ButHistOrd = new System.Windows.Forms.ToolStripButton();
+            this.ButUsers = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -92,7 +93,8 @@
             this.toolStripLabel1,
             this.txtSearch,
             this.toolStripLabel2,
-            this.ButHistOrd});
+            this.ButHistOrd,
+            this.ButUsers});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.toolStrip1.Name = "toolStrip1";
@@ -108,7 +110,7 @@
             this.ButAdd.Image = ((System.Drawing.Image)(resources.GetObject("ButAdd.Image")));
             this.ButAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButAdd.Name = "ButAdd";
-            this.ButAdd.Size = new System.Drawing.Size(143, 45);
+            this.ButAdd.Size = new System.Drawing.Size(85, 54);
             this.ButAdd.Text = "Add";
             this.ButAdd.Click += new System.EventHandler(this.ButAdd_Click);
             // 
@@ -121,7 +123,7 @@
             this.ButEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButEdit.Name = "ButEdit";
             this.ButEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ButEdit.Size = new System.Drawing.Size(143, 45);
+            this.ButEdit.Size = new System.Drawing.Size(85, 54);
             this.ButEdit.Text = "Edit";
             this.ButEdit.Click += new System.EventHandler(this.ButEdit_Click);
             // 
@@ -132,7 +134,7 @@
             this.ButDel.Image = ((System.Drawing.Image)(resources.GetObject("ButDel.Image")));
             this.ButDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButDel.Name = "ButDel";
-            this.ButDel.Size = new System.Drawing.Size(143, 45);
+            this.ButDel.Size = new System.Drawing.Size(85, 54);
             this.ButDel.Text = "Delete";
             this.ButDel.Click += new System.EventHandler(this.ButDel_Click);
             // 
@@ -264,6 +266,17 @@
             // 
             this.ContentPanel.Size = new System.Drawing.Size(75, 41);
             // 
+            // ButUsers
+            // 
+            this.ButUsers.AutoSize = false;
+            this.ButUsers.ForeColor = System.Drawing.Color.White;
+            this.ButUsers.Image = ((System.Drawing.Image)(resources.GetObject("ButUsers.Image")));
+            this.ButUsers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButUsers.Name = "ButUsers";
+            this.ButUsers.Size = new System.Drawing.Size(85, 54);
+            this.ButUsers.Text = "Users";
+            this.ButUsers.Click += new System.EventHandler(this.ButUsers_Click);
+            // 
             // prodidDataGridViewTextBoxColumn
             // 
             this.prodidDataGridViewTextBoxColumn.DataPropertyName = "prod_id";
@@ -363,6 +376,7 @@
         private System.Windows.Forms.ToolStripButton ButAdd;
         private System.Windows.Forms.ToolStripButton ButDel;
         private System.Windows.Forms.ToolStripButton ButHistOrd;
+        private System.Windows.Forms.ToolStripButton ButUsers;
         private System.Windows.Forms.ToolStripButton ButCart;
         private System.Windows.Forms.ToolStripComboBox comboBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
