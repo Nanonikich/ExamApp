@@ -33,7 +33,7 @@ namespace ExamApp
         #region Методы
 
             #region Иллюзия количества
-        public int GetCountFromCartByName(string name)
+            public int GetCountFromCartByName(string name)
             {
                 try
                 {
@@ -86,7 +86,7 @@ namespace ExamApp
                 }
                 else
                 {
-                    ButCart.Enabled = false;  
+                    ButCart.Enabled = false;
                 }
                 #endregion
             }
@@ -164,13 +164,48 @@ namespace ExamApp
             }
             #endregion
 
+            #region Личный кабинет
+            private void ButPerson_Click(object sender, EventArgs e)
+            {
+                ReadVal();
+            }
+
+                #region Чтение пользователя
+                private void ReadVal()
+                {
+                    db.OpenConnection();
+                    using (var asquery = new SqlCommand($"Select * FROM Users WHERE user_id = N'{User[0]}'", db.GetConnection()).ExecuteReader())
+                    {
+                        var edProf = new SignUp(_SignIn, User[0].ToString());
+                        while (asquery.Read())
+                        {
+                            edProf.textBoxSurn.Text = asquery.GetString(1);
+                            edProf.textBoxName.Text = asquery.GetString(2);
+                            edProf.textBoxPatr.Text = asquery.GetString(3);
+                            edProf.textBoxEmail.Text = asquery.GetString(4);
+                            edProf.textBoxPhone.Text = asquery.GetString(5);
+                            edProf.textBoxCity.Text = asquery.GetString(6);
+                            edProf.textBoxAddr.Text = asquery.GetString(7);
+                            edProf.textBoxUsname.Text = asquery.GetString(8);
+                            edProf.textBoxPassw.Text = asquery.GetString(9);
+                            break;
+                        }
+                        edProf.butnReg.Visible = false;
+                        edProf.Show();
+                    }
+                    db.CloseConnection();
+                }
+                #endregion
+
+            #endregion
+
             #region Поиск по тексту
             private void TxtSearch_TextChanged(object sender, EventArgs e) => dataGridView.DataSource = new BindingSource
-            {
-                DataSource = dataGridView.DataSource,
-                Filter = "prod_name like '%" + txtSearch.Text + "%'"
-            };
-            #endregion
+                {
+                    DataSource = dataGridView.DataSource,
+                    Filter = "prod_name like '%" + txtSearch.Text + "%'"
+                };
+                #endregion
 
             #region ComboBox
             private void ComboBoxUpd()
@@ -248,7 +283,7 @@ namespace ExamApp
             private void ButCart_Click(object sender, EventArgs e)
             {
                 Enabled = false;
-                new Cart(_SignIn, this).Show();
+                new Cart(this).Show();
             }
             #endregion
 
@@ -257,6 +292,5 @@ namespace ExamApp
         #endregion
 
         #endregion
-
     }
 }

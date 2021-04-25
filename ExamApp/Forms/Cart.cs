@@ -9,7 +9,7 @@ namespace ExamApp.Forms
     public partial class Cart : Form
     {
         #region Поля
-        readonly SignIn _SignIn;
+
         readonly MainWindow MainWin;
         readonly DB db = new DB();
         private DataTable _TableWithAllCartsProducts;
@@ -27,9 +27,8 @@ namespace ExamApp.Forms
         #endregion
 
         #region Конструктор
-        public Cart(SignIn sn, MainWindow mw)
+        public Cart(MainWindow mw)
         {
-            _SignIn = sn;
             MainWin = mw;
             TableWithAllCartsProducts = new DataTable();
             InitializeComponent();
@@ -174,58 +173,31 @@ namespace ExamApp.Forms
             }
             #endregion
 
-            #region Редактирование профиля
-            private void EdProf_Click(object sender, EventArgs e)
-            {
-                Enabled = false;
-                ReadVal();
-            }
-            #endregion
-
-            #region Чтение информации о пользователе
-            private void ReadVal()
-            {
-                db.OpenConnection();
-                var asquery = new SqlCommand($"Select * FROM Users WHERE user_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader();
-                var edProf = new SignUp(_SignIn, MainWin.User[0].ToString());
-                while (asquery.Read())
-                {
-                    edProf.textBoxSurn.Text = asquery.GetString(1);
-                    edProf.textBoxName.Text = asquery.GetString(2);
-                    edProf.textBoxPatr.Text = asquery.GetString(3);
-                    edProf.textBoxEmail.Text = asquery.GetString(4);
-                    edProf.textBoxPhone.Text = asquery.GetString(5);
-                    edProf.textBoxCity.Text = asquery.GetString(6);
-                    edProf.textBoxAddr.Text = asquery.GetString(7);
-                    edProf.textBoxUsname.Text = asquery.GetString(8);
-                    edProf.textBoxPassw.Text = asquery.GetString(9);
-                }
-
-                Close();
-                MainWin.Close();
-                edProf.butnReg.Visible = false;
-                edProf.Show();
-            }
-            #endregion
-
             #region Кнопка Оплата
             private void ButApply_Click(object sender, EventArgs e)
             {
                 if (dgvCart.RowCount > 0 || dgvCart.Columns[6] == MainWin.User[0])
                 {
-                    #region Передача заказа в Историю заказов
-                    db.OpenConnection();
-                    new SqlCommand($"INSERT INTO Orders(ord_cust_id, ord_prod_id, ord_prod_count, ord_worker_id, ord_price, ord_start_date, ord_over_date) SELECT cart_custom, cart_prod_id, cart_count_prod, Users.user_id, cart_price, '{DateTime.Now:yyyy-MM-dd HH:mm:ss}', '{DateTime.Today.AddDays(18):yyyy-MM-dd}' FROM Cart\n" +
-                        $"JOIN Users ON Users.user_status = 'True' \n" +
-                        $"WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
-                    new SqlCommand($"DELETE Cart WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
+                    if (!String.IsNullOrWhiteSpace(textBoxNumb.Text) && !String.IsNullOrWhiteSpace(textBoxCvv.Text) && !String.IsNullOrWhiteSpace(textBoxMM.Text) && !String.IsNullOrWhiteSpace(textBoxYear.Text))
+                    {
+                        #region Передача заказа в Историю заказов
+                        db.OpenConnection();
+                        new SqlCommand($"INSERT INTO Orders(ord_cust_id, ord_prod_id, ord_prod_count, ord_worker_id, ord_price, ord_start_date, ord_over_date) SELECT cart_custom, cart_prod_id, cart_count_prod, Users.user_id, cart_price, '{DateTime.Now:yyyy-MM-dd HH:mm:ss}', '{DateTime.Today.AddDays(18):yyyy-MM-dd}' FROM Cart\n" +
+                                $"JOIN Users ON Users.user_status = 'True' \n" +
+                                $"WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
+                        new SqlCommand($"DELETE Cart WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
 
-                    LoadNewDataFormCart();
+                        LoadNewDataFormCart();
 
-                    db.CloseConnection();
-                    #endregion
+                        db.CloseConnection();
+                        #endregion
 
-                    MessageBox.Show("Your order is accepted");
+                        MessageBox.Show("Your order is accepted");
+                    }
+                    else 
+                    {
+                        MessageBox.Show("Fields are not filled");
+                    }
                 }
                 else
                 {
@@ -236,7 +208,7 @@ namespace ExamApp.Forms
 
             #region Закрытие формы
             private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
-            #endregion
+        #endregion
 
         #endregion
     }

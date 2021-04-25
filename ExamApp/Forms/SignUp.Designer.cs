@@ -318,7 +318,6 @@ namespace ExamApp
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button butnBack;
         public System.Windows.Forms.Button butnEdit;
         public System.Windows.Forms.Button butnReg;
         public System.Windows.Forms.TextBox textBoxSurn;
@@ -330,5 +329,6 @@ namespace ExamApp
         public System.Windows.Forms.TextBox textBoxAddr;
         public System.Windows.Forms.TextBox textBoxUsname;
         public System.Windows.Forms.TextBox textBoxPassw;
+        public System.Windows.Forms.Button butnBack;
     }
 }

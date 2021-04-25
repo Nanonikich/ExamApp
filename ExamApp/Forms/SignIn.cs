@@ -7,6 +7,7 @@ namespace ExamApp
 {
     public partial class SignIn : Form
     {
+
         #region Конструктор
         public SignIn()
         {
@@ -43,7 +44,7 @@ namespace ExamApp
             #region Кнопка регистрации
             private void ButSignUp_Click(object sender, EventArgs e)
             {
-                Hide();
+                Enabled = false;
                 var signUp = new SignUp(this, "0");
                 signUp.butnEdit.Visible = false;
                 signUp.Show();

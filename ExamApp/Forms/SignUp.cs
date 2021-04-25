@@ -69,17 +69,14 @@ namespace ExamApp
                         db.GetConnection()).ExecuteNonQuery())
                     {
                         case 1:
+                            Close();
                             MessageBox.Show("Data Updated");
                             break;
                         default:
                             MessageBox.Show("Data not updated");
                             break;
                     }
-                    Close();
                     db.CloseConnection();
-
-                    _SignIn.butSignUp.Enabled = false;
-                    _SignIn.Show();
                 }
                 catch
                 {
@@ -92,10 +89,8 @@ namespace ExamApp
             private void ButnBack_Click(object sender, EventArgs e)
             {
                 Close();
-                _SignIn.Show();
             }
-
-        #endregion
+            #endregion
 
             #region Закрытие формы
             private void SignUp_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Enabled = true;

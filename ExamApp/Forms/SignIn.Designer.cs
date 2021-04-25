@@ -146,9 +146,9 @@ namespace ExamApp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Button butSignUp;
         private System.Windows.Forms.TextBox textBoxUsname;
         private System.Windows.Forms.TextBox textBoxPassw;
-        public System.Windows.Forms.Button butSignUp;
     }
 }
 

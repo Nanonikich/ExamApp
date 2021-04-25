@@ -33,6 +33,7 @@
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ButPerson = new System.Windows.Forms.ToolStripButton();
             this.ButAdd = new System.Windows.Forms.ToolStripButton();
             this.ButEdit = new System.Windows.Forms.ToolStripButton();
             this.ButDel = new System.Windows.Forms.ToolStripButton();
@@ -75,7 +76,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1028, 62);
+            this.panel1.Size = new System.Drawing.Size(1073, 62);
             this.panel1.TabIndex = 8;
             // 
             // toolStrip1
@@ -85,6 +86,7 @@
             this.toolStrip1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(35, 35);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ButPerson,
             this.ButAdd,
             this.ButEdit,
             this.ButDel,
@@ -99,9 +101,20 @@
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1026, 57);
+            this.toolStrip1.Size = new System.Drawing.Size(1071, 57);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // ButPerson
+            // 
+            this.ButPerson.AutoSize = false;
+            this.ButPerson.ForeColor = System.Drawing.Color.White;
+            this.ButPerson.Image = ((System.Drawing.Image)(resources.GetObject("ButPerson.Image")));
+            this.ButPerson.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButPerson.Name = "ButPerson";
+            this.ButPerson.Size = new System.Drawing.Size(100, 54);
+            this.ButPerson.Text = "Account";
+            this.ButPerson.Click += new System.EventHandler(this.ButPerson_Click);
             // 
             // ButAdd
             // 
@@ -173,6 +186,7 @@
             // 
             this.txtSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(150, 57);
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
@@ -197,6 +211,17 @@
             this.ButHistOrd.Text = "Orders";
             this.ButHistOrd.ToolTipText = "Orders";
             this.ButHistOrd.Click += new System.EventHandler(this.ButHistOrd_Click);
+            // 
+            // ButUsers
+            // 
+            this.ButUsers.AutoSize = false;
+            this.ButUsers.ForeColor = System.Drawing.Color.White;
+            this.ButUsers.Image = ((System.Drawing.Image)(resources.GetObject("ButUsers.Image")));
+            this.ButUsers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButUsers.Name = "ButUsers";
+            this.ButUsers.Size = new System.Drawing.Size(85, 54);
+            this.ButUsers.Text = "Users";
+            this.ButUsers.Click += new System.EventHandler(this.ButUsers_Click);
             // 
             // dataGridView
             // 
@@ -225,7 +250,7 @@
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 100;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1028, 547);
+            this.dataGridView.Size = new System.Drawing.Size(1073, 547);
             this.dataGridView.StandardTab = true;
             this.dataGridView.TabIndex = 11;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentDoubleClick);
@@ -265,17 +290,6 @@
             // ContentPanel
             // 
             this.ContentPanel.Size = new System.Drawing.Size(75, 41);
-            // 
-            // ButUsers
-            // 
-            this.ButUsers.AutoSize = false;
-            this.ButUsers.ForeColor = System.Drawing.Color.White;
-            this.ButUsers.Image = ((System.Drawing.Image)(resources.GetObject("ButUsers.Image")));
-            this.ButUsers.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButUsers.Name = "ButUsers";
-            this.ButUsers.Size = new System.Drawing.Size(85, 54);
-            this.ButUsers.Text = "Users";
-            this.ButUsers.Click += new System.EventHandler(this.ButUsers_Click);
             // 
             // prodidDataGridViewTextBoxColumn
             // 
@@ -349,7 +363,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1073, 609);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel1);
             this.Name = "MainWindow";
@@ -372,8 +386,9 @@
         public System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource productsBindingSource;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton ButEdit;
+        private System.Windows.Forms.ToolStripButton ButPerson;
         private System.Windows.Forms.ToolStripButton ButAdd;
+        private System.Windows.Forms.ToolStripButton ButEdit;
         private System.Windows.Forms.ToolStripButton ButDel;
         private System.Windows.Forms.ToolStripButton ButHistOrd;
         private System.Windows.Forms.ToolStripButton ButUsers;
