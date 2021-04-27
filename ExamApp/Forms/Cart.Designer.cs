@@ -55,6 +55,9 @@ namespace ExamApp.Forms
             // 
             this.dgvCart.AllowUserToAddRows = false;
             this.dgvCart.AllowUserToDeleteRows = false;
+            this.dgvCart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.BackgroundColor = System.Drawing.Color.White;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -65,7 +68,7 @@ namespace ExamApp.Forms
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 100;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(819, 288);
+            this.dgvCart.Size = new System.Drawing.Size(823, 287);
             this.dgvCart.StandardTab = true;
             this.dgvCart.TabIndex = 11;
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCart_CellContentClick);
@@ -73,10 +76,11 @@ namespace ExamApp.Forms
             // 
             // butBack
             // 
+            this.butBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.butBack.BackColor = System.Drawing.Color.Purple;
             this.butBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butBack.ForeColor = System.Drawing.Color.White;
-            this.butBack.Location = new System.Drawing.Point(436, 9);
+            this.butBack.Location = new System.Drawing.Point(438, 9);
             this.butBack.Name = "butBack";
             this.butBack.Size = new System.Drawing.Size(119, 41);
             this.butBack.TabIndex = 1;
@@ -86,10 +90,11 @@ namespace ExamApp.Forms
             // 
             // butApply
             // 
+            this.butApply.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.butApply.BackColor = System.Drawing.Color.Purple;
             this.butApply.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butApply.ForeColor = System.Drawing.Color.White;
-            this.butApply.Location = new System.Drawing.Point(261, 9);
+            this.butApply.Location = new System.Drawing.Point(263, 9);
             this.butApply.Name = "butApply";
             this.butApply.Size = new System.Drawing.Size(119, 41);
             this.butApply.TabIndex = 12;
@@ -99,9 +104,10 @@ namespace ExamApp.Forms
             // 
             // labelTotal
             // 
+            this.labelTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTotal.Location = new System.Drawing.Point(453, 382);
+            this.labelTotal.Location = new System.Drawing.Point(453, 384);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(59, 23);
             this.labelTotal.TabIndex = 14;
@@ -115,15 +121,16 @@ namespace ExamApp.Forms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(819, 45);
+            this.panel1.Size = new System.Drawing.Size(823, 45);
             this.panel1.TabIndex = 16;
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(364, 6);
+            this.label1.Location = new System.Drawing.Point(366, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 31);
             this.label1.TabIndex = 0;
@@ -135,13 +142,14 @@ namespace ExamApp.Forms
             this.panel2.Controls.Add(this.butApply);
             this.panel2.Controls.Add(this.butBack);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 470);
+            this.panel2.Location = new System.Drawing.Point(0, 474);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(819, 59);
+            this.panel2.Size = new System.Drawing.Size(823, 59);
             this.panel2.TabIndex = 17;
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.textBoxYear);
@@ -152,15 +160,16 @@ namespace ExamApp.Forms
             this.panel3.Controls.Add(this.textBoxCvv);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.textBoxNumb);
-            this.panel3.Location = new System.Drawing.Point(0, 327);
+            this.panel3.Location = new System.Drawing.Point(0, 321);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(408, 158);
+            this.panel3.Size = new System.Drawing.Size(408, 166);
             this.panel3.TabIndex = 18;
             // 
             // textBoxYear
             // 
+            this.textBoxYear.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxYear.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxYear.Location = new System.Drawing.Point(352, 76);
+            this.textBoxYear.Location = new System.Drawing.Point(352, 80);
             this.textBoxYear.Multiline = true;
             this.textBoxYear.Name = "textBoxYear";
             this.textBoxYear.Size = new System.Drawing.Size(39, 28);
@@ -168,9 +177,10 @@ namespace ExamApp.Forms
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(331, 83);
+            this.label5.Location = new System.Drawing.Point(331, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 21);
             this.label5.TabIndex = 22;
@@ -178,9 +188,10 @@ namespace ExamApp.Forms
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(215, 83);
+            this.label4.Location = new System.Drawing.Point(215, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 21);
             this.label4.TabIndex = 21;
@@ -188,8 +199,9 @@ namespace ExamApp.Forms
             // 
             // textBoxMM
             // 
+            this.textBoxMM.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxMM.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxMM.Location = new System.Drawing.Point(286, 76);
+            this.textBoxMM.Location = new System.Drawing.Point(286, 80);
             this.textBoxMM.Multiline = true;
             this.textBoxMM.Name = "textBoxMM";
             this.textBoxMM.Size = new System.Drawing.Size(39, 28);
@@ -197,9 +209,10 @@ namespace ExamApp.Forms
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(14, 85);
+            this.label3.Location = new System.Drawing.Point(14, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 19);
             this.label3.TabIndex = 19;
@@ -207,8 +220,9 @@ namespace ExamApp.Forms
             // 
             // textBoxCvv
             // 
+            this.textBoxCvv.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxCvv.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxCvv.Location = new System.Drawing.Point(62, 76);
+            this.textBoxCvv.Location = new System.Drawing.Point(62, 80);
             this.textBoxCvv.Multiline = true;
             this.textBoxCvv.Name = "textBoxCvv";
             this.textBoxCvv.Size = new System.Drawing.Size(82, 28);
@@ -216,6 +230,7 @@ namespace ExamApp.Forms
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(15, 38);
@@ -226,6 +241,7 @@ namespace ExamApp.Forms
             // 
             // textBoxNumb
             // 
+            this.textBoxNumb.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxNumb.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxNumb.Location = new System.Drawing.Point(155, 30);
             this.textBoxNumb.Multiline = true;
@@ -237,14 +253,17 @@ namespace ExamApp.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 529);
+            this.ClientSize = new System.Drawing.Size(823, 533);
             this.Controls.Add(this.labelTotal);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.dgvCart);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(839, 572);
             this.Name = "Cart";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Basket";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Basket_FormClosed);
             this.Load += new System.EventHandler(this.Basket_Load);

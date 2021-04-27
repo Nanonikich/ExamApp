@@ -281,7 +281,10 @@ namespace ExamApp
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttEdit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "AddProd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "AddProd";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddProd_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

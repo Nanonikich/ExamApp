@@ -37,10 +37,10 @@ namespace ExamApp.Forms
             this.lab = new System.Windows.Forms.Label();
             this.labDescr = new System.Windows.Forms.Label();
             this.pictBoxDescr = new System.Windows.Forms.PictureBox();
-            this.butShop = new System.Windows.Forms.Button();
-            this.butBack = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.butBack = new System.Windows.Forms.Button();
+            this.butShop = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxDescr)).BeginInit();
             this.panel2.SuspendLayout();
@@ -60,6 +60,9 @@ namespace ExamApp.Forms
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.labelPrice);
             this.panel1.Controls.Add(this.labPr);
@@ -75,6 +78,7 @@ namespace ExamApp.Forms
             // 
             // labelPrice
             // 
+            this.labelPrice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelPrice.AutoSize = true;
             this.labelPrice.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelPrice.Location = new System.Drawing.Point(354, 307);
@@ -85,6 +89,7 @@ namespace ExamApp.Forms
             // 
             // labPr
             // 
+            this.labPr.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labPr.AutoSize = true;
             this.labPr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labPr.Location = new System.Drawing.Point(305, 307);
@@ -95,6 +100,7 @@ namespace ExamApp.Forms
             // 
             // labelArt
             // 
+            this.labelArt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelArt.AutoSize = true;
             this.labelArt.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelArt.Location = new System.Drawing.Point(673, 7);
@@ -105,6 +111,7 @@ namespace ExamApp.Forms
             // 
             // lab
             // 
+            this.lab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lab.AutoSize = true;
             this.lab.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lab.Location = new System.Drawing.Point(573, 7);
@@ -115,6 +122,7 @@ namespace ExamApp.Forms
             // 
             // labDescr
             // 
+            this.labDescr.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labDescr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labDescr.Location = new System.Drawing.Point(305, 35);
             this.labDescr.Name = "labDescr";
@@ -124,6 +132,7 @@ namespace ExamApp.Forms
             // 
             // pictBoxDescr
             // 
+            this.pictBoxDescr.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictBoxDescr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictBoxDescr.Location = new System.Drawing.Point(26, 35);
             this.pictBoxDescr.Name = "pictBoxDescr";
@@ -132,21 +141,22 @@ namespace ExamApp.Forms
             this.pictBoxDescr.TabIndex = 0;
             this.pictBoxDescr.TabStop = false;
             // 
-            // butShop
+            // label1
             // 
-            this.butShop.BackColor = System.Drawing.Color.Purple;
-            this.butShop.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butShop.ForeColor = System.Drawing.Color.White;
-            this.butShop.Location = new System.Drawing.Point(268, 400);
-            this.butShop.Name = "butShop";
-            this.butShop.Size = new System.Drawing.Size(119, 41);
-            this.butShop.TabIndex = 2;
-            this.butShop.Text = "Buy";
-            this.butShop.UseVisualStyleBackColor = false;
-            this.butShop.Click += new System.EventHandler(this.ButShop_Click);
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(202, 9);
+            this.label1.MinimumSize = new System.Drawing.Size(387, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(387, 31);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Information about product";
             // 
             // butBack
             // 
+            this.butBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.butBack.BackColor = System.Drawing.Color.Purple;
             this.butBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butBack.ForeColor = System.Drawing.Color.White;
@@ -157,6 +167,20 @@ namespace ExamApp.Forms
             this.butBack.Text = "Back";
             this.butBack.UseVisualStyleBackColor = false;
             this.butBack.Click += new System.EventHandler(this.ButBack_Click);
+            // 
+            // butShop
+            // 
+            this.butShop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.butShop.BackColor = System.Drawing.Color.Purple;
+            this.butShop.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.butShop.ForeColor = System.Drawing.Color.White;
+            this.butShop.Location = new System.Drawing.Point(268, 400);
+            this.butShop.Name = "butShop";
+            this.butShop.Size = new System.Drawing.Size(119, 41);
+            this.butShop.TabIndex = 2;
+            this.butShop.Text = "Buy";
+            this.butShop.UseVisualStyleBackColor = false;
+            this.butShop.Click += new System.EventHandler(this.ButShop_Click);
             // 
             // panel2
             // 
@@ -170,17 +194,6 @@ namespace ExamApp.Forms
             this.panel2.Size = new System.Drawing.Size(800, 450);
             this.panel2.TabIndex = 4;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(202, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Information about product";
-            // 
             // DescripWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,7 +201,11 @@ namespace ExamApp.Forms
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "DescripWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DescripWindow";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DescripWindow_FormClosed);
             this.panel1.ResumeLayout(false);
@@ -202,8 +219,6 @@ namespace ExamApp.Forms
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button butShop;
-        private System.Windows.Forms.Button butBack;
         public System.Windows.Forms.Label labelName;
         public System.Windows.Forms.PictureBox pictBoxDescr;
         public System.Windows.Forms.Label labDescr;
@@ -211,7 +226,9 @@ namespace ExamApp.Forms
         public System.Windows.Forms.Label labelArt;
         public System.Windows.Forms.Label labelPrice;
         public System.Windows.Forms.Label labPr;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button butBack;
+        private System.Windows.Forms.Button butShop;
+        private System.Windows.Forms.Panel panel2;
     }
 }

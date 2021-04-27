@@ -20,7 +20,7 @@ namespace ExamApp.Forms
         }
         #endregion
 
-
+        #region Методы
         public void UpdateTable()
         {
             var dtbl = new DataTable();
@@ -93,5 +93,6 @@ namespace ExamApp.Forms
 
 
         private void UsersWin_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
+        #endregion
     }
 }

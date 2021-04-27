@@ -29,7 +29,7 @@ namespace ExamApp.Forms
 
         #region Методы
 
-            #region Отображение описания товара
+        #region Отображение описания товара
             private void ShowDataThing()
             {
                 if (MainWin.User[10].ToString() == "True")
@@ -45,39 +45,37 @@ namespace ExamApp.Forms
             }
             #endregion
 
-            #region Кнопка Брони
-            private void ButShop_Click(object sender, EventArgs e)
-            {
-                if (Convert.ToInt32(_DataThing.Cells[6].Value) < 1)
-                {
-                    MessageBox.Show("Not available");
-                }
-                else
-                {
-                    db.OpenConnection();
-                    new SqlCommand($"INSERT INTO Cart VALUES('{_DataThing.Cells[0].Value}', '{_DataThing.Cells[3].Value}', {1}, {_DataThing.Cells[5].Value}, {MainWin.User[0]})",
-                        db.GetConnection())
-                        .ExecuteNonQuery();
-                    db.CloseConnection();
 
-                    MainWin.UpdateTable();
-                    MainWin.Enabled = true;
-                    Close();
-                }
+        private void ButShop_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(_DataThing.Cells[6].Value) < 1)
+            {
+                MessageBox.Show("Not available");
             }
-            #endregion
-
-            #region Кнопка возврата
-            private void ButBack_Click(object sender, EventArgs e)
+            else
             {
+                db.OpenConnection();
+                new SqlCommand($"INSERT INTO Cart VALUES('{_DataThing.Cells[0].Value}', '{_DataThing.Cells[3].Value}', {1}, {_DataThing.Cells[5].Value}, {MainWin.User[0]})",
+                    db.GetConnection())
+                    .ExecuteNonQuery();
+                db.CloseConnection();
+
+                MainWin.UpdateTable();
                 MainWin.Enabled = true;
                 Close();
             }
-            #endregion
+        }
 
-            #region Закрытие формы
-            private void DescripWindow_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
-            #endregion
+
+        private void ButBack_Click(object sender, EventArgs e)
+        {
+            MainWin.Enabled = true;
+            Close();
+        }
+
+
+        private void DescripWindow_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
+
 
         #endregion
     }

@@ -76,7 +76,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1073, 62);
+            this.panel1.Size = new System.Drawing.Size(1184, 62);
             this.panel1.TabIndex = 8;
             // 
             // toolStrip1
@@ -101,7 +101,7 @@
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1071, 57);
+            this.toolStrip1.Size = new System.Drawing.Size(1182, 57);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -250,7 +250,7 @@
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 100;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1073, 547);
+            this.dataGridView.Size = new System.Drawing.Size(1184, 547);
             this.dataGridView.StandardTab = true;
             this.dataGridView.TabIndex = 11;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentDoubleClick);
@@ -363,9 +363,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1073, 609);
+            this.ClientSize = new System.Drawing.Size(1184, 609);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel1);
+            this.MinimumSize = new System.Drawing.Size(1200, 489);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
