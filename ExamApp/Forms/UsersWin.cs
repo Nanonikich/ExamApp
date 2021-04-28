@@ -60,29 +60,38 @@ namespace ExamApp.Forms
 
         private void DgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 11)
+            //if (e.ColumnIndex == 11)
+            //{
+            //    db.OpenConnection();
+
+            //    new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
+
+            //    db.CloseConnection();
+
+            //    UpdateTable();
+
+            //    MessageBox.Show("Success");
+            //}
+            if (e.ColumnIndex == 10)
             {
-                db.OpenConnection();
+                if (dgvUsers.Columns[e.ColumnIndex].Name == "Status")
+                {
 
-                new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
 
-                db.CloseConnection();
+                    DataGridViewCheckBoxCell checkCell =
+                        (DataGridViewCheckBoxCell)dgvUsers.
+                        Rows[e.RowIndex].Cells["CheckBoxes"];
+                    
 
-                UpdateTable();
+                    dgvUsers.Invalidate();
 
-                MessageBox.Show("Success");
+                }
             }
         }
 
         private void DgvUsers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 10)
-            {
-                db.OpenConnection();
-                new SqlCommand($"UPDATE Users SET user_status = N'{dgvUsers.CurrentRow.Cells[10].Value}' WHERE user_id = N'{dgvUsers.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
-                db.CloseConnection();
-                UpdateTable();
-            }
+            UpdateTable();
         }
 
         private void ButBack_Click(object sender, EventArgs e)

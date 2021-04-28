@@ -33,6 +33,7 @@ namespace ExamApp.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.ButBack = new System.Windows.Forms.Button();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.butUpdate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -86,11 +87,21 @@ namespace ExamApp.Forms
             this.dgvUsers.Size = new System.Drawing.Size(800, 329);
             this.dgvUsers.TabIndex = 2;
             // 
+            // butUpdate
+            // 
+            this.butUpdate.Location = new System.Drawing.Point(619, 398);
+            this.butUpdate.Name = "butUpdate";
+            this.butUpdate.Size = new System.Drawing.Size(75, 23);
+            this.butUpdate.TabIndex = 3;
+            this.butUpdate.Text = "Update";
+            this.butUpdate.UseVisualStyleBackColor = true;
+            // 
             // UsersWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.butUpdate);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.ButBack);
             this.Controls.Add(this.panel1);
@@ -114,5 +125,6 @@ namespace ExamApp.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ButBack;
         private System.Windows.Forms.DataGridView dgvUsers;
+        private System.Windows.Forms.Button butUpdate;
     }
 }
