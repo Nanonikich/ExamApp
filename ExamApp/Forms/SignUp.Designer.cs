@@ -153,6 +153,7 @@ namespace ExamApp
             // 
             // butnReg
             // 
+            this.butnReg.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.butnReg.BackColor = System.Drawing.Color.Purple;
             this.butnReg.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnReg.ForeColor = System.Drawing.Color.White;
@@ -179,6 +180,7 @@ namespace ExamApp
             // 
             // butnBack
             // 
+            this.butnBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.butnBack.BackColor = System.Drawing.Color.Purple;
             this.butnBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnBack.ForeColor = System.Drawing.Color.White;
@@ -299,8 +301,12 @@ namespace ExamApp
             this.Controls.Add(this.label1);
             this.Controls.Add(this.butnEdit);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "SignUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SignUp";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SignUp_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,7 +323,6 @@ namespace ExamApp
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button butnBack;
         public System.Windows.Forms.Button butnEdit;
         public System.Windows.Forms.Button butnReg;
         public System.Windows.Forms.TextBox textBoxSurn;
@@ -329,5 +334,6 @@ namespace ExamApp
         public System.Windows.Forms.TextBox textBoxAddr;
         public System.Windows.Forms.TextBox textBoxUsname;
         public System.Windows.Forms.TextBox textBoxPassw;
+        public System.Windows.Forms.Button butnBack;
     }
 }

@@ -50,6 +50,7 @@ namespace ExamApp.Forms
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
@@ -63,7 +64,11 @@ namespace ExamApp.Forms
             // 
             this.dgvOrders.AllowUserToAddRows = false;
             this.dgvOrders.AllowUserToDeleteRows = false;
+            this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.BackgroundColor = System.Drawing.Color.White;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Location = new System.Drawing.Point(0, 43);
             this.dgvOrders.Name = "dgvOrders";
@@ -73,6 +78,7 @@ namespace ExamApp.Forms
             // 
             // ButBack
             // 
+            this.ButBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ButBack.BackColor = System.Drawing.Color.Purple;
             this.ButBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButBack.ForeColor = System.Drawing.Color.White;
@@ -92,7 +98,10 @@ namespace ExamApp.Forms
             this.Controls.Add(this.ButBack);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvOrders);
+            this.MaximumSize = new System.Drawing.Size(1366, 768);
+            this.MinimumSize = new System.Drawing.Size(825, 489);
             this.Name = "HistoryOrders";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HistoryOrders";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HistoryOrders_FormClosed);
             this.Load += new System.EventHandler(this.HistoryOrders_Load);

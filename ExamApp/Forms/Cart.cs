@@ -8,11 +8,14 @@ namespace ExamApp.Forms
 {
     public partial class Cart : Form
     {
-        SignIn _SignIn;
-        MainWindow MainWin;
-        DB db = new DB();
-        private DataTable _TableWithAllCartsProducts;
+        #region Поля
 
+        readonly MainWindow MainWin;
+        readonly DB db = new DB();
+        private DataTable _TableWithAllCartsProducts;
+        #endregion
+
+        #region Свойство
         public DataTable TableWithAllCartsProducts
         {
             get => _TableWithAllCartsProducts;
@@ -21,20 +24,24 @@ namespace ExamApp.Forms
                 _TableWithAllCartsProducts = value;
             }
         }
+        #endregion
 
-        public Cart(SignIn sn, MainWindow mw)
+        #region Конструктор
+        public Cart(MainWindow mw)
         {
-            _SignIn = sn;
             MainWin = mw;
             TableWithAllCartsProducts = new DataTable();
             InitializeComponent();
         }
+        #endregion
 
+        #region Методы
         private void ButBack_Click(object sender, EventArgs e)
         {
             MainWin.Enabled = true;
             Close();
         }
+
 
         private void LoadNewDataFormCart()
         {
@@ -42,11 +49,11 @@ namespace ExamApp.Forms
 
             TableWithAllCartsProducts.Clear();
             TableWithAllCartsProducts.Load(new SqlCommand("SELECT cart_id, cart_prod_id, Products.prod_image, cart_name, cart_count_prod, cart_price, Users.user_id FROM Cart\n" +
-                                "JOIN Products ON Products.prod_id = cart_prod_id\n" +
-                                "JOIN Users ON Users.user_id = cart_custom " +
-                                $"WHERE cart_custom = N'{MainWin.User[0]}'",
-                                db.GetConnection())
-                .ExecuteReader());
+                                            "JOIN Products ON Products.prod_id = cart_prod_id\n" +
+                                            "JOIN Users ON Users.user_id = cart_custom " +
+                                            $"WHERE cart_custom = N'{MainWin.User[0]}'",
+                                            db.GetConnection())
+                                            .ExecuteReader());
 
             TotalAmout();
 
@@ -57,11 +64,10 @@ namespace ExamApp.Forms
             StretchToImage();
         }
 
+
         private void Basket_Load(object sender, EventArgs e)
         {
-            
             LoadNewDataFormCart();
-
 
             #region Колонки
             dgvCart.Columns[0].HeaderText = "ID";
@@ -71,14 +77,10 @@ namespace ExamApp.Forms
             dgvCart.Columns[4].HeaderText = "Count";
             dgvCart.Columns[5].HeaderText = "Price";
             dgvCart.Columns[6].Visible = false;
+            dgvCart.Columns[0].Visible = false;
             #endregion
 
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.HeaderText = "Delete";
-            btn.Name = "button";
-            btn.Text = "DELETE";
-            btn.UseColumnTextForButtonValue = true;
-            dgvCart.Columns.Add(btn);
+            BtnDel();
 
             #region Доступ к чтению
             dgvCart.Columns[0].ReadOnly = true;
@@ -91,19 +93,32 @@ namespace ExamApp.Forms
             TotalAmout();
         }
 
-        // Отображения изображения в ячейке в Stretch
+
+        private void BtnDel()
+        {
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn
+            {
+                HeaderText = "Delete",
+                Name = "button",
+                Text = "DELETE",
+                UseColumnTextForButtonValue = true
+            };
+            dgvCart.Columns.Add(btn);
+        }
+
+
         public void StretchToImage()
         {
             foreach (var dc in from DataGridViewRow dr in dgvCart.Rows
-                               from DataGridViewCell dc in dr.Cells
-                               where dc.GetType() == typeof(DataGridViewImageCell)
-                               select dc)
+                                from DataGridViewCell dc in dr.Cells
+                                where dc.GetType() == typeof(DataGridViewImageCell)
+                                select dc)
             {
                 ((DataGridViewImageCell)dc).ImageLayout = DataGridViewImageCellLayout.Stretch;
             }
         }
 
-        // Общая цена за выбранные товары
+
         public void TotalAmout()
         {
             Double result = 0;
@@ -116,94 +131,77 @@ namespace ExamApp.Forms
             labelTotal.Text = $"Total: {result}";
         }
 
-        // Удаление товара из корзины по кнопке
+
         private void DgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            var selectRow = dgvCart.CurrentRow;
-
-
             if (e.ColumnIndex == 7)
             {
-
                 db.OpenConnection();
 
-
-                var row = dgvCart.Rows[e.RowIndex].Cells[0].Value;
-
-                string queryString = $"DELETE FROM Cart WHERE cart_id = {row}";
-
-                new SqlCommand(queryString, db.GetConnection()).ExecuteNonQuery();
+                new SqlCommand($"DELETE FROM Cart WHERE cart_id = {dgvCart.Rows[e.RowIndex].Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
 
                 db.CloseConnection();
 
                 LoadNewDataFormCart();
-
                 MainWin.UpdateTable();
                 
-
                 MessageBox.Show("Success");
             }
         }
 
-        // Изменение количества в корзине
+
         private void DgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 4 && dgvCart.RowCount > 0)
             {
-                db.OpenConnection();
-                new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{dgvCart.CurrentRow.Cells[4].Value}' WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
-                TotalAmout();
-                db.CloseConnection();
+                foreach (DataGridViewRow r in MainWin.dataGridView.Rows)
+                {
+                    if (Convert.ToInt32(dgvCart.CurrentRow.Cells[4].Value) < 1 || Convert.ToInt32(r.Cells[6].Value) < 0)
+                    {
+                        // Нужна работа с иллюзией из MainWindow
+                        MessageBox.Show("Error");
+                        LoadNewDataFormCart();
+                    }
+                    else
+                    {
+                        db.OpenConnection();
 
-                LoadNewDataFormCart();
-                MainWin.UpdateTable();
+                        new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{dgvCart.CurrentRow.Cells[4].Value}' WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
+                        TotalAmout();
+                        db.CloseConnection();
+
+                        LoadNewDataFormCart();
+                        MainWin.UpdateTable();
+                    }
+                }
             }
         }
 
-        private void EdProf_Click(object sender, EventArgs e)
-        {
-            Enabled = false;
-            ReadVal();
-        }
-
-        private void ReadVal()
-        {
-            db.OpenConnection();
-            var asquery = new SqlCommand($"Select * FROM Users WHERE user_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader();
-            var edProf = new SignUp(_SignIn, MainWin.User[0].ToString());
-            while (asquery.Read())
-            {
-                edProf.textBoxSurn.Text = asquery.GetString(1);
-                edProf.textBoxName.Text = asquery.GetString(2);
-                edProf.textBoxPatr.Text = asquery.GetString(3);
-                edProf.textBoxEmail.Text = asquery.GetString(4);
-                edProf.textBoxPhone.Text = asquery.GetString(5);
-                edProf.textBoxCity.Text = asquery.GetString(6);
-                edProf.textBoxAddr.Text = asquery.GetString(7);
-                edProf.textBoxUsname.Text = asquery.GetString(8);
-                edProf.textBoxPassw.Text = asquery.GetString(9);
-            }
-            Close();
-            MainWin.Close();
-            edProf.butnReg.Visible = false;
-            edProf.Show();
-        }
 
         private void ButApply_Click(object sender, EventArgs e)
         {
             if (dgvCart.RowCount > 0 || dgvCart.Columns[6] == MainWin.User[0])
             {
-                db.OpenConnection();
-                new SqlCommand($"INSERT INTO Orders(ord_cust_id, ord_prod_id, ord_prod_count, ord_worker_id, ord_price, ord_start_date, ord_over_date) SELECT cart_custom, cart_prod_id, cart_count_prod, Users.user_id, cart_price, '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}', '{DateTime.Today.AddDays(18).ToString("yyyy-MM-dd")}' FROM Cart\n" +
-                    $"JOIN Users ON Users.user_status = 'True' \n" +
-                    $"WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
-                new SqlCommand($"DELETE Cart WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
+                if (!String.IsNullOrWhiteSpace(textBoxNumb.Text) && !String.IsNullOrWhiteSpace(textBoxCvv.Text) && !String.IsNullOrWhiteSpace(textBoxMM.Text) && !String.IsNullOrWhiteSpace(textBoxYear.Text))
+                {
+                    #region Передача заказа в Историю заказов
+                    db.OpenConnection();
+                    new SqlCommand($"INSERT INTO Orders(ord_cust_id, ord_prod_id, ord_prod_count, ord_worker_id, ord_price, ord_start_date, ord_over_date) SELECT cart_custom, cart_prod_id, cart_count_prod, Users.user_id, cart_price, '{DateTime.Now:yyyy-MM-dd HH:mm:ss}', '{DateTime.Today.AddDays(18):yyyy-MM-dd}' FROM Cart\n" +
+                            $"JOIN Users ON Users.user_status = 'True' \n" +
+                            $"WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
+                    new SqlCommand($"DELETE Cart WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
 
-                LoadNewDataFormCart();
+                    LoadNewDataFormCart();
 
-                db.CloseConnection();
-                MessageBox.Show("Your order is accepted");
+                    db.CloseConnection();
+                    #endregion
+
+                    MessageBox.Show("Your order is accepted");
+                }
+                else 
+                {
+                    MessageBox.Show("Fields are not filled");
+                }
             }
             else
             {
@@ -212,5 +210,6 @@ namespace ExamApp.Forms
         }
 
         private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
+        #endregion
     }
 }
