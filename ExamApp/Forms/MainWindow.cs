@@ -112,7 +112,7 @@ namespace ExamApp
             edPr.buttAddPr.Visible = false;
             edPr.Show();
             edPr.combBoxCateg.SelectedIndex = -1;
-            edPr.combBoxCateg.SelectedText = dataGridView.CurrentRow.Cells[8].Value.ToString();
+            edPr.combBoxCateg.Text = dataGridView.CurrentRow.Cells[8].Value.ToString();
         }
         #endregion
 
