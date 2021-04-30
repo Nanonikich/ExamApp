@@ -56,7 +56,8 @@ namespace ExamApp
         {
             var dtbl = new DataTable();
             db.OpenConnection();
-            dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
+            dtbl.Load(new SqlCommand("SELECT prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_count, prod_category, Categories.categ_name FROM Products \n" +
+                "JOIN Categories ON Categories.categ_id = prod_category", db.GetConnection()).ExecuteReader());
             db.CloseConnection();
 
 
@@ -107,10 +108,11 @@ namespace ExamApp
             edPr.textBoxDesc.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
             edPr.textBoxPr.Text = dataGridView.CurrentRow.Cells[5].Value.ToString();
             edPr.textBoxCount.Text = dataGridView.CurrentRow.Cells[6].Value.ToString();
-            edPr.textBoxCat.Text = dataGridView.CurrentRow.Cells[7].Value.ToString();
 
             edPr.buttAddPr.Visible = false;
             edPr.Show();
+            edPr.combBoxCateg.SelectedIndex = -1;
+            edPr.combBoxCateg.SelectedText = dataGridView.CurrentRow.Cells[8].Value.ToString();
         }
         #endregion
 
@@ -121,6 +123,7 @@ namespace ExamApp
             var adPr = new AddProd(this);
             adPr.buttEdit.Visible = false;
             adPr.Show();
+            adPr.combBoxCateg.SelectedIndex = -1;
         }
 
 
@@ -206,10 +209,10 @@ namespace ExamApp
             comboBox.Items.Clear();
             comboBox.Items.Add("All");
             foreach (var row in from DataGridViewRow row in dataGridView.Rows
-                                where !comboBox.Items.Contains(row.Cells[7].Value.ToString())
+                                where !comboBox.Items.Contains(row.Cells[8].Value.ToString())
                                 select row)
             {
-                comboBox.Items.Add(row.Cells[7].Value.ToString());
+                comboBox.Items.Add(row.Cells[8].Value.ToString());
             }
         }
 
@@ -221,14 +224,17 @@ namespace ExamApp
 
             if (comboBox.Text == "All")
             {
-                dtbl.Load(new SqlCommand("SELECT * FROM Products ", db.GetConnection()).ExecuteReader());
+                dtbl.Load(new SqlCommand("SELECT prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_count, prod_category, Categories.categ_name FROM Products \n" +
+                                        "JOIN Categories ON Categories.categ_id = prod_category", db.GetConnection()).ExecuteReader());
                 db.CloseConnection();
 
                 dataGridView.DataSource = dtbl;
             }
             else
             {
-                dtbl.Load(new SqlCommand($"SELECT * FROM Products WHERE prod_category = N'{comboBox.Text}'", db.GetConnection()).ExecuteReader());
+                dtbl.Load(new SqlCommand($"SELECT prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_count, prod_category, Categories.categ_name FROM Products \n" +
+                                        "JOIN Categories ON Categories.categ_id = prod_category " +
+                                        $"WHERE Categories.categ_name = N'{comboBox.Text}'", db.GetConnection()).ExecuteReader());
                 db.CloseConnection();
 
                 dataGridView.DataSource = dtbl;

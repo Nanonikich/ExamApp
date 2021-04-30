@@ -39,7 +39,6 @@ namespace ExamApp
             this.textBoxNam = new System.Windows.Forms.TextBox();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
             this.textBoxPr = new System.Windows.Forms.TextBox();
-            this.textBoxCat = new System.Windows.Forms.TextBox();
             this.buttAddPr = new System.Windows.Forms.Button();
             this.buttEdit = new System.Windows.Forms.Button();
             this.buttBack = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@ namespace ExamApp
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.combBoxCateg = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,15 +153,6 @@ namespace ExamApp
             this.textBoxPr.Size = new System.Drawing.Size(196, 32);
             this.textBoxPr.TabIndex = 10;
             // 
-            // textBoxCat
-            // 
-            this.textBoxCat.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxCat.Location = new System.Drawing.Point(94, 202);
-            this.textBoxCat.Multiline = true;
-            this.textBoxCat.Name = "textBoxCat";
-            this.textBoxCat.Size = new System.Drawing.Size(196, 32);
-            this.textBoxCat.TabIndex = 12;
-            // 
             // buttAddPr
             // 
             this.buttAddPr.BackColor = System.Drawing.Color.Purple;
@@ -256,12 +247,24 @@ namespace ExamApp
             this.label5.TabIndex = 21;
             this.label5.Text = "Count";
             // 
+            // combBoxCateg
+            // 
+            this.combBoxCateg.BackColor = System.Drawing.Color.White;
+            this.combBoxCateg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxCateg.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.combBoxCateg.FormattingEnabled = true;
+            this.combBoxCateg.Location = new System.Drawing.Point(94, 203);
+            this.combBoxCateg.Name = "combBoxCateg";
+            this.combBoxCateg.Size = new System.Drawing.Size(196, 29);
+            this.combBoxCateg.TabIndex = 22;
+            // 
             // AddProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(302, 425);
+            this.Controls.Add(this.combBoxCateg);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.label8);
@@ -269,7 +272,6 @@ namespace ExamApp
             this.Controls.Add(this.buttonPict);
             this.Controls.Add(this.buttBack);
             this.Controls.Add(this.buttAddPr);
-            this.Controls.Add(this.textBoxCat);
             this.Controls.Add(this.textBoxPr);
             this.Controls.Add(this.textBoxDesc);
             this.Controls.Add(this.textBoxNam);
@@ -287,6 +289,7 @@ namespace ExamApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "AddProd";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddProd_FormClosed);
+            this.Load += new System.EventHandler(this.AddProd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -310,9 +313,9 @@ namespace ExamApp
         public System.Windows.Forms.TextBox textBoxNam;
         public System.Windows.Forms.TextBox textBoxDesc;
         public System.Windows.Forms.TextBox textBoxPr;
-        public System.Windows.Forms.TextBox textBoxCat;
         public System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox textBoxCount;
+        public System.Windows.Forms.ComboBox combBoxCateg;
     }
 }
