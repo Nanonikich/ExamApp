@@ -249,10 +249,13 @@ namespace ExamApp
             // 
             // combBoxCateg
             // 
+            this.combBoxCateg.BackColor = System.Drawing.Color.White;
+            this.combBoxCateg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxCateg.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.combBoxCateg.FormattingEnabled = true;
             this.combBoxCateg.Location = new System.Drawing.Point(94, 203);
             this.combBoxCateg.Name = "combBoxCateg";
-            this.combBoxCateg.Size = new System.Drawing.Size(196, 21);
+            this.combBoxCateg.Size = new System.Drawing.Size(196, 29);
             this.combBoxCateg.TabIndex = 22;
             // 
             // AddProd

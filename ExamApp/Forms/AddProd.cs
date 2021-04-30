@@ -33,6 +33,16 @@ namespace ExamApp
 
         #region Методы
 
+        private void AddProd_Load(object sender, EventArgs e)
+        {
+            var dAdapter = new SqlDataAdapter("SELECT categ_id, categ_name FROM Categories", db.GetConnection());
+            var source = new DataTable();
+            dAdapter.Fill(source);
+            combBoxCateg.DataSource = source;
+            combBoxCateg.ValueMember = "categ_id";
+            combBoxCateg.DisplayMember = "categ_name";
+        }
+
         private void ButtonPict_Click(object sender, EventArgs e)
         { 
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -61,7 +71,7 @@ namespace ExamApp
             #region Проверка на содержание
             foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
                                     textBoxVC.Text.Contains(v) || textBoxPr.Text.Contains(v) || textBoxCount.Text.Contains(v) ||
-                                    string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(arr.ToString()) || string.IsNullOrEmpty(imageUrl) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text)).Select(v => new { }))
+                                    string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(arr.ToString()) || string.IsNullOrEmpty(imageUrl) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text) || string.IsNullOrEmpty(combBoxCateg.Text)).Select(v => new { }))
             {
                 MessageBox.Show("Fill in the blank fields");
                 return;
@@ -90,7 +100,6 @@ namespace ExamApp
         private void EditData(byte[] arr, DB db)
         {
             object value = combBoxCateg.SelectedValue;
-            MessageBox.Show(value.ToString());
 
             var cmd = new SqlCommand("INSERT INTO Products (prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_count, prod_category) VALUES (@Vend, @Photo, @PhotoUrl, @Product, @Descr, @Price, @Count, @Categ)", db.GetConnection());
             cmd.Parameters.AddWithValue("@Vend", textBoxVC.Text);
@@ -114,17 +123,19 @@ namespace ExamApp
 
         private void ButtEdit_Click(object sender, EventArgs e)
         {
-            var command = new SqlCommand($@"UPDATE Products SET prod_id = N'{textBoxVC.Text}', prod_image = @Photo, prod_name = N'{textBoxNam.Text}', prod_descr =  N'{textBoxDesc.Text}', prod_price = '{textBoxPr.Text}', prod_count = '{textBoxCount.Text}', prod_category = N'{(int)combBoxCateg.SelectedValue}' WHERE prod_id = '" + i + "'", db.GetConnection());
+            
 
             #region Проверка на содержание
             foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
                                     textBoxVC.Text.Contains(v) || textBoxPr.Text.Contains(v) || textBoxCount.Text.Contains(v) ||
-                                    string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text)).Select(v => new { }))
+                                    string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text) || string.IsNullOrEmpty(combBoxCateg.Text)).Select(v => new { }))
             {
                 MessageBox.Show("Fill in the blank fields");
                 return;
             }
             #endregion
+
+            var command = new SqlCommand($@"UPDATE Products SET prod_id = N'{textBoxVC.Text}', prod_image = @Photo, prod_name = N'{textBoxNam.Text}', prod_descr =  N'{textBoxDesc.Text}', prod_price = '{textBoxPr.Text}', prod_count = '{textBoxCount.Text}', prod_category = N'{(int)combBoxCateg.SelectedValue}' WHERE prod_id = '" + i + "'", db.GetConnection());
 
             db.OpenConnection();
             command.Parameters.AddWithValue("@Photo", (byte[])new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[])));
@@ -149,7 +160,8 @@ namespace ExamApp
         {
             var dtbl = new DataTable();
             db.OpenConnection();
-            dtbl.Load(new SqlCommand("SELECT * FROM Products", db.GetConnection()).ExecuteReader());
+            dtbl.Load(new SqlCommand("SELECT prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_count, prod_category, Categories.categ_name FROM Products \n" +
+                "JOIN Categories ON Categories.categ_id = prod_category", db.GetConnection()).ExecuteReader());
             db.CloseConnection();
             MainWin.dataGridView.DataSource = dtbl;
         }
@@ -159,15 +171,5 @@ namespace ExamApp
 
         #endregion
 
-        private void AddProd_Load(object sender, EventArgs e)
-        {
-            string query = "SELECT categ_id, categ_name FROM Categories";
-            SqlDataAdapter dAdapter = new SqlDataAdapter(query, db.GetConnection());
-            DataTable source = new DataTable();
-            dAdapter.Fill(source);
-            combBoxCateg.DataSource = source;
-            combBoxCateg.ValueMember = "categ_id";
-            combBoxCateg.DisplayMember = "categ_name";
-        }
     }
 }
