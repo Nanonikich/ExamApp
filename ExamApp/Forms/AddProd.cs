@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Linq;
+using ExamApp.Forms;
 
 namespace ExamApp
 {
@@ -61,6 +62,13 @@ namespace ExamApp
                     }
                 }
             }
+        }
+
+        private void ButCategAdd_Click(object sender, EventArgs e)
+        {
+            Enabled = false;
+            var cat = new Categories(this, MainWin);
+            cat.Show();
         }
 
 
@@ -170,6 +178,5 @@ namespace ExamApp
         private void AddProd_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
 
         #endregion
-
     }
 }

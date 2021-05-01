@@ -155,3 +155,4 @@ C:\Users\Acer\Desktop\categ\ExamApp\obj\Debug\ExamApp.csproj.GenerateResource.ca
 C:\Users\Acer\Desktop\categ\ExamApp\obj\Debug\ExamApp.csproj.CoreCompileInputs.cache
 C:\Users\Acer\Desktop\categ\ExamApp\obj\Debug\ExamApp.exe
 C:\Users\Acer\Desktop\categ\ExamApp\obj\Debug\ExamApp.pdb
+C:\Users\Acer\Desktop\repository\ExamApp\obj\Debug\ExamApp.Forms.Categories.resources

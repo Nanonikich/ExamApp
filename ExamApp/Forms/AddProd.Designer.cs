@@ -48,6 +48,7 @@ namespace ExamApp
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.combBoxCateg = new System.Windows.Forms.ComboBox();
+            this.butCategAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,7 +121,7 @@ namespace ExamApp
             // textBoxVC
             // 
             this.textBoxVC.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxVC.Location = new System.Drawing.Point(94, 11);
+            this.textBoxVC.Location = new System.Drawing.Point(120, 12);
             this.textBoxVC.Multiline = true;
             this.textBoxVC.Name = "textBoxVC";
             this.textBoxVC.Size = new System.Drawing.Size(196, 32);
@@ -129,7 +130,7 @@ namespace ExamApp
             // textBoxNam
             // 
             this.textBoxNam.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxNam.Location = new System.Drawing.Point(94, 49);
+            this.textBoxNam.Location = new System.Drawing.Point(120, 50);
             this.textBoxNam.Multiline = true;
             this.textBoxNam.Name = "textBoxNam";
             this.textBoxNam.Size = new System.Drawing.Size(196, 32);
@@ -138,7 +139,7 @@ namespace ExamApp
             // textBoxDesc
             // 
             this.textBoxDesc.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxDesc.Location = new System.Drawing.Point(94, 87);
+            this.textBoxDesc.Location = new System.Drawing.Point(120, 88);
             this.textBoxDesc.Multiline = true;
             this.textBoxDesc.Name = "textBoxDesc";
             this.textBoxDesc.Size = new System.Drawing.Size(196, 32);
@@ -147,7 +148,7 @@ namespace ExamApp
             // textBoxPr
             // 
             this.textBoxPr.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPr.Location = new System.Drawing.Point(94, 126);
+            this.textBoxPr.Location = new System.Drawing.Point(120, 127);
             this.textBoxPr.Multiline = true;
             this.textBoxPr.Name = "textBoxPr";
             this.textBoxPr.Size = new System.Drawing.Size(196, 32);
@@ -158,7 +159,7 @@ namespace ExamApp
             this.buttAddPr.BackColor = System.Drawing.Color.Purple;
             this.buttAddPr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttAddPr.ForeColor = System.Drawing.Color.White;
-            this.buttAddPr.Location = new System.Drawing.Point(54, 342);
+            this.buttAddPr.Location = new System.Drawing.Point(67, 343);
             this.buttAddPr.Name = "buttAddPr";
             this.buttAddPr.Size = new System.Drawing.Size(196, 34);
             this.buttAddPr.TabIndex = 14;
@@ -171,7 +172,7 @@ namespace ExamApp
             this.buttEdit.BackColor = System.Drawing.Color.Purple;
             this.buttEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttEdit.ForeColor = System.Drawing.Color.White;
-            this.buttEdit.Location = new System.Drawing.Point(54, 342);
+            this.buttEdit.Location = new System.Drawing.Point(67, 343);
             this.buttEdit.Name = "buttEdit";
             this.buttEdit.Size = new System.Drawing.Size(196, 34);
             this.buttEdit.TabIndex = 14;
@@ -184,7 +185,7 @@ namespace ExamApp
             this.buttBack.BackColor = System.Drawing.Color.Purple;
             this.buttBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttBack.ForeColor = System.Drawing.Color.White;
-            this.buttBack.Location = new System.Drawing.Point(54, 382);
+            this.buttBack.Location = new System.Drawing.Point(67, 383);
             this.buttBack.Name = "buttBack";
             this.buttBack.Size = new System.Drawing.Size(196, 34);
             this.buttBack.TabIndex = 15;
@@ -197,9 +198,9 @@ namespace ExamApp
             this.buttonPict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonPict.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPict.ForeColor = System.Drawing.Color.White;
-            this.buttonPict.Location = new System.Drawing.Point(47, 275);
+            this.buttonPict.Location = new System.Drawing.Point(72, 240);
             this.buttonPict.Name = "buttonPict";
-            this.buttonPict.Size = new System.Drawing.Size(41, 34);
+            this.buttonPict.Size = new System.Drawing.Size(36, 32);
             this.buttonPict.TabIndex = 13;
             this.buttonPict.Text = "In";
             this.buttonPict.UseVisualStyleBackColor = false;
@@ -210,7 +211,7 @@ namespace ExamApp
             this.pictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(94, 240);
+            this.pictureBox.Location = new System.Drawing.Point(120, 241);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(196, 92);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -230,7 +231,7 @@ namespace ExamApp
             // textBoxCount
             // 
             this.textBoxCount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxCount.Location = new System.Drawing.Point(94, 164);
+            this.textBoxCount.Location = new System.Drawing.Point(120, 165);
             this.textBoxCount.Multiline = true;
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(196, 32);
@@ -253,17 +254,31 @@ namespace ExamApp
             this.combBoxCateg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combBoxCateg.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.combBoxCateg.FormattingEnabled = true;
-            this.combBoxCateg.Location = new System.Drawing.Point(94, 203);
+            this.combBoxCateg.Location = new System.Drawing.Point(120, 204);
             this.combBoxCateg.Name = "combBoxCateg";
             this.combBoxCateg.Size = new System.Drawing.Size(196, 29);
             this.combBoxCateg.TabIndex = 22;
+            // 
+            // butCategAdd
+            // 
+            this.butCategAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.butCategAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.butCategAdd.ForeColor = System.Drawing.Color.White;
+            this.butCategAdd.Location = new System.Drawing.Point(72, 204);
+            this.butCategAdd.Name = "butCategAdd";
+            this.butCategAdd.Size = new System.Drawing.Size(36, 29);
+            this.butCategAdd.TabIndex = 23;
+            this.butCategAdd.Text = "+";
+            this.butCategAdd.UseVisualStyleBackColor = false;
+            this.butCategAdd.Click += new System.EventHandler(this.ButCategAdd_Click);
             // 
             // AddProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
-            this.ClientSize = new System.Drawing.Size(302, 425);
+            this.ClientSize = new System.Drawing.Size(328, 425);
+            this.Controls.Add(this.butCategAdd);
             this.Controls.Add(this.combBoxCateg);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxCount);
@@ -317,5 +332,6 @@ namespace ExamApp
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox textBoxCount;
         public System.Windows.Forms.ComboBox combBoxCateg;
+        private System.Windows.Forms.Button butCategAdd;
     }
 }
