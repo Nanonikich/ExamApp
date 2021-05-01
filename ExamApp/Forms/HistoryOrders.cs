@@ -31,12 +31,23 @@ namespace ExamApp.Forms
 
         public void UpdateTable()
         {
-            var dtbl = new DataTable();
-            db.OpenConnection();
-            dtbl.Load(new SqlCommand("SELECT * FROM Orders", db.GetConnection()).ExecuteReader());
-            db.CloseConnection();
-
-            dgvOrders.DataSource = dtbl;
+            if (MainWin.User[10].ToString() == "False")
+            {
+                var dtbl = new DataTable();
+                db.OpenConnection();
+                dtbl.Load(new SqlCommand($"SELECT * FROM Orders WHERE ord_cust_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader());
+                db.CloseConnection();
+                dgvOrders.DataSource = dtbl;
+            }
+            else
+            {
+                var dtbl = new DataTable();
+                db.OpenConnection();
+                dtbl.Load(new SqlCommand("SELECT * FROM Orders", db.GetConnection()).ExecuteReader());
+                db.CloseConnection();
+                dgvOrders.DataSource = dtbl;
+            }
+            
         }
 
 

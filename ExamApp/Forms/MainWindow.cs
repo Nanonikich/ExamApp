@@ -80,7 +80,6 @@ namespace ExamApp
                 ButAdd.Visible = false;
                 ButEdit.Visible = false;
                 ButDel.Visible = false;
-                ButHistOrd.Visible = false;
                 ButUsers.Visible = false;
             }
             else
