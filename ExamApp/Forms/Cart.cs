@@ -158,9 +158,12 @@ namespace ExamApp.Forms
                 {
                     if (Convert.ToInt32(dgvCart.CurrentRow.Cells[4].Value) < 1 || Convert.ToInt32(r.Cells[6].Value) < 0)
                     {
-                        // Нужна работа с иллюзией из MainWindow
-                        MessageBox.Show("Error");
+                        db.OpenConnection();
+                        new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{1}' WHERE cart_prod_id = N'{r.Cells[0].Value}' AND cart_custom = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteNonQuery();
+                        TotalAmout();
+                        db.CloseConnection();
                         LoadNewDataFormCart();
+                        MessageBox.Show("Error");
                     }
                     else
                     {

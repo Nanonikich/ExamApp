@@ -60,37 +60,29 @@ namespace ExamApp.Forms
 
         private void DgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.ColumnIndex == 11)
-            //{
-            //    db.OpenConnection();
-
-            //    new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
-
-            //    db.CloseConnection();
-
-            //    UpdateTable();
-
-            //    MessageBox.Show("Success");
-            //}
-            if (e.ColumnIndex == 10)
+            if (e.ColumnIndex == 11)
             {
-                if (dgvUsers.Columns[e.ColumnIndex].Name == "Status")
-                {
-
-
-                    DataGridViewCheckBoxCell checkCell =
-                        (DataGridViewCheckBoxCell)dgvUsers.
-                        Rows[e.RowIndex].Cells["CheckBoxes"];
-                    
-
-                    dgvUsers.Invalidate();
-
-                }
+                db.OpenConnection();
+                new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
+                db.CloseConnection();
+                UpdateTable();
+                MessageBox.Show("Success");
             }
         }
 
         private void DgvUsers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == 10)
+            {
+                if (dgvUsers.Columns[e.ColumnIndex].Name == "Status")
+                {
+                    DataGridViewCheckBoxCell checkCell =
+                        (DataGridViewCheckBoxCell)dgvUsers.
+                        Rows[e.RowIndex].Cells["CheckBoxes"];
+
+                    dgvUsers.Invalidate();
+                }
+            }
             UpdateTable();
         }
 
