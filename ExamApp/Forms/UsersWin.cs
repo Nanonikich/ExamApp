@@ -60,15 +60,27 @@ namespace ExamApp.Forms
 
         private void DgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 11)
+            try
             {
-                db.OpenConnection();
-                new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
-                db.CloseConnection();
-                UpdateTable();
-                MessageBox.Show("Success");
+                if (e.ColumnIndex == 11)
+                {
+                    db.OpenConnection();
+
+                    new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
+
+                    db.CloseConnection();
+
+                    UpdateTable();
+
+                    MessageBox.Show("Success");
+                }
+            }
+            catch 
+            { 
+                MessageBox.Show("You are in the system");
             }
         }
+
 
         private void DgvUsers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -95,5 +107,7 @@ namespace ExamApp.Forms
 
         private void UsersWin_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
         #endregion
+
+        
     }
 }

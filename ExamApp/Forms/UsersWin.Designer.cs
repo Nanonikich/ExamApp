@@ -85,6 +85,7 @@ namespace ExamApp.Forms
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.Size = new System.Drawing.Size(800, 329);
             this.dgvUsers.TabIndex = 2;
+            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsers_CellContentClick);
             // 
             // UsersWin
             // 
