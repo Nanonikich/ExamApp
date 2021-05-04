@@ -60,9 +60,14 @@ namespace ExamApp.Forms
 
         private void DgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            HistoryOrders ho = new HistoryOrders(MainWin);
+            if (e.ColumnIndex == 11)
             {
-                if (e.ColumnIndex == 11)
+                if (dgvUsers.CurrentRow.Cells[0].Value == MainWin.User[0])
+                {
+                    MessageBox.Show("You are in the system");
+                }
+                else
                 {
                     db.OpenConnection();
 
@@ -75,10 +80,6 @@ namespace ExamApp.Forms
                     MessageBox.Show("Success");
                 }
             }
-            catch 
-            { 
-                MessageBox.Show("You are in the system");
-            }
         }
 
 
@@ -88,11 +89,10 @@ namespace ExamApp.Forms
             {
                 if (dgvUsers.Columns[e.ColumnIndex].Name == "Status")
                 {
-                    DataGridViewCheckBoxCell checkCell =
-                        (DataGridViewCheckBoxCell)dgvUsers.
-                        Rows[e.RowIndex].Cells["CheckBoxes"];
-
-                    dgvUsers.Invalidate();
+                    db.OpenConnection();
+                    new SqlCommand($"Update Users SET user_status = true WHERE user_id = {dgvUsers.CurrentRow.Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
+                    db.CloseConnection();
+                    UpdateTable();
                 }
             }
             UpdateTable();
@@ -108,6 +108,5 @@ namespace ExamApp.Forms
         private void UsersWin_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
         #endregion
 
-        
     }
 }
