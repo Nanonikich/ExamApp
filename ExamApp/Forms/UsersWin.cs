@@ -69,15 +69,18 @@ namespace ExamApp.Forms
                 }
                 else
                 {
-                    db.OpenConnection();
-
-                    new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
-
-                    db.CloseConnection();
-
-                    UpdateTable();
-
-                    MessageBox.Show("Success");
+                    if (dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString() == "25")
+                    {
+                        MessageBox.Show("Admin id cannot be deleted");
+                    }
+                    else 
+                    {
+                        db.OpenConnection();
+                        new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value} AND user_id != {25}", db.GetConnection()).ExecuteNonQuery();
+                        db.CloseConnection();
+                        UpdateTable();
+                        MessageBox.Show("Success");
+                    }
                 }
             }
         }
