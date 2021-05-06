@@ -36,6 +36,13 @@ namespace ExamApp.Forms
         {
             UpdateTable();
 
+            if (MainWin.User[0].ToString() != "25")
+            {
+                dgvUsers.Columns[7].Visible = false;
+                dgvUsers.Columns[8].Visible = false;
+                dgvUsers.Columns[9].Visible = false;
+            }
+
 
             var i = 0;
             foreach (var j in new string[] { "ID", "Surname", "Name", "Patronymic", "Email", "Phone", "City", "Address", "Username", "Password", "Status" })
@@ -56,31 +63,28 @@ namespace ExamApp.Forms
                 UseColumnTextForButtonValue = true
             };
             dgvUsers.Columns.Add(btn);
+
+            if (MainWin.User[0].ToString() != "25")
+            {
+                btn.Visible = false;
+            }
         }
 
         private void DgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            HistoryOrders ho = new HistoryOrders(MainWin);
             if (e.ColumnIndex == 11)
             {
-                if (dgvUsers.CurrentRow.Cells[0].Value == MainWin.User[0])
+                if (dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString() == "25")
                 {
-                    MessageBox.Show("You are in the system");
+                    MessageBox.Show("Admin id cannot be deleted");
                 }
-                else
+                else 
                 {
-                    if (dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString() == "25")
-                    {
-                        MessageBox.Show("Admin id cannot be deleted");
-                    }
-                    else 
-                    {
-                        db.OpenConnection();
-                        new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value} AND user_id != {25}", db.GetConnection()).ExecuteNonQuery();
-                        db.CloseConnection();
-                        UpdateTable();
-                        MessageBox.Show("Success");
-                    }
+                    db.OpenConnection();
+                    new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value} AND user_id != {25}", db.GetConnection()).ExecuteNonQuery();
+                    db.CloseConnection();
+                    UpdateTable();
+                    MessageBox.Show("Success");
                 }
             }
         }
@@ -110,6 +114,5 @@ namespace ExamApp.Forms
 
         private void UsersWin_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
         #endregion
-
     }
 }

@@ -278,5 +278,15 @@ namespace ExamApp
 
 
         #endregion
+
+        private void MainWindow_Shown(object sender, EventArgs e)
+        {
+            int i = 1;
+            while (i < 3)
+            {
+                (new System.Media.SoundPlayer($@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\{i}.wav")).PlayLooping();
+                i += 1;
+            }
+        }
     }
 }
