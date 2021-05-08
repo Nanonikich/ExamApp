@@ -10,25 +10,12 @@ namespace ExamApp.Forms
         #region Поля
         readonly MainWindow MainWin;
         readonly DB db = new DB();
-        private DataTable _TableWithAllOrders;
-        #endregion
-
-        #region Свойство
-        public DataTable TableWithAllOrders
-        {
-            get => _TableWithAllOrders;
-            set
-            {
-                _TableWithAllOrders = value;
-            }
-        }
         #endregion
 
         #region Конструктор
         public HistoryOrders(MainWindow mw)
         {
             MainWin = mw;
-            TableWithAllOrders = new DataTable();
             InitializeComponent();
         }
         #endregion
@@ -45,21 +32,21 @@ namespace ExamApp.Forms
 
         public void UpdateTable()
         {
+            DataTable dtbl = new DataTable();
             if (MainWin.User[10].ToString() == "False")
             {
+
                 db.OpenConnection();
-                TableWithAllOrders.Clear();
-                TableWithAllOrders.Load(new SqlCommand($"SELECT * FROM Orders WHERE ord_cust_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader());
+                dtbl.Load(new SqlCommand($"SELECT * FROM Orders WHERE ord_cust_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader());
                 db.CloseConnection();
-                dgvOrders.DataSource = TableWithAllOrders;
+                dgvOrders.DataSource = dtbl;
             }
             else
             {
                 db.OpenConnection();
-                TableWithAllOrders.Clear();
-                TableWithAllOrders.Load(new SqlCommand("SELECT * FROM Orders", db.GetConnection()).ExecuteReader());
+                dtbl.Load(new SqlCommand("SELECT * FROM Orders", db.GetConnection()).ExecuteReader());
                 db.CloseConnection();
-                dgvOrders.DataSource = TableWithAllOrders;
+                dgvOrders.DataSource = dtbl;
             }
         }
 
@@ -69,7 +56,7 @@ namespace ExamApp.Forms
             UpdateTable();
             ComboBoxInDGV();
 
-            #region Заголовки
+            #region Заголовки и чтение
             var i = 0;
             foreach (var j in new string[] { "ID", "Customer", "Product", "Count", "Worker", "Price", "Start date", "Over date" })
             {
@@ -126,9 +113,17 @@ namespace ExamApp.Forms
             if (e.ColumnIndex == 9)
             {
                 db.OpenConnection();
-                new SqlCommand($"UPDATE Orders SET ord_status = N'{Convert.ToInt32(dgvOrders.CurrentRow.Cells[9].Value)}' WHERE ord_id = N'{dgvOrders.CurrentRow.Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
+                new SqlCommand($"UPDATE Orders SET ord_status = {dgvOrders.CurrentRow.Cells[9].Value} WHERE ord_id = N'{dgvOrders.CurrentRow.Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
                 db.CloseConnection();
-                //UpdateTable(); 
+                UpdateTable(); 
+            }
+        }
+
+        private void DgvOrders_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvOrders.IsCurrentCellDirty)
+            {
+                dgvOrders.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
 

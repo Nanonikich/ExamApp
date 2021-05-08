@@ -75,6 +75,7 @@ namespace ExamApp.Forms
             this.dgvOrders.Size = new System.Drawing.Size(809, 330);
             this.dgvOrders.TabIndex = 1;
             this.dgvOrders.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellValueChanged);
+            this.dgvOrders.CurrentCellDirtyStateChanged += new System.EventHandler(this.DgvOrders_CurrentCellDirtyStateChanged);
             // 
             // ButBack
             // 
