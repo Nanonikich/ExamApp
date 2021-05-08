@@ -80,7 +80,6 @@ namespace ExamApp
                 ButAdd.Visible = false;
                 ButEdit.Visible = false;
                 ButDel.Visible = false;
-                ButHistOrd.Visible = false;
                 ButUsers.Visible = false;
             }
             else
@@ -214,6 +213,8 @@ namespace ExamApp
             {
                 comboBox.Items.Add(row.Cells[8].Value.ToString());
             }
+
+            
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -275,9 +276,21 @@ namespace ExamApp
         }
 
 
+        private void MainWindow_Shown(object sender, EventArgs e)
+        {
+            //int i = 1;
+            //while (i < 3)
+            //{
+            //    (new System.Media.SoundPlayer($@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\{i}.wav")).PlayLooping();
+            //    i += 1;
+            //}
+        }
+
+
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Show();
 
 
         #endregion
+
     }
 }

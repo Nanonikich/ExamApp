@@ -83,6 +83,22 @@ namespace ExamApp
             }
         }
 
+        #region Проверка эл.почты
+        private void TextBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            System.Text.RegularExpressions.Regex rEMail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            if (textBoxEmail.Text.Length > 0)
+            {
+                if (!rEMail.IsMatch(textBoxEmail.Text))
+                {
+                    MessageBox.Show("Invalid email address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxEmail.SelectAll();
+                    e.Cancel = true;
+                }
+            }
+        }
+        #endregion
+
 
         private void ButnBack_Click(object sender, EventArgs e)
         {

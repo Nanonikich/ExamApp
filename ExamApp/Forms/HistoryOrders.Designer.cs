@@ -72,9 +72,9 @@ namespace ExamApp.Forms
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Location = new System.Drawing.Point(0, 43);
             this.dgvOrders.Name = "dgvOrders";
-            this.dgvOrders.ReadOnly = true;
             this.dgvOrders.Size = new System.Drawing.Size(809, 330);
             this.dgvOrders.TabIndex = 1;
+            this.dgvOrders.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellValueChanged);
             // 
             // ButBack
             // 
@@ -116,7 +116,7 @@ namespace ExamApp.Forms
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.Button ButBack;
+        public System.Windows.Forms.DataGridView dgvOrders;
     }
 }

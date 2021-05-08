@@ -131,8 +131,6 @@ namespace ExamApp
 
         private void ButtEdit_Click(object sender, EventArgs e)
         {
-            
-
             #region Проверка на содержание
             foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
                                     textBoxVC.Text.Contains(v) || textBoxPr.Text.Contains(v) || textBoxCount.Text.Contains(v) ||
@@ -160,7 +158,6 @@ namespace ExamApp
 
             UpdDGW(db);
             Close();
-
         }
 
 

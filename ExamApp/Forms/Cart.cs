@@ -158,9 +158,12 @@ namespace ExamApp.Forms
                 {
                     if (Convert.ToInt32(dgvCart.CurrentRow.Cells[4].Value) < 1 || Convert.ToInt32(r.Cells[6].Value) < 0)
                     {
-                        // Нужна работа с иллюзией из MainWindow
-                        MessageBox.Show("Error");
+                        db.OpenConnection();
+                        new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{1}' WHERE cart_prod_id = N'{r.Cells[0].Value}' AND cart_custom = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteNonQuery();
+                        TotalAmout();
+                        db.CloseConnection();
                         LoadNewDataFormCart();
+                        MessageBox.Show("Error");
                     }
                     else
                     {
@@ -187,8 +190,8 @@ namespace ExamApp.Forms
                     #region Передача заказа в Историю заказов
                     db.OpenConnection();
                     new SqlCommand($"INSERT INTO Orders(ord_cust_id, ord_prod_id, ord_prod_count, ord_worker_id, ord_price, ord_start_date, ord_over_date) SELECT cart_custom, cart_prod_id, cart_count_prod, Users.user_id, cart_price, '{DateTime.Now:yyyy-MM-dd HH:mm:ss}', '{DateTime.Today.AddDays(18):yyyy-MM-dd}' FROM Cart\n" +
-                            $"JOIN Users ON Users.user_status = 'True' \n" +
-                            $"WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
+                                   $"JOIN Users ON Users.user_status = 'True'\n" +
+                                   $"WHERE cart_custom = { MainWin.User[0] } AND Users.user_id != N'{25}'", db.GetConnection()).ExecuteNonQuery();
                     new SqlCommand($"DELETE Cart WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
 
                     LoadNewDataFormCart();
