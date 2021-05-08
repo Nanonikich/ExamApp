@@ -10,44 +10,53 @@ namespace ExamApp.Forms
         #region Поля
         readonly MainWindow MainWin;
         readonly DB db = new DB();
+        private DataTable _TableWithAllOrders;
+        #endregion
+
+        #region Свойство
+        public DataTable TableWithAllOrders
+        {
+            get => _TableWithAllOrders;
+            set
+            {
+                _TableWithAllOrders = value;
+            }
+        }
         #endregion
 
         #region Конструктор
         public HistoryOrders(MainWindow mw)
         {
             MainWin = mw;
+            TableWithAllOrders = new DataTable();
             InitializeComponent();
         }
         #endregion
 
 
         #region Методы
-
         private void ButBack_Click(object sender, EventArgs e)
         {
             MainWin.Enabled = true;
             Close();
         }
 
-
+        
         public void UpdateTable()
         {
-            DataTable dtbl = new DataTable();
+            db.OpenConnection();
+            TableWithAllOrders.Clear();
             if (MainWin.User[10].ToString() == "False")
             {
+                TableWithAllOrders.Load(new SqlCommand($"SELECT * FROM Orders WHERE ord_cust_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader());
 
-                db.OpenConnection();
-                dtbl.Load(new SqlCommand($"SELECT * FROM Orders WHERE ord_cust_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader());
-                db.CloseConnection();
-                dgvOrders.DataSource = dtbl;
             }
             else
             {
-                db.OpenConnection();
-                dtbl.Load(new SqlCommand("SELECT * FROM Orders", db.GetConnection()).ExecuteReader());
-                db.CloseConnection();
-                dgvOrders.DataSource = dtbl;
+                TableWithAllOrders.Load(new SqlCommand("SELECT * FROM Orders", db.GetConnection()).ExecuteReader());
             }
+            dgvOrders.DataSource = TableWithAllOrders;
+            db.CloseConnection();
         }
 
 
@@ -113,11 +122,12 @@ namespace ExamApp.Forms
             if (e.ColumnIndex == 9)
             {
                 db.OpenConnection();
-                new SqlCommand($"UPDATE Orders SET ord_status = {dgvOrders.CurrentRow.Cells[9].Value} WHERE ord_id = N'{dgvOrders.CurrentRow.Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
+                new SqlCommand($"UPDATE Orders SET ord_status = N'{dgvOrders.CurrentRow.Cells[9].Value}' WHERE ord_id = N'{dgvOrders.CurrentRow.Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
                 db.CloseConnection();
                 UpdateTable(); 
             }
         }
+
 
         private void DgvOrders_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
