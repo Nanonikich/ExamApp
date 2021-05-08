@@ -86,6 +86,7 @@ namespace ExamApp.Forms
             this.dgvUsers.Size = new System.Drawing.Size(800, 329);
             this.dgvUsers.TabIndex = 2;
             this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsers_CellContentClick);
+            this.dgvUsers.CurrentCellDirtyStateChanged += new System.EventHandler(this.DgvUsers_CurrentCellDirtyStateChanged);
             // 
             // UsersWin
             // 

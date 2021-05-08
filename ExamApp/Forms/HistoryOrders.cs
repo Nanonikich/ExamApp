@@ -49,7 +49,6 @@ namespace ExamApp.Forms
             if (MainWin.User[10].ToString() == "False")
             {
                 TableWithAllOrders.Load(new SqlCommand($"SELECT * FROM Orders WHERE ord_cust_id = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteReader());
-
             }
             else
             {
@@ -117,6 +116,15 @@ namespace ExamApp.Forms
         #endregion
 
 
+        private void DgvOrders_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvOrders.IsCurrentCellDirty)
+            {
+                dgvOrders.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+
         private void DgvOrders_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 9)
@@ -124,16 +132,7 @@ namespace ExamApp.Forms
                 db.OpenConnection();
                 new SqlCommand($"UPDATE Orders SET ord_status = N'{dgvOrders.CurrentRow.Cells[9].Value}' WHERE ord_id = N'{dgvOrders.CurrentRow.Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
                 db.CloseConnection();
-                UpdateTable(); 
-            }
-        }
-
-
-        private void DgvOrders_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-        {
-            if (dgvOrders.IsCurrentCellDirty)
-            {
-                dgvOrders.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                UpdateTable();
             }
         }
 

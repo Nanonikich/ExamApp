@@ -72,13 +72,31 @@ namespace ExamApp.Forms
 
         private void DgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == 10)
+            {
+                if (!DBNull.Value.Equals(((DataGridViewCheckBoxCell)dgvUsers[e.ColumnIndex, e.RowIndex]).Value) && (bool)((DataGridViewCheckBoxCell)dgvUsers[e.ColumnIndex, e.RowIndex]).Value)
+                {
+                    db.OpenConnection();
+                    new SqlCommand($"UPDATE Users SET user_status = '{true}' WHERE user_id = {dgvUsers.CurrentRow.Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
+                    db.CloseConnection();
+                    UpdateTable();
+                }
+                else
+                {
+                    db.OpenConnection();
+                    new SqlCommand($"UPDATE Users SET user_status = '{false}' WHERE user_id = {dgvUsers.CurrentRow.Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
+                    db.CloseConnection();
+                    UpdateTable();
+                }
+            }
+
             if (e.ColumnIndex == 11)
             {
                 if (dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString() == "25")
                 {
                     MessageBox.Show("Admin id cannot be deleted");
                 }
-                else 
+                else
                 {
                     db.OpenConnection();
                     new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value} AND user_id != {25}", db.GetConnection()).ExecuteNonQuery();
@@ -89,26 +107,18 @@ namespace ExamApp.Forms
             }
         }
 
-
-        private void DgvUsers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 10)
-            {
-                if (dgvUsers.Columns[e.ColumnIndex].Name == "Status")
-                {
-                    db.OpenConnection();
-                    new SqlCommand($"Update Users SET user_status = '{true}' WHERE user_id = {dgvUsers.CurrentRow.Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
-                    db.CloseConnection();
-                    UpdateTable();
-                }
-            }
-            UpdateTable();
-        }
-
         private void ButBack_Click(object sender, EventArgs e)
         {
             MainWin.Enabled = true;
             Close();
+        }
+
+        private void DgvUsers_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvUsers.IsCurrentCellDirty)
+            {
+                dgvUsers.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
 
 
