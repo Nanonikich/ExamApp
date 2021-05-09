@@ -160,7 +160,7 @@ namespace ExamApp
             this.butnReg.Location = new System.Drawing.Point(56, 342);
             this.butnReg.Name = "butnReg";
             this.butnReg.Size = new System.Drawing.Size(182, 35);
-            this.butnReg.TabIndex = 9;
+            this.butnReg.TabIndex = 21;
             this.butnReg.Text = "Register";
             this.butnReg.UseVisualStyleBackColor = false;
             this.butnReg.Click += new System.EventHandler(this.ButnReg_Click);
@@ -187,7 +187,7 @@ namespace ExamApp
             this.butnBack.Location = new System.Drawing.Point(56, 392);
             this.butnBack.Name = "butnBack";
             this.butnBack.Size = new System.Drawing.Size(182, 35);
-            this.butnBack.TabIndex = 11;
+            this.butnBack.TabIndex = 22;
             this.butnBack.Text = "Back";
             this.butnBack.UseVisualStyleBackColor = false;
             this.butnBack.Click += new System.EventHandler(this.ButnBack_Click);
@@ -226,7 +226,7 @@ namespace ExamApp
             this.textBoxEmail.Multiline = true;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(189, 27);
-            this.textBoxEmail.TabIndex = 15;
+            this.textBoxEmail.TabIndex = 16;
             this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxEmail_Validating);
             // 
             // textBoxPhone
@@ -236,7 +236,7 @@ namespace ExamApp
             this.textBoxPhone.Multiline = true;
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(189, 27);
-            this.textBoxPhone.TabIndex = 16;
+            this.textBoxPhone.TabIndex = 15;
             // 
             // textBoxCity
             // 

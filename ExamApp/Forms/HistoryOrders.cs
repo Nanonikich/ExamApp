@@ -64,7 +64,7 @@ namespace ExamApp.Forms
 
             DataGridViewComboBoxColumn cbbx = new DataGridViewComboBoxColumn
             {
-                Name = "ord_status",   /// Название столбца 
+                Name = "Order Status",   /// Название столбца 
                 DataPropertyName = "ord_status", /// Свойство связывающее с названием столбца в DataTable
                 DataSource = _Conditions, /// Источники ComboBox берется из свойства List<Condition> _Conditions
                 DisplayMember = "condit_name", /// отображает имя из объекта Condition
@@ -158,13 +158,13 @@ namespace ExamApp.Forms
             DataColumn[] dataColumns = new DataColumn[]
             {
                 new DataColumn("ID"),
-                new DataColumn("ord_cust_id"),
-                new DataColumn("ord_prod_id"),
-                new DataColumn("ord_prod_count"),
-                new DataColumn("ord_worker_id"),
-                new DataColumn("ord_price"),
-                new DataColumn("ord_start_date"),
-                new DataColumn("ord_over_date")
+                new DataColumn("Customer"),
+                new DataColumn("Product"),
+                new DataColumn("Count Prod"),
+                new DataColumn("Worker"),
+                new DataColumn("Price"),
+                new DataColumn("Start date"),
+                new DataColumn("Over date")
 
             };
 
@@ -210,8 +210,8 @@ namespace ExamApp.Forms
                             order.ord_prod_count,
                             order.ord_worker_id,
                             order.ord_price,
-                            order.ord_start_date,
-                            order.ord_over_date,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
                             order.ord_status
                         );
                         
@@ -232,8 +232,8 @@ namespace ExamApp.Forms
                             order.ord_prod_count,
                             order.ord_worker_id,
                             order.ord_price,
-                            order.ord_start_date,
-                            order.ord_over_date,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
                             order.ord_status
                         );
                 }
@@ -253,8 +253,8 @@ namespace ExamApp.Forms
                             order.ord_prod_count,
                             order.ord_worker_id,
                             order.ord_price,
-                            order.ord_start_date,
-                            order.ord_over_date,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
                             _Conditions.SingleOrDefault(c => c.condit_id == order.ord_status).condit_name
                         ); 
 
@@ -276,7 +276,7 @@ namespace ExamApp.Forms
                 dgvOrders.Columns.Add(
                     new DataGridViewTextBoxColumn()
                     {
-                        Name = "ord_status",
+                        Name = "Status",
                         DataPropertyName = "ord_status"
                     }
                 );

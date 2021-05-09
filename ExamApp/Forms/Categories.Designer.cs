@@ -39,6 +39,7 @@ namespace ExamApp.Forms
             // 
             // dgvCateg
             // 
+            this.dgvCateg.AllowUserToAddRows = false;
             this.dgvCateg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -46,6 +47,7 @@ namespace ExamApp.Forms
             this.dgvCateg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCateg.Location = new System.Drawing.Point(1, 0);
             this.dgvCateg.Name = "dgvCateg";
+            this.dgvCateg.ReadOnly = true;
             this.dgvCateg.Size = new System.Drawing.Size(424, 169);
             this.dgvCateg.TabIndex = 0;
             // 
@@ -53,6 +55,7 @@ namespace ExamApp.Forms
             // 
             this.buttBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttBack.BackColor = System.Drawing.Color.Purple;
+            this.buttBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttBack.ForeColor = System.Drawing.Color.White;
             this.buttBack.Location = new System.Drawing.Point(304, 224);
             this.buttBack.Name = "buttBack";
@@ -66,6 +69,7 @@ namespace ExamApp.Forms
             // 
             this.butAddCat.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.butAddCat.BackColor = System.Drawing.Color.Purple;
+            this.butAddCat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butAddCat.ForeColor = System.Drawing.Color.White;
             this.butAddCat.Location = new System.Drawing.Point(27, 185);
             this.butAddCat.Name = "butAddCat";
@@ -88,6 +92,7 @@ namespace ExamApp.Forms
             // 
             this.butCategDel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.butCategDel.BackColor = System.Drawing.Color.Purple;
+            this.butCategDel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butCategDel.ForeColor = System.Drawing.Color.White;
             this.butCategDel.Location = new System.Drawing.Point(27, 224);
             this.butCategDel.Name = "butCategDel";

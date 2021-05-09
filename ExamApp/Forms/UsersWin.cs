@@ -38,8 +38,10 @@ namespace ExamApp.Forms
         {
             UpdateTable();
 
+            #region Настройки таблицы
             if (MainWin.User[0].ToString() != "25")
             {
+                dgvUsers.ReadOnly = true;
                 dgvUsers.Columns[7].Visible = false;
                 dgvUsers.Columns[8].Visible = false;
                 dgvUsers.Columns[9].Visible = false;
@@ -52,6 +54,8 @@ namespace ExamApp.Forms
                 dgvUsers.Columns[i].HeaderText = j;
                 i += 1;
             }
+            #endregion
+
             BtnDel();
         }
 
@@ -76,18 +80,26 @@ namespace ExamApp.Forms
         {
             if (e.ColumnIndex == 10)
             {
-                if (!DBNull.Value.Equals(((DataGridViewCheckBoxCell)dgvUsers[e.ColumnIndex, e.RowIndex]).Value) && (bool)((DataGridViewCheckBoxCell)dgvUsers[e.ColumnIndex, e.RowIndex]).Value)
+                if (dgvUsers.CurrentRow.Cells[0].Value.ToString() != "25")
                 {
-                    db.OpenConnection();
-                    new SqlCommand($"UPDATE Users SET user_status = '{true}' WHERE user_id = {dgvUsers.CurrentRow.Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
-                    db.CloseConnection();
-                    UpdateTable();
+                    if (!DBNull.Value.Equals(((DataGridViewCheckBoxCell)dgvUsers[e.ColumnIndex, e.RowIndex]).Value) && (bool)((DataGridViewCheckBoxCell)dgvUsers[e.ColumnIndex, e.RowIndex]).Value)
+                    {
+                        db.OpenConnection();
+                        new SqlCommand($"UPDATE Users SET user_status = '{true}' WHERE user_id = {dgvUsers.CurrentRow.Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
+                        db.CloseConnection();
+                        UpdateTable();
+                    }
+                    else
+                    {
+                        db.OpenConnection();
+                        new SqlCommand($"UPDATE Users SET user_status = '{false}' WHERE user_id = {dgvUsers.CurrentRow.Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
+                        db.CloseConnection();
+                        UpdateTable();
+                    }
                 }
                 else
                 {
-                    db.OpenConnection();
-                    new SqlCommand($"UPDATE Users SET user_status = '{false}' WHERE user_id = {dgvUsers.CurrentRow.Cells[0].Value}", db.GetConnection()).ExecuteNonQuery();
-                    db.CloseConnection();
+                    MessageBox.Show("Admin!");
                     UpdateTable();
                 }
             }
@@ -108,8 +120,6 @@ namespace ExamApp.Forms
                 }
             }
 
-            sender = null;
-
         }
 
         private void ButBack_Click(object sender, EventArgs e)
@@ -125,7 +135,6 @@ namespace ExamApp.Forms
                 dgvUsers.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
-
 
         private void UsersWin_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
         #endregion
