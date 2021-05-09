@@ -320,7 +320,7 @@ namespace ExamApp.Forms
                 dgvOrders.DataSource = TableWithAllOrders;
                 dgvOrders.ReadOnly = true;
             }
-            else if (MainWin.User[10].ToString() == "True")
+            else if (MainWin.User[10].ToString() == "True" && (int)MainWin.User[0] != 25)
             {
                 SetValue((int)MainWin.User[0]);
 
