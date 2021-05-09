@@ -92,6 +92,8 @@ namespace ExamApp
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            comboBox.Text = "All";
+
             UpdateTable();
         }
 

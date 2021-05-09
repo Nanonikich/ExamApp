@@ -64,6 +64,17 @@ namespace ExamApp
             try
             {
                 db.OpenConnection();
+
+                #region Проверка на содержание
+                foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
+                                        textBoxSurn.Text.Contains(v) || textBoxName.Text.Contains(v) || textBoxPatr.Text.Contains(v) || textBoxPhone.Text.Contains(v) || textBoxCity.Text.Contains(v) || textBoxUsname.Text.Contains(v) || textBoxPassw.Text.Contains(v) ||
+                                        string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text)).Select(v => new { }))
+                {
+                    MessageBox.Show("Check the fields");
+                    return;
+                }
+                #endregion
+
                 switch (new SqlCommand($"UPDATE Users SET user_sur = N'{textBoxSurn.Text}', user_name = N'{textBoxName.Text}', user_patr = N'{textBoxPatr.Text}', user_email =  N'{textBoxEmail.Text}', user_phone = '{textBoxPhone.Text}', user_city = N'{textBoxCity.Text}', user_address = N'{textBoxAddr.Text}', user_usname = N'{textBoxUsname.Text}', user_passw = N'{textBoxPassw.Text}' WHERE user_id = '{z}'",
                     db.GetConnection()).ExecuteNonQuery())
                 {
@@ -105,6 +116,20 @@ namespace ExamApp
             Close();
         }
 
+        #region Настройка textboxes на символы
+        private void TextBoxSurn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar)) return;
+            else
+                e.Handled = true;
+        }
+
+        private void TextBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+                e.Handled = true;
+        }
+        #endregion
 
         private void SignUp_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Enabled = true;
 

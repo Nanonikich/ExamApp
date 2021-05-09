@@ -37,7 +37,7 @@ namespace ExamApp.Forms
 
             #region Настройки таблицы
             dgvCateg.ReadOnly = true;
-            dgvCateg.Columns[0].HeaderText = "ID";
+            dgvCateg.Columns[0].Visible = false;
             dgvCateg.Columns[1].HeaderText = "Category";
             #endregion
 

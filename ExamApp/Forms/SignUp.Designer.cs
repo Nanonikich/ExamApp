@@ -200,6 +200,7 @@ namespace ExamApp
             this.textBoxSurn.Name = "textBoxSurn";
             this.textBoxSurn.Size = new System.Drawing.Size(189, 27);
             this.textBoxSurn.TabIndex = 12;
+            this.textBoxSurn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSurn_KeyPress);
             // 
             // textBoxName
             // 
@@ -209,6 +210,7 @@ namespace ExamApp
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(189, 27);
             this.textBoxName.TabIndex = 13;
+            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSurn_KeyPress);
             // 
             // textBoxPatr
             // 
@@ -218,6 +220,7 @@ namespace ExamApp
             this.textBoxPatr.Name = "textBoxPatr";
             this.textBoxPatr.Size = new System.Drawing.Size(189, 27);
             this.textBoxPatr.TabIndex = 14;
+            this.textBoxPatr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSurn_KeyPress);
             // 
             // textBoxEmail
             // 
@@ -237,6 +240,7 @@ namespace ExamApp
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(189, 27);
             this.textBoxPhone.TabIndex = 15;
+            this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPhone_KeyPress);
             // 
             // textBoxCity
             // 
@@ -246,6 +250,7 @@ namespace ExamApp
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(189, 27);
             this.textBoxCity.TabIndex = 17;
+            this.textBoxCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSurn_KeyPress);
             // 
             // textBoxAddr
             // 
