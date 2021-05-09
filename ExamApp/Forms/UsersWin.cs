@@ -7,9 +7,11 @@ namespace ExamApp.Forms
 {
     public partial class UsersWin : Form
     {
+
         #region Поля
         readonly MainWindow MainWin;
         readonly DB db = new DB();
+        private DataTable dtbl = new DataTable();
         #endregion
 
         #region Конструктор
@@ -23,7 +25,7 @@ namespace ExamApp.Forms
         #region Методы
         public void UpdateTable()
         {
-            var dtbl = new DataTable();
+            dtbl.Clear();
             db.OpenConnection();
             dtbl.Load(new SqlCommand("SELECT * FROM Users", db.GetConnection()).ExecuteReader());
             db.CloseConnection();
@@ -105,6 +107,9 @@ namespace ExamApp.Forms
                     MessageBox.Show("Success");
                 }
             }
+
+            sender = null;
+
         }
 
         private void ButBack_Click(object sender, EventArgs e)
