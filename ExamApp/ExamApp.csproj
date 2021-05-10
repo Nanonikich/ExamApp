@@ -68,71 +68,71 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddProd.cs">
+    <Compile Include="Views\AddProd.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\AddProd.Designer.cs">
+    <Compile Include="Views\AddProd.Designer.cs">
       <DependentUpon>AddProd.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
     <Compile Include="Data\DB.cs">
       <CustomToolNamespace>Data</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\Cart.cs">
+    <Compile Include="Views\Cart.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\Cart.Designer.cs">
+    <Compile Include="Views\Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Categories.cs">
+    <Compile Include="Views\Categories.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Categories.Designer.cs">
+    <Compile Include="Views\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DescripWindow.cs">
+    <Compile Include="Views\DescripWindow.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\DescripWindow.Designer.cs">
+    <Compile Include="Views\DescripWindow.Designer.cs">
       <DependentUpon>DescripWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\HistoryOrders.cs">
+    <Compile Include="Views\HistoryOrders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\HistoryOrders.Designer.cs">
+    <Compile Include="Views\HistoryOrders.Designer.cs">
       <DependentUpon>HistoryOrders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SignIn.cs">
+    <Compile Include="Views\SignIn.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\SignIn.Designer.cs">
+    <Compile Include="Views\SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\SignUp.cs">
+    <Compile Include="Views\SignUp.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\SignUp.Designer.cs">
+    <Compile Include="Views\SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\MainWindow.cs">
+    <Compile Include="Views\MainWindow.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\MainWindow.Designer.cs">
+    <Compile Include="Views\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </Compile>
-    <Compile Include="Forms\UsersWin.cs">
+    <Compile Include="Views\UsersWin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UsersWin.Designer.cs">
+    <Compile Include="Views\UsersWin.Designer.cs">
       <DependentUpon>UsersWin.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Condition.cs" />
@@ -141,35 +141,35 @@
       <CustomToolNamespace>ExamApp</CustomToolNamespace>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AddProd.resx">
+    <EmbeddedResource Include="Views\AddProd.resx">
       <DependentUpon>AddProd.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Cart.resx">
+    <EmbeddedResource Include="Views\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Categories.resx">
+    <EmbeddedResource Include="Views\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DescripWindow.resx">
+    <EmbeddedResource Include="Views\DescripWindow.resx">
       <DependentUpon>DescripWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\HistoryOrders.resx">
+    <EmbeddedResource Include="Views\HistoryOrders.resx">
       <DependentUpon>HistoryOrders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainWindow.resx">
+    <EmbeddedResource Include="Views\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SignIn.resx">
+    <EmbeddedResource Include="Views\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SignUp.resx">
+    <EmbeddedResource Include="Views\SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
       <CustomToolNamespace>Forms</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UsersWin.resx">
+    <EmbeddedResource Include="Views\UsersWin.resx">
       <DependentUpon>UsersWin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -231,8 +231,6 @@
       <CustomToolNamespace>Data</CustomToolNamespace>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
