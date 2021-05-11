@@ -42,6 +42,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.ButSound = new System.Windows.Forms.ToolStripButton();
             this.ButHistOrd = new System.Windows.Forms.ToolStripButton();
             this.ButUsers = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -96,6 +97,7 @@
             this.toolStripLabel1,
             this.txtSearch,
             this.toolStripLabel2,
+            this.ButSound,
             this.ButHistOrd,
             this.ButUsers});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -203,6 +205,16 @@
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(51, 54);
             this.toolStripLabel2.Text = "Search";
+            // 
+            // ButSound
+            // 
+            this.ButSound.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ButSound.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButSound.Image = ((System.Drawing.Image)(resources.GetObject("ButSound.Image")));
+            this.ButSound.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButSound.Name = "ButSound";
+            this.ButSound.Size = new System.Drawing.Size(39, 54);
+            this.ButSound.Click += new System.EventHandler(this.ButSound_Click);
             // 
             // ButHistOrd
             // 
@@ -429,5 +441,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        public System.Windows.Forms.ToolStripButton ButSound;
     }
 }

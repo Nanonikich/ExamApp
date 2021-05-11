@@ -17,6 +17,7 @@ namespace ExamApp
         readonly SignIn _SignIn;
         readonly DataRow _User;
         readonly DB db = new DB();
+        int ClickItem = 0;
         #endregion
 
         #region Конструктор
@@ -310,11 +311,26 @@ namespace ExamApp
             //}, TaskCreationOptions.LongRunning);
         }
 
+        private void ButSound_Click(object sender, EventArgs e)
+        {
+            switch (ClickItem)
+            {
+                case 0:
+                    ButSound.Image = Image.FromFile(@"C:\Users\Acer\Desktop\repository\ExamApp\Content\mw9.png");
+                    ClickItem += 1;
+                    break;
+                case 1:
+                    ButSound.Image = Image.FromFile(@"C:\Users\Acer\Desktop\repository\ExamApp\Content\mw8.png");
+                    ClickItem -= 1;
+                    break;
+            }
+        }
+
 
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Show();
 
 
-        #endregion
 
+        #endregion
     }
 }
