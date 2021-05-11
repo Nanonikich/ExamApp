@@ -122,19 +122,23 @@ namespace ExamApp
             // 
             this.textBoxVC.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxVC.Location = new System.Drawing.Point(120, 12);
+            this.textBoxVC.MaxLength = 80;
             this.textBoxVC.Multiline = true;
             this.textBoxVC.Name = "textBoxVC";
             this.textBoxVC.Size = new System.Drawing.Size(196, 32);
             this.textBoxVC.TabIndex = 7;
+            this.textBoxVC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxVC_KeyDown);
             // 
             // textBoxNam
             // 
             this.textBoxNam.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxNam.Location = new System.Drawing.Point(120, 50);
+            this.textBoxNam.MaxLength = 150;
             this.textBoxNam.Multiline = true;
             this.textBoxNam.Name = "textBoxNam";
             this.textBoxNam.Size = new System.Drawing.Size(196, 32);
             this.textBoxNam.TabIndex = 8;
+            this.textBoxNam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxVC_KeyDown);
             // 
             // textBoxDesc
             // 
@@ -149,10 +153,12 @@ namespace ExamApp
             // 
             this.textBoxPr.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPr.Location = new System.Drawing.Point(120, 127);
+            this.textBoxPr.MaxLength = 18;
             this.textBoxPr.Multiline = true;
             this.textBoxPr.Name = "textBoxPr";
             this.textBoxPr.Size = new System.Drawing.Size(196, 32);
             this.textBoxPr.TabIndex = 10;
+            this.textBoxPr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxVC_KeyDown);
             // 
             // buttAddPr
             // 
@@ -232,10 +238,12 @@ namespace ExamApp
             // 
             this.textBoxCount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCount.Location = new System.Drawing.Point(120, 165);
+            this.textBoxCount.MaxLength = 15;
             this.textBoxCount.Multiline = true;
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(196, 32);
             this.textBoxCount.TabIndex = 11;
+            this.textBoxCount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxVC_KeyDown);
             // 
             // label5
             // 

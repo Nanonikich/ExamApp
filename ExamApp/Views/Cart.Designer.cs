@@ -64,6 +64,7 @@ namespace ExamApp.Forms
             this.dgvCart.GridColor = System.Drawing.Color.Black;
             this.dgvCart.Location = new System.Drawing.Point(0, 39);
             this.dgvCart.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.dgvCart.MultiSelect = false;
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 100;
@@ -171,10 +172,12 @@ namespace ExamApp.Forms
             this.textBoxYear.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxYear.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxYear.Location = new System.Drawing.Point(352, 80);
+            this.textBoxYear.MaxLength = 2;
             this.textBoxYear.Multiline = true;
             this.textBoxYear.Name = "textBoxYear";
             this.textBoxYear.Size = new System.Drawing.Size(39, 28);
             this.textBoxYear.TabIndex = 23;
+            this.textBoxYear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxNumb_KeyDown);
             this.textBoxYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumb_KeyPress);
             // 
             // label5
@@ -204,10 +207,12 @@ namespace ExamApp.Forms
             this.textBoxMM.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxMM.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxMM.Location = new System.Drawing.Point(286, 80);
+            this.textBoxMM.MaxLength = 2;
             this.textBoxMM.Multiline = true;
             this.textBoxMM.Name = "textBoxMM";
             this.textBoxMM.Size = new System.Drawing.Size(39, 28);
             this.textBoxMM.TabIndex = 20;
+            this.textBoxMM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxNumb_KeyDown);
             this.textBoxMM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumb_KeyPress);
             // 
             // label3
@@ -226,10 +231,12 @@ namespace ExamApp.Forms
             this.textBoxCvv.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxCvv.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCvv.Location = new System.Drawing.Point(62, 80);
+            this.textBoxCvv.MaxLength = 3;
             this.textBoxCvv.Multiline = true;
             this.textBoxCvv.Name = "textBoxCvv";
             this.textBoxCvv.Size = new System.Drawing.Size(82, 28);
             this.textBoxCvv.TabIndex = 18;
+            this.textBoxCvv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxNumb_KeyDown);
             this.textBoxCvv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumb_KeyPress);
             // 
             // label2
@@ -248,10 +255,12 @@ namespace ExamApp.Forms
             this.textBoxNumb.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxNumb.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxNumb.Location = new System.Drawing.Point(155, 30);
+            this.textBoxNumb.MaxLength = 19;
             this.textBoxNumb.Multiline = true;
             this.textBoxNumb.Name = "textBoxNumb";
             this.textBoxNumb.Size = new System.Drawing.Size(236, 29);
             this.textBoxNumb.TabIndex = 16;
+            this.textBoxNumb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxNumb_KeyDown);
             this.textBoxNumb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumb_KeyPress);
             // 
             // Cart

@@ -111,20 +111,24 @@ namespace ExamApp
             this.textBoxUsname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxUsname.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxUsname.Location = new System.Drawing.Point(187, 325);
+            this.textBoxUsname.MaxLength = 30;
             this.textBoxUsname.Multiline = true;
             this.textBoxUsname.Name = "textBoxUsname";
             this.textBoxUsname.Size = new System.Drawing.Size(188, 30);
             this.textBoxUsname.TabIndex = 1;
+            this.textBoxUsname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxUsname_KeyDown);
             // 
             // textBoxPassw
             // 
             this.textBoxPassw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxPassw.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPassw.Location = new System.Drawing.Point(187, 376);
+            this.textBoxPassw.MaxLength = 20;
             this.textBoxPassw.Multiline = true;
             this.textBoxPassw.Name = "textBoxPassw";
             this.textBoxPassw.Size = new System.Drawing.Size(188, 30);
             this.textBoxPassw.TabIndex = 2;
+            this.textBoxPassw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxUsname_KeyDown);
             // 
             // SignIn
             // 

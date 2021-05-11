@@ -83,6 +83,7 @@ namespace ExamApp.Forms
             this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Location = new System.Drawing.Point(0, 41);
+            this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.Size = new System.Drawing.Size(800, 329);
             this.dgvUsers.TabIndex = 2;

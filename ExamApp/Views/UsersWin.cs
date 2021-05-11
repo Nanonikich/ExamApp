@@ -11,7 +11,7 @@ namespace ExamApp.Forms
         #region Поля
         readonly MainWindow MainWin;
         readonly DB db = new DB();
-        private DataTable dtbl = new DataTable();
+        private readonly DataTable dtbl = new DataTable();
         #endregion
 
         #region Конструктор

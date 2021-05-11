@@ -44,8 +44,10 @@ namespace ExamApp.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCateg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCateg.BackgroundColor = System.Drawing.Color.White;
             this.dgvCateg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCateg.Location = new System.Drawing.Point(1, 0);
+            this.dgvCateg.MultiSelect = false;
             this.dgvCateg.Name = "dgvCateg";
             this.dgvCateg.ReadOnly = true;
             this.dgvCateg.Size = new System.Drawing.Size(424, 169);
@@ -83,10 +85,12 @@ namespace ExamApp.Forms
             // 
             this.textBoxCat.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCat.Location = new System.Drawing.Point(125, 185);
+            this.textBoxCat.MaxLength = 25;
             this.textBoxCat.Multiline = true;
             this.textBoxCat.Name = "textBoxCat";
             this.textBoxCat.Size = new System.Drawing.Size(271, 33);
             this.textBoxCat.TabIndex = 4;
+            this.textBoxCat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxCat_KeyDown);
             // 
             // butCategDel
             // 

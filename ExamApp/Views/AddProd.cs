@@ -171,9 +171,17 @@ namespace ExamApp
             MainWin.dataGridView.DataSource = dtbl;
         }
 
+        private void TextBoxVC_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
 
         private void AddProd_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
 
         #endregion
+
     }
 }

@@ -116,7 +116,7 @@ namespace ExamApp
             Close();
         }
 
-        #region Настройка textBoxes на символы
+        #region Настройка textBoxes
         private void TextBoxSurn_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar)) return;
@@ -129,11 +129,20 @@ namespace ExamApp
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
                 e.Handled = true;
         }
+
+        private void TextBoxSurn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
         #endregion
 
         private void SignUp_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Enabled = true;
 
 
         #endregion
+
     }
 }

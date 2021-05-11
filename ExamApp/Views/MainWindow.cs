@@ -203,6 +203,13 @@ namespace ExamApp
                 Filter = "prod_name like '%" + txtSearch.Text + "%'"
             };
 
+        private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
 
         #region ComboBox
         private void ComboBoxUpd()
@@ -245,7 +252,6 @@ namespace ExamApp
         }
         #endregion
 
-
         private void DataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
@@ -276,6 +282,7 @@ namespace ExamApp
             Enabled = false;
             new Cart(this).Show();
         }
+
 
 
         private void MainWindow_Shown(object sender, EventArgs e)

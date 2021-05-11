@@ -98,8 +98,17 @@ namespace ExamApp.Forms
             #endregion
         }
 
+        private void TextBoxCat_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private void Categories_FormClosed(object sender, FormClosedEventArgs e) => AddEddWin.Enabled = true;
 
         #endregion
+
     }
 }

@@ -196,60 +196,72 @@ namespace ExamApp
             // 
             this.textBoxSurn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxSurn.Location = new System.Drawing.Point(98, 12);
+            this.textBoxSurn.MaxLength = 30;
             this.textBoxSurn.Multiline = true;
             this.textBoxSurn.Name = "textBoxSurn";
             this.textBoxSurn.Size = new System.Drawing.Size(189, 27);
             this.textBoxSurn.TabIndex = 12;
+            this.textBoxSurn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             this.textBoxSurn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSurn_KeyPress);
             // 
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxName.Location = new System.Drawing.Point(98, 47);
+            this.textBoxName.MaxLength = 30;
             this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(189, 27);
             this.textBoxName.TabIndex = 13;
+            this.textBoxName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSurn_KeyPress);
             // 
             // textBoxPatr
             // 
             this.textBoxPatr.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPatr.Location = new System.Drawing.Point(98, 82);
+            this.textBoxPatr.MaxLength = 35;
             this.textBoxPatr.Multiline = true;
             this.textBoxPatr.Name = "textBoxPatr";
             this.textBoxPatr.Size = new System.Drawing.Size(189, 27);
             this.textBoxPatr.TabIndex = 14;
+            this.textBoxPatr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             this.textBoxPatr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSurn_KeyPress);
             // 
             // textBoxEmail
             // 
             this.textBoxEmail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxEmail.Location = new System.Drawing.Point(98, 152);
+            this.textBoxEmail.MaxLength = 30;
             this.textBoxEmail.Multiline = true;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(189, 27);
             this.textBoxEmail.TabIndex = 16;
+            this.textBoxEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxEmail_Validating);
             // 
             // textBoxPhone
             // 
             this.textBoxPhone.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPhone.Location = new System.Drawing.Point(98, 117);
+            this.textBoxPhone.MaxLength = 16;
             this.textBoxPhone.Multiline = true;
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(189, 27);
             this.textBoxPhone.TabIndex = 15;
+            this.textBoxPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPhone_KeyPress);
             // 
             // textBoxCity
             // 
             this.textBoxCity.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCity.Location = new System.Drawing.Point(98, 187);
+            this.textBoxCity.MaxLength = 30;
             this.textBoxCity.Multiline = true;
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(189, 27);
             this.textBoxCity.TabIndex = 17;
+            this.textBoxCity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             this.textBoxCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSurn_KeyPress);
             // 
             // textBoxAddr
@@ -260,24 +272,29 @@ namespace ExamApp
             this.textBoxAddr.Name = "textBoxAddr";
             this.textBoxAddr.Size = new System.Drawing.Size(189, 27);
             this.textBoxAddr.TabIndex = 18;
+            this.textBoxAddr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             // 
             // textBoxUsname
             // 
             this.textBoxUsname.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxUsname.Location = new System.Drawing.Point(98, 257);
+            this.textBoxUsname.MaxLength = 30;
             this.textBoxUsname.Multiline = true;
             this.textBoxUsname.Name = "textBoxUsname";
             this.textBoxUsname.Size = new System.Drawing.Size(189, 27);
             this.textBoxUsname.TabIndex = 19;
+            this.textBoxUsname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             // 
             // textBoxPassw
             // 
             this.textBoxPassw.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPassw.Location = new System.Drawing.Point(98, 292);
+            this.textBoxPassw.MaxLength = 20;
             this.textBoxPassw.Multiline = true;
             this.textBoxPassw.Name = "textBoxPassw";
             this.textBoxPassw.Size = new System.Drawing.Size(189, 27);
             this.textBoxPassw.TabIndex = 20;
+            this.textBoxPassw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             // 
             // SignUp
             // 

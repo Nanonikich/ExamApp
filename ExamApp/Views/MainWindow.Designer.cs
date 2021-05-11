@@ -169,10 +169,12 @@
             // 
             this.comboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.comboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox.Margin = new System.Windows.Forms.Padding(1, 0, 5, 0);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(142, 57);
             this.comboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
+            this.comboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
             // 
             // toolStripLabel1
             // 
@@ -187,9 +189,11 @@
             // 
             this.txtSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtSearch.MaxLength = 13;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(150, 57);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // toolStripLabel2
@@ -247,6 +251,7 @@
             this.dataGridView.GridColor = System.Drawing.Color.Black;
             this.dataGridView.Location = new System.Drawing.Point(0, 62);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;

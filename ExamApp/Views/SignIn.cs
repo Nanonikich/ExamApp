@@ -49,6 +49,13 @@ namespace ExamApp
             signUp.Show();
         }
 
+        private void TextBoxUsname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
 
         private void Data_FormClosing(object sender, FormClosingEventArgs e) => Environment.Exit(0);
 

@@ -156,7 +156,7 @@ namespace ExamApp.Forms
             {
                 foreach (DataGridViewRow r in MainWin.dataGridView.Rows)
                 {
-                    if (Convert.ToInt32(r.Cells[6].Value) < 0)
+                    if (Convert.ToInt32(dgvCart.CurrentRow.Cells[4].Value) < 1 || Convert.ToInt32(r.Cells[6].Value) < 0)
                     {
                         db.OpenConnection();
                         new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{1}' WHERE cart_prod_id = N'{r.Cells[0].Value}' AND cart_custom = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteNonQuery();
@@ -217,6 +217,14 @@ namespace ExamApp.Forms
         {
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
                 e.Handled = true;
+        }
+
+        private void TextBoxNumb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
         }
         #endregion
 
