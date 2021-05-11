@@ -6,6 +6,8 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Media;
 
 namespace ExamApp
 {
@@ -287,12 +289,25 @@ namespace ExamApp
 
         private void MainWindow_Shown(object sender, EventArgs e)
         {
-            //int i = 1;
-            //while (i < 3)
+            //Task.Factory.StartNew(() =>
             //{
-            //    (new System.Media.SoundPlayer($@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\{i}.wav")).PlayLooping();
-            //    i += 1;
-            //}
+
+            //    var player = new SoundPlayer();
+
+            //    while (true)
+            //    {
+            //        foreach (var file in new string[] {
+            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\1.wav",
+            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\2.wav",
+            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\3.wav",
+            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\4.wav",
+            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\5.wav"})
+            //        {
+            //            player.SoundLocation = file;
+            //            player.PlaySync();
+            //        }
+            //    }
+            //}, TaskCreationOptions.LongRunning);
         }
 
 
