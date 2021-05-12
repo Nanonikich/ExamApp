@@ -2,9 +2,9 @@
 
 namespace ExamApp
 {
-    class DB
+    internal class DB
     {
-        readonly SqlConnection con = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Acer\Desktop\repository\ExamApp\Data\Database.mdf;Integrated Security=True");
+        private readonly SqlConnection con = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={System.IO.Path.GetFullPath(@"Data\Database.mdf")};Integrated Security=True");
 
         public void OpenConnection()
         {
