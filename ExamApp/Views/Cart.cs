@@ -61,7 +61,7 @@ namespace ExamApp.Forms
 
             db.CloseConnection();
 
-            StretchToImage();
+            ZoomToImage();
         }
         #endregion
 
@@ -108,14 +108,14 @@ namespace ExamApp.Forms
         }
 
 
-        public void StretchToImage()
+        public void ZoomToImage()
         {
             foreach (var dc in from DataGridViewRow dr in dgvCart.Rows
                                 from DataGridViewCell dc in dr.Cells
                                 where dc.GetType() == typeof(DataGridViewImageCell)
                                 select dc)
             {
-                ((DataGridViewImageCell)dc).ImageLayout = DataGridViewImageCellLayout.Stretch;
+                ((DataGridViewImageCell)dc).ImageLayout = DataGridViewImageCellLayout.Zoom;
             }
         }
 

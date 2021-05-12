@@ -29,6 +29,8 @@ namespace ExamApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Categories));
             this.dgvCateg = new System.Windows.Forms.DataGridView();
             this.buttBack = new System.Windows.Forms.Button();
             this.butAddCat = new System.Windows.Forms.Button();
@@ -45,12 +47,20 @@ namespace ExamApp.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCateg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCateg.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCateg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCateg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCateg.Location = new System.Drawing.Point(1, 0);
+            this.dgvCateg.Location = new System.Drawing.Point(-1, 0);
             this.dgvCateg.MultiSelect = false;
             this.dgvCateg.Name = "dgvCateg";
             this.dgvCateg.ReadOnly = true;
-            this.dgvCateg.Size = new System.Drawing.Size(424, 169);
+            this.dgvCateg.Size = new System.Drawing.Size(426, 169);
             this.dgvCateg.TabIndex = 0;
             // 
             // buttBack
@@ -118,6 +128,7 @@ namespace ExamApp.Forms
             this.Controls.Add(this.buttBack);
             this.Controls.Add(this.dgvCateg);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(441, 306);
             this.Name = "Categories";

@@ -29,6 +29,7 @@ namespace ExamApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProd));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -307,6 +308,7 @@ namespace ExamApp
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttEdit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AddProd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

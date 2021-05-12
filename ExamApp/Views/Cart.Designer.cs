@@ -29,11 +29,14 @@ namespace ExamApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cart));
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.butBack = new System.Windows.Forms.Button();
             this.butApply = new System.Windows.Forms.Button();
             this.labelTotal = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -60,16 +63,25 @@ namespace ExamApp.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCart.GridColor = System.Drawing.Color.Black;
-            this.dgvCart.Location = new System.Drawing.Point(0, 39);
+            this.dgvCart.Location = new System.Drawing.Point(0, 45);
             this.dgvCart.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.dgvCart.MultiSelect = false;
             this.dgvCart.Name = "dgvCart";
+            this.dgvCart.RowHeadersVisible = false;
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 100;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(823, 287);
+            this.dgvCart.Size = new System.Drawing.Size(823, 302);
             this.dgvCart.StandardTab = true;
             this.dgvCart.TabIndex = 11;
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCart_CellContentClick);
@@ -109,7 +121,7 @@ namespace ExamApp.Forms
             this.labelTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTotal.Location = new System.Drawing.Point(453, 384);
+            this.labelTotal.Location = new System.Drawing.Point(448, 392);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(59, 23);
             this.labelTotal.TabIndex = 14;
@@ -119,12 +131,23 @@ namespace ExamApp.Forms
             // 
             this.panel1.BackColor = System.Drawing.Color.Navy;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(823, 45);
+            this.panel1.Size = new System.Drawing.Size(823, 50);
             this.panel1.TabIndex = 16;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel4.Location = new System.Drawing.Point(0, 40);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(823, 10);
+            this.panel4.TabIndex = 19;
             // 
             // label1
             // 
@@ -162,16 +185,16 @@ namespace ExamApp.Forms
             this.panel3.Controls.Add(this.textBoxCvv);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.textBoxNumb);
-            this.panel3.Location = new System.Drawing.Point(0, 321);
+            this.panel3.Location = new System.Drawing.Point(0, 329);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(408, 166);
+            this.panel3.Size = new System.Drawing.Size(408, 158);
             this.panel3.TabIndex = 18;
             // 
             // textBoxYear
             // 
             this.textBoxYear.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxYear.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxYear.Location = new System.Drawing.Point(352, 80);
+            this.textBoxYear.Location = new System.Drawing.Point(352, 86);
             this.textBoxYear.MaxLength = 2;
             this.textBoxYear.Multiline = true;
             this.textBoxYear.Name = "textBoxYear";
@@ -185,7 +208,7 @@ namespace ExamApp.Forms
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(331, 87);
+            this.label5.Location = new System.Drawing.Point(331, 93);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 21);
             this.label5.TabIndex = 22;
@@ -196,7 +219,7 @@ namespace ExamApp.Forms
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(215, 87);
+            this.label4.Location = new System.Drawing.Point(215, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 21);
             this.label4.TabIndex = 21;
@@ -206,7 +229,7 @@ namespace ExamApp.Forms
             // 
             this.textBoxMM.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxMM.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxMM.Location = new System.Drawing.Point(286, 80);
+            this.textBoxMM.Location = new System.Drawing.Point(286, 86);
             this.textBoxMM.MaxLength = 2;
             this.textBoxMM.Multiline = true;
             this.textBoxMM.Name = "textBoxMM";
@@ -220,7 +243,7 @@ namespace ExamApp.Forms
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(14, 89);
+            this.label3.Location = new System.Drawing.Point(14, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 19);
             this.label3.TabIndex = 19;
@@ -230,7 +253,7 @@ namespace ExamApp.Forms
             // 
             this.textBoxCvv.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxCvv.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxCvv.Location = new System.Drawing.Point(62, 80);
+            this.textBoxCvv.Location = new System.Drawing.Point(62, 86);
             this.textBoxCvv.MaxLength = 3;
             this.textBoxCvv.Multiline = true;
             this.textBoxCvv.Name = "textBoxCvv";
@@ -244,7 +267,7 @@ namespace ExamApp.Forms
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(15, 38);
+            this.label2.Location = new System.Drawing.Point(15, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 21);
             this.label2.TabIndex = 17;
@@ -254,7 +277,7 @@ namespace ExamApp.Forms
             // 
             this.textBoxNumb.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.textBoxNumb.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxNumb.Location = new System.Drawing.Point(155, 30);
+            this.textBoxNumb.Location = new System.Drawing.Point(155, 36);
             this.textBoxNumb.MaxLength = 19;
             this.textBoxNumb.Multiline = true;
             this.textBoxNumb.Name = "textBoxNumb";
@@ -274,6 +297,7 @@ namespace ExamApp.Forms
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(839, 572);
             this.Name = "Cart";
@@ -310,5 +334,6 @@ namespace ExamApp.Forms
         private System.Windows.Forms.TextBox textBoxCvv;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxNumb;
+        private System.Windows.Forms.Panel panel4;
     }
 }

@@ -145,6 +145,7 @@ namespace ExamApp
             this.Controls.Add(this.butSignUp);
             this.Controls.Add(this.butSignIn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(913, 486);
             this.Name = "SignIn";

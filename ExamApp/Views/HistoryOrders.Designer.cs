@@ -29,7 +29,11 @@ namespace ExamApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryOrders));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.ButBack = new System.Windows.Forms.Button();
@@ -40,13 +44,24 @@ namespace ExamApp.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Navy;
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(809, 46);
+            this.panel1.Size = new System.Drawing.Size(809, 57);
             this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel2.Location = new System.Drawing.Point(0, 44);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(809, 11);
+            this.panel2.TabIndex = 1;
             // 
             // label1
             // 
@@ -69,12 +84,23 @@ namespace ExamApp.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOrders.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrders.Location = new System.Drawing.Point(0, 43);
+            this.dgvOrders.Location = new System.Drawing.Point(0, 54);
             this.dgvOrders.MultiSelect = false;
             this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.RowHeadersVisible = false;
             this.dgvOrders.RowHeadersWidth = 51;
-            this.dgvOrders.Size = new System.Drawing.Size(809, 330);
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.dgvOrders.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvOrders.Size = new System.Drawing.Size(809, 319);
             this.dgvOrders.TabIndex = 1;
             this.dgvOrders.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellValueChanged);
             this.dgvOrders.CurrentCellDirtyStateChanged += new System.EventHandler(this.DgvOrders_CurrentCellDirtyStateChanged);
@@ -101,11 +127,13 @@ namespace ExamApp.Forms
             this.Controls.Add(this.ButBack);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvOrders);
-            this.MaximumSize = new System.Drawing.Size(1365, 766);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1366, 766);
             this.MinimumSize = new System.Drawing.Size(824, 487);
             this.Name = "HistoryOrders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HistoryOrders";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HistoryOrders_FormClosed);
             this.Load += new System.EventHandler(this.HistoryOrders_Load);
             this.panel1.ResumeLayout(false);
@@ -121,5 +149,6 @@ namespace ExamApp.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ButBack;
         public System.Windows.Forms.DataGridView dgvOrders;
+        private System.Windows.Forms.Panel panel2;
     }
 }
