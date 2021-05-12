@@ -39,7 +39,7 @@ namespace ExamApp.Forms
             UpdateTable();
 
             #region Настройки таблицы
-            if (MainWin.User[0].ToString() != "25")
+            if (MainWin.User[0].ToString() != "1")
             {
                 dgvUsers.ReadOnly = true;
                 dgvUsers.Columns[7].Visible = false;
@@ -70,7 +70,7 @@ namespace ExamApp.Forms
             };
             dgvUsers.Columns.Add(btn);
 
-            if (MainWin.User[0].ToString() != "25")
+            if (MainWin.User[0].ToString() != "1")
             {
                 btn.Visible = false;
             }
@@ -85,7 +85,7 @@ namespace ExamApp.Forms
         {
             if (e.ColumnIndex == 10)
             {
-                if (dgvUsers.CurrentRow.Cells[0].Value.ToString() != "25")
+                if (dgvUsers.CurrentRow.Cells[0].Value.ToString() != "1")
                 {
                     if (!DBNull.Value.Equals(((DataGridViewCheckBoxCell)dgvUsers[e.ColumnIndex, e.RowIndex]).Value) && (bool)((DataGridViewCheckBoxCell)dgvUsers[e.ColumnIndex, e.RowIndex]).Value)
                     {
@@ -111,14 +111,14 @@ namespace ExamApp.Forms
 
             if (e.ColumnIndex == 11)
             {
-                if (dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString() == "25")
+                if (dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString() == "1")
                 {
                     MessageBox.Show("Admin id cannot be deleted");
                 }
                 else
                 {
                     db.OpenConnection();
-                    new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value} AND user_id != {25}", db.GetConnection()).ExecuteNonQuery();
+                    new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value} AND user_id != {1}", db.GetConnection()).ExecuteNonQuery();
                     db.CloseConnection();
                     UpdateTable();
                     MessageBox.Show("Success");
