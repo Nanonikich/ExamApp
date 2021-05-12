@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace ExamApp
 {
@@ -29,15 +30,24 @@ namespace ExamApp
         private void ButnReg_Click(object sender, EventArgs e)
         {
             // проверка на совпадение имени пользователя
-            //try
-            //{
-                #region Проверка на пустоту
+            try
+            {
+                #region Проверка на пустоту и номер телефона
                 if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
                 {
                     MessageBox.Show("Fill in the blank fields");
                     return;
                 }
+
+                if (Convert.ToInt32(textBoxPhone.Text.Length.ToString(CultureInfo.InvariantCulture)) < 10)
+                {
+                    MessageBox.Show("Wrong phone number");
+                    return;
+                }
+
                 #endregion
+
+
 
                 new SqlDataAdapter($@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES(N'{textBoxSurn.Text}', N'{textBoxName.Text}', N'{textBoxPatr.Text}', N'{textBoxEmail.Text}', N'{textBoxPhone.Text}', N'{textBoxCity.Text}', N'{textBoxAddr.Text}', N'{textBoxUsname.Text}', N'{textBoxPassw.Text}')",
                                     db.GetConnection()).Fill(new DataTable());
@@ -49,11 +59,11 @@ namespace ExamApp
                 _SignIn.butSignUp.Enabled = false;
                 _SignIn.Show();
                 #endregion
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("This username is already in the system");
-            //}
+            }
+            catch
+            {
+                MessageBox.Show("This username is already in the system");
+            }
         }
 
 
@@ -63,10 +73,16 @@ namespace ExamApp
             {
                 db.OpenConnection();
 
-                #region Проверка на пустоту
+                #region Проверка на пустоту и номер телефона
                 if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
                 {
                     MessageBox.Show("Fill in the blank fields");
+                    return;
+                }
+
+                if (Convert.ToInt32(textBoxPhone.Text.Length.ToString(CultureInfo.InvariantCulture)) < 10)
+                {
+                    MessageBox.Show("Wrong phone number");
                     return;
                 }
                 #endregion
@@ -125,7 +141,9 @@ namespace ExamApp
         private void TextBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
-                e.Handled = true;
+            {
+                    e.Handled = true; 
+            }
         }
 
         // Имя пользователя и пароль
@@ -150,6 +168,6 @@ namespace ExamApp
 
 
         #endregion
-        
+
     }
 }
