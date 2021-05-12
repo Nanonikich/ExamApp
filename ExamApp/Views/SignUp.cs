@@ -11,19 +11,23 @@ namespace ExamApp
     public partial class SignUp : Form
     {
         #region Поля
-        readonly DB db = new DB();
-        readonly SignIn _SignIn;
+
+        private readonly DB db = new DB();
+        private readonly SignIn _SignIn;
         private readonly string z;
-        #endregion
+
+        #endregion Поля
 
         #region Конструктор
+
         public SignUp(SignIn sn, string id)
         {
             _SignIn = sn;
             z = id;
             InitializeComponent();
         }
-        #endregion
+
+        #endregion Конструктор
 
         #region Методы
 
@@ -33,7 +37,8 @@ namespace ExamApp
             try
             {
                 #region Проверка на пустоту и номер телефона
-                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
+
+                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
                 {
                     MessageBox.Show("Fill in the blank fields");
                     return;
@@ -45,9 +50,7 @@ namespace ExamApp
                     return;
                 }
 
-                #endregion
-
-
+                #endregion Проверка на пустоту и номер телефона
 
                 new SqlDataAdapter($@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES(N'{textBoxSurn.Text}', N'{textBoxName.Text}', N'{textBoxPatr.Text}', N'{textBoxEmail.Text}', N'{textBoxPhone.Text}', N'{textBoxCity.Text}', N'{textBoxAddr.Text}', N'{textBoxUsname.Text}', N'{textBoxPassw.Text}')",
                                     db.GetConnection()).Fill(new DataTable());
@@ -55,17 +58,18 @@ namespace ExamApp
                 MessageBox.Show("You have successfully registered");
 
                 #region Открытие формы SignIn
+
                 Close();
                 _SignIn.butSignUp.Enabled = false;
                 _SignIn.Show();
-                #endregion
+
+                #endregion Открытие формы SignIn
             }
             catch
             {
                 MessageBox.Show("This username is already in the system");
             }
         }
-
 
         private void ButnEdit_Click(object sender, EventArgs e)
         {
@@ -74,7 +78,8 @@ namespace ExamApp
                 db.OpenConnection();
 
                 #region Проверка на пустоту и номер телефона
-                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
+
+                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
                 {
                     MessageBox.Show("Fill in the blank fields");
                     return;
@@ -85,7 +90,8 @@ namespace ExamApp
                     MessageBox.Show("Wrong phone number");
                     return;
                 }
-                #endregion
+
+                #endregion Проверка на пустоту и номер телефона
 
                 switch (new SqlCommand($"UPDATE Users SET user_sur = N'{textBoxSurn.Text}', user_name = N'{textBoxName.Text}', user_patr = N'{textBoxPatr.Text}', user_email =  N'{textBoxEmail.Text}', user_phone = '{textBoxPhone.Text}', user_city = N'{textBoxCity.Text}', user_address = N'{textBoxAddr.Text}', user_usname = N'{textBoxUsname.Text}', user_passw = N'{textBoxPassw.Text}' WHERE user_id = '{z}'",
                     db.GetConnection()).ExecuteNonQuery())
@@ -94,6 +100,7 @@ namespace ExamApp
                         Close();
                         MessageBox.Show("Data Updated");
                         break;
+
                     default:
                         MessageBox.Show("Data not updated");
                         break;
@@ -107,6 +114,7 @@ namespace ExamApp
         }
 
         #region Проверка эл.почты
+
         private void TextBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             System.Text.RegularExpressions.Regex rEMail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
@@ -120,8 +128,8 @@ namespace ExamApp
                 }
             }
         }
-        #endregion
 
+        #endregion Проверка эл.почты
 
         private void ButnBack_Click(object sender, EventArgs e)
         {
@@ -129,6 +137,7 @@ namespace ExamApp
         }
 
         #region Настройка textBoxes
+
         // Проверка имени, фамилии, отчества, города
         private void TextBoxSurn_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -142,7 +151,7 @@ namespace ExamApp
         {
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
             {
-                    e.Handled = true; 
+                e.Handled = true;
             }
         }
 
@@ -162,12 +171,11 @@ namespace ExamApp
                 e.SuppressKeyPress = true;
             }
         }
-        #endregion
+
+        #endregion Настройка textBoxes
 
         private void SignUp_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Enabled = true;
 
-
-        #endregion
-
+        #endregion Методы
     }
 }

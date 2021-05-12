@@ -51,6 +51,7 @@ namespace ExamApp
             this.textBoxAddr = new System.Windows.Forms.TextBox();
             this.textBoxUsname = new System.Windows.Forms.TextBox();
             this.textBoxPassw = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -158,7 +159,7 @@ namespace ExamApp
             this.butnReg.BackColor = System.Drawing.Color.Purple;
             this.butnReg.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnReg.ForeColor = System.Drawing.Color.White;
-            this.butnReg.Location = new System.Drawing.Point(56, 342);
+            this.butnReg.Location = new System.Drawing.Point(64, 342);
             this.butnReg.Name = "butnReg";
             this.butnReg.Size = new System.Drawing.Size(182, 35);
             this.butnReg.TabIndex = 21;
@@ -168,10 +169,11 @@ namespace ExamApp
             // 
             // butnEdit
             // 
+            this.butnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.butnEdit.BackColor = System.Drawing.Color.Purple;
             this.butnEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnEdit.ForeColor = System.Drawing.Color.White;
-            this.butnEdit.Location = new System.Drawing.Point(56, 342);
+            this.butnEdit.Location = new System.Drawing.Point(64, 342);
             this.butnEdit.Name = "butnEdit";
             this.butnEdit.Size = new System.Drawing.Size(182, 35);
             this.butnEdit.TabIndex = 10;
@@ -185,7 +187,7 @@ namespace ExamApp
             this.butnBack.BackColor = System.Drawing.Color.Purple;
             this.butnBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnBack.ForeColor = System.Drawing.Color.White;
-            this.butnBack.Location = new System.Drawing.Point(56, 392);
+            this.butnBack.Location = new System.Drawing.Point(64, 392);
             this.butnBack.Name = "butnBack";
             this.butnBack.Size = new System.Drawing.Size(182, 35);
             this.butnBack.TabIndex = 22;
@@ -299,12 +301,24 @@ namespace ExamApp
             this.textBoxPassw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             this.textBoxPassw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxUsname_KeyPress);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(294, 82);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(13, 15);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "*";
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
-            this.ClientSize = new System.Drawing.Size(299, 450);
+            this.ClientSize = new System.Drawing.Size(315, 450);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxPassw);
             this.Controls.Add(this.textBoxUsname);
             this.Controls.Add(this.textBoxAddr);
@@ -362,5 +376,6 @@ namespace ExamApp
         public System.Windows.Forms.TextBox textBoxUsname;
         public System.Windows.Forms.TextBox textBoxPassw;
         public System.Windows.Forms.Button butnBack;
+        private System.Windows.Forms.Label label10;
     }
 }
