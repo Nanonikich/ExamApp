@@ -101,6 +101,7 @@ namespace ExamApp.Forms
             this.textBoxCat.Size = new System.Drawing.Size(271, 33);
             this.textBoxCat.TabIndex = 4;
             this.textBoxCat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxCat_KeyDown);
+            this.textBoxCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxCat_KeyPress);
             // 
             // butCategDel
             // 

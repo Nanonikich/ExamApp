@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ExamApp.Forms
@@ -98,6 +99,15 @@ namespace ExamApp.Forms
         }
 
         #region Настройка textbox
+        // Запрет символов и цифр
+        private void TextBoxCat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Regex.Match(e.KeyChar.ToString(), @"[а-яА-Я]|[a-zA-Z]").Success || e.KeyChar == (char)Keys.Back) return;
+            else
+                e.Handled = true;
+        }
+
+        // Запрет Enter
         private void TextBoxCat_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

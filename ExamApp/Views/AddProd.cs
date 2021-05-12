@@ -76,10 +76,8 @@ namespace ExamApp
         {
             var arr = (byte[])new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[]));
 
-            #region Проверка на содержание
-            foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
-                                    textBoxVC.Text.Contains(v) || textBoxPr.Text.Contains(v) || textBoxCount.Text.Contains(v) ||
-                                    string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(arr.ToString()) || string.IsNullOrEmpty(imageUrl) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text) || string.IsNullOrEmpty(combBoxCateg.Text)).Select(v => new { }))
+            #region Проверка на пустоту
+            if (string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text) || string.IsNullOrEmpty(combBoxCateg.Text))
             {
                 MessageBox.Show("Fill in the blank fields");
                 return;
@@ -135,10 +133,8 @@ namespace ExamApp
 
         private void ButtEdit_Click(object sender, EventArgs e)
         {
-            #region Проверка на содержание
-            foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
-                                    textBoxVC.Text.Contains(v) || textBoxPr.Text.Contains(v) || textBoxCount.Text.Contains(v) ||
-                                    string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text) || string.IsNullOrEmpty(combBoxCateg.Text)).Select(v => new { }))
+            #region Проверка на пустоту
+            if (string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text) || string.IsNullOrEmpty(combBoxCateg.Text))
             {
                 MessageBox.Show("Fill in the blank fields");
                 return;
@@ -173,8 +169,18 @@ namespace ExamApp
                 "JOIN Categories ON Categories.categ_id = prod_category", db.GetConnection()).ExecuteReader());
             db.CloseConnection();
             MainWin.dataGridView.DataSource = dtbl;
+            MainWin.ComboBoxUpd();
         }
 
+        #region Настройка textboxes
+        // проверка на цифры атрибута, цены и количества
+        private void TextBoxVC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+                e.Handled = true;
+        }
+
+        // Проверка на Enter всех textboxes
         private void TextBoxVC_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -182,10 +188,11 @@ namespace ExamApp
                 e.SuppressKeyPress = true;
             }
         }
+        #endregion
 
         private void AddProd_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
 
         #endregion
-
+       
     }
 }

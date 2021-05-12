@@ -285,6 +285,7 @@ namespace ExamApp
             this.textBoxUsname.Size = new System.Drawing.Size(189, 27);
             this.textBoxUsname.TabIndex = 19;
             this.textBoxUsname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
+            this.textBoxUsname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxUsname_KeyPress);
             // 
             // textBoxPassw
             // 
@@ -296,6 +297,7 @@ namespace ExamApp
             this.textBoxPassw.Size = new System.Drawing.Size(189, 27);
             this.textBoxPassw.TabIndex = 20;
             this.textBoxPassw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
+            this.textBoxPassw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxUsname_KeyPress);
             // 
             // SignUp
             // 

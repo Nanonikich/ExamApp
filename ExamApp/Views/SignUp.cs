@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ExamApp
 {
@@ -28,19 +29,17 @@ namespace ExamApp
         private void ButnReg_Click(object sender, EventArgs e)
         {
             // проверка на совпадение имени пользователя
-            try
-            {
-                #region Проверка на содержание
-                foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
-                                        textBoxSurn.Text.Contains(v) || textBoxName.Text.Contains(v) || textBoxPatr.Text.Contains(v) || textBoxPhone.Text.Contains(v) || textBoxCity.Text.Contains(v) || textBoxUsname.Text.Contains(v) || textBoxPassw.Text.Contains(v) ||
-                                        string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text)).Select(v => new { }))
+            //try
+            //{
+                #region Проверка на пустоту
+                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
                 {
-                    MessageBox.Show("Check the fields");
+                    MessageBox.Show("Fill in the blank fields");
                     return;
                 }
                 #endregion
 
-                new SqlDataAdapter(@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES('" + textBoxSurn.Text + "', '" + textBoxName.Text + "', '" + textBoxPatr.Text + "', '" + textBoxEmail.Text + "', '" + textBoxPhone.Text + "', '" + textBoxCity.Text + "', '" + textBoxAddr.Text + "', '" + textBoxUsname.Text + "', '" + textBoxPassw.Text + "')",
+                new SqlDataAdapter($@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES(N'{textBoxSurn.Text}', N'{textBoxName.Text}', N'{textBoxPatr.Text}', N'{textBoxEmail.Text}', N'{textBoxPhone.Text}', N'{textBoxCity.Text}', N'{textBoxAddr.Text}', N'{textBoxUsname.Text}', N'{textBoxPassw.Text}')",
                                     db.GetConnection()).Fill(new DataTable());
 
                 MessageBox.Show("You have successfully registered");
@@ -50,11 +49,11 @@ namespace ExamApp
                 _SignIn.butSignUp.Enabled = false;
                 _SignIn.Show();
                 #endregion
-            }
-            catch
-            {
-                MessageBox.Show("This username is already in the system");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("This username is already in the system");
+            //}
         }
 
 
@@ -64,12 +63,10 @@ namespace ExamApp
             {
                 db.OpenConnection();
 
-                #region Проверка на содержание
-                foreach (var _ in (new string[] { ".", ",", "/", "*", "(", ")", "%", "!", "?", ">", "<", "'", ":", ";", "{", "}", "[", "]", "-", "_", "+", "=", "&", "^", "$", "|", "@", "~", "`", "№", ";", " " }).Where(v =>
-                                        textBoxSurn.Text.Contains(v) || textBoxName.Text.Contains(v) || textBoxPatr.Text.Contains(v) || textBoxPhone.Text.Contains(v) || textBoxCity.Text.Contains(v) || textBoxUsname.Text.Contains(v) || textBoxPassw.Text.Contains(v) ||
-                                        string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text)).Select(v => new { }))
+                #region Проверка на пустоту
+                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPatr.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
                 {
-                    MessageBox.Show("Check the fields");
+                    MessageBox.Show("Fill in the blank fields");
                     return;
                 }
                 #endregion
@@ -116,19 +113,30 @@ namespace ExamApp
         }
 
         #region Настройка textBoxes
+        // Проверка имени, фамилии, отчества, города
         private void TextBoxSurn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar)) return;
+            if (Regex.Match(e.KeyChar.ToString(), @"[а-яА-Я]|[a-zA-Z]").Success || e.KeyChar == (char)Keys.Back) return;
             else
                 e.Handled = true;
         }
 
+        // Проверка телефонного номера
         private void TextBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
                 e.Handled = true;
         }
 
+        // Имя пользователя и пароль
+        private void TextBoxUsname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Regex.Match(e.KeyChar.ToString(), @"[0-9]|[a-zA-Z]").Success || e.KeyChar == (char)Keys.Back) return;
+            else
+                e.Handled = true;
+        }
+
+        // Проверка всех боксов на Enter
         private void TextBoxSurn_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -142,6 +150,6 @@ namespace ExamApp
 
 
         #endregion
-
+        
     }
 }

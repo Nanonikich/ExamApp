@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Linq;
-
+using System.Media;
 
 namespace ExamApp
 {
@@ -214,7 +214,7 @@ namespace ExamApp
         #endregion
 
         #region ComboBox
-        private void ComboBoxUpd()
+        public void ComboBoxUpd()
         {
             comboBox.Items.Clear();
             comboBox.Items.Add("All");
@@ -290,8 +290,10 @@ namespace ExamApp
             new Cart(this).Show();
         }
 
-
-        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Show();
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _SignIn.Show();
+        }
 
         #endregion
     }

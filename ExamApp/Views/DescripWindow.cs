@@ -55,7 +55,7 @@ namespace ExamApp.Forms
             else
             {
                 db.OpenConnection();
-                new SqlCommand($"INSERT INTO Cart VALUES('{_DataThing.Cells[0].Value}', '{_DataThing.Cells[3].Value}', {1}, {_DataThing.Cells[5].Value}, {MainWin.User[0]})",
+                new SqlCommand($"INSERT INTO Cart VALUES('{_DataThing.Cells[0].Value}', N'{_DataThing.Cells[3].Value}', {1}, {_DataThing.Cells[5].Value}, {MainWin.User[0]})",
                     db.GetConnection())
                     .ExecuteNonQuery();
                 db.CloseConnection();

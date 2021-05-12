@@ -129,6 +129,7 @@ namespace ExamApp
             this.textBoxVC.Size = new System.Drawing.Size(196, 32);
             this.textBoxVC.TabIndex = 7;
             this.textBoxVC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxVC_KeyDown);
+            this.textBoxVC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxVC_KeyPress);
             // 
             // textBoxNam
             // 
@@ -160,6 +161,7 @@ namespace ExamApp
             this.textBoxPr.Size = new System.Drawing.Size(196, 32);
             this.textBoxPr.TabIndex = 10;
             this.textBoxPr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxVC_KeyDown);
+            this.textBoxPr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxVC_KeyPress);
             // 
             // buttAddPr
             // 
@@ -245,6 +247,7 @@ namespace ExamApp
             this.textBoxCount.Size = new System.Drawing.Size(196, 32);
             this.textBoxCount.TabIndex = 11;
             this.textBoxCount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxVC_KeyDown);
+            this.textBoxCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxVC_KeyPress);
             // 
             // label5
             // 
