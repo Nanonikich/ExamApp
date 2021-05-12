@@ -42,7 +42,7 @@ namespace ExamApp.Forms
             Close();
         }
 
-
+        #region Загрузка
         private void LoadNewDataFormCart()
         {
             db.OpenConnection();
@@ -63,6 +63,7 @@ namespace ExamApp.Forms
 
             StretchToImage();
         }
+        #endregion
 
 
         private void Basket_Load(object sender, EventArgs e)
@@ -118,7 +119,9 @@ namespace ExamApp.Forms
             }
         }
 
-
+        /// <summary>
+        /// Подсчёт итоговой цены за все товары
+        /// </summary>
         public void TotalAmout()
         {
             Double result = 0;
@@ -131,7 +134,11 @@ namespace ExamApp.Forms
             labelTotal.Text = $"Total: {result}";
         }
 
-
+        /// <summary>
+        /// Удаление товара из корзины
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 7)
@@ -149,7 +156,13 @@ namespace ExamApp.Forms
             }
         }
 
-
+        /// <summary>
+        /// Изменение количества товара в корзине
+        /// Если изменения произошли в четвёртом столбце и введённые значения не противоречат данным
+        /// в этой таблице и других таблицах. Происходит обновление количества товара в корзине(+ бронирование)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 4 && dgvCart.RowCount > 0)
@@ -181,6 +194,7 @@ namespace ExamApp.Forms
         }
 
 
+        // Покупка товара
         private void ButApply_Click(object sender, EventArgs e)
         {
             if (dgvCart.RowCount > 0 || dgvCart.Columns[6] == MainWin.User[0])

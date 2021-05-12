@@ -66,16 +66,13 @@ namespace ExamApp.Forms
             }
         }
 
-
         private void ButBack_Click(object sender, EventArgs e)
         {
             MainWin.Enabled = true;
             Close();
         }
 
-
         private void DescripWindow_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
-
 
         #endregion
     }

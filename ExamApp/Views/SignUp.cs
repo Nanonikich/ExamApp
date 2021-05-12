@@ -25,7 +25,6 @@ namespace ExamApp
 
         #region Методы
 
-
         private void ButnReg_Click(object sender, EventArgs e)
         {
             // проверка на совпадение имени пользователя

@@ -104,7 +104,11 @@ namespace ExamApp
             }
         }
 
-
+        /// <summary>
+        /// Добавление данных в таблицу
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="db"></param>
         private void EditData(byte[] arr, DB db)
         {
             object value = combBoxCateg.SelectedValue;

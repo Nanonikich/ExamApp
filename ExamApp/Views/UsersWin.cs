@@ -76,6 +76,11 @@ namespace ExamApp.Forms
             }
         }
 
+        /// <summary>
+        /// Выдача статуса пользователям. Удаление пользователей из системы.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 10)
@@ -128,8 +133,10 @@ namespace ExamApp.Forms
             Close();
         }
 
+
         private void DgvUsers_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
+            // результативность обработки изменения в таблице
             if (dgvUsers.IsCurrentCellDirty)
             {
                 dgvUsers.CommitEdit(DataGridViewDataErrorContexts.Commit);

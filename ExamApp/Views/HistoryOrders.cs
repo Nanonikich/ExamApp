@@ -18,7 +18,7 @@ namespace ExamApp.Forms
         private DataTable _TableWithAllOrders;
         #endregion
 
-        #region Свойство
+        #region Свойства
         public DataTable TableWithAllOrders
         {
             get => _TableWithAllOrders;
@@ -31,7 +31,6 @@ namespace ExamApp.Forms
         private List<Condition> _Conditions;
 
         private List<Orders> _Orders;
-
         #endregion
 
         #region Конструктор
@@ -45,23 +44,15 @@ namespace ExamApp.Forms
 
         #region Методы
 
-        /// <summary>
-        /// Кнопка назад
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButBack_Click(object sender, EventArgs e)
         {
             MainWin.Enabled = true;
             Close();
         }
 
-        /// <summary>
-        /// Устанавливает настройки ComboBox
-        /// </summary>
+        
         private void SetComboBox()
         {
-
             DataGridViewComboBoxColumn cbbx = new DataGridViewComboBoxColumn
             {
                 Name = "Order Status",   /// Название столбца 
@@ -73,7 +64,6 @@ namespace ExamApp.Forms
 
             dgvOrders.Columns.Add(cbbx);
             return;
-
         }
 
         #region Заполнение свойств Моделей
@@ -83,9 +73,7 @@ namespace ExamApp.Forms
         /// </summary>
         public void SetValueOrders()
         {
-
             _Orders = new List<Orders>();
-
             db.OpenConnection();
             var reader = new SqlCommand("SELECT * FROM Orders", db.GetConnection()).ExecuteReader();
 
@@ -114,11 +102,10 @@ namespace ExamApp.Forms
             else return;
 
             db.CloseConnection();
-
         }
 
         /// <summary>
-        /// Заполняет из базы данных лист с объектам(Модели) - Conditions
+        /// Заполняет из базы данных лист с объектами(Модели) - Conditions
         /// </summary>
         private void SetValueConditions()
         {
@@ -141,16 +128,14 @@ namespace ExamApp.Forms
                     );
                 }
             }
-            
-            db.CloseConnection();
 
+            db.CloseConnection();
         }
 
         #endregion
 
         /// <summary>
-        /// Устанавливает Базовые колонки для Таблицы 
-        /// Без ord_statusm или же ComboBox
+        /// Устанавливает Базовые колонки для таблицы без  ComboBox
         /// </summary>
         public void SetColumn()
         {
@@ -165,7 +150,6 @@ namespace ExamApp.Forms
                 new DataColumn("Price"),
                 new DataColumn("Start date"),
                 new DataColumn("Over date")
-
             };
 
             foreach (var column in dataColumns)
@@ -201,7 +185,6 @@ namespace ExamApp.Forms
             {
                 foreach (var order in _Orders)
                 {
-
                     TableWithAllOrders.Rows.Add
                         (
                             order.ord_id,
@@ -213,8 +196,7 @@ namespace ExamApp.Forms
                             order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
                             order.ord_over_date.ToString("dd.MM.yyyy"),
                             order.ord_status
-                        );
-                        
+                        );     
                 }
             }
             else if (MainWin.User[10].ToString() == "True")
@@ -223,7 +205,6 @@ namespace ExamApp.Forms
 
                 foreach (var order in OnlyUsersOrders)
                 {
-
                     TableWithAllOrders.Rows.Add
                         (
                             order.ord_id,
@@ -256,8 +237,7 @@ namespace ExamApp.Forms
                             order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
                             order.ord_over_date.ToString("dd.MM.yyyy"),
                             _Conditions.SingleOrDefault(c => c.condit_id == order.ord_status).condit_name
-                        ); 
-
+                        );
                 }
             }
         }
@@ -316,14 +296,12 @@ namespace ExamApp.Forms
             if (MainWin.User[10].ToString() == "False")
             {
                 SetValue((int)MainWin.User[0]);
-
                 dgvOrders.DataSource = TableWithAllOrders;
                 dgvOrders.ReadOnly = true;
             }
             else if (MainWin.User[10].ToString() == "True" && (int)MainWin.User[0] != 25)
             {
                 SetValue((int)MainWin.User[0]);
-
                 dgvOrders.AutoGenerateColumns = false;
                 dgvOrders.DataSource = TableWithAllOrders;
             }
@@ -337,10 +315,6 @@ namespace ExamApp.Forms
             db.CloseConnection();
         }
 
-        #endregion
-
-        #region Команды
-
         private void HistoryOrders_Load(object sender, EventArgs e)
         {
             UpdateTable();
@@ -348,12 +322,18 @@ namespace ExamApp.Forms
 
         private void DgvOrders_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
+            // результативность обработки изменения в таблице
             if (dgvOrders.IsCurrentCellDirty)
             {
                 dgvOrders.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
 
+        /// <summary>
+        /// Изменение статуса заказа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DgvOrders_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 8)
@@ -365,7 +345,7 @@ namespace ExamApp.Forms
                 db.OpenConnection();
                 new SqlCommand($"UPDATE Orders \n" +
                                $"SET ord_status = {newValue} \n" +
-                               $"WHERE ord_id = {id}", 
+                               $"WHERE ord_id = {id}",
                     db.GetConnection()).ExecuteNonQuery();
                 db.CloseConnection();
                 UpdateTable();
@@ -375,7 +355,7 @@ namespace ExamApp.Forms
 
         private void HistoryOrders_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
 
-        #endregion
 
+        #endregion
     }
 }

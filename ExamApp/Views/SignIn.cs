@@ -49,6 +49,7 @@ namespace ExamApp
             signUp.Show();
         }
 
+        #region Настройка textBoxes
         private void TextBoxUsname_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -56,6 +57,7 @@ namespace ExamApp
                 e.SuppressKeyPress = true;
             }
         }
+        #endregion
 
         private void Data_FormClosing(object sender, FormClosingEventArgs e) => Environment.Exit(0);
 

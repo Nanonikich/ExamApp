@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Media;
 
 namespace ExamApp
@@ -17,6 +16,7 @@ namespace ExamApp
         readonly SignIn _SignIn;
         readonly DataRow _User;
         readonly DB db = new DB();
+        static readonly SoundPlayer player = new SoundPlayer();
         int ClickItem = 0;
         #endregion
 
@@ -199,7 +199,7 @@ namespace ExamApp
         #endregion
 
 
-
+        #region Поиск по наименованию и настройка поисковика
         private void TxtSearch_TextChanged(object sender, EventArgs e) => dataGridView.DataSource = new BindingSource
             {
                 DataSource = dataGridView.DataSource,
@@ -213,6 +213,7 @@ namespace ExamApp
                 e.SuppressKeyPress = true;
             }
         }
+        #endregion
 
         #region ComboBox
         private void ComboBoxUpd()
@@ -255,6 +256,11 @@ namespace ExamApp
         }
         #endregion
 
+        /// <summary>
+        /// Открытие окна с информацией о товаре
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView.Rows.Count > 0 && dataGridView.Rows != null)
@@ -286,29 +292,16 @@ namespace ExamApp
             new Cart(this).Show();
         }
 
-
+        #region Фишка системы
+        public static void Music()
+        {
+            player.SoundLocation = System.IO.Path.GetFullPath(@"apps\mix.wav");
+            player.Play();
+        }
 
         private void MainWindow_Shown(object sender, EventArgs e)
         {
-            //Task.Factory.StartNew(() =>
-            //{
-
-            //    var player = new SoundPlayer();
-
-            //    while (true)
-            //    {
-            //        foreach (var file in new string[] {
-            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\1.wav",
-            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\2.wav",
-            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\3.wav",
-            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\4.wav",
-            //@"C:\Users\Acer\Desktop\repository\ExamApp\Resources\5.wav"})
-            //        {
-            //            player.SoundLocation = file;
-            //            player.PlaySync();
-            //        }
-            //    }
-            //}, TaskCreationOptions.LongRunning);
+            Music();
         }
 
         private void ButSound_Click(object sender, EventArgs e)
@@ -316,18 +309,24 @@ namespace ExamApp
             switch (ClickItem)
             {
                 case 0:
-                    ButSound.Image = Image.FromFile(@"C:\Users\Acer\Desktop\repository\ExamApp\Content\mw9.png");
+                    ButSound.Image = Image.FromFile(System.IO.Path.GetFullPath(@"apps\mw9.png"));
+                    player.Stop();
                     ClickItem += 1;
                     break;
                 case 1:
-                    ButSound.Image = Image.FromFile(@"C:\Users\Acer\Desktop\repository\ExamApp\Content\mw8.png");
+                    ButSound.Image = Image.FromFile(System.IO.Path.GetFullPath(@"apps\mw8.png"));
+                    Music();
                     ClickItem -= 1;
                     break;
             }
         }
+        #endregion
 
-
-        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e) => _SignIn.Show();
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            player.Stop();
+            _SignIn.Show();
+        }
 
 
 

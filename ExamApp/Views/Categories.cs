@@ -51,7 +51,6 @@ namespace ExamApp.Forms
 
         private void ButAddCat_Click(object sender, EventArgs e)
         {
-
             for (int i = 0; i < dgvCateg.Rows.Count; i++)
             {
                 if (textBoxCat.Text.ToString() == System.Convert.ToString(dgvCateg.Rows[i].Cells[1].Value) && dgvCateg.RowCount > 0 || textBoxCat.Text == "")
@@ -98,6 +97,7 @@ namespace ExamApp.Forms
             #endregion
         }
 
+        #region Настройка textbox
         private void TextBoxCat_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -105,6 +105,7 @@ namespace ExamApp.Forms
                 e.SuppressKeyPress = true;
             }
         }
+        #endregion
 
         private void Categories_FormClosed(object sender, FormClosedEventArgs e) => AddEddWin.Enabled = true;
 
