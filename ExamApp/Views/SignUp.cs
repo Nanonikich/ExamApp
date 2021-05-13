@@ -38,21 +38,15 @@ namespace ExamApp
             {
                 #region Проверка на пустоту и номер телефона
 
-                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
+                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(maskedTBPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
                 {
                     MessageBox.Show("Fill in the blank fields");
                     return;
                 }
 
-                if (Convert.ToInt32(textBoxPhone.Text.Length.ToString(CultureInfo.InvariantCulture)) < 10)
-                {
-                    MessageBox.Show("Wrong phone number");
-                    return;
-                }
-
                 #endregion Проверка на пустоту и номер телефона
 
-                new SqlDataAdapter($@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES(N'{textBoxSurn.Text}', N'{textBoxName.Text}', N'{textBoxPatr.Text}', N'{textBoxEmail.Text}', N'{textBoxPhone.Text}', N'{textBoxCity.Text}', N'{textBoxAddr.Text}', N'{textBoxUsname.Text}', N'{textBoxPassw.Text}')",
+                new SqlDataAdapter($@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES(N'{textBoxSurn.Text}', N'{textBoxName.Text}', N'{textBoxPatr.Text}', N'{textBoxEmail.Text}', N'{maskedTBPhone.Text}', N'{textBoxCity.Text}', N'{textBoxAddr.Text}', N'{textBoxUsname.Text}', N'{textBoxPassw.Text}')",
                                     db.GetConnection()).Fill(new DataTable());
 
                 MessageBox.Show("You have successfully registered");
@@ -79,21 +73,15 @@ namespace ExamApp
 
                 #region Проверка на пустоту и номер телефона
 
-                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(textBoxPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
+                if (string.IsNullOrEmpty(textBoxSurn.Text) || string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrEmpty(maskedTBPhone.Text) || string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxCity.Text) || string.IsNullOrEmpty(textBoxAddr.Text) || string.IsNullOrEmpty(textBoxUsname.Text) || string.IsNullOrEmpty(textBoxPassw.Text))
                 {
                     MessageBox.Show("Fill in the blank fields");
                     return;
                 }
 
-                if (Convert.ToInt32(textBoxPhone.Text.Length.ToString(CultureInfo.InvariantCulture)) < 10)
-                {
-                    MessageBox.Show("Wrong phone number");
-                    return;
-                }
-
                 #endregion Проверка на пустоту и номер телефона
 
-                switch (new SqlCommand($"UPDATE Users SET user_sur = N'{textBoxSurn.Text}', user_name = N'{textBoxName.Text}', user_patr = N'{textBoxPatr.Text}', user_email =  N'{textBoxEmail.Text}', user_phone = '{textBoxPhone.Text}', user_city = N'{textBoxCity.Text}', user_address = N'{textBoxAddr.Text}', user_usname = N'{textBoxUsname.Text}', user_passw = N'{textBoxPassw.Text}' WHERE user_id = '{z}'",
+                switch (new SqlCommand($"UPDATE Users SET user_sur = N'{textBoxSurn.Text}', user_name = N'{textBoxName.Text}', user_patr = N'{textBoxPatr.Text}', user_email =  N'{textBoxEmail.Text}', user_phone = '{maskedTBPhone.Text}', user_city = N'{textBoxCity.Text}', user_address = N'{textBoxAddr.Text}', user_usname = N'{textBoxUsname.Text}', user_passw = N'{textBoxPassw.Text}' WHERE user_id = '{z}'",
                     db.GetConnection()).ExecuteNonQuery())
                 {
                     case 1:
@@ -144,15 +132,6 @@ namespace ExamApp
             if (Regex.Match(e.KeyChar.ToString(), @"[а-яА-Я]|[a-zA-Z]").Success || e.KeyChar == (char)Keys.Back) return;
             else
                 e.Handled = true;
-        }
-
-        // Проверка телефонного номера
-        private void TextBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
-            {
-                e.Handled = true;
-            }
         }
 
         // Имя пользователя и пароль

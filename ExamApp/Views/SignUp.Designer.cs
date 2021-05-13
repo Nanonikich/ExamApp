@@ -46,12 +46,12 @@ namespace ExamApp
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxPatr = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.textBoxAddr = new System.Windows.Forms.TextBox();
             this.textBoxUsname = new System.Windows.Forms.TextBox();
             this.textBoxPassw = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.maskedTBPhone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -243,18 +243,6 @@ namespace ExamApp
             this.textBoxEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
             this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxEmail_Validating);
             // 
-            // textBoxPhone
-            // 
-            this.textBoxPhone.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPhone.Location = new System.Drawing.Point(98, 117);
-            this.textBoxPhone.MaxLength = 16;
-            this.textBoxPhone.Multiline = true;
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(189, 27);
-            this.textBoxPhone.TabIndex = 15;
-            this.textBoxPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSurn_KeyDown);
-            this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPhone_KeyPress);
-            // 
             // textBoxCity
             // 
             this.textBoxCity.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -312,18 +300,27 @@ namespace ExamApp
             this.label10.TabIndex = 23;
             this.label10.Text = "*";
             // 
+            // maskedTBPhone
+            // 
+            this.maskedTBPhone.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskedTBPhone.Location = new System.Drawing.Point(98, 116);
+            this.maskedTBPhone.Mask = "+7(999) 000-0000";
+            this.maskedTBPhone.Name = "maskedTBPhone";
+            this.maskedTBPhone.Size = new System.Drawing.Size(189, 29);
+            this.maskedTBPhone.TabIndex = 15;
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(315, 450);
+            this.Controls.Add(this.maskedTBPhone);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxPassw);
             this.Controls.Add(this.textBoxUsname);
             this.Controls.Add(this.textBoxAddr);
             this.Controls.Add(this.textBoxCity);
-            this.Controls.Add(this.textBoxPhone);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxPatr);
             this.Controls.Add(this.textBoxName);
@@ -370,12 +367,12 @@ namespace ExamApp
         public System.Windows.Forms.TextBox textBoxName;
         public System.Windows.Forms.TextBox textBoxPatr;
         public System.Windows.Forms.TextBox textBoxEmail;
-        public System.Windows.Forms.TextBox textBoxPhone;
         public System.Windows.Forms.TextBox textBoxCity;
         public System.Windows.Forms.TextBox textBoxAddr;
         public System.Windows.Forms.TextBox textBoxUsname;
         public System.Windows.Forms.TextBox textBoxPassw;
         public System.Windows.Forms.Button butnBack;
         private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.MaskedTextBox maskedTBPhone;
     }
 }

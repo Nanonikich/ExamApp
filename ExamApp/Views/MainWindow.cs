@@ -13,23 +13,29 @@ namespace ExamApp
     public partial class MainWindow : Form
     {
         #region Поля
-        readonly SignIn _SignIn;
-        readonly DataRow _User;
-        readonly DB db = new DB();
-        #endregion
+
+        private readonly SignIn _SignIn;
+        private readonly DataRow _User;
+        private readonly DB db = new DB();
+
+        #endregion Поля
 
         #region Конструктор
+
         public MainWindow(SignIn sn, DataRow us)
         {
             _SignIn = sn;
             _User = us;
             InitializeComponent();
         }
-        #endregion
+
+        #endregion Конструктор
 
         #region Свойства
+
         public DataRow User { get => _User; }
-        #endregion
+
+        #endregion Свойства
 
         #region Методы
 
@@ -46,12 +52,11 @@ namespace ExamApp
                     sum = reader.GetInt32(0);
                 return sum;
             }
-            catch 
+            catch
             {
                 return 0;
             }
         }
-
 
         public void UpdateTable()
         {
@@ -61,21 +66,20 @@ namespace ExamApp
                 "JOIN Categories ON Categories.categ_id = prod_category", db.GetConnection()).ExecuteReader());
             db.CloseConnection();
 
-
             #region Иллюзия
 
             for (int row = 0; row < dtbl.Rows.Count; row++)
             {
                 dtbl.Rows[row][6] = (int)dtbl.Rows[row][6] - GetCountFromCartByName((string)dtbl.Rows[row][3]);
-
             }
 
-            #endregion
+            #endregion Иллюзия
 
             dataGridView.DataSource = dtbl;
             ComboBoxUpd();
 
             #region Разделение на пользователей
+
             if (User[10].ToString() == "False")
             {
                 ButAdd.Visible = false;
@@ -87,9 +91,9 @@ namespace ExamApp
             {
                 ButCart.Enabled = false;
             }
-            #endregion
-        }
 
+            #endregion Разделение на пользователей
+        }
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
@@ -98,8 +102,8 @@ namespace ExamApp
             UpdateTable();
         }
 
-
         #region Значения для редактирования
+
         private void ReadingValues()
         {
             var edPr = new AddProd(dataGridView.CurrentRow.Cells[0].Value.ToString(), this);
@@ -116,8 +120,8 @@ namespace ExamApp
             edPr.combBoxCateg.SelectedIndex = -1;
             edPr.combBoxCateg.Text = dataGridView.CurrentRow.Cells[8].Value.ToString();
         }
-        #endregion
 
+        #endregion Значения для редактирования
 
         private void ButAdd_Click(object sender, EventArgs e)
         {
@@ -127,7 +131,6 @@ namespace ExamApp
             adPr.Show();
             adPr.combBoxCateg.SelectedIndex = -1;
         }
-
 
         private void ButEdit_Click(object sender, EventArgs e)
         {
@@ -141,7 +144,6 @@ namespace ExamApp
                 MessageBox.Show("Error");
             }
         }
-
 
         private void ButDel_Click(object sender, EventArgs e)
         {
@@ -163,17 +165,17 @@ namespace ExamApp
             }
         }
 
-
         private void ButPerson_Click(object sender, EventArgs e)
         {
             ReadVal();
         }
 
         #region Чтение пользователя
+
         private void ReadVal()
         {
             db.OpenConnection();
-            using (var asquery = new SqlCommand($"Select * FROM Users WHERE user_id = N'{User[0]}'", db.GetConnection()).ExecuteReader())
+            using (var asquery = new SqlCommand($"SELECT * FROM Users WHERE user_id = N'{User[0]}'", db.GetConnection()).ExecuteReader())
             {
                 var edProf = new SignUp(_SignIn, User[0].ToString());
                 while (asquery.Read())
@@ -182,7 +184,7 @@ namespace ExamApp
                     edProf.textBoxName.Text = asquery.GetString(2);
                     edProf.textBoxPatr.Text = asquery.GetString(3);
                     edProf.textBoxEmail.Text = asquery.GetString(4);
-                    edProf.textBoxPhone.Text = asquery.GetString(5);
+                    edProf.maskedTBPhone.Text = asquery.GetString(5);
                     edProf.textBoxCity.Text = asquery.GetString(6);
                     edProf.textBoxAddr.Text = asquery.GetString(7);
                     edProf.textBoxUsname.Text = asquery.GetString(8);
@@ -194,15 +196,16 @@ namespace ExamApp
             }
             db.CloseConnection();
         }
-        #endregion
 
+        #endregion Чтение пользователя
 
         #region Поиск по наименованию и настройка поисковика
+
         private void TxtSearch_TextChanged(object sender, EventArgs e) => dataGridView.DataSource = new BindingSource
-            {
-                DataSource = dataGridView.DataSource,
-                Filter = "prod_name like '%" + txtSearch.Text + "%'"
-            };
+        {
+            DataSource = dataGridView.DataSource,
+            Filter = "prod_name like '%" + txtSearch.Text + "%'"
+        };
 
         private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -211,9 +214,11 @@ namespace ExamApp
                 e.SuppressKeyPress = true;
             }
         }
-        #endregion
+
+        #endregion Поиск по наименованию и настройка поисковика
 
         #region ComboBox
+
         public void ComboBoxUpd()
         {
             comboBox.Items.Clear();
@@ -224,14 +229,12 @@ namespace ExamApp
             {
                 comboBox.Items.Add(row.Cells[8].Value.ToString());
             }
-
-            
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var dtbl = new DataTable();
-            
+
             db.OpenConnection();
 
             if (comboBox.Text == "All")
@@ -252,7 +255,8 @@ namespace ExamApp
                 dataGridView.DataSource = dtbl;
             }
         }
-        #endregion
+
+        #endregion ComboBox
 
         /// <summary>
         /// Открытие окна с информацией о товаре
@@ -268,7 +272,6 @@ namespace ExamApp
             }
         }
 
-
         private void ButUsers_Click(object sender, EventArgs e)
         {
             Enabled = false;
@@ -276,13 +279,11 @@ namespace ExamApp
             uswin.Show();
         }
 
-
         private void ButHistOrd_Click(object sender, EventArgs e)
         {
             Enabled = false;
             new HistoryOrders(this).Show();
         }
-
 
         private void ButCart_Click(object sender, EventArgs e)
         {
@@ -295,6 +296,6 @@ namespace ExamApp
             _SignIn.Show();
         }
 
-        #endregion
+        #endregion Методы
     }
 }
