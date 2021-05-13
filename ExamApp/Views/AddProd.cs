@@ -11,13 +11,16 @@ namespace ExamApp
     public partial class AddProd : Form
     {
         #region Поля
-        readonly MainWindow MainWin;
-        readonly DB db = new DB();
+
+        private readonly MainWindow MainWin;
+        private readonly DB db = new DB();
         private readonly string i;
         private string imageUrl = null;
-        #endregion
+
+        #endregion Поля
 
         #region Конструкторы
+
         public AddProd(string id, MainWindow mw)
         {
             i = id;
@@ -30,7 +33,8 @@ namespace ExamApp
             MainWin = mw;
             InitializeComponent();
         }
-        #endregion
+
+        #endregion Конструкторы
 
         #region Методы
 
@@ -45,7 +49,7 @@ namespace ExamApp
         }
 
         private void ButtonPict_Click(object sender, EventArgs e)
-        { 
+        {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -56,9 +60,9 @@ namespace ExamApp
                     {
                         pictureBox.Image = Image.FromFile(ofd.FileName);
                     }
-                    catch 
-                    { 
-                        MessageBox.Show("Not enough memory");
+                    catch
+                    {
+                        MessageBox.Show("Слишком большой размер изображения!");
                     }
                 }
             }
@@ -71,18 +75,19 @@ namespace ExamApp
             cat.Show();
         }
 
-
         private void ButtAddPr_Click(object sender, EventArgs e)
         {
             var arr = (byte[])new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[]));
 
             #region Проверка на пустоту
+
             if (string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text) || string.IsNullOrEmpty(combBoxCateg.Text))
             {
-                MessageBox.Show("Fill in the blank fields");
+                MessageBox.Show("Заполните пустые поля");
                 return;
             }
-            #endregion
+
+            #endregion Проверка на пустоту
 
             try
             {
@@ -90,15 +95,15 @@ namespace ExamApp
                 EditData(arr, db);
                 db.CloseConnection();
 
-                MessageBox.Show("Product saved");
-                
+                MessageBox.Show("Товар добавлен");
+
                 MainWin.Enabled = true;
                 MainWin.UpdateTable();
                 Close();
             }
             catch
             {
-                MessageBox.Show("Invalid data format");
+                MessageBox.Show("Неверный формат данных");
             }
         }
 
@@ -123,23 +128,23 @@ namespace ExamApp
             cmd.ExecuteNonQuery();
         }
 
-
         private void ButtBack_Click(object sender, EventArgs e)
         {
             MainWin.Enabled = true;
             Close();
         }
 
-
         private void ButtEdit_Click(object sender, EventArgs e)
         {
             #region Проверка на пустоту
+
             if (string.IsNullOrEmpty(textBoxVC.Text) || string.IsNullOrEmpty(textBoxNam.Text) || string.IsNullOrEmpty(textBoxDesc.Text) || string.IsNullOrEmpty(textBoxPr.Text) || string.IsNullOrEmpty(textBoxCount.Text) || string.IsNullOrEmpty(combBoxCateg.Text))
             {
-                MessageBox.Show("Fill in the blank fields");
+                MessageBox.Show("Заполните пустые поля");
                 return;
             }
-            #endregion
+
+            #endregion Проверка на пустоту
 
             var command = new SqlCommand($@"UPDATE Products SET prod_id = N'{textBoxVC.Text}', prod_image = @Photo, prod_name = N'{textBoxNam.Text}', prod_descr =  N'{textBoxDesc.Text}', prod_price = '{textBoxPr.Text}', prod_count = '{textBoxCount.Text}', prod_category = N'{(int)combBoxCateg.SelectedValue}' WHERE prod_id = '" + i + "'", db.GetConnection());
 
@@ -148,10 +153,11 @@ namespace ExamApp
             switch (command.ExecuteNonQuery())
             {
                 case 1:
-                    MessageBox.Show("Data Updated");
+                    MessageBox.Show("Информация о товаре обновлена");
                     break;
+
                 default:
-                    MessageBox.Show("Data not updated");
+                    MessageBox.Show("Информация о товаре не обновлена");
                     break;
             }
             db.CloseConnection();
@@ -159,7 +165,6 @@ namespace ExamApp
             UpdDGW(db);
             Close();
         }
-
 
         private void UpdDGW(DB db)
         {
@@ -173,6 +178,7 @@ namespace ExamApp
         }
 
         #region Настройка textboxes
+
         // проверка на цифры атрибута, цены и количества
         private void TextBoxVC_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -188,11 +194,11 @@ namespace ExamApp
                 e.SuppressKeyPress = true;
             }
         }
-        #endregion
+
+        #endregion Настройка textboxes
 
         private void AddProd_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
 
-        #endregion
-       
+        #endregion Методы
     }
 }

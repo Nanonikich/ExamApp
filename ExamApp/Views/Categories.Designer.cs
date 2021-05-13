@@ -73,7 +73,7 @@ namespace ExamApp.Forms
             this.buttBack.Name = "buttBack";
             this.buttBack.Size = new System.Drawing.Size(92, 33);
             this.buttBack.TabIndex = 2;
-            this.buttBack.Text = "Back";
+            this.buttBack.Text = "Назад";
             this.buttBack.UseVisualStyleBackColor = false;
             this.buttBack.Click += new System.EventHandler(this.ButtBack_Click);
             // 
@@ -87,7 +87,7 @@ namespace ExamApp.Forms
             this.butAddCat.Name = "butAddCat";
             this.butAddCat.Size = new System.Drawing.Size(92, 33);
             this.butAddCat.TabIndex = 3;
-            this.butAddCat.Text = "Add";
+            this.butAddCat.Text = "Добавить";
             this.butAddCat.UseVisualStyleBackColor = false;
             this.butAddCat.Click += new System.EventHandler(this.ButAddCat_Click);
             // 
@@ -113,7 +113,7 @@ namespace ExamApp.Forms
             this.butCategDel.Name = "butCategDel";
             this.butCategDel.Size = new System.Drawing.Size(92, 33);
             this.butCategDel.TabIndex = 5;
-            this.butCategDel.Text = "Delete";
+            this.butCategDel.Text = "Удалить";
             this.butCategDel.UseVisualStyleBackColor = false;
             this.butCategDel.Click += new System.EventHandler(this.ButCategDel_Click);
             // 

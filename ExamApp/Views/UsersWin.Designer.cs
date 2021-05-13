@@ -65,13 +65,13 @@ namespace ExamApp.Forms
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(374, 9);
+            this.label1.Location = new System.Drawing.Point(275, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 31);
+            this.label1.Size = new System.Drawing.Size(295, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Users";
+            this.label1.Text = "Пользователи системы";
             // 
             // ButBack
             // 
@@ -83,7 +83,7 @@ namespace ExamApp.Forms
             this.ButBack.Name = "ButBack";
             this.ButBack.Size = new System.Drawing.Size(100, 40);
             this.ButBack.TabIndex = 1;
-            this.ButBack.Text = "Back";
+            this.ButBack.Text = "Назад";
             this.ButBack.UseVisualStyleBackColor = false;
             this.ButBack.Click += new System.EventHandler(this.ButBack_Click);
             // 

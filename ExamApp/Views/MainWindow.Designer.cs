@@ -44,7 +44,6 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.ButSound = new System.Windows.Forms.ToolStripButton();
             this.ButHistOrd = new System.Windows.Forms.ToolStripButton();
             this.ButUsers = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -81,7 +80,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1184, 62);
+            this.panel1.Size = new System.Drawing.Size(1189, 62);
             this.panel1.TabIndex = 8;
             // 
             // panel2
@@ -91,7 +90,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.panel2.Location = new System.Drawing.Point(0, 51);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1183, 10);
+            this.panel2.Size = new System.Drawing.Size(1188, 10);
             this.panel2.TabIndex = 10;
             // 
             // toolStrip1
@@ -113,14 +112,13 @@
             this.toolStripLabel1,
             this.txtSearch,
             this.toolStripLabel2,
-            this.ButSound,
             this.ButHistOrd,
             this.ButUsers});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1183, 57);
+            this.toolStrip1.Size = new System.Drawing.Size(1188, 57);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -131,8 +129,8 @@
             this.ButPerson.Image = ((System.Drawing.Image)(resources.GetObject("ButPerson.Image")));
             this.ButPerson.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButPerson.Name = "ButPerson";
-            this.ButPerson.Size = new System.Drawing.Size(100, 54);
-            this.ButPerson.Text = "Account";
+            this.ButPerson.Size = new System.Drawing.Size(110, 54);
+            this.ButPerson.Text = "Аккаунт";
             this.ButPerson.Click += new System.EventHandler(this.ButPerson_Click);
             // 
             // ButAdd
@@ -142,8 +140,8 @@
             this.ButAdd.Image = ((System.Drawing.Image)(resources.GetObject("ButAdd.Image")));
             this.ButAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButAdd.Name = "ButAdd";
-            this.ButAdd.Size = new System.Drawing.Size(85, 54);
-            this.ButAdd.Text = "Add";
+            this.ButAdd.Size = new System.Drawing.Size(115, 54);
+            this.ButAdd.Text = "Добавить";
             this.ButAdd.Click += new System.EventHandler(this.ButAdd_Click);
             // 
             // ButEdit
@@ -155,8 +153,9 @@
             this.ButEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButEdit.Name = "ButEdit";
             this.ButEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ButEdit.Size = new System.Drawing.Size(85, 54);
-            this.ButEdit.Text = "Edit";
+            this.ButEdit.Size = new System.Drawing.Size(110, 54);
+            this.ButEdit.Text = "Изменить";
+            this.ButEdit.ToolTipText = "Изменить";
             this.ButEdit.Click += new System.EventHandler(this.ButEdit_Click);
             // 
             // ButDel
@@ -166,8 +165,8 @@
             this.ButDel.Image = ((System.Drawing.Image)(resources.GetObject("ButDel.Image")));
             this.ButDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButDel.Name = "ButDel";
-            this.ButDel.Size = new System.Drawing.Size(85, 54);
-            this.ButDel.Text = "Delete";
+            this.ButDel.Size = new System.Drawing.Size(110, 54);
+            this.ButDel.Text = "Удалить";
             this.ButDel.Click += new System.EventHandler(this.ButDel_Click);
             // 
             // ButCart
@@ -180,7 +179,7 @@
             this.ButCart.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButCart.Name = "ButCart";
             this.ButCart.Size = new System.Drawing.Size(45, 45);
-            this.ButCart.ToolTipText = "Cart";
+            this.ButCart.ToolTipText = "Корзина";
             this.ButCart.Click += new System.EventHandler(this.ButCart_Click);
             // 
             // comboBox
@@ -200,8 +199,8 @@
             this.toolStripLabel1.ForeColor = System.Drawing.Color.White;
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(35, 54);
-            this.toolStripLabel1.Text = "Sort";
+            this.toolStripLabel1.Size = new System.Drawing.Size(79, 54);
+            this.toolStripLabel1.Text = "Категория";
             // 
             // txtSearch
             // 
@@ -220,16 +219,7 @@
             this.toolStripLabel2.ForeColor = System.Drawing.Color.White;
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(51, 54);
-            this.toolStripLabel2.Text = "Search";
-            // 
-            // ButSound
-            // 
-            this.ButSound.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.ButSound.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ButSound.Image = ((System.Drawing.Image)(resources.GetObject("ButSound.Image")));
-            this.ButSound.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButSound.Name = "ButSound";
-            this.ButSound.Size = new System.Drawing.Size(39, 54);
+            this.toolStripLabel2.Text = "Поиск";
             // 
             // ButHistOrd
             // 
@@ -239,9 +229,9 @@
             this.ButHistOrd.Image = ((System.Drawing.Image)(resources.GetObject("ButHistOrd.Image")));
             this.ButHistOrd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButHistOrd.Name = "ButHistOrd";
-            this.ButHistOrd.Size = new System.Drawing.Size(85, 54);
-            this.ButHistOrd.Text = "Orders";
-            this.ButHistOrd.ToolTipText = "Orders";
+            this.ButHistOrd.Size = new System.Drawing.Size(90, 54);
+            this.ButHistOrd.Text = "Заказы";
+            this.ButHistOrd.ToolTipText = "Заказы";
             this.ButHistOrd.Click += new System.EventHandler(this.ButHistOrd_Click);
             // 
             // ButUsers
@@ -251,8 +241,9 @@
             this.ButUsers.Image = ((System.Drawing.Image)(resources.GetObject("ButUsers.Image")));
             this.ButUsers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButUsers.Name = "ButUsers";
-            this.ButUsers.Size = new System.Drawing.Size(85, 54);
-            this.ButUsers.Text = "Users";
+            this.ButUsers.Size = new System.Drawing.Size(145, 54);
+            this.ButUsers.Text = "Пользователи";
+            this.ButUsers.ToolTipText = "Пользователи";
             this.ButUsers.Click += new System.EventHandler(this.ButUsers_Click);
             // 
             // dataGridView
@@ -293,7 +284,7 @@
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 100;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1184, 547);
+            this.dataGridView.Size = new System.Drawing.Size(1189, 547);
             this.dataGridView.StandardTab = true;
             this.dataGridView.TabIndex = 11;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentDoubleClick);
@@ -337,7 +328,7 @@
             // prodidDataGridViewTextBoxColumn
             // 
             this.prodidDataGridViewTextBoxColumn.DataPropertyName = "prod_id";
-            this.prodidDataGridViewTextBoxColumn.HeaderText = "Vendor Code";
+            this.prodidDataGridViewTextBoxColumn.HeaderText = "Артикул";
             this.prodidDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.prodidDataGridViewTextBoxColumn.Name = "prodidDataGridViewTextBoxColumn";
             this.prodidDataGridViewTextBoxColumn.ReadOnly = true;
@@ -346,7 +337,7 @@
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.DataPropertyName = "prod_image";
-            this.dataGridViewImageColumn1.HeaderText = "Image";
+            this.dataGridViewImageColumn1.HeaderText = "Изображение";
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
@@ -364,7 +355,7 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "prod_name";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Наименование";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -372,7 +363,7 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "prod_descr";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Описание";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -381,7 +372,7 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "prod_price";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Цена";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -389,7 +380,7 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "prod_count";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Total amount";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Количество на складе";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -406,7 +397,7 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "categ_name";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Категория";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -415,7 +406,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 609);
+            this.ClientSize = new System.Drawing.Size(1189, 609);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -465,7 +456,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        public System.Windows.Forms.ToolStripButton ButSound;
         private System.Windows.Forms.Panel panel2;
     }
 }

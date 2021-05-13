@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,14 +10,16 @@ namespace ExamApp.Forms
 {
     public partial class HistoryOrders : Form
     {
-
         #region Поля
-        readonly MainWindow MainWin;
-        readonly DB db = new DB();
+
+        private readonly MainWindow MainWin;
+        private readonly DB db = new DB();
         private DataTable _TableWithAllOrders;
-        #endregion
+
+        #endregion Поля
 
         #region Свойства
+
         public DataTable TableWithAllOrders
         {
             get => _TableWithAllOrders;
@@ -27,20 +28,23 @@ namespace ExamApp.Forms
                 _TableWithAllOrders = value;
             }
         }
-        
+
         private List<Condition> _Conditions;
 
         private List<Orders> _Orders;
-        #endregion
+
+        #endregion Свойства
 
         #region Конструктор
+
         public HistoryOrders(MainWindow mw)
         {
             MainWin = mw;
             TableWithAllOrders = new DataTable();
             InitializeComponent();
         }
-        #endregion
+
+        #endregion Конструктор
 
         #region Методы
 
@@ -50,12 +54,11 @@ namespace ExamApp.Forms
             Close();
         }
 
-        
         private void SetComboBox()
         {
             DataGridViewComboBoxColumn cbbx = new DataGridViewComboBoxColumn
             {
-                Name = "Order Status",   /// Название столбца 
+                Name = "Статус заказа",   /// Название столбца
                 DataPropertyName = "ord_status", /// Свойство связывающее с названием столбца в DataTable
                 DataSource = _Conditions, /// Источники ComboBox берется из свойства List<Condition> _Conditions
                 DisplayMember = "condit_name", /// отображает имя из объекта Condition
@@ -98,7 +101,6 @@ namespace ExamApp.Forms
                         );
                 }
             }
-
             else return;
 
             db.CloseConnection();
@@ -132,24 +134,23 @@ namespace ExamApp.Forms
             db.CloseConnection();
         }
 
-        #endregion
+        #endregion Заполнение свойств Моделей
 
         /// <summary>
         /// Устанавливает Базовые колонки для таблицы без  ComboBox
         /// </summary>
         public void SetColumn()
         {
-
             DataColumn[] dataColumns = new DataColumn[]
             {
                 new DataColumn("ID"),
-                new DataColumn("Customer"),
-                new DataColumn("Product"),
-                new DataColumn("Count Prod"),
-                new DataColumn("Worker"),
-                new DataColumn("Price"),
-                new DataColumn("Start date"),
-                new DataColumn("Over date")
+                new DataColumn("Покупатель"),
+                new DataColumn("Товар"),
+                new DataColumn("Количество"),
+                new DataColumn("Поставщик"),
+                new DataColumn("Цена"),
+                new DataColumn("Дата начала"),
+                new DataColumn("Дата окончания")
             };
 
             foreach (var column in dataColumns)
@@ -165,23 +166,22 @@ namespace ExamApp.Forms
             }
 
             TableWithAllOrders.Columns.AddRange(dataColumns);
-
         }
 
         /// <summary>
-        /// Устанавливает значение в таблицу | 
+        /// Устанавливает значение в таблицу |
         /// Принимает параметр с id пользователя или рабочего
-        /// ! Если это админ, то берется базовое значение -1 
+        /// ! Если это админ, то берется базовое значение -1
         /// и при вызове не нужно уточнять id
         /// </summary>
         /// <param name="id">
         /// Принимает параметр с id пользователя или рабочего
-        /// ! Если это админ, то берется базовое значение -1 
+        /// ! Если это админ, то берется базовое значение -1
         /// и при вызове не нужно уточнять id
         /// </param>
         private void SetValue(int id = -1)
         {
-            if(id == -1)
+            if (id == -1)
             {
                 foreach (var order in _Orders)
                 {
@@ -196,7 +196,7 @@ namespace ExamApp.Forms
                             order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
                             order.ord_over_date.ToString("dd.MM.yyyy"),
                             order.ord_status
-                        );     
+                        );
                 }
             }
             else if (MainWin.User[10].ToString() == "True")
@@ -225,7 +225,6 @@ namespace ExamApp.Forms
 
                 foreach (var order in OnlyUsersOrders)
                 {
-
                     TableWithAllOrders.Rows.Add
                         (
                             order.ord_id,
@@ -256,7 +255,7 @@ namespace ExamApp.Forms
                 dgvOrders.Columns.Add(
                     new DataGridViewTextBoxColumn()
                     {
-                        Name = "Status",
+                        Name = "Статус",
                         DataPropertyName = "ord_status"
                     }
                 );
@@ -278,11 +277,11 @@ namespace ExamApp.Forms
         /// </summary>
         public void UpdateTable()
         {
-            /// Подгружает значения 
+            /// Подгружает значения
             SetValueConditions();
             SetValueOrders();
 
-            /// Проверяет наличие столбцов 
+            /// Проверяет наличие столбцов
             /// Если нет то заполняет
             if (dgvOrders.Columns.Count < 1)
             {
@@ -338,7 +337,6 @@ namespace ExamApp.Forms
         {
             if (e.ColumnIndex == 8)
             {
-
                 var newValue = dgvOrders.CurrentRow.Cells[8].Value;
                 var id = dgvOrders.CurrentRow.Cells[0].Value;
 
@@ -355,7 +353,6 @@ namespace ExamApp.Forms
 
         private void HistoryOrders_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
 
-
-        #endregion
+        #endregion Методы
     }
 }

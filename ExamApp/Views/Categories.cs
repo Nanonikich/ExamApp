@@ -9,19 +9,23 @@ namespace ExamApp.Forms
     public partial class Categories : Form
     {
         #region Поля
-        readonly AddProd AddEddWin;
-        readonly DB db = new DB();
-        readonly MainWindow MainWin;
-        #endregion
+
+        private readonly AddProd AddEddWin;
+        private readonly DB db = new DB();
+        private readonly MainWindow MainWin;
+
+        #endregion Поля
 
         #region Конструктор
+
         public Categories(AddProd ae, MainWindow mw)
         {
             AddEddWin = ae;
             MainWin = mw;
             InitializeComponent();
         }
-        #endregion
+
+        #endregion Конструктор
 
         #region Методы
 
@@ -37,10 +41,12 @@ namespace ExamApp.Forms
             dgvCateg.DataSource = dtbl;
 
             #region Настройки таблицы
+
             dgvCateg.ReadOnly = true;
             dgvCateg.Columns[0].Visible = false;
-            dgvCateg.Columns[1].HeaderText = "Category";
-            #endregion
+            dgvCateg.Columns[1].HeaderText = "Категория";
+
+            #endregion Настройки таблицы
 
             db.CloseConnection();
         }
@@ -54,9 +60,9 @@ namespace ExamApp.Forms
         {
             for (int i = 0; i < dgvCateg.Rows.Count; i++)
             {
-                if (textBoxCat.Text.ToString() == System.Convert.ToString(dgvCateg.Rows[i].Cells[1].Value) && dgvCateg.RowCount > 0 || textBoxCat.Text == "")
+                if (textBoxCat.Text.ToString() == Convert.ToString(dgvCateg.Rows[i].Cells[1].Value) && dgvCateg.RowCount > 0 || textBoxCat.Text == "")
                 {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Ошибка");
                     return;
                 }
             }
@@ -69,10 +75,10 @@ namespace ExamApp.Forms
         private void ButCategDel_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in MainWin.dataGridView.Rows)
-            { 
+            {
                 if (row.Cells[8].Value.ToString() == dgvCateg.CurrentRow.Cells[1].Value.ToString())
                 {
-                    MessageBox.Show("Can't be deleted");
+                    MessageBox.Show("Категория используется и не может быть удалена");
                     return;
                 }
             }
@@ -80,7 +86,7 @@ namespace ExamApp.Forms
             new SqlCommand($"DELETE FROM Categories WHERE categ_id = N'{dgvCateg.CurrentRow.Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
             db.CloseConnection();
             UpdateWin();
-            MessageBox.Show("Success");
+            MessageBox.Show("Категория успешно удалена");
         }
 
         private void ButtBack_Click(object sender, EventArgs e)
@@ -89,16 +95,19 @@ namespace ExamApp.Forms
             Close();
 
             #region Загрузка новых данных в ComboBox
+
             var dAdapter = new SqlDataAdapter("SELECT categ_id, categ_name FROM Categories", db.GetConnection());
             var source = new DataTable();
             dAdapter.Fill(source);
             AddEddWin.combBoxCateg.DataSource = source;
             AddEddWin.combBoxCateg.ValueMember = "categ_id";
             AddEddWin.combBoxCateg.DisplayMember = "categ_name";
-            #endregion
+
+            #endregion Загрузка новых данных в ComboBox
         }
 
         #region Настройка textbox
+
         // Запрет символов и цифр
         private void TextBoxCat_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -115,11 +124,11 @@ namespace ExamApp.Forms
                 e.SuppressKeyPress = true;
             }
         }
-        #endregion
+
+        #endregion Настройка textbox
 
         private void Categories_FormClosed(object sender, FormClosedEventArgs e) => AddEddWin.Enabled = true;
 
-        #endregion
-
+        #endregion Методы
     }
 }

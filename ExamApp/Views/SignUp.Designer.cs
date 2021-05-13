@@ -52,6 +52,7 @@ namespace ExamApp
             this.textBoxPassw = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.maskedTBPhone = new System.Windows.Forms.MaskedTextBox();
+            this.checkBoxConsent = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -61,9 +62,9 @@ namespace ExamApp
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 19);
+            this.label1.Size = new System.Drawing.Size(72, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Surname";
+            this.label1.Text = "Фамилия";
             // 
             // label2
             // 
@@ -72,9 +73,9 @@ namespace ExamApp
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(12, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 19);
+            this.label2.Size = new System.Drawing.Size(37, 19);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Name";
+            this.label2.Text = "Имя";
             // 
             // label3
             // 
@@ -83,9 +84,9 @@ namespace ExamApp
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(12, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 19);
+            this.label3.Size = new System.Drawing.Size(73, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Patronymic";
+            this.label3.Text = "Отчество";
             // 
             // label4
             // 
@@ -105,9 +106,9 @@ namespace ExamApp
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(12, 125);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 19);
+            this.label5.Size = new System.Drawing.Size(65, 19);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Phone";
+            this.label5.Text = "Телефон";
             // 
             // label6
             // 
@@ -116,9 +117,9 @@ namespace ExamApp
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(12, 195);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 19);
+            this.label6.Size = new System.Drawing.Size(49, 19);
             this.label6.TabIndex = 5;
-            this.label6.Text = "City";
+            this.label6.Text = "Город";
             // 
             // label7
             // 
@@ -127,9 +128,9 @@ namespace ExamApp
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(12, 230);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 19);
+            this.label7.Size = new System.Drawing.Size(50, 19);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Address";
+            this.label7.Text = "Адрес";
             // 
             // label8
             // 
@@ -138,9 +139,9 @@ namespace ExamApp
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(12, 265);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 19);
+            this.label8.Size = new System.Drawing.Size(52, 19);
             this.label8.TabIndex = 7;
-            this.label8.Text = "Username";
+            this.label8.Text = "Логин";
             // 
             // label9
             // 
@@ -149,9 +150,9 @@ namespace ExamApp
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(12, 300);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 19);
+            this.label9.Size = new System.Drawing.Size(58, 19);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Password";
+            this.label9.Text = "Пароль";
             // 
             // butnReg
             // 
@@ -159,11 +160,11 @@ namespace ExamApp
             this.butnReg.BackColor = System.Drawing.Color.Purple;
             this.butnReg.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnReg.ForeColor = System.Drawing.Color.White;
-            this.butnReg.Location = new System.Drawing.Point(64, 342);
+            this.butnReg.Location = new System.Drawing.Point(64, 359);
             this.butnReg.Name = "butnReg";
             this.butnReg.Size = new System.Drawing.Size(182, 35);
             this.butnReg.TabIndex = 21;
-            this.butnReg.Text = "Register";
+            this.butnReg.Text = "Зарегистрироваться";
             this.butnReg.UseVisualStyleBackColor = false;
             this.butnReg.Click += new System.EventHandler(this.ButnReg_Click);
             // 
@@ -173,11 +174,11 @@ namespace ExamApp
             this.butnEdit.BackColor = System.Drawing.Color.Purple;
             this.butnEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnEdit.ForeColor = System.Drawing.Color.White;
-            this.butnEdit.Location = new System.Drawing.Point(64, 342);
+            this.butnEdit.Location = new System.Drawing.Point(64, 359);
             this.butnEdit.Name = "butnEdit";
             this.butnEdit.Size = new System.Drawing.Size(182, 35);
             this.butnEdit.TabIndex = 10;
-            this.butnEdit.Text = "Edit";
+            this.butnEdit.Text = "Обновить";
             this.butnEdit.UseVisualStyleBackColor = false;
             this.butnEdit.Click += new System.EventHandler(this.ButnEdit_Click);
             // 
@@ -187,11 +188,11 @@ namespace ExamApp
             this.butnBack.BackColor = System.Drawing.Color.Purple;
             this.butnBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butnBack.ForeColor = System.Drawing.Color.White;
-            this.butnBack.Location = new System.Drawing.Point(64, 392);
+            this.butnBack.Location = new System.Drawing.Point(64, 400);
             this.butnBack.Name = "butnBack";
             this.butnBack.Size = new System.Drawing.Size(182, 35);
             this.butnBack.TabIndex = 22;
-            this.butnBack.Text = "Back";
+            this.butnBack.Text = "Назад";
             this.butnBack.UseVisualStyleBackColor = false;
             this.butnBack.Click += new System.EventHandler(this.ButnBack_Click);
             // 
@@ -291,6 +292,8 @@ namespace ExamApp
             // 
             // label10
             // 
+            this.label10.AccessibleDescription = "";
+            this.label10.AccessibleName = "";
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label10.ForeColor = System.Drawing.Color.Red;
@@ -298,7 +301,9 @@ namespace ExamApp
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(13, 15);
             this.label10.TabIndex = 23;
+            this.label10.Tag = "";
             this.label10.Text = "*";
+            this.label10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Label10_MouseMove);
             // 
             // maskedTBPhone
             // 
@@ -309,12 +314,25 @@ namespace ExamApp
             this.maskedTBPhone.Size = new System.Drawing.Size(189, 29);
             this.maskedTBPhone.TabIndex = 15;
             // 
+            // checkBoxConsent
+            // 
+            this.checkBoxConsent.AutoSize = true;
+            this.checkBoxConsent.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxConsent.ForeColor = System.Drawing.Color.White;
+            this.checkBoxConsent.Location = new System.Drawing.Point(98, 327);
+            this.checkBoxConsent.Name = "checkBoxConsent";
+            this.checkBoxConsent.Size = new System.Drawing.Size(194, 19);
+            this.checkBoxConsent.TabIndex = 24;
+            this.checkBoxConsent.Text = "Обработка персональных данных";
+            this.checkBoxConsent.UseVisualStyleBackColor = true;
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
-            this.ClientSize = new System.Drawing.Size(315, 450);
+            this.ClientSize = new System.Drawing.Size(315, 445);
+            this.Controls.Add(this.checkBoxConsent);
             this.Controls.Add(this.maskedTBPhone);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxPassw);
@@ -374,5 +392,6 @@ namespace ExamApp
         public System.Windows.Forms.Button butnBack;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.MaskedTextBox maskedTBPhone;
+        public System.Windows.Forms.CheckBox checkBoxConsent;
     }
 }

@@ -7,22 +7,26 @@ namespace ExamApp.Forms
 {
     public partial class UsersWin : Form
     {
-
         #region Поля
-        readonly MainWindow MainWin;
-        readonly DB db = new DB();
+
+        private readonly MainWindow MainWin;
+        private readonly DB db = new DB();
         private readonly DataTable dtbl = new DataTable();
-        #endregion
+
+        #endregion Поля
 
         #region Конструктор
+
         public UsersWin(MainWindow mw)
         {
             MainWin = mw;
             InitializeComponent();
         }
-        #endregion
+
+        #endregion Конструктор
 
         #region Методы
+
         public void UpdateTable()
         {
             dtbl.Clear();
@@ -33,12 +37,12 @@ namespace ExamApp.Forms
             dgvUsers.DataSource = dtbl;
         }
 
-
         private void UsersWin_Load(object sender, EventArgs e)
         {
             UpdateTable();
 
             #region Настройки таблицы
+
             if (MainWin.User[0].ToString() != "25")
             {
                 dgvUsers.ReadOnly = true;
@@ -47,14 +51,14 @@ namespace ExamApp.Forms
                 dgvUsers.Columns[9].Visible = false;
             }
 
-
             var i = 0;
-            foreach (var j in new string[] { "ID", "Surname", "Name", "Patronymic", "Email", "Phone", "City", "Address", "Username", "Password", "Status" })
+            foreach (var j in new string[] { "ID", "Фамилия", "Имя", "Отчество", "Email", "Телефон", "Город", "Адрес", "Логин", "Пароль", "Статус" })
             {
                 dgvUsers.Columns[i].HeaderText = j;
                 i += 1;
             }
-            #endregion
+
+            #endregion Настройки таблицы
 
             BtnDel();
         }
@@ -63,9 +67,9 @@ namespace ExamApp.Forms
         {
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn
             {
-                HeaderText = "Delete",
+                HeaderText = "Удаление",
                 Name = "button",
-                Text = "DELETE",
+                Text = "УДАЛИТЬ",
                 UseColumnTextForButtonValue = true
             };
             dgvUsers.Columns.Add(btn);
@@ -104,7 +108,7 @@ namespace ExamApp.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Admin!");
+                    MessageBox.Show("Статус админа изменить нельзя!");
                     UpdateTable();
                 }
             }
@@ -113,7 +117,7 @@ namespace ExamApp.Forms
             {
                 if (dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString() == "25")
                 {
-                    MessageBox.Show("Admin id cannot be deleted");
+                    MessageBox.Show("Админ не может быть удалён");
                 }
                 else
                 {
@@ -121,10 +125,9 @@ namespace ExamApp.Forms
                     new SqlCommand($"DELETE FROM Users WHERE user_id = {dgvUsers.Rows[e.RowIndex].Cells[0].Value} AND user_id != {25}", db.GetConnection()).ExecuteNonQuery();
                     db.CloseConnection();
                     UpdateTable();
-                    MessageBox.Show("Success");
+                    MessageBox.Show("Пользователь успешно удалён");
                 }
             }
-
         }
 
         private void ButBack_Click(object sender, EventArgs e)
@@ -132,7 +135,6 @@ namespace ExamApp.Forms
             MainWin.Enabled = true;
             Close();
         }
-
 
         private void DgvUsers_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
@@ -144,6 +146,7 @@ namespace ExamApp.Forms
         }
 
         private void UsersWin_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
-        #endregion
+
+        #endregion Методы
     }
 }

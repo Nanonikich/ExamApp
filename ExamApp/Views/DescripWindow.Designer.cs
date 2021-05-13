@@ -95,9 +95,9 @@ namespace ExamApp.Forms
             this.labPr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labPr.Location = new System.Drawing.Point(305, 307);
             this.labPr.Name = "labPr";
-            this.labPr.Size = new System.Drawing.Size(43, 19);
+            this.labPr.Size = new System.Drawing.Size(46, 19);
             this.labPr.TabIndex = 4;
-            this.labPr.Text = "Price:";
+            this.labPr.Text = "Цена:";
             // 
             // labelArt
             // 
@@ -115,11 +115,11 @@ namespace ExamApp.Forms
             this.lab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lab.AutoSize = true;
             this.lab.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lab.Location = new System.Drawing.Point(573, 7);
+            this.lab.Location = new System.Drawing.Point(599, 7);
             this.lab.Name = "lab";
-            this.lab.Size = new System.Drawing.Size(94, 19);
+            this.lab.Size = new System.Drawing.Size(68, 19);
             this.lab.TabIndex = 2;
-            this.lab.Text = "Vendor Code:";
+            this.lab.Text = "Артикул:";
             // 
             // labDescr
             // 
@@ -146,14 +146,14 @@ namespace ExamApp.Forms
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(202, 9);
-            this.label1.MinimumSize = new System.Drawing.Size(387, 31);
+            this.label1.Location = new System.Drawing.Point(262, 9);
+            this.label1.MinimumSize = new System.Drawing.Size(285, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 31);
+            this.label1.Size = new System.Drawing.Size(286, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Information about product";
+            this.label1.Text = "Информация о товаре";
             // 
             // butBack
             // 
@@ -161,11 +161,11 @@ namespace ExamApp.Forms
             this.butBack.BackColor = System.Drawing.Color.Purple;
             this.butBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butBack.ForeColor = System.Drawing.Color.White;
-            this.butBack.Location = new System.Drawing.Point(431, 400);
+            this.butBack.Location = new System.Drawing.Point(429, 400);
             this.butBack.Name = "butBack";
             this.butBack.Size = new System.Drawing.Size(119, 41);
             this.butBack.TabIndex = 3;
-            this.butBack.Text = "Back";
+            this.butBack.Text = "Назад";
             this.butBack.UseVisualStyleBackColor = false;
             this.butBack.Click += new System.EventHandler(this.ButBack_Click);
             // 
@@ -179,7 +179,7 @@ namespace ExamApp.Forms
             this.butShop.Name = "butShop";
             this.butShop.Size = new System.Drawing.Size(119, 41);
             this.butShop.TabIndex = 2;
-            this.butShop.Text = "Buy";
+            this.butShop.Text = "Купить";
             this.butShop.UseVisualStyleBackColor = false;
             this.butShop.Click += new System.EventHandler(this.ButShop_Click);
             // 

@@ -9,13 +9,16 @@ namespace ExamApp.Forms
     public partial class DescripWindow : Form
     {
         #region Поля
-        readonly MainWindow MainWin;
-        readonly DataGridViewRow _DataThing;
-        readonly DB db = new DB();
+
+        private readonly MainWindow MainWin;
+        private readonly DataGridViewRow _DataThing;
+        private readonly DB db = new DB();
         public byte[] img;
-        #endregion
+
+        #endregion Поля
 
         #region Конструктор
+
         public DescripWindow(MainWindow mw, DataGridViewRow dr)
         {
             MainWin = mw;
@@ -25,26 +28,28 @@ namespace ExamApp.Forms
             InitializeComponent();
             ShowDataThing();
         }
-        #endregion
+
+        #endregion Конструктор
 
         #region Методы
 
         #region Отображение описания товара
-            private void ShowDataThing()
+
+        private void ShowDataThing()
+        {
+            if (MainWin.User[10].ToString() == "True")
             {
-                if (MainWin.User[10].ToString() == "True")
-                {
-                    butShop.Enabled = false;
-                }
-
-                labelArt.Text = _DataThing.Cells[0].Value.ToString();
-                pictBoxDescr.Image = Image.FromStream(new MemoryStream((byte[])_DataThing.Cells[1].Value‌​));
-                labelName.Text = _DataThing.Cells[3].Value.ToString();
-                labDescr.Text = _DataThing.Cells[4].Value.ToString();
-                labelPrice.Text = _DataThing.Cells[5].Value.ToString();
+                butShop.Enabled = false;
             }
-            #endregion
 
+            labelArt.Text = _DataThing.Cells[0].Value.ToString();
+            pictBoxDescr.Image = Image.FromStream(new MemoryStream((byte[])_DataThing.Cells[1].Value‌​));
+            labelName.Text = _DataThing.Cells[3].Value.ToString();
+            labDescr.Text = _DataThing.Cells[4].Value.ToString();
+            labelPrice.Text = _DataThing.Cells[5].Value.ToString();
+        }
+
+        #endregion Отображение описания товара
 
         private void ButShop_Click(object sender, EventArgs e)
         {
@@ -74,6 +79,6 @@ namespace ExamApp.Forms
 
         private void DescripWindow_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
 
-        #endregion
+        #endregion Методы
     }
 }

@@ -97,7 +97,7 @@ namespace ExamApp
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            comboBox.Text = "All";
+            comboBox.Text = "Все товары";
 
             UpdateTable();
         }
@@ -141,27 +141,34 @@ namespace ExamApp
             }
             else
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Нет товаров для редактирования");
             }
         }
 
         private void ButDel_Click(object sender, EventArgs e)
         {
-            switch (MessageBox.Show("Do you want delete?", "Open", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            try
             {
-                case DialogResult.Yes:
-                    {
-                        db.OpenConnection();
-                        new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
-                        db.CloseConnection();
-                        UpdateTable();
-                        MessageBox.Show("Success");
-                        break;
-                    }
+                switch (MessageBox.Show("Вы действительно хотите удалить?", "Open", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    case DialogResult.Yes:
+                        {
+                            db.OpenConnection();
+                            new SqlCommand($"DELETE FROM Products WHERE prod_id = N'{dataGridView.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
+                            db.CloseConnection();
+                            UpdateTable();
+                            MessageBox.Show("Товар успешно удалён");
+                            break;
+                        }
 
-                default:
-                    MessageBox.Show("Not deleted");
-                    break;
+                    default:
+                        MessageBox.Show("Не удалось удалить товар");
+                        break;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Нет товаров для удаления");
             }
         }
 
@@ -192,6 +199,8 @@ namespace ExamApp
                     break;
                 }
                 edProf.butnReg.Visible = false;
+                edProf.checkBoxConsent.Visible = false; ;
+                edProf.Size = new Size(335, 465);
                 edProf.Show();
             }
             db.CloseConnection();
@@ -222,7 +231,7 @@ namespace ExamApp
         public void ComboBoxUpd()
         {
             comboBox.Items.Clear();
-            comboBox.Items.Add("All");
+            comboBox.Items.Add("Все товары");
             foreach (var row in from DataGridViewRow row in dataGridView.Rows
                                 where !comboBox.Items.Contains(row.Cells[8].Value.ToString())
                                 select row)
@@ -237,7 +246,7 @@ namespace ExamApp
 
             db.OpenConnection();
 
-            if (comboBox.Text == "All")
+            if (comboBox.Text == "Все товары")
             {
                 dtbl.Load(new SqlCommand("SELECT prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_count, prod_category, Categories.categ_name FROM Products \n" +
                                         "JOIN Categories ON Categories.categ_id = prod_category", db.GetConnection()).ExecuteReader());

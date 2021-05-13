@@ -60,9 +60,9 @@ namespace ExamApp
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(1, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 19);
+            this.label2.Size = new System.Drawing.Size(110, 19);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Name";
+            this.label2.Text = "Наименование";
             // 
             // label1
             // 
@@ -71,9 +71,9 @@ namespace ExamApp
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(1, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 19);
+            this.label1.Size = new System.Drawing.Size(65, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "VendorCode";
+            this.label1.Text = "Артикул";
             // 
             // label3
             // 
@@ -84,7 +84,7 @@ namespace ExamApp
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Description";
+            this.label3.Text = "Описание";
             // 
             // label4
             // 
@@ -93,9 +93,9 @@ namespace ExamApp
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(1, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 19);
+            this.label4.Size = new System.Drawing.Size(43, 19);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Price";
+            this.label4.Text = "Цена";
             // 
             // label7
             // 
@@ -104,9 +104,9 @@ namespace ExamApp
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(1, 240);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 19);
+            this.label7.Size = new System.Drawing.Size(74, 19);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Image";
+            this.label7.Text = "Картинка";
             // 
             // label6
             // 
@@ -115,9 +115,9 @@ namespace ExamApp
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(1, 206);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 19);
+            this.label6.Size = new System.Drawing.Size(79, 19);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Category";
+            this.label6.Text = "Категория";
             // 
             // textBoxVC
             // 
@@ -172,7 +172,7 @@ namespace ExamApp
             this.buttAddPr.Name = "buttAddPr";
             this.buttAddPr.Size = new System.Drawing.Size(196, 34);
             this.buttAddPr.TabIndex = 14;
-            this.buttAddPr.Text = "Add";
+            this.buttAddPr.Text = "Добавить";
             this.buttAddPr.UseVisualStyleBackColor = false;
             this.buttAddPr.Click += new System.EventHandler(this.ButtAddPr_Click);
             // 
@@ -185,7 +185,7 @@ namespace ExamApp
             this.buttEdit.Name = "buttEdit";
             this.buttEdit.Size = new System.Drawing.Size(196, 34);
             this.buttEdit.TabIndex = 14;
-            this.buttEdit.Text = "Edit";
+            this.buttEdit.Text = "Изменить";
             this.buttEdit.UseVisualStyleBackColor = false;
             this.buttEdit.Click += new System.EventHandler(this.ButtEdit_Click);
             // 
@@ -198,7 +198,7 @@ namespace ExamApp
             this.buttBack.Name = "buttBack";
             this.buttBack.Size = new System.Drawing.Size(196, 34);
             this.buttBack.TabIndex = 15;
-            this.buttBack.Text = "Back";
+            this.buttBack.Text = "Назад";
             this.buttBack.UseVisualStyleBackColor = false;
             this.buttBack.Click += new System.EventHandler(this.ButtBack_Click);
             // 
@@ -207,7 +207,7 @@ namespace ExamApp
             this.buttonPict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonPict.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonPict.ForeColor = System.Drawing.Color.White;
-            this.buttonPict.Location = new System.Drawing.Point(72, 240);
+            this.buttonPict.Location = new System.Drawing.Point(78, 240);
             this.buttonPict.Name = "buttonPict";
             this.buttonPict.Size = new System.Drawing.Size(36, 32);
             this.buttonPict.TabIndex = 13;
@@ -256,9 +256,9 @@ namespace ExamApp
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(1, 169);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 19);
+            this.label5.Size = new System.Drawing.Size(89, 19);
             this.label5.TabIndex = 21;
-            this.label5.Text = "Count";
+            this.label5.Text = "Количество";
             // 
             // combBoxCateg
             // 
@@ -276,7 +276,7 @@ namespace ExamApp
             this.butCategAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.butCategAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.butCategAdd.ForeColor = System.Drawing.Color.White;
-            this.butCategAdd.Location = new System.Drawing.Point(72, 204);
+            this.butCategAdd.Location = new System.Drawing.Point(78, 204);
             this.butCategAdd.Name = "butCategAdd";
             this.butCategAdd.Size = new System.Drawing.Size(36, 29);
             this.butCategAdd.TabIndex = 23;

@@ -10,12 +10,14 @@ namespace ExamApp.Forms
     {
         #region Поля
 
-        readonly MainWindow MainWin;
-        readonly DB db = new DB();
+        private readonly MainWindow MainWin;
+        private readonly DB db = new DB();
         private DataTable _TableWithAllCartsProducts;
-        #endregion
+
+        #endregion Поля
 
         #region Свойство
+
         public DataTable TableWithAllCartsProducts
         {
             get => _TableWithAllCartsProducts;
@@ -24,18 +26,22 @@ namespace ExamApp.Forms
                 _TableWithAllCartsProducts = value;
             }
         }
-        #endregion
+
+        #endregion Свойство
 
         #region Конструктор
+
         public Cart(MainWindow mw)
         {
             MainWin = mw;
             TableWithAllCartsProducts = new DataTable();
             InitializeComponent();
         }
-        #endregion
+
+        #endregion Конструктор
 
         #region Методы
+
         private void ButBack_Click(object sender, EventArgs e)
         {
             MainWin.Enabled = true;
@@ -43,6 +49,7 @@ namespace ExamApp.Forms
         }
 
         #region Загрузка
+
         private void LoadNewDataFormCart()
         {
             db.OpenConnection();
@@ -63,57 +70,59 @@ namespace ExamApp.Forms
 
             ZoomToImage();
         }
-        #endregion
 
+        #endregion Загрузка
 
         private void Basket_Load(object sender, EventArgs e)
         {
             LoadNewDataFormCart();
 
             #region Колонки
+
             dgvCart.Columns[0].HeaderText = "ID";
-            dgvCart.Columns[1].HeaderText = "Vendor code";
-            dgvCart.Columns[2].HeaderText = "Image";
-            dgvCart.Columns[3].HeaderText = "Name";
-            dgvCart.Columns[4].HeaderText = "Count";
-            dgvCart.Columns[5].HeaderText = "Price";
+            dgvCart.Columns[1].HeaderText = "Артикул";
+            dgvCart.Columns[2].HeaderText = "Изображение";
+            dgvCart.Columns[3].HeaderText = "Наименование";
+            dgvCart.Columns[4].HeaderText = "Количество";
+            dgvCart.Columns[5].HeaderText = "Цена";
             dgvCart.Columns[6].Visible = false;
             dgvCart.Columns[0].Visible = false;
-            #endregion
+
+            #endregion Колонки
 
             BtnDel();
 
             #region Доступ к чтению
+
             dgvCart.Columns[0].ReadOnly = true;
             dgvCart.Columns[1].ReadOnly = true;
             dgvCart.Columns[2].ReadOnly = true;
             dgvCart.Columns[3].ReadOnly = true;
             dgvCart.Columns[5].ReadOnly = true;
-            #endregion
+
+            #endregion Доступ к чтению
 
             TotalAmout();
         }
-
 
         private void BtnDel()
         {
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn
             {
-                HeaderText = "Delete",
+                HeaderText = "Удаление",
                 Name = "button",
-                Text = "DELETE",
+                Text = "УДАЛИТЬ",
                 UseColumnTextForButtonValue = true
             };
             dgvCart.Columns.Add(btn);
         }
 
-
         public void ZoomToImage()
         {
             foreach (var dc in from DataGridViewRow dr in dgvCart.Rows
-                                from DataGridViewCell dc in dr.Cells
-                                where dc.GetType() == typeof(DataGridViewImageCell)
-                                select dc)
+                               from DataGridViewCell dc in dr.Cells
+                               where dc.GetType() == typeof(DataGridViewImageCell)
+                               select dc)
             {
                 ((DataGridViewImageCell)dc).ImageLayout = DataGridViewImageCellLayout.Zoom;
             }
@@ -131,7 +140,7 @@ namespace ExamApp.Forms
             {
                 result += (Convert.ToDouble(row.Cells[5].Value) * Convert.ToDouble(row.Cells[4].Value));
             }
-            labelTotal.Text = $"Total: {result}";
+            labelTotal.Text = $"Итого: {result}";
         }
 
         /// <summary>
@@ -151,8 +160,8 @@ namespace ExamApp.Forms
 
                 LoadNewDataFormCart();
                 MainWin.UpdateTable();
-                
-                MessageBox.Show("Success");
+
+                MessageBox.Show("Товар удалён");
             }
         }
 
@@ -174,9 +183,10 @@ namespace ExamApp.Forms
                         db.OpenConnection();
                         new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{1}' WHERE cart_prod_id = N'{r.Cells[0].Value}' AND cart_custom = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteNonQuery();
                         TotalAmout();
-                        db.CloseConnection();
                         LoadNewDataFormCart();
-                        MessageBox.Show("Error");
+                        db.CloseConnection();
+                        MainWin.UpdateTable();
+                        MessageBox.Show("Нет в наличии");
                     }
                     else
                     {
@@ -193,7 +203,6 @@ namespace ExamApp.Forms
             }
         }
 
-
         // Покупка товара
         private void ButApply_Click(object sender, EventArgs e)
         {
@@ -202,6 +211,7 @@ namespace ExamApp.Forms
                 if (!String.IsNullOrWhiteSpace(textBoxNumb.Text) && !String.IsNullOrWhiteSpace(textBoxCvv.Text) && !String.IsNullOrWhiteSpace(textBoxMM.Text) && !String.IsNullOrWhiteSpace(textBoxYear.Text))
                 {
                     #region Сохранение заказа в истории
+
                     db.OpenConnection();
                     new SqlCommand($"INSERT INTO Orders(ord_cust_id, ord_prod_id, ord_prod_count, ord_worker_id, ord_price, ord_start_date, ord_over_date) SELECT cart_custom, cart_prod_id, cart_count_prod, Users.user_id, cart_price, '{DateTime.Now:yyyy-MM-dd HH:mm:ss}', '{DateTime.Today.AddDays(18):yyyy-MM-dd}' FROM Cart\n" +
                                    $"JOIN Users ON Users.user_status = 'True'\n" +
@@ -211,22 +221,24 @@ namespace ExamApp.Forms
                     LoadNewDataFormCart();
 
                     db.CloseConnection();
-                    #endregion
 
-                    MessageBox.Show("Your order is accepted");
+                    #endregion Сохранение заказа в истории
+
+                    MessageBox.Show("Ваш заказ принят");
                 }
-                else 
+                else
                 {
-                    MessageBox.Show("Fields are not filled");
+                    MessageBox.Show("Заполните пустые поля");
                 }
             }
             else
             {
-                MessageBox.Show("Empty cart");
+                MessageBox.Show("Пустая корзина");
             }
         }
 
-        #region Настройка textBoxes 
+        #region Настройка textBoxes
+
         private void TextBoxNumb_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
@@ -240,9 +252,11 @@ namespace ExamApp.Forms
                 e.SuppressKeyPress = true;
             }
         }
-        #endregion
+
+        #endregion Настройка textBoxes
 
         #region Input in Cell
+
         private void DgvCart_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress += new KeyPressEventHandler(Cell_KeyPress);
@@ -253,9 +267,11 @@ namespace ExamApp.Forms
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
                 e.KeyChar = Convert.ToChar("\0");
         }
-        #endregion
+
+        #endregion Input in Cell
 
         private void Basket_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
-        #endregion
+
+        #endregion Методы
     }
 }

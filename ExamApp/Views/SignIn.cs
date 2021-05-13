@@ -7,13 +7,14 @@ namespace ExamApp
 {
     public partial class SignIn : Form
     {
-
         #region Конструктор
+
         public SignIn()
         {
             InitializeComponent();
         }
-        #endregion
+
+        #endregion Конструктор
 
         #region Методы
 
@@ -21,8 +22,9 @@ namespace ExamApp
         {
             var dtbl = new DataTable();
             new SqlDataAdapter(@"SELECT * FROM Users WHERE user_usname = '" + textBoxUsname.Text + "' AND user_passw = '" + textBoxPassw.Text + "'", new DB().GetConnection()).Fill(dtbl);
-            
+
             #region Проверка
+
             switch (dtbl.Rows.Count)
             {
                 case 1:
@@ -34,12 +36,12 @@ namespace ExamApp
                     }
 
                 default:
-                    MessageBox.Show("Check your username and password");
+                    MessageBox.Show("Неверное имя пользователя или пароль");
                     break;
             }
-            #endregion
-        }
 
+            #endregion Проверка
+        }
 
         private void ButSignUp_Click(object sender, EventArgs e)
         {
@@ -50,6 +52,7 @@ namespace ExamApp
         }
 
         #region Настройка textBoxes
+
         private void TextBoxUsname_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -57,10 +60,11 @@ namespace ExamApp
                 e.SuppressKeyPress = true;
             }
         }
-        #endregion
+
+        #endregion Настройка textBoxes
 
         private void Data_FormClosing(object sender, FormClosingEventArgs e) => Environment.Exit(0);
 
-        #endregion
+        #endregion Методы
     }
 }
