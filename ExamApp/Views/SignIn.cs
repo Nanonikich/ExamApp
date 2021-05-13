@@ -7,6 +7,13 @@ namespace ExamApp
 {
     public partial class SignIn : Form
     {
+        #region Поля
+
+        private readonly DB db = new DB();
+        private readonly DataTable dtbl = new DataTable();
+
+        #endregion Поля
+
         #region Конструктор
 
         public SignIn()
@@ -20,8 +27,10 @@ namespace ExamApp
 
         private void ButSignIn_Click(object sender, EventArgs e)
         {
-            var dtbl = new DataTable();
-            new SqlDataAdapter(@"SELECT * FROM Users WHERE user_usname = '" + textBoxUsname.Text + "' AND user_passw = '" + textBoxPassw.Text + "'", new DB().GetConnection()).Fill(dtbl);
+            dtbl.Clear();
+            db.OpenConnection();
+            dtbl.Load(new SqlCommand($@"SELECT * FROM Users WHERE user_usname = '{textBoxUsname.Text}' AND user_passw = '{textBoxPassw.Text}'", db.GetConnection()).ExecuteReader());
+            db.CloseConnection();
 
             #region Проверка
 

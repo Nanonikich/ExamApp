@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Linq;
-using System.Media;
 
 namespace ExamApp
 {
@@ -17,6 +16,7 @@ namespace ExamApp
         private readonly SignIn _SignIn;
         private readonly DataRow _User;
         private readonly DB db = new DB();
+        private readonly DataTable dtbl = new DataTable();
 
         #endregion Поля
 
@@ -39,18 +39,25 @@ namespace ExamApp
 
         #region Методы
 
+        /// <summary>
+        /// Количество товара из корзины
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public int GetCountFromCartByName(string name)
         {
             try
             {
-                var db = new DB();
                 db.OpenConnection();
-                var reader = new SqlCommand("SELECT SUM(cart_count_prod) FROM Cart\n" +
-                                            $"Where cart_name = N'{name}'", db.GetConnection()).ExecuteReader();
-                var sum = 0;
-                while (reader.Read())
-                    sum = reader.GetInt32(0);
-                return sum;
+                using (var reader = new SqlCommand("SELECT SUM(cart_count_prod) FROM Cart\n" +
+                                            $"WHERE cart_name = N'{name}'", db.GetConnection()).ExecuteReader())
+                {
+                    var sum = 0;
+                    while (reader.Read())
+                        sum = reader.GetInt32(0);
+                    db.CloseConnection();
+                    return sum;
+                }
             }
             catch
             {
@@ -60,7 +67,7 @@ namespace ExamApp
 
         public void UpdateTable()
         {
-            var dtbl = new DataTable();
+            dtbl.Clear();
             db.OpenConnection();
             dtbl.Load(new SqlCommand("SELECT prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_count, prod_category, Categories.categ_name FROM Products \n" +
                 "JOIN Categories ON Categories.categ_id = prod_category", db.GetConnection()).ExecuteReader());
@@ -68,9 +75,9 @@ namespace ExamApp
 
             #region Иллюзия
 
-            for (int row = 0; row < dtbl.Rows.Count; row++)
+            foreach (DataRow row in dtbl.Rows)
             {
-                dtbl.Rows[row][6] = (int)dtbl.Rows[row][6] - GetCountFromCartByName((string)dtbl.Rows[row][3]);
+                row[6] = (int)row[6] - GetCountFromCartByName((string)row[3]);
             }
 
             #endregion Иллюзия
@@ -185,6 +192,7 @@ namespace ExamApp
             using (var asquery = new SqlCommand($"SELECT * FROM Users WHERE user_id = N'{User[0]}'", db.GetConnection()).ExecuteReader())
             {
                 var edProf = new SignUp(_SignIn, User[0].ToString());
+
                 while (asquery.Read())
                 {
                     edProf.textBoxSurn.Text = asquery.GetString(1);
@@ -242,10 +250,8 @@ namespace ExamApp
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var dtbl = new DataTable();
-
             db.OpenConnection();
-
+            dtbl.Clear();
             if (comboBox.Text == "Все товары")
             {
                 dtbl.Load(new SqlCommand("SELECT prod_id, prod_image, prod_imgUrl, prod_name, prod_descr, prod_price, prod_count, prod_category, Categories.categ_name FROM Products \n" +

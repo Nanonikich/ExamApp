@@ -2,9 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Globalization;
 
 namespace ExamApp
 {
@@ -16,6 +14,7 @@ namespace ExamApp
         private readonly SignIn _SignIn;
         private readonly string z;
         private readonly ToolTip tooltip = new ToolTip();
+        private readonly DataTable dtbl = new DataTable();
 
         #endregion Поля
 
@@ -57,8 +56,10 @@ namespace ExamApp
 
                 #endregion Соглашение на обработку данных
 
-                new SqlDataAdapter($@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES(N'{textBoxSurn.Text}', N'{textBoxName.Text}', N'{textBoxPatr.Text}', N'{textBoxEmail.Text}', N'{maskedTBPhone.Text}', N'{textBoxCity.Text}', N'{textBoxAddr.Text}', N'{textBoxUsname.Text}', N'{textBoxPassw.Text}')",
-                                    db.GetConnection()).Fill(new DataTable());
+                dtbl.Clear();
+                db.OpenConnection();
+                dtbl.Load(new SqlCommand($@"INSERT INTO Users(user_sur, user_name, user_patr, user_email, user_phone, user_city, user_address, user_usname, user_passw) VALUES(N'{textBoxSurn.Text}', N'{textBoxName.Text}', N'{textBoxPatr.Text}', N'{textBoxEmail.Text}', N'{maskedTBPhone.Text}', N'{textBoxCity.Text}', N'{textBoxAddr.Text}', N'{textBoxUsname.Text}', N'{textBoxPassw.Text}')", db.GetConnection()).ExecuteReader());
+                db.CloseConnection();
 
                 MessageBox.Show("Вы успешно зарегистрированы");
 
@@ -121,15 +122,11 @@ namespace ExamApp
 
         private void TextBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var rEMail = new Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
-            if (textBoxEmail.Text.Length > 0)
+            if (textBoxEmail.Text.Length > 0 && !new Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$").IsMatch(textBoxEmail.Text))
             {
-                if (!rEMail.IsMatch(textBoxEmail.Text))
-                {
-                    MessageBox.Show("Неверный адрес электронной почты", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxEmail.SelectAll();
-                    e.Cancel = true;
-                }
+                MessageBox.Show("Неверный адрес электронной почты", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxEmail.SelectAll();
+                e.Cancel = true;
             }
         }
 
@@ -166,10 +163,7 @@ namespace ExamApp
 
         #region Подсказка
 
-        private void Label10_MouseMove(object sender, MouseEventArgs e)
-        {
-            tooltip.SetToolTip(label10, "Поле необязательно для заполнения");
-        }
+        private void Label10_MouseMove(object sender, MouseEventArgs e) => tooltip.SetToolTip(label10, "Поле необязательно для заполнения");
 
         #endregion Подсказка
 

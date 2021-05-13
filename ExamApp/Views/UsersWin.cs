@@ -65,18 +65,20 @@ namespace ExamApp.Forms
 
         private void BtnDel()
         {
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn
+            using (var btn = new DataGridViewButtonColumn
             {
                 HeaderText = "Удаление",
                 Name = "button",
                 Text = "УДАЛИТЬ",
                 UseColumnTextForButtonValue = true
-            };
-            dgvUsers.Columns.Add(btn);
-
-            if (MainWin.User[0].ToString() != "25")
+            })
             {
-                btn.Visible = false;
+                dgvUsers.Columns.Add(btn);
+
+                if (MainWin.User[0].ToString() != "25")
+                {
+                    btn.Visible = false;
+                }
             }
         }
 
