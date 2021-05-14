@@ -183,8 +183,9 @@ namespace ExamApp.Forms
                         db.OpenConnection();
                         new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{1}' WHERE cart_prod_id = N'{r.Cells[0].Value}' AND cart_custom = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteNonQuery();
                         TotalAmout();
-                        LoadNewDataFormCart();
                         db.CloseConnection();
+
+                        LoadNewDataFormCart();
                         MainWin.UpdateTable();
                         MessageBox.Show("Нет в наличии");
                     }

@@ -172,6 +172,7 @@ namespace ExamApp
                         break;
                 }
             }
+
             db.CloseConnection();
 
             UpdDGW(db);
