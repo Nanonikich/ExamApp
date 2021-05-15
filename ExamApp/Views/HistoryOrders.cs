@@ -78,7 +78,7 @@ namespace ExamApp.Forms
         {
             _Orders = new List<Orders>();
             db.OpenConnection();
-            var reader = new SqlCommand("SELECT * FROM Orders", db.GetConnection()).ExecuteReader();
+            var reader = new SqlCommand("SELECT * FROM Orders ORDER BY ord_start_date DESC", db.GetConnection()).ExecuteReader();
 
             if (reader.HasRows)
             {

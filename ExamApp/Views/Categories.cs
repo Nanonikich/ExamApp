@@ -3,7 +3,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace ExamApp.Forms
 {
@@ -14,7 +13,6 @@ namespace ExamApp.Forms
         private readonly AddProd AddEddWin;
         private readonly DB db = new DB();
         private readonly MainWindow MainWin;
-        private readonly DataTable dtbl = new DataTable();
 
         #endregion Поля
 
@@ -33,10 +31,13 @@ namespace ExamApp.Forms
 
         private void UpdateWin()
         {
-            dtbl.Clear();
+            var dtbl = new DataTable();
             db.OpenConnection();
-            dtbl.Load(new SqlCommand("SELECT categ_id, categ_name FROM Categories", db.GetConnection()).ExecuteReader());
-            db.CloseConnection();
+
+            dtbl.Load(new SqlCommand("SELECT categ_id, categ_name FROM Categories",
+                                            db.GetConnection())
+                                            .ExecuteReader());
+
             dgvCateg.DataSource = dtbl;
 
             #region Настройки таблицы
@@ -59,7 +60,7 @@ namespace ExamApp.Forms
         {
             for (int i = 0; i < dgvCateg.Rows.Count; i++)
             {
-                if ((textBoxCat.Text.ToString() == Convert.ToString(dgvCateg.Rows[i].Cells[1].Value) && dgvCateg.RowCount > 0) || textBoxCat.Text == "")
+                if (textBoxCat.Text.ToString() == Convert.ToString(dgvCateg.Rows[i].Cells[1].Value) && dgvCateg.RowCount > 0 || textBoxCat.Text == "")
                 {
                     MessageBox.Show("Ошибка");
                     return;
@@ -73,14 +74,14 @@ namespace ExamApp.Forms
 
         private void ButCategDel_Click(object sender, EventArgs e)
         {
-            foreach (var _ in from DataGridViewRow row in MainWin.dataGridView.Rows
-                              where row.Cells[8].Value.ToString() == dgvCateg.CurrentRow.Cells[1].Value.ToString()
-                              select new { })
+            foreach (DataGridViewRow row in MainWin.dataGridView.Rows)
             {
-                MessageBox.Show("Категория используется и не может быть удалена");
-                return;
+                if (row.Cells[8].Value.ToString() == dgvCateg.CurrentRow.Cells[1].Value.ToString())
+                {
+                    MessageBox.Show("Категория используется и не может быть удалена");
+                    return;
+                }
             }
-
             db.OpenConnection();
             new SqlCommand($"DELETE FROM Categories WHERE categ_id = N'{dgvCateg.CurrentRow.Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
             db.CloseConnection();
@@ -95,12 +96,12 @@ namespace ExamApp.Forms
 
             #region Загрузка новых данных в ComboBox
 
-            db.OpenConnection();
-            dtbl.Load(new SqlCommand("SELECT categ_id, categ_name FROM Categories", db.GetConnection()).ExecuteReader());
-            AddEddWin.combBoxCateg.DataSource = dtbl;
+            var dAdapter = new SqlDataAdapter("SELECT categ_id, categ_name FROM Categories", db.GetConnection());
+            var source = new DataTable();
+            dAdapter.Fill(source);
+            AddEddWin.combBoxCateg.DataSource = source;
             AddEddWin.combBoxCateg.ValueMember = "categ_id";
             AddEddWin.combBoxCateg.DisplayMember = "categ_name";
-            db.CloseConnection();
 
             #endregion Загрузка новых данных в ComboBox
         }
