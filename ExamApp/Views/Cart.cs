@@ -214,8 +214,9 @@ namespace ExamApp.Forms
 
                     db.OpenConnection();
                     new SqlCommand($"INSERT INTO Orders(ord_cust_id, ord_prod_id, ord_prod_count, ord_worker_id, ord_price, ord_start_date, ord_over_date) SELECT cart_custom, cart_prod_id, cart_count_prod, Users.user_id, cart_price, '{DateTime.Now:yyyy-MM-dd HH:mm:ss}', '{DateTime.Today.AddDays(18):yyyy-MM-dd}' FROM Cart\n" +
-                                   $"JOIN Users ON Users.user_status = 'True'\n" +
-                                   $"WHERE cart_custom = { MainWin.User[0] } AND Users.user_id != N'{25}'", db.GetConnection()).ExecuteNonQuery();
+                                   $"JOIN Users ON Users.user_status = 'True' AND Users.user_id != N'{25}'\n" +
+                                   $"WHERE cart_custom = { MainWin.User[0] } AND Users.user_id = '{51}'", db.GetConnection()).ExecuteNonQuery();
+
                     new SqlCommand($"DELETE Cart WHERE cart_custom = { MainWin.User[0] }", db.GetConnection()).ExecuteNonQuery();
 
                     LoadNewDataFormCart();

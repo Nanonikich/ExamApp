@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -186,17 +187,17 @@ namespace ExamApp.Forms
                 foreach (var order in _Orders)
                 {
                     TableWithAllOrders.Rows.Add
-                        (
-                            order.ord_id,
-                            order.ord_cust_id,
-                            order.ord_prod_id,
-                            order.ord_prod_count,
-                            order.ord_worker_id,
-                            order.ord_price,
-                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
-                            order.ord_over_date.ToString("dd.MM.yyyy"),
-                            order.ord_status
-                        );
+                                    (
+                                        order.ord_id,
+                                        order.ord_cust_id,
+                                        order.ord_prod_id,
+                                        order.ord_prod_count,
+                                        order.ord_worker_id,
+                                        order.ord_price,
+                                        order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                                        order.ord_over_date.ToString("dd.MM.yyyy"),
+                                        order.ord_status
+                                     );
                 }
             }
             else if (MainWin.User[10].ToString() == "True")
@@ -206,17 +207,17 @@ namespace ExamApp.Forms
                 foreach (var order in OnlyUsersOrders)
                 {
                     TableWithAllOrders.Rows.Add
-                        (
-                            order.ord_id,
-                            order.ord_cust_id,
-                            order.ord_prod_id,
-                            order.ord_prod_count,
-                            order.ord_worker_id,
-                            order.ord_price,
-                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
-                            order.ord_over_date.ToString("dd.MM.yyyy"),
-                            order.ord_status
-                        );
+                                    (
+                                        order.ord_id,
+                                        order.ord_cust_id,
+                                        order.ord_prod_id,
+                                        order.ord_prod_count,
+                                        order.ord_worker_id,
+                                        order.ord_price,
+                                        order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                                        order.ord_over_date.ToString("dd.MM.yyyy"),
+                                        order.ord_status
+                                    );
                 }
             }
             else
@@ -226,17 +227,17 @@ namespace ExamApp.Forms
                 foreach (var order in OnlyUsersOrders)
                 {
                     TableWithAllOrders.Rows.Add
-                        (
-                            order.ord_id,
-                            order.ord_cust_id,
-                            order.ord_prod_id,
-                            order.ord_prod_count,
-                            order.ord_worker_id,
-                            order.ord_price,
-                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
-                            order.ord_over_date.ToString("dd.MM.yyyy"),
-                            _Conditions.SingleOrDefault(c => c.condit_id == order.ord_status).condit_name
-                        );
+                                    (
+                                        order.ord_id,
+                                        order.ord_cust_id,
+                                        order.ord_prod_id,
+                                        order.ord_prod_count,
+                                        order.ord_worker_id,
+                                        order.ord_price,
+                                        order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                                        order.ord_over_date.ToString("dd.MM.yyyy"),
+                                        _Conditions.SingleOrDefault(c => c.condit_id == order.ord_status).condit_name
+                                    );
                 }
             }
         }
@@ -292,24 +293,51 @@ namespace ExamApp.Forms
             TableWithAllOrders.Clear();
 
             /// заполняет с учетом статуса
-            if (MainWin.User[10].ToString() == "False")
+            if (MainWin.User[10].ToString() == "False") // покупатель
             {
                 SetValue((int)MainWin.User[0]);
+
+                #region Невидимые элементы
+
+                comboBoxOrder.Visible = false;
+                label5.Visible = false;
+                comboBoxPokup.Visible = false;
+                label2.Visible = false;
+                comboBoxPost.Visible = false;
+                label3.Visible = false;
+                comboBoxSt.Visible = false;
+                label4.Visible = false;
+                panel3.Visible = false;
+                dgvOrders.Top = 51;
+                dgvOrders.Size = new Size(1366, 768);
+
+                #endregion Невидимые элементы
+
                 dgvOrders.DataSource = TableWithAllOrders;
                 dgvOrders.ReadOnly = true;
             }
-            else if (MainWin.User[10].ToString() == "True" && (int)MainWin.User[0] != 25)
+            else if (MainWin.User[10].ToString() == "True" && (int)MainWin.User[0] != 25) // раб
             {
                 SetValue((int)MainWin.User[0]);
+                comboBoxPost.Visible = false;
+                label3.Visible = false;
+                label4.Left = 340;
+                comboBoxSt.Left = 415;
                 dgvOrders.AutoGenerateColumns = false;
                 dgvOrders.DataSource = TableWithAllOrders;
+                ComboBoxUpd();
             }
-            else
+            else // админ
             {
                 SetValue();
                 dgvOrders.AutoGenerateColumns = false;
                 dgvOrders.DataSource = TableWithAllOrders;
+                ComboBoxUpd();
             }
+
+            ComboBoxPostUpd();
+            ComboBoxPokupUpd();
+            ComboBoxOrderUpd();
 
             db.CloseConnection();
         }
@@ -350,6 +378,242 @@ namespace ExamApp.Forms
                 return;
             }
         }
+
+        #region Сортировки
+
+        // сортировка для админа и работников
+
+        #region Сортировка по статусу
+
+        private void ComboBoxUpd()
+        {
+            var dAdapter = new SqlDataAdapter("SELECT condit_id, condit_name FROM Condition", db.GetConnection());
+            var source = new DataTable();
+            dAdapter.Fill(source);
+            comboBoxSt.DataSource = source;
+            comboBoxSt.ValueMember = "condit_id";
+            comboBoxSt.DisplayMember = "condit_name";
+        }
+
+        private void ComboBoxSt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TableWithAllOrders.Clear();
+
+            // сортировка для админа
+            if (MainWin.User[0].ToString() == "25" && MainWin.User[10].ToString() == "True")
+            {
+                foreach (var order in _Orders.Where(o => o.ord_status == comboBoxSt.SelectedIndex + 1).ToList())
+                {
+                    TableWithAllOrders.Rows.Add
+                        (
+                            order.ord_id,
+                            order.ord_cust_id,
+                            order.ord_prod_id,
+                            order.ord_prod_count,
+                            order.ord_worker_id,
+                            order.ord_price,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
+                            order.ord_status
+                        );
+                }
+            }
+
+            // сортировка для работника
+            else if (MainWin.User[10].ToString() == "True")
+            {
+                foreach (var order in _Orders.Where(o => (o.ord_status == comboBoxSt.SelectedIndex + 1) && (o.ord_worker_id.ToString() == MainWin.User[0].ToString())).ToList())
+                {
+                    TableWithAllOrders.Rows.Add
+                        (
+                            order.ord_id,
+                            order.ord_cust_id,
+                            order.ord_prod_id,
+                            order.ord_prod_count,
+                            order.ord_worker_id,
+                            order.ord_price,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
+                            order.ord_status
+                        );
+                }
+            }
+
+            dgvOrders.DataSource = TableWithAllOrders;
+        }
+
+        #endregion Сортировка по статусу
+
+        // сортировка только для админа
+
+        #region Сортировка по поставщику
+
+        private void ComboBoxPostUpd()
+        {
+            comboBoxPost.Items.Clear();
+            foreach (var row in from DataGridViewRow row in dgvOrders.Rows
+                                where !comboBoxPost.Items.Contains(row.Cells[4].Value.ToString())
+                                select row)
+            {
+                comboBoxPost.Items.Add(row.Cells[4].Value.ToString());
+            }
+        }
+
+        private void ComboBoxPost_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TableWithAllOrders.Clear();
+
+            var OnlyUsersOrders = _Orders.Where(o => o.ord_worker_id.ToString() == comboBoxPost.Text).ToList();
+
+            foreach (var order in OnlyUsersOrders)
+            {
+                TableWithAllOrders.Rows.Add
+                    (
+                        order.ord_id,
+                        order.ord_cust_id,
+                        order.ord_prod_id,
+                        order.ord_prod_count,
+                        order.ord_worker_id,
+                        order.ord_price,
+                        order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                        order.ord_over_date.ToString("dd.MM.yyyy"),
+                        order.ord_status
+                    );
+            }
+
+            dgvOrders.DataSource = TableWithAllOrders;
+        }
+
+        #endregion Сортировка по поставщику
+
+        // сортировка для админа и работников
+
+        #region Сортировка по пользователю
+
+        private void ComboBoxPokupUpd()
+        {
+            comboBoxPokup.Items.Clear();
+            foreach (var row in from DataGridViewRow row in dgvOrders.Rows
+                                where !comboBoxPokup.Items.Contains(row.Cells[1].Value.ToString())
+                                select row)
+            {
+                comboBoxPokup.Items.Add(row.Cells[1].Value.ToString());
+            }
+        }
+
+        private void ComboBoxPokup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TableWithAllOrders.Clear();
+
+            // для админа
+            if (MainWin.User[0].ToString() == "25" && MainWin.User[10].ToString() == "True")
+            {
+                foreach (var order in _Orders.Where(o => o.ord_cust_id.ToString() == comboBoxPokup.Text).ToList())
+                {
+                    TableWithAllOrders.Rows.Add
+                        (
+                            order.ord_id,
+                            order.ord_cust_id,
+                            order.ord_prod_id,
+                            order.ord_prod_count,
+                            order.ord_worker_id,
+                            order.ord_price,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
+                            order.ord_status
+                        );
+                }
+            }
+
+            // для работника
+            else if (MainWin.User[10].ToString() == "True")
+            {
+                foreach (var order in _Orders.Where(o => (o.ord_cust_id.ToString() == comboBoxPokup.Text) && (o.ord_worker_id.ToString() == MainWin.User[0].ToString())).ToList())
+                {
+                    TableWithAllOrders.Rows.Add
+                        (
+                            order.ord_id,
+                            order.ord_cust_id,
+                            order.ord_prod_id,
+                            order.ord_prod_count,
+                            order.ord_worker_id,
+                            order.ord_price,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
+                            order.ord_status
+                        );
+                }
+            }
+
+            dgvOrders.DataSource = TableWithAllOrders;
+        }
+
+        #endregion Сортировка по пользователю
+
+        // сортировка для админа и работников
+
+        #region Сортировка по заказам
+
+        private void ComboBoxOrderUpd()
+        {
+            comboBoxOrder.Items.Clear();
+            foreach (var row in from DataGridViewRow row in dgvOrders.Rows
+                                where !comboBoxOrder.Items.Contains(row.Cells[0].Value.ToString())
+                                select row)
+            {
+                comboBoxOrder.Items.Add(row.Cells[0].Value.ToString());
+            }
+        }
+
+        private void ComboBoxOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TableWithAllOrders.Clear();
+
+            // для админа
+            if (MainWin.User[0].ToString() == "25" && MainWin.User[10].ToString() == "True")
+            {
+                foreach (var order in _Orders.Where(o => o.ord_id.ToString() == comboBoxOrder.Text).ToList())
+                {
+                    TableWithAllOrders.Rows.Add
+                        (
+                            order.ord_id,
+                            order.ord_cust_id,
+                            order.ord_prod_id,
+                            order.ord_prod_count,
+                            order.ord_worker_id,
+                            order.ord_price,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
+                            order.ord_status
+                        );
+                }
+            }
+            // для работников
+            else if (MainWin.User[10].ToString() == "True")
+            {
+                foreach (var order in _Orders.Where(o => (o.ord_id.ToString() == comboBoxOrder.Text) && (o.ord_worker_id.ToString() == MainWin.User[0].ToString())).ToList())
+                {
+                    TableWithAllOrders.Rows.Add
+                        (
+                            order.ord_id,
+                            order.ord_cust_id,
+                            order.ord_prod_id,
+                            order.ord_prod_count,
+                            order.ord_worker_id,
+                            order.ord_price,
+                            order.ord_start_date.ToString("dd.MM.yyyy HH:mm:ss"),
+                            order.ord_over_date.ToString("dd.MM.yyyy"),
+                            order.ord_status
+                        );
+                }
+            }
+
+            dgvOrders.DataSource = TableWithAllOrders;
+        }
+
+        #endregion Сортировка по заказам
+
+        #endregion Сортировки
 
         private void HistoryOrders_FormClosed(object sender, FormClosedEventArgs e) => MainWin.Enabled = true;
 
