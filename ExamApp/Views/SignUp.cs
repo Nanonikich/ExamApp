@@ -2,9 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Globalization;
 
 namespace ExamApp
 {

@@ -316,7 +316,7 @@ namespace ExamApp.Forms
                 dgvOrders.DataSource = TableWithAllOrders;
                 dgvOrders.ReadOnly = true;
             }
-            else if (MainWin.User[10].ToString() == "True" && (int)MainWin.User[0] != 25) // раб
+            else if (MainWin.User[10].ToString() == "True" && (int)MainWin.User[0] != 1) // раб
             {
                 SetValue((int)MainWin.User[0]);
                 comboBoxPost.Visible = false;
@@ -399,7 +399,7 @@ namespace ExamApp.Forms
             TableWithAllOrders.Clear();
 
             // сортировка для админа
-            if (MainWin.User[0].ToString() == "25" && MainWin.User[10].ToString() == "True")
+            if (MainWin.User[0].ToString() == "1" && MainWin.User[10].ToString() == "True")
             {
                 foreach (var order in _Orders.Where(o => o.ord_status == comboBoxSt.SelectedIndex + 1).ToList())
                 {
@@ -511,7 +511,7 @@ namespace ExamApp.Forms
             TableWithAllOrders.Clear();
 
             // для админа
-            if (MainWin.User[0].ToString() == "25" && MainWin.User[10].ToString() == "True")
+            if (MainWin.User[0].ToString() == "1" && MainWin.User[10].ToString() == "True")
             {
                 foreach (var order in _Orders.Where(o => o.ord_cust_id.ToString() == comboBoxPokup.Text).ToList())
                 {
@@ -575,7 +575,7 @@ namespace ExamApp.Forms
             TableWithAllOrders.Clear();
 
             // для админа
-            if (MainWin.User[0].ToString() == "25" && MainWin.User[10].ToString() == "True")
+            if (MainWin.User[0].ToString() == "1" && MainWin.User[10].ToString() == "True")
             {
                 foreach (var order in _Orders.Where(o => o.ord_id.ToString() == comboBoxOrder.Text).ToList())
                 {
