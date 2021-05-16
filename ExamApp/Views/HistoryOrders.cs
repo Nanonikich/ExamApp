@@ -387,12 +387,15 @@ namespace ExamApp.Forms
 
         private void ComboBoxUpd()
         {
-            var dAdapter = new SqlDataAdapter("SELECT condit_id, condit_name FROM Condition", db.GetConnection());
-            var source = new DataTable();
-            dAdapter.Fill(source);
-            comboBoxSt.DataSource = source;
-            comboBoxSt.ValueMember = "condit_id";
-            comboBoxSt.DisplayMember = "condit_name";
+            if (dgvOrders.Rows.Count > 0 && dgvOrders.Rows != null)
+            {
+                var dAdapter = new SqlDataAdapter("SELECT condit_id, condit_name FROM Condition", db.GetConnection());
+                var source = new DataTable();
+                dAdapter.Fill(source);
+                comboBoxSt.DataSource = source;
+                comboBoxSt.ValueMember = "condit_id";
+                comboBoxSt.DisplayMember = "condit_name";
+            }
         }
 
         private void ComboBoxSt_SelectedIndexChanged(object sender, EventArgs e)
