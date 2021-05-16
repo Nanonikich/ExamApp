@@ -335,10 +335,6 @@ namespace ExamApp.Forms
                 ComboBoxUpd();
             }
 
-            ComboBoxPostUpd();
-            ComboBoxPokupUpd();
-            ComboBoxOrderUpd();
-
             db.CloseConnection();
         }
 
@@ -420,6 +416,9 @@ namespace ExamApp.Forms
                             order.ord_status
                         );
                 }
+                ComboBoxPostUpd();
+                ComboBoxPokupUpd();
+                ComboBoxOrderUpd();
             }
 
             // сортировка для работника
@@ -440,6 +439,9 @@ namespace ExamApp.Forms
                             order.ord_status
                         );
                 }
+                ComboBoxOrderUpd();
+                ComboBoxPokupUpd();
+                ComboBoxPostUpd();
             }
 
             dgvOrders.DataSource = TableWithAllOrders;
