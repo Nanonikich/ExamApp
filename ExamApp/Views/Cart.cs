@@ -190,6 +190,12 @@ namespace ExamApp.Forms
                         MainWin.UpdateTable();
                         MessageBox.Show("Нет в наличии");
                     }
+                    else if (Convert.ToInt32(MainWin.dataGridView.Rows[0].Cells[6].Value) < 0)
+                    {
+                        Close();
+                        new Cart(MainWin).Show();
+                        break;
+                    }
                     else
                     {
                         db.OpenConnection();
