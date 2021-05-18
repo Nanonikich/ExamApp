@@ -59,7 +59,7 @@ namespace ExamApp.Forms
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(838, 57);
+            this.panel1.Size = new System.Drawing.Size(1189, 57);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -69,7 +69,7 @@ namespace ExamApp.Forms
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.panel2.Location = new System.Drawing.Point(0, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(838, 11);
+            this.panel2.Size = new System.Drawing.Size(1189, 11);
             this.panel2.TabIndex = 1;
             // 
             // label1
@@ -78,7 +78,7 @@ namespace ExamApp.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(313, 10);
+            this.label1.Location = new System.Drawing.Point(488, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(220, 31);
             this.label1.TabIndex = 0;
@@ -109,7 +109,7 @@ namespace ExamApp.Forms
             this.dgvOrders.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             this.dgvOrders.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvOrders.Size = new System.Drawing.Size(838, 355);
+            this.dgvOrders.Size = new System.Drawing.Size(1189, 514);
             this.dgvOrders.TabIndex = 1;
             this.dgvOrders.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOrders_CellValueChanged);
             this.dgvOrders.CurrentCellDirtyStateChanged += new System.EventHandler(this.DgvOrders_CurrentCellDirtyStateChanged);
@@ -129,7 +129,7 @@ namespace ExamApp.Forms
             this.panel3.Controls.Add(this.comboBoxPokup);
             this.panel3.Location = new System.Drawing.Point(0, 48);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(838, 55);
+            this.panel3.Size = new System.Drawing.Size(1189, 55);
             this.panel3.TabIndex = 2;
             // 
             // comboBoxOrder
@@ -228,13 +228,12 @@ namespace ExamApp.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 450);
+            this.ClientSize = new System.Drawing.Size(1189, 609);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvOrders);
             this.Controls.Add(this.panel3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1366, 766);
-            this.MinimumSize = new System.Drawing.Size(824, 487);
+            this.MinimumSize = new System.Drawing.Size(1200, 489);
             this.Name = "HistoryOrders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HistoryOrders";

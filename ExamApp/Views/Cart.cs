@@ -184,11 +184,11 @@ namespace ExamApp.Forms
                     {
                         db.OpenConnection();
                         new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{1}' WHERE cart_prod_id = N'{r.Cells[0].Value}' AND cart_custom = N'{MainWin.User[0]}'", db.GetConnection()).ExecuteNonQuery();
-                        TotalAmout();
-                        LoadNewDataFormCart();
                         db.CloseConnection();
+                        LoadNewDataFormCart();
                         MainWin.UpdateTable();
                         MessageBox.Show("Нет в наличии");
+                        break;
                     }
                     else if (Convert.ToInt32(MainWin.dataGridView.Rows[0].Cells[6].Value) < 0)
                     {
@@ -199,11 +199,8 @@ namespace ExamApp.Forms
                     else
                     {
                         db.OpenConnection();
-
                         new SqlCommand($"UPDATE Cart SET cart_count_prod = N'{dgvCart.CurrentRow.Cells[4].Value}' WHERE cart_id = N'{dgvCart.SelectedRows[0].Cells[0].Value}'", db.GetConnection()).ExecuteNonQuery();
-                        TotalAmout();
                         db.CloseConnection();
-
                         LoadNewDataFormCart();
                         MainWin.UpdateTable();
                     }

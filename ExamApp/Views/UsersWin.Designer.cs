@@ -48,7 +48,7 @@ namespace ExamApp.Forms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 57);
+            this.panel1.Size = new System.Drawing.Size(1189, 57);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -58,7 +58,7 @@ namespace ExamApp.Forms
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.panel2.Location = new System.Drawing.Point(0, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 11);
+            this.panel2.Size = new System.Drawing.Size(1189, 11);
             this.panel2.TabIndex = 1;
             // 
             // label1
@@ -67,7 +67,7 @@ namespace ExamApp.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(275, 9);
+            this.label1.Location = new System.Drawing.Point(469, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(295, 31);
             this.label1.TabIndex = 0;
@@ -79,7 +79,7 @@ namespace ExamApp.Forms
             this.ButBack.BackColor = System.Drawing.Color.Purple;
             this.ButBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButBack.ForeColor = System.Drawing.Color.White;
-            this.ButBack.Location = new System.Drawing.Point(380, 398);
+            this.ButBack.Location = new System.Drawing.Point(574, 557);
             this.ButBack.Name = "ButBack";
             this.ButBack.Size = new System.Drawing.Size(100, 40);
             this.ButBack.TabIndex = 1;
@@ -107,7 +107,7 @@ namespace ExamApp.Forms
             this.dgvUsers.Location = new System.Drawing.Point(0, 54);
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
-            this.dgvUsers.Size = new System.Drawing.Size(800, 316);
+            this.dgvUsers.Size = new System.Drawing.Size(1189, 475);
             this.dgvUsers.TabIndex = 2;
             this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsers_CellContentClick);
             this.dgvUsers.CurrentCellDirtyStateChanged += new System.EventHandler(this.DgvUsers_CurrentCellDirtyStateChanged);
@@ -116,13 +116,12 @@ namespace ExamApp.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1189, 609);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.ButBack);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1366, 768);
-            this.MinimumSize = new System.Drawing.Size(816, 489);
+            this.MinimumSize = new System.Drawing.Size(1200, 489);
             this.Name = "UsersWin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UsersWin";
