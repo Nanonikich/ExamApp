@@ -1,10 +1,11 @@
 ﻿using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ExamApp
 {
     internal class DB
     {
-        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='"+ System.IO.Path.GetFullPath(@"Data\Database.mdf") + "';Integrated Security=True");
+        private readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath + @"\Data\Database.mdf;Integrated Security = True");
 
         public void OpenConnection()
         {

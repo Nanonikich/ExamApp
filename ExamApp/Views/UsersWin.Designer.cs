@@ -34,7 +34,6 @@ namespace ExamApp.Forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.ButBack = new System.Windows.Forms.Button();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
@@ -73,20 +72,6 @@ namespace ExamApp.Forms
             this.label1.TabIndex = 0;
             this.label1.Text = "Пользователи системы";
             // 
-            // ButBack
-            // 
-            this.ButBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ButBack.BackColor = System.Drawing.Color.Purple;
-            this.ButBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButBack.ForeColor = System.Drawing.Color.White;
-            this.ButBack.Location = new System.Drawing.Point(574, 557);
-            this.ButBack.Name = "ButBack";
-            this.ButBack.Size = new System.Drawing.Size(100, 40);
-            this.ButBack.TabIndex = 1;
-            this.ButBack.Text = "Назад";
-            this.ButBack.UseVisualStyleBackColor = false;
-            this.ButBack.Click += new System.EventHandler(this.ButBack_Click);
-            // 
             // dgvUsers
             // 
             this.dgvUsers.AllowUserToAddRows = false;
@@ -107,7 +92,7 @@ namespace ExamApp.Forms
             this.dgvUsers.Location = new System.Drawing.Point(0, 54);
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
-            this.dgvUsers.Size = new System.Drawing.Size(1189, 475);
+            this.dgvUsers.Size = new System.Drawing.Size(1189, 555);
             this.dgvUsers.TabIndex = 2;
             this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsers_CellContentClick);
             this.dgvUsers.CurrentCellDirtyStateChanged += new System.EventHandler(this.DgvUsers_CurrentCellDirtyStateChanged);
@@ -118,7 +103,6 @@ namespace ExamApp.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1189, 609);
             this.Controls.Add(this.dgvUsers);
-            this.Controls.Add(this.ButBack);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1200, 489);
@@ -139,7 +123,6 @@ namespace ExamApp.Forms
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button ButBack;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Panel panel2;
     }
