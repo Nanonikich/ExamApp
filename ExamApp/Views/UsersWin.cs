@@ -130,12 +130,6 @@ namespace ExamApp.Forms
             }
         }
 
-        private void ButBack_Click(object sender, EventArgs e)
-        {
-            MainWin.Enabled = true;
-            Close();
-        }
-
         private void DgvUsers_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             // результативность обработки изменения в таблице

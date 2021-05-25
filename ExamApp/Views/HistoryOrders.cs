@@ -307,9 +307,9 @@ namespace ExamApp.Forms
                 label3.Visible = false;
                 comboBoxSt.Visible = false;
                 label4.Visible = false;
-                panel3.Visible = false;
-                dgvOrders.Top = 51;
-                dgvOrders.Size = new Size(1366, 768);
+                //panel3.Visible = false;
+                //dgvOrders.Top = 51;
+                //dgvOrders.Size = new Size(1189, 558);
 
                 #endregion Невидимые элементы
 
