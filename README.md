@@ -8,4 +8,4 @@
   - Файл с базой данных расположен в “ExamApp/bin/Debug/Data/Database.mdf”
 
 # Запуск
-  - Файл exe расположен в «ExamApp/bin/Debug/ExamApp.exe» 
+  - Файл exe расположен в «MUse.Program.prj/bin/Debug/ExamApp.exe» 
