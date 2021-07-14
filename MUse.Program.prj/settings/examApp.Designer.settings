@@ -1,0 +1,126 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ExamApp.settings" GeneratedClassName="examApp">
+  <Profiles />
+  <Settings>
+    <Setting Name="emsUrl" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/ems/v79/ws</Value>
+    </Setting>
+    <Setting Name="enableLogs" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="language" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Ru</Value>
+    </Setting>
+    <Setting Name="scope" Type="System.Xml.XmlDocument" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;haspscope&gt;
+  &lt;feature&gt;
+    &lt;name&gt;Accounting&lt;/name&gt;
+    &lt;id&gt;1&lt;/id&gt;
+  &lt;/feature&gt;
+  &lt;feature&gt;
+    &lt;name&gt;Stock&lt;/name&gt;
+    &lt;id&gt;2&lt;/id&gt;
+  &lt;/feature&gt;
+  &lt;feature&gt;
+    &lt;name&gt;Staff&lt;/name&gt;
+    &lt;id&gt;3&lt;/id&gt;
+  &lt;/feature&gt;
+&lt;/haspscope&gt;</Value>
+    </Setting>
+    <Setting Name="format" Type="System.Xml.XmlDocument" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;haspformat root="hasp_info"&gt;
+  &lt;hasp&gt;
+    &lt;element name="id" /&gt;
+    &lt;element name="type" /&gt;
+    &lt;element name="detachable" /&gt;
+    &lt;element name="attached" /&gt;
+    &lt;element name="recipient" /&gt;
+    &lt;element name="version" /&gt;
+    &lt;element name="hw_version" /&gt;
+    &lt;element name="key_model" /&gt;
+    &lt;element name="key_type" /&gt;
+    &lt;element name="form_factor" /&gt;
+    &lt;element name="hw_platform" /&gt;
+    &lt;element name="driverless" /&gt;
+    &lt;element name="fingerprint_change" /&gt;
+    &lt;element name="vclock_enabled" /&gt;
+    &lt;product&gt;
+      &lt;element name="id" /&gt;
+      &lt;element name="name" /&gt;
+      &lt;feature&gt;
+        &lt;element name="id" /&gt;
+        &lt;element name="name" /&gt;
+        &lt;element name="license" /&gt;
+        &lt;element name="locked" /&gt;
+      &lt;/feature&gt;
+    &lt;/product&gt;
+  &lt;/hasp&gt;
+&lt;/haspformat&gt;</Value>
+    </Setting>
+    <Setting Name="enableApi" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="portForTestConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">443</Value>
+    </Setting>
+    <Setting Name="vendorCode" Type="System.Xml.XmlDocument" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;vendorData&gt;
+  &lt;batchCode&gt;DEMOMA&lt;/batchCode&gt;
+  &lt;vendorId&gt;37515&lt;/vendorId&gt;
+  &lt;vendorCode&gt;AzIceaqfA1hX5wS+M8cGnYh5ceevUnOZIzJBbXFD6dgf3tBkb9cvUF/Tkd/iKu2fsg9wAysYKw7RMAsVvIp4KcXle/v1RaXrLVnNBJ2H2DmrbUMOZbQUFXe698qmJsqNpLXRA367xpZ54i8kC5DTXwDhfxWTOZrBrh5sRKHcoVLumztIQjgWh37AzmSd1bLOfUGI0xjAL9zJWO3fRaeB0NS2KlmoKaVT5Y04zZEc06waU2r6AU2Dc4uipJqJmObqKM+tfNKAS0rZr5IudRiC7pUwnmtaHRe5fgSI8M7yvypvm+13Wm4Gwd4VnYiZvSxf8ImN3ZOG9wEzfyMIlH2+rKPUVHI+igsqla0Wd9m7ZUR9vFotj1uYV0OzG7hX0+huN2E/IdgLDjbiapj1e2fKHrMmGFaIvI6xzzJIQJF9GiRZ7+0jNFLKSyzX/K3JAyFrIPObfwM+y+zAgE1sWcZ1YnuBhICyRHBhaJDKIZL8MywrEfB2yF+R3k9wFG1oN48gSLyfrfEKuB/qgNp+BeTruWUk0AwRE9XVMUuRbjpxa4YA67SKunFEgFGgUfHBeHJTivvUl0u4Dki1UKAT973P+nXy2O0u239If/kRpNUVhMg8kpk7s8i6Arp7l/705/bLCx4kN5hHHSXIqkiG9tHdeNV8VYo5+72hgaCx3/uVoVLmtvxbOIvo120uTJbuLVTvT8KtsOlb3DxwUrwLzaEMoAQAFk6Q9bNipHxfkRQER4kR7IYTMzSoW5mxh3H9O8Ge5BqVeYMEW36q9wnOYfxOLNw6yQMf8f9sJN4KhZty02xm707S7VEfJJ1KNq7b5pP/3RjE0IKtB2gE6vAPRvRLzEohu0m7q1aUp8wAvSiqjZy7FLaTtLEApXYvLvz6PEJdj4TegCZugj7c8bIOEqLXmloZ6EgVnjQ7/ttys7VFITB3mazzFiyQuKf4J6+b/a/Y&lt;/vendorCode&gt;
+&lt;/vendorData&gt;</Value>
+    </Setting>
+    <Setting Name="sentinelUpCallData" Type="System.Xml.XmlDocument" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;upclient&gt;
+  &lt;param&gt;
+    &lt;key&gt;-url&lt;/key&gt;
+    &lt;value&gt;up.sentinelcloud.com&lt;/value&gt;
+  &lt;/param&gt;
+  &lt;param&gt;
+    &lt;key&gt;-k&lt;/key&gt;
+    &lt;value&gt;ace0dcbbce7597e2302dc6f79224b458&lt;/value&gt;
+  &lt;/param&gt;
+  &lt;param&gt;
+    &lt;key&gt;-pc&lt;/key&gt;
+    &lt;value&gt;0c89790a-b1d2-4743-bf95-f6591fca72ac&lt;/value&gt;
+  &lt;/param&gt;
+  &lt;param&gt;
+    &lt;key&gt;-v&lt;/key&gt;
+    &lt;value&gt;v1&lt;/value&gt;
+  &lt;/param&gt;
+  &lt;param&gt;
+    &lt;key&gt;-check&lt;/key&gt;
+    &lt;value&gt;-check&lt;/value&gt;
+  &lt;/param&gt;
+  &lt;param&gt;
+    &lt;key&gt;-st&lt;/key&gt;
+    &lt;value&gt;-st&lt;/value&gt;
+  &lt;/param&gt;
+  &lt;param&gt;
+    &lt;key&gt;-l&lt;/key&gt;
+    &lt;value&gt;ru&lt;/value&gt;
+  &lt;/param&gt;
+  &lt;param&gt;
+    &lt;key&gt;-log&lt;/key&gt;
+    &lt;value&gt;update.log&lt;/value&gt;
+  &lt;/param&gt;
+&lt;/upclient&gt;</Value>
+    </Setting>
+    <Setting Name="enableDisplayAdvancedData" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="newActMechanism" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="addressForTestConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8.8.8.8</Value>
+    </Setting>
+    <Setting Name="enableInternetTest" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
