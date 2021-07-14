@@ -107,29 +107,37 @@ namespace ExamApp
 
         private void ButtonNextInfoTab_Click(object sender, EventArgs e)
         {
-            if (checkBoxSkipRegInfoTab.Checked)
+            XDocument licenseInfo = XDocument.Parse(FormAbout.instance.httpClientResponseStr);
+            if ((licenseInfo.Root.Element("productInfo").Attribute("productName").Value) == "ExamApp")
             {
-                // если пропускаем регистрацию
-                if (appSettings.enableLogs) Log.Write("Выполняем переход на страничку выбора ключа (пропуская регистрацию)...");
-                tabControlRegForm.SelectTab(2);
-                radioButtonInstallLikeNewKeyConfirmTab.Select();
-            }
-            else
-            {
-                // если регистрируемся
-                if (appSettings.enableLogs) Log.Write("Выполняем переход на страничку регистрации...");
-                tabControlRegForm.SelectTab(1);
-
-                if (!string.IsNullOrEmpty(cEmail))
+                if (checkBoxSkipRegInfoTab.Checked)
                 {
-                    radioButtonLoginLoginTab.Select();
-                    textBoxEmailLoginTab.Text = cEmail;
-                    buttonNextLoginTab.PerformClick();
+                    // если пропускаем регистрацию
+                    if (appSettings.enableLogs) Log.Write("Выполняем переход на страничку выбора ключа (пропуская регистрацию)...");
+                    tabControlRegForm.SelectTab(2);
+                    radioButtonInstallLikeNewKeyConfirmTab.Select();
                 }
                 else
                 {
-                    radioButtonRegNewLoginTab.Select();
+                    // если регистрируемся
+                    if (appSettings.enableLogs) Log.Write("Выполняем переход на страничку регистрации...");
+                    tabControlRegForm.SelectTab(1);
+
+                    if (!string.IsNullOrEmpty(cEmail))
+                    {
+                        radioButtonLoginLoginTab.Select();
+                        textBoxEmailLoginTab.Text = cEmail;
+                        buttonNextLoginTab.PerformClick();
+                    }
+                    else
+                    {
+                        radioButtonRegNewLoginTab.Select();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Ключ от другого приложения");
             }
         }
 
@@ -306,7 +314,7 @@ namespace ExamApp
 
                     if (!string.IsNullOrEmpty(v2c))
                     {
-                        if (appSettings.enableLogs) Log.Write("Выполняем попытку приминения полученной лицензии...");
+                        if (appSettings.enableLogs) Log.Write("Выполняем попытку применения полученной лицензии...");
 
                         string acknowledgeXml = "";
 
